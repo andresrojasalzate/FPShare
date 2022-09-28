@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "cat.copernic.albert.fpshare"
+        applicationId "cat.copernic.fpshare"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -33,7 +33,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.7.0' // NO ACTUALIZAR
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
