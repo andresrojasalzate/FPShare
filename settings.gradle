@@ -12,5 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "fpshare"
+rootProject.name = "FPShare"
+include ':app'
 include ':app'
