@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FPShare"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="cat.copernic.fpshare.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

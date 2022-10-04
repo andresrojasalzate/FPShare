@@ -1,4 +1,4 @@
-package cat.copernic.albert.fpshare
+package cat.copernic.fpshare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
