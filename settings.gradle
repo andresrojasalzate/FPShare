@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FPShare"
 include ':app'
-include ':app'
