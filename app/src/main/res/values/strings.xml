@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FPShare</string>
     <string name="EGG">FPShare is approaching</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_logo">App Logo</string>
+    <string name="ajustes">Settings</string>
+    <string name="btn_guardar">Save</string>
 </resources>

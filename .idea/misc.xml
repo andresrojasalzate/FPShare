@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1945" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_f_p_ajustes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_fp_ajustes.xml" value="0.33" />
         <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_splash_screen.xml" value="0.20416666666666666" />
       </map>
     </option>
