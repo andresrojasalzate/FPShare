@@ -1,18 +1,4 @@
 <resources>
     <string name="app_name">FPShare</string>
     <string name="EGG">FPShare is approaching</string>
-    <string name="app_logo">App Logo</string>
-    <string name="ajustes">Settings</string>
-    <string name="btn_guardar">Save</string>
-    <string name="dark">Dark</string>
-    <string name="light">Light</string>
-    <string name="system">Default</string>
-    <string name="theme">Theme</string>
-    <string name="english">English</string>
-    <string name="catalan">Catalan</string>
-    <string name="spanish">Spanish</string>
-    <string name="language">Language</string>
-    <string name="txt_threadTitle">Thread Title</string>
-    <string name="hint_textHere">Text here…</string>
-    <string name="btn_send">SEND</string>
 </resources>
