@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">24dp</dimen>
+    <dimen name="logo_size">150dp</dimen>
+    <dimen name="logo_margin_start">136dp</dimen>
+    <dimen name="logo_margin_top">64dp</dimen>
+    <dimen name="logo_margin_end">144dp</dimen>
+    <dimen name="textview_email_margin_bottom">24dp</dimen>
+</resources>

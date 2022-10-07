@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="">
-
+    <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="backgroundTint">@color/blue_200</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+    <style name="Widget.FpShare.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Widget.FpShare.TextViewTitulo" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">26sp</item>
     </style>
 </resources>
