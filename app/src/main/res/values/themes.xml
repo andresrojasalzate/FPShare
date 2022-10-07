@@ -8,5 +8,9 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <item name="buttonStyle">@style/Widget.FpShare.Button</item>
     </style>
+
+
 </resources>
