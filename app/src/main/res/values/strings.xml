@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FPShare</string>
     <string name="EGG">FPShare is approaching</string>
+    <string name="nombre">Nombre Completo</string>
+    <string name="username">Nombre Completo</string>
+    <string name="mail">Email</string>
+    <string name="password">Password</string>
 </resources>
