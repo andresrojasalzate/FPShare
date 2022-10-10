@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cat.copernic.fpshare.MainActivity"
-    android:padding="@dimen/padding">
+    android:padding="@dimen/padding"
+    tools:context="cat.copernic.fpshare.MainActivity">
 
     <ImageView
         android:id="@+id/logo_login"
@@ -19,26 +19,88 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_fpshare" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/emil_login"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="147dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imput_email_login"
+        android:layout_width="@dimen/width_text_imput_layaout"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:hint="@string/email_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_login">
 
-    </com.google.android.material.textfield.TextInputEditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_text_imput_edittext" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/email_textview_login"
+        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/textview_email_margin_bottom"
+        android:layout_marginTop="24dp"
         android:text="@string/email_login"
-        app:layout_constraintBottom_toTopOf="@+id/emil_login"
-        app:layout_constraintStart_toStartOf="@+id/emil_login" />
+        app:layout_constraintBottom_toTopOf="@+id/imput_email_login"
+        app:layout_constraintStart_toStartOf="@+id/imput_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/logo_login" />
 
+    <TextView
+        android:id="@+id/password_texview_login"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/password_login"
+        app:layout_constraintStart_toStartOf="@+id/imput_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/imput_email_login" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imput_password_login"
+        android:layout_width="@dimen/width_text_imput_layaout"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/password_login"
+        app:layout_constraintStart_toStartOf="@+id/password_texview_login"
+        app:layout_constraintTop_toBottomOf="@+id/password_texview_login">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_text_imput_edittext" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_singin_login"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
+        android:layout_marginTop="32dp"
+        android:text="@string/sign_in_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imput_password_login" />
+
+    <Button
+        android:id="@+id/button_register_login"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
+        android:layout_marginTop="16dp"
+        android:text="@string/register_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_singin_login" />
+
+    <TextView
+        android:id="@+id/textView_forgotten_password"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/forgot_your_password_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
