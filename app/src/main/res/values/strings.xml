@@ -12,4 +12,7 @@
     <string name="catalan">Catalan</string>
     <string name="spanish">Spanish</string>
     <string name="language">Language</string>
+    <string name="txt_threadTitle">Thread Title</string>
+    <string name="hint_textHere">Text here…</string>
+    <string name="btn_send">SEND</string>
 </resources>
