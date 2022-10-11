@@ -9,5 +9,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
+        <item name="android:button">@style/Widget.FpShare.Button</item>
+
+        <item name="textInputFilledStyle">@style/Widget.FPShare.InputEditText</item>
     </style>
+
+
 </resources>

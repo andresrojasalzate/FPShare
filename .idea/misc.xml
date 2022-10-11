@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1945" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/activity_registro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_f_p_ajustes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_fp_ajustes.xml" value="0.25" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_fp_hilo.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/fragment_splash_screen.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Sergi/AndroidStudioProjects/FPShare/app/src/main/res/layout/login.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
