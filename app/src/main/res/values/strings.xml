@@ -1,12 +1,18 @@
 <resources>
     <string name="app_name">FPShare</string>
     <string name="EGG">FPShare is approaching</string>
-    <string name="nombre">Nombre Completo</string>
-    <string name="username">Nombre Completo</string>
-    <string name="mail">Email</string>
-    <string name="password">Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="textview">TextView</string>
-
+    <string name="app_logo">App Logo</string>
+    <string name="ajustes">Settings</string>
+    <string name="btn_guardar">Save</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+    <string name="system">Default</string>
+    <string name="theme">Theme</string>
+    <string name="english">English</string>
+    <string name="catalan">Catalan</string>
+    <string name="spanish">Spanish</string>
+    <string name="language">Language</string>
+    <string name="txt_threadTitle">Thread Title</string>
+    <string name="hint_textHere">Text here…</string>
+    <string name="btn_send">Button to send the message to the thread</string>
 </resources>
