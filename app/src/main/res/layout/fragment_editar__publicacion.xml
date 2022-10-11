@@ -46,7 +46,7 @@
         android:layout_width="298dp"
         android:layout_height="75dp"
         android:text="Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75"
-        tools:layout_editor_absoluteX="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditarPublicacion"
         tools:layout_editor_absoluteY="292dp" />
 
     <TextView
@@ -64,28 +64,30 @@
         android:layout_height="52dp"
         android:layout_marginTop="60dp"
         android:text="Guardar Cambios"
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintStart_toStartOf="@+id/spinnerCiclo"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerModulo" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerCiclo"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="427dp" />
+        tools:layout_editor_absoluteY="427dp"
+
+        />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerModulo"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCiclo" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerUF"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/spinner2"
-        app:layout_constraintTop_toTopOf="@+id/spinner2" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerModulo"
+        app:layout_constraintTop_toTopOf="@+id/spinnerModulo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
