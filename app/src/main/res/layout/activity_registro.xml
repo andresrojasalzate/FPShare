@@ -101,6 +101,7 @@
 
     <Button
         android:id="@+id/btnRegistrarse"
+        style="@style/Widget.FpShare.Button"
         android:layout_width="274dp"
         android:layout_height="55dp"
         android:text="Registrarse"

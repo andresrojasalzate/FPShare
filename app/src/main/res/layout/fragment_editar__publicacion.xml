@@ -59,6 +59,7 @@
 
     <Button
         android:id="@+id/btnSave"
+        style="@style/Widget.FpShare.Button"
         android:layout_width="260dp"
         android:layout_height="52dp"
         android:text="Guardar Cambios"
