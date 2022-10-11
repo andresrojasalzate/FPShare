@@ -6,4 +6,7 @@
     <dimen name="logo_margin_top">64dp</dimen>
     <dimen name="logo_margin_end">144dp</dimen>
     <dimen name="textview_email_margin_bottom">24dp</dimen>
+    <dimen name="WidthTitulo">299dp</dimen>
+    <dimen name="HeightTitulo">69dp</dimen>
+    <dimen name="SpinnerWidth">100dp</dimen>
 </resources>

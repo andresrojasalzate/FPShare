@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/txtEditarPublicacion"
-        android:layout_width="299dp"
-        android:layout_height="69dp"
+        android:layout_width="@dimen/WidthTitulo"
+        android:layout_height="@dimen/HeightTitulo"
         android:text="Editar Publicacion"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="48dp"
@@ -69,7 +69,7 @@
 
     <Spinner
         android:id="@+id/spinnerCiclo"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/SpinnerWidth"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="427dp"
@@ -78,14 +78,14 @@
 
     <Spinner
         android:id="@+id/spinnerModulo"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/SpinnerWidth"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
         app:layout_constraintTop_toTopOf="@+id/spinnerCiclo" />
 
     <Spinner
         android:id="@+id/spinnerUF"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/SpinnerWidth"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/spinnerModulo"
         app:layout_constraintTop_toTopOf="@+id/spinnerModulo" />
