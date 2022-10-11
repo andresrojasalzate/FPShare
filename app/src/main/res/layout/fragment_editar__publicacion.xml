@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Editar_Publicacion" >
+
+    <TextView
+        android:id="@+id/txtEditarPublicacion"
+        android:layout_width="299dp"
+        android:layout_height="69dp"
+        android:text="Editar Publicacion"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/txtUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carlos Trujillo"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <ImageView
+        android:id="@+id/imagePerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/perfil"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <TextView
+        android:id="@+id/txtTitulo1"
+        android:layout_width="251dp"
+        android:layout_height="30dp"
+        android:text="Resumen UF1 BBDD"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="298dp"
+        android:layout_height="75dp"
+        android:text="Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <TextView
+        android:id="@+id/documentLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enlace"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="260dp"
+        android:layout_height="52dp"
+        android:text="Guardar Cambios"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="464dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
