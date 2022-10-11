@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Editar_Publicacion" >
+    tools:context=".Editar_Publicacion">
 
     <TextView
         android:id="@+id/txtEditarPublicacion"
@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Carlos Trujillo"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="196dp" />
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="183dp" />
 
     <ImageView
         android:id="@+id/imagePerfil"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/perfil"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="187dp" />
+        tools:layout_editor_absoluteY="171dp" />
 
     <TextView
         android:id="@+id/txtTitulo1"
@@ -39,7 +39,7 @@
         android:text="Resumen UF1 BBDD"
         android:textSize="22sp"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="252dp" />
+        tools:layout_editor_absoluteY="242dp" />
 
     <TextView
         android:id="@+id/txtDescripcion"
@@ -47,7 +47,7 @@
         android:layout_height="75dp"
         android:text="Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="307dp" />
+        tools:layout_editor_absoluteY="292dp" />
 
     <TextView
         android:id="@+id/documentLink"
@@ -55,15 +55,37 @@
         android:layout_height="wrap_content"
         android:text="Enlace"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="396dp" />
+        tools:layout_editor_absoluteY="387dp" />
 
     <Button
         android:id="@+id/btnSave"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="260dp"
+        android:layout_width="300dp"
         android:layout_height="52dp"
+        android:layout_marginTop="60dp"
         android:text="Guardar Cambios"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="464dp" />
+        app:layout_constraintStart_toStartOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="427dp" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/spinner2"
+        app:layout_constraintTop_toTopOf="@+id/spinner2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

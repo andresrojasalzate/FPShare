@@ -12,26 +12,18 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="264dp"
-        android:layout_marginBottom="508dp"
+        android:layout_marginTop="80dp"
         android:text="Nuevo nombre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/txtRenombrar"
+        app:layout_constraintTop_toBottomOf="@+id/txtRenombrar" />
 
     <EditText
         android:id="@+id/introNewName"
         android:layout_width="288dp"
         android:layout_height="56dp"
-        android:layout_marginStart="-20dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="-160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNewname"
+        tools:layout_editor_absoluteX="40dp" />
 
     <TextView
         android:id="@+id/txtRenombrar"
@@ -49,40 +41,9 @@
         style="@style/Widget.FpShare.Button"
         android:layout_width="292dp"
         android:layout_height="57dp"
+        android:layout_marginTop="80dp"
         android:text="Cambiar"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="327dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/home"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="656dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/brujula"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="650dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/internet"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="650dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/mas"
-        tools:layout_editor_absoluteX="330dp"
-        tools:layout_editor_absoluteY="650dp" />
+        app:layout_constraintStart_toStartOf="@+id/introNewName"
+        app:layout_constraintTop_toBottomOf="@+id/introNewName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
