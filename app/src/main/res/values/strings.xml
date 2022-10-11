@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">FPShare</string>
     <string name="EGG">FPShare is approaching</string>
+    <string name="nombre">Nombre Completo</string>
+    <string name="username">Nombre Completo</string>
+    <string name="mail">Email</string>
+    <string name="password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textview">TextView</string>
 </resources>
