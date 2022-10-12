@@ -8,8 +8,15 @@
     <dimen name="textview_email_margin_bottom">24dp</dimen>
     <dimen name="margin_top_text_imput_email">48dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="width_button">300dp</dimen>
-    <dimen name="height_button">60dp</dimen>
     <dimen name="width_text_imput_layaout">300dp</dimen>
     <dimen name="height_text_imput_edittext">48dp</dimen>
+    <dimen name="margintop_textimputlayout1">68dp</dimen>
+    <dimen name="marginTop_emailtextview_login">24dp</dimen>
+    <dimen name="marigTop_password_textview_login">24dp</dimen>
+    <dimen name="marginTop_imputpassword_login">8dp</dimen>
+    <dimen name="width_button_login">300dp</dimen>
+    <dimen name="height_button_login">60dp</dimen>
+    <dimen name="marginTop_SingIn_button">36dp</dimen>
+    <dimen name="marginTop_register_button">16dp</dimen>
+    <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
 </resources>

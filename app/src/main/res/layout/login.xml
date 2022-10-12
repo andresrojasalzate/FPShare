@@ -23,7 +23,7 @@
         android:id="@+id/imput_email_login"
         android:layout_width="@dimen/width_text_imput_layaout"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="@dimen/margintop_textimputlayout1"
         android:hint="@string/email_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,10 +37,10 @@
 
     <TextView
         android:id="@+id/email_textview_login"
-        style="@style/Widget.FpShare.TextView"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/marginTop_emailtextview_login"
         android:text="@string/email_login"
         app:layout_constraintBottom_toTopOf="@+id/imput_email_login"
         app:layout_constraintStart_toStartOf="@+id/imput_email_login"
@@ -48,10 +48,10 @@
 
     <TextView
         android:id="@+id/password_texview_login"
-        style="@style/Widget.FpShare.TextView"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/marigTop_password_textview_login"
         android:text="@string/password_login"
         app:layout_constraintStart_toStartOf="@+id/imput_email_login"
         app:layout_constraintTop_toBottomOf="@+id/imput_email_login" />
@@ -60,7 +60,7 @@
         android:id="@+id/imput_password_login"
         android:layout_width="@dimen/width_text_imput_layaout"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/marginTop_imputpassword_login"
         android:hint="@string/password_login"
         app:layout_constraintStart_toStartOf="@+id/password_texview_login"
         app:layout_constraintTop_toBottomOf="@+id/password_texview_login">
@@ -71,23 +71,24 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_singin_login"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="@dimen/width_button"
-        android:layout_height="@dimen/height_button"
-        android:layout_marginTop="32dp"
+        android:layout_width="@dimen/width_button_login"
+        android:layout_height="@dimen/height_button_login"
+        android:layout_marginTop="@dimen/marginTop_SingIn_button"
         android:text="@string/sign_in_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imput_password_login" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_register_login"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="@dimen/width_button"
-        android:layout_height="@dimen/height_button"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/width_button_login"
+        android:layout_height="@dimen/height_button_login"
+        android:layout_marginTop="@dimen/marginTop_register_button"
+
         android:text="@string/register_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,12 +96,15 @@
 
     <TextView
         android:id="@+id/textView_forgotten_password"
-        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="@dimen/marginBottom_textView_forgotten_password"
         android:text="@string/forgot_your_password_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
