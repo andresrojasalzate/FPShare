@@ -29,4 +29,15 @@
     <dimen name="margin_top_button_recoverypassword">32dp</dimen>
     <dimen name="width_button_recoverypassword">300dp</dimen>
     <dimen name="height_button_recoverypassword">60dp</dimen>
+    <dimen name="porfile_image_size">100dp</dimen>
+    <dimen name="margin_top_profile_image">36dp</dimen>
+    <dimen name="margin_end_image_profile">8dp</dimen>
+    <dimen name="margin_top_textimput">8dp</dimen>
+    <dimen name="margin_start_textview_name_profile">36dp</dimen>
+    <dimen name="margin_top_textview_name_profile">26dp</dimen>
+    <dimen name="margin_top_textview_profile">16dp</dimen>
+    <dimen name="with_textimput_profile">300dp</dimen>
+    <dimen name="height_edittext_profile">48dp</dimen>
+    <dimen name="with_button_profile">300dp</dimen>
+    <dimen name="height_button_profile">60dp</dimen>
 </resources>
