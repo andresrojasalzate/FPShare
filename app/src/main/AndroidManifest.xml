@@ -14,15 +14,10 @@
         android:theme="@style/Theme.Fpshare"
         tools:targetApi="31">
         <activity
-            android:name=".PasswordRecovery"
-            android:exported="false"
-            android:label="@string/title_activity_password_recovery"
-            android:theme="@style/Theme.Fpshare.NoActionBar" />
-        <activity
-            android:name=".registro"
+            android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="cat.copernic.fpshare.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

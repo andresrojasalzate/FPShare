@@ -2,20 +2,108 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registro">
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField"
-        android:layout_width="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="146dp"
+        android:layout_height="141dp"
+        app:srcCompat="@drawable/logo_fpshare"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="50dp" />
+
+    <TextView
+        android:id="@+id/txtNombre"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/label">
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+    <EditText
+        android:id="@+id/intro_nombre"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/txtNombre"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtPassword"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="@+id/intro_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
+
+
+    <EditText
+        android:id="@+id/intro_password"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+
+    <TextView
+        android:id="@+id/txtMail"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/mail"
+        app:layout_constraintStart_toStartOf="@+id/intro_password"
+        app:layout_constraintTop_toBottomOf="@+id/intro_password" />
+
+    <EditText
+        android:id="@+id/intro_mail"
+        android:layout_width="300dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/txtMail"
+        app:layout_constraintTop_toBottomOf="@+id/txtMail" />
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="303dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Registrarse"
+        app:layout_constraintEnd_toEndOf="@+id/intro_mail"
+        app:layout_constraintStart_toStartOf="@+id/intro_mail"
+        app:layout_constraintTop_toBottomOf="@+id/intro_mail" />
+
+    <TextView
+        android:id="@+id/txtAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="80dp"
+        android:text="Already have an account?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
+
+    <TextView
+        android:id="@+id/txtSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Sign in"
+        app:layout_constraintStart_toEndOf="@+id/txtAccount"
+        app:layout_constraintTop_toTopOf="@+id/txtAccount" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,4 +19,7 @@
     <dimen name="marginTop_SingIn_button">36dp</dimen>
     <dimen name="marginTop_register_button">16dp</dimen>
     <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
+    <dimen name="WidthTitulo">299dp</dimen>
+    <dimen name="HeightTitulo">69dp</dimen>
+    <dimen name="SpinnerWidth">100dp</dimen>
 </resources>

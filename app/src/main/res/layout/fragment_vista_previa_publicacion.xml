@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista_previa_publicacion">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carlos Trujillo"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="242dp" />
+
+        <TextView
+            android:id="@+id/txtPublicacion"
+            android:layout_width="299dp"
+            android:layout_height="69dp"
+            android:text="Publicacion"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="121dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/perfil"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="300"
+            android:layout_height="150"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="49dp"
+            tools:layout_editor_absoluteY="402dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Enlace"
+            app:layout_constraintStart_toStartOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="300"
+            android:layout_height="69"
+            android:layout_marginTop="30dp"
+            android:text="Resumen UF1 Base de Datos"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="150dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="249dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

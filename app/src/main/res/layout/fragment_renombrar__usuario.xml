@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Renombrar_Usuario">
+
+    <TextView
+        android:id="@+id/txtNewname"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Nuevo nombre"
+        app:layout_constraintStart_toStartOf="@+id/txtRenombrar"
+        app:layout_constraintTop_toBottomOf="@+id/txtRenombrar" />
+
+    <EditText
+        android:id="@+id/introNewName"
+        android:layout_width="288dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNewname"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <TextView
+        android:id="@+id/txtRenombrar"
+        android:layout_width="282dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="76dp"
+        android:text="Renombrar Usuario"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCambiar"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="292dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="80dp"
+        android:text="Cambiar"
+        app:layout_constraintStart_toStartOf="@+id/introNewName"
+        app:layout_constraintTop_toBottomOf="@+id/introNewName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
