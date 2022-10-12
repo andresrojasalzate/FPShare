@@ -15,4 +15,11 @@
     <string name="txt_threadTitle">Thread Title</string>
     <string name="hint_textHere">Text here…</string>
     <string name="btn_send">Button to send the message to the thread</string>
+    <string name="email_login">Email</string>
+    <string name="password_login">Password</string>
+    <string name="sign_in_login">sign in</string>
+    <string name="register_login">register</string>
+    <string name="forgot_your_password_login">Forgot your password?</string>
+    <string name="sing_in_login">Sing in</string>
+
 </resources>

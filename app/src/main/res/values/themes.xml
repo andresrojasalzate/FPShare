@@ -8,11 +8,13 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:buttonStyle">@style/Widget.FpShare.Button</item>
+        <item name="android:textViewStyle">@style/Widget.FpShare.TextView</item>
+        <item name="textInputStyle">@style/Widget.FpShare.TextImputLayaout</item>
+        <item name="buttonStyle">@style/Widget.FpShare.Button</item>
 
         <item name="android:button">@style/Widget.FpShare.Button</item>
 
        <!-- <item name="textInputFilledStyle">@style/Widget.FPShare.InputEditText</item> -->
     </style>
-
-
 </resources>
