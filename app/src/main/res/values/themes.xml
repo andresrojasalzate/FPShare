@@ -15,6 +15,15 @@
 
         <item name="android:button">@style/Widget.FpShare.Button</item>
 
-       <!-- <item name="textInputFilledStyle">@style/Widget.FPShare.InputEditText</item> -->
+        <!-- <item name="textInputFilledStyle">@style/Widget.FPShare.InputEditText</item> -->
     </style>
+
+    <style name="Theme.Fpshare.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Fpshare.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Fpshare.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
