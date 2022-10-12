@@ -22,4 +22,11 @@
     <dimen name="WidthTitulo">299dp</dimen>
     <dimen name="HeightTitulo">69dp</dimen>
     <dimen name="SpinnerWidth">100dp</dimen>
+    <dimen name="width_text_mput_email_recoverypassword">300dp</dimen>
+    <dimen name="margin_top_textimput_email_recoverypassword">68dp</dimen>
+    <dimen name="height_textimput_edittext_recoverypassword">48dp</dimen>
+    <dimen name="margin_top_email_textview_recoverypassword">24dp</dimen>
+    <dimen name="margin_top_button_recoverypassword">32dp</dimen>
+    <dimen name="width_button_recoverypassword">300dp</dimen>
+    <dimen name="height_button_recoverypassword">60dp</dimen>
 </resources>
