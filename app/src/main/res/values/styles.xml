@@ -17,6 +17,8 @@
         <item name="boxBackgroundColor">@color/lavada</item>
         <item name="boxStrokeColor">@color/blue_500</item>
     </style>
-
+    <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="background">@color/lavada</item>
+    </style>
 
 </resources>

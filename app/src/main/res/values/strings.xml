@@ -43,5 +43,14 @@
     <string name="users_admin_menu">users</string>
     <string name="posts_admin_menu">posts</string>
     <string name="tags_admin_menu">tags</string>
+    <string name="title_new_post">Title</string>
+    <string name="description_new_post">Description</string>
+    <string name="link_new_post">Link</string>
+    <string name="tags_new_post">Tags</string>
+    <string name="dam_new_post">DAM</string>
+    <string name="daw_new_post">DAW</string>
+    <string name="asix_new_post">ASIX</string>
+    <string name="smix__new_post">SMIX</string>
+    <string name="publish_new_post">Publish</string>
 
 </resources>
