@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Style para botones -->
     <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue_200</item>
         <item name="cornerRadius">20dp</item>
     </style>
+    <!-- Style para titulos -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
+    <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">26sp</item>
     </style>
+    <!-- Style para el InputText -->
     <style name="Widget.FpShare.TextImputLayaout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
         <item name="boxBackgroundColor">@color/lavada</item>
         <item name="boxStrokeColor">@color/blue_500</item>
     </style>

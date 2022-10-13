@@ -1,29 +1,20 @@
 <resources>
-    <!-- Base application theme. -->
+    <!-- Tema de app base -->
     <style name="Theme.Fpshare" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+
+        <!-- Colores principales (light) -->
         <item name="colorPrimary">@color/blue_500</item>
         <item name="colorPrimaryVariant">@color/blue_500</item>
         <item name="colorOnPrimary">@color/black</item>
 
-        <!-- Status bar color. -->
+        <!-- Barra superior -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Varios -->
         <item name="android:buttonStyle">@style/Widget.FpShare.Button</item>
         <item name="android:textViewStyle">@style/Widget.FpShare.TextView</item>
         <item name="textInputStyle">@style/Widget.FpShare.TextImputLayaout</item>
         <item name="buttonStyle">@style/Widget.FpShare.Button</item>
-
-        <item name="android:button">@style/Widget.FpShare.Button</item>
-
-        <!-- <item name="textInputFilledStyle">@style/Widget.FPShare.InputEditText</item> -->
     </style>
 
-    <style name="Theme.Fpshare.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.Fpshare.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Fpshare.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
