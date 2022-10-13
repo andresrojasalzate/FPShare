@@ -9,18 +9,20 @@
 
     <TextView
         android:id="@+id/txtEditarPublicacion"
+        style="@style/Widget.FpShare.TextView2"
         android:layout_width="@dimen/WidthTitulo"
         android:layout_height="@dimen/HeightTitulo"
-        android:text="Editar Publicacion"
+        android:text="@string/titleEditarPublic"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="72dp" />
 
     <TextView
         android:id="@+id/txtUsername"
+        style="@style/Widget.FpShare.TextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carlos Trujillo"
+        android:text="@string/txtProfile"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="183dp" />
 
@@ -34,18 +36,21 @@
 
     <TextView
         android:id="@+id/txtTitulo1"
+        style="@style/Widget.FpShare.TextView2"
         android:layout_width="251dp"
         android:layout_height="30dp"
-        android:text="Resumen UF1 BBDD"
+        android:text="@string/textTitle"
         android:textSize="22sp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="242dp" />
 
     <TextView
         android:id="@+id/txtDescripcion"
+        style="@style/Widget.FpShare.TextView2"
         android:layout_width="298dp"
         android:layout_height="75dp"
-        android:text="Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75"
+        android:text="@string/publicDescrip"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/txtEditarPublicacion"
         tools:layout_editor_absoluteY="292dp" />
 
@@ -63,7 +68,7 @@
         android:layout_width="300dp"
         android:layout_height="52dp"
         android:layout_marginTop="60dp"
-        android:text="Guardar Cambios"
+        android:text="@string/textBtnSave"
         app:layout_constraintStart_toStartOf="@+id/spinnerCiclo"
         app:layout_constraintTop_toBottomOf="@+id/spinnerModulo" />
 
