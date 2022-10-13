@@ -18,10 +18,9 @@
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="50dp" />
 
-    //TEXTVIEW NOMBRE
+    <!-- TEXTVIEW NOMBRE -->
     <TextView
         android:id="@+id/txtNombre"
-        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

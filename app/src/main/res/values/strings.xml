@@ -13,7 +13,6 @@
     <string name="hint_textHere">Text here…</string>
     <!-- TITULOS -->
     <string name="ajustes">Settings</string>
-    <string name="theme">Theme</string>
     <string name="language">Language</string>
     <string name="txt_threadTitle">Thread Title</string>
 
@@ -72,8 +71,4 @@
     <string name="textBtnSave">Save Changes</string>
     <string name="textTitle">Resumen UF1 BBDD</string>
     <string name="titleEditarPublic">Editar Publicacion</string>
-
-    <string name="txt_popUpUser">Sure you want to delete the user?</string>
-    <string name="txt_popUpPost">Sure you want to delete the post?</string>
-    <string name="ola">wenas tardes amigoz</string>
 </resources>
