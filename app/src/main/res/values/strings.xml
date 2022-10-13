@@ -43,5 +43,9 @@
     <string name="users_admin_menu">users</string>
     <string name="posts_admin_menu">posts</string>
     <string name="tags_admin_menu">tags</string>
+    <string name="emailHint">Your email address</string>
+    <string name="txtMail">E-Mail</string>
+    <string name="txtPass">Password</string>
+    <string name="txtName">Username</string>
 
 </resources>

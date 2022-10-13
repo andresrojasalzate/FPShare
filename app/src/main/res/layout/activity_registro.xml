@@ -18,43 +18,63 @@
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="50dp" />
 
+    //TEXTVIEW NOMBRE
     <TextView
         android:id="@+id/txtNombre"
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/nombre"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/txtName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <EditText
+    //EDIT TEXT NOMBRE
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_nombre"
         android:layout_width="300dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/txtNombre"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre">
 
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/InputNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/txtNombre"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    //TEXTVIEW PASS
     <TextView
         android:id="@+id/txtPassword"
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/password"
-        app:layout_constraintStart_toStartOf="@+id/intro_nombre"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txtPass"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
 
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_password"
         android:layout_width="300dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/InputPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/txtNombre"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
@@ -62,48 +82,54 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/mail"
+        android:layout_marginTop="20dp"
+        android:text="@string/txtMail"
         app:layout_constraintStart_toStartOf="@+id/intro_password"
         app:layout_constraintTop_toBottomOf="@+id/intro_password" />
 
-    <EditText
-        android:id="@+id/intro_mail"
-        android:layout_width="300dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/txtMail"
-        app:layout_constraintTop_toBottomOf="@+id/txtMail" />
 
     <Button
         android:id="@+id/btnRegistrarse"
         style="@style/Widget.FpShare.Button"
         android:layout_width="303dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Registrarse"
-        app:layout_constraintEnd_toEndOf="@+id/intro_mail"
         app:layout_constraintStart_toStartOf="@+id/intro_mail"
         app:layout_constraintTop_toBottomOf="@+id/intro_mail" />
-
-    <TextView
-        android:id="@+id/txtAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
-        android:layout_marginTop="80dp"
-        android:text="Already have an account?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
     <TextView
         android:id="@+id/txtSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:text="Sign in"
         app:layout_constraintStart_toEndOf="@+id/txtAccount"
-        app:layout_constraintTop_toTopOf="@+id/txtAccount" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
+
+    <TextView
+        android:id="@+id/txtAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:text="Already have an account?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/intro_mail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/txtMail"
+        app:layout_constraintTop_toBottomOf="@+id/txtMail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/emailHint" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
