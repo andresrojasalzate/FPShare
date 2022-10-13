@@ -62,4 +62,8 @@
     <dimen name="height_button_publish_new_post">60dp</dimen>
     <dimen name="margin_top_button_publish_new_post">16dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
+    <dimen name="size_button_send">55dp</dimen>
+    <dimen name="margin_button_send">10dp</dimen>
+    <dimen name="radio_width">100dp</dimen>
+    <dimen name="radio_height">150dp</dimen>
 </resources>

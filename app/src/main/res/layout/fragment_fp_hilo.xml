@@ -31,11 +31,11 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="@dimen/size_button_send"
+            android:layout_height="@dimen/size_button_send"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="@dimen/margin_button_send"
+            android:layout_marginBottom="@dimen/margin_button_send"
             android:background="@drawable/bordes_redondos"
             android:contentDescription="@string/btn_send"
             android:src="@android:drawable/ic_menu_send"
