@@ -49,5 +49,10 @@
     <string name="txtName">Username</string>
     <string name="txtLogin">Login</string>
     <string name="txtSign">Sign in</string>
+    <string name="txtProfile">Carlos Trujillo</string>
+    <string name="publicDescrip">Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75</string>
+    <string name="textBtnSave">Save Changes</string>
+    <string name="textTitle">Resumen UF1 BBDD</string>
+    <string name="titleEditarPublic">Editar Publicacion</string>
 
 </resources>
