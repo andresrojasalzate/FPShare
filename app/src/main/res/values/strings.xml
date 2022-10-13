@@ -49,6 +49,5 @@
     <string name="txtName">Username</string>
     <string name="txtLogin">Login</string>
     <string name="txtSign">Sign in</string>
-    <string name="txtAskForAcc">Already have an account?</string>
 
 </resources>
