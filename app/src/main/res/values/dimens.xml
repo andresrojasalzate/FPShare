@@ -40,4 +40,10 @@
     <dimen name="height_edittext_profile">48dp</dimen>
     <dimen name="with_button_profile">300dp</dimen>
     <dimen name="height_button_profile">60dp</dimen>
+    <dimen name="width_button_admin_menu">300dp</dimen>
+    <dimen name="height_button_admin_menu">60dp</dimen>
+    <dimen name="margin_top_button_users_admin_menu">184dp</dimen>
+    <dimen name="margin_top_button_posts_admin_menu">72dp</dimen>
+    <dimen name="margin_top_btton__tag_admin_menu">72dp</dimen>
+    <dimen name="margin_top_button_tag_admin_menu">72dp</dimen>
 </resources>

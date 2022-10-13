@@ -40,5 +40,8 @@
     <string name="telephone_number_profile">Telephone Number</string>
     <string name="institute_profile">Institute</string>
     <string name="save_changes_profile">save changes</string>
+    <string name="users_admin_menu">users</string>
+    <string name="posts_admin_menu">posts</string>
+    <string name="tags_admin_menu">tags</string>
 
 </resources>
