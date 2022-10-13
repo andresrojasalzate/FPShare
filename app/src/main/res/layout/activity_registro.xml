@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    //EDIT TEXT NOMBRE
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_nombre"
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    //TEXTVIEW PASS
+
     <TextView
         android:id="@+id/txtPassword"
         style="@style/Widget.FpShare.TextView"
@@ -59,7 +59,7 @@
         android:text="@string/txtPass"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
-    //EDIT TEXT PASSWORD
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_password"
         android:layout_width="300dp"
@@ -76,7 +76,6 @@
             app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    //TEXTVIEW MAIL
     <TextView
         android:id="@+id/txtMail"
         style="@style/Widget.FpShare.TextView"
@@ -86,7 +85,6 @@
         android:text="@string/txtMail"
         app:layout_constraintStart_toStartOf="@+id/intro_password"
         app:layout_constraintTop_toBottomOf="@+id/intro_password" />
-    //EDIT TEXT MAIL
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_mail"
