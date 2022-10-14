@@ -14,7 +14,7 @@
         android:layout_height="@dimen/HeightTitulo"
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="@string/titleEditarPublic"
+        android:text="Edit Post"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_width="31dp"
         android:layout_height="30dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/perfil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
@@ -34,8 +34,8 @@
         style="@style/Widget.FpShare.TextView.TextoNegro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
         android:text="Carlos Trujillo"
         app:layout_constraintStart_toEndOf="@+id/imagePerfil"
         app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
@@ -52,7 +52,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Titulo de la Publicacion" />
+            android:hint="Publication Title" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,7 +67,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Descripcion de la Publicacion" />
+            android:hint="Publication Description" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -79,5 +79,40 @@
         android:text="Link"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+    <Spinner
+        android:id="@+id/spinnerUF"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextLink" />
+
+    <Spinner
+        android:id="@+id/spinnerCiclo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        app:layout_constraintStart_toEndOf="@+id/spinnerUF"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+    <Spinner
+        android:id="@+id/spinnerModulo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Save Changes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
