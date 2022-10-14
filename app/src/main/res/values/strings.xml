@@ -71,4 +71,8 @@
     <string name="textBtnSave">Save Changes</string>
     <string name="textTitle">Resumen UF1 BBDD</string>
     <string name="titleEditarPublic">Editar Publicacion</string>
+    <string name="logo_de_la_app_image_login">logo de la app</string>
+    <string name="foto_de_perfil_de_uduario_profile">foto de perfil de uduario</string>
+    <string name="content_description_spinner_modules_new_post">List of modules of the selected cycle</string>
+    <string name="content_description_spinner_ufs_new_post">List of the ufs of the selected module</string>
 </resources>

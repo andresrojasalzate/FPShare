@@ -55,7 +55,7 @@
     <dimen name="margin_end_radiobutton_new_post">16dp</dimen>
     <dimen name="margin_top_tags_cicles">8dp</dimen>
     <dimen name="width_spinner_new_post">200dp</dimen>
-    <dimen name="height_spinner_new_post">40dp</dimen>
+    <dimen name="height_spinner_new_post">48dp</dimen>
     <dimen name="margin_top_spinner_modules_new_post">16dp</dimen>
     <dimen name="margin_top_spinner_ufs_new_post">16dp</dimen>
     <dimen name="width_button_publish_new_post">300dp</dimen>

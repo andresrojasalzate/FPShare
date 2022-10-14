@@ -33,7 +33,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post" />
+                android:layout_height="@dimen/height_edittext_new_post"
+                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +59,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post" />
+                android:layout_height="@dimen/height_edittext_new_post"
+                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +85,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post" />
+                android:layout_height="@dimen/height_edittext_new_post"
+                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,27 +142,31 @@
             android:layout_width="@dimen/width_spinner_new_post"
             android:layout_height="@dimen/height_spinner_new_post"
             android:layout_marginTop="@dimen/margin_top_spinner_modules_new_post"
+            android:contentDescription="@string/content_description_spinner_modules_new_post"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tags_cicles" />
+            app:layout_constraintTop_toBottomOf="@+id/tags_cicles"
+            tools:ignore="RedundantDescriptionCheck" />
 
         <Spinner
             android:id="@+id/spinner_ufs_new_post"
             android:layout_width="@dimen/width_spinner_new_post"
             android:layout_height="@dimen/height_spinner_new_post"
             android:layout_marginTop="@dimen/margin_top_spinner_ufs_new_post"
+            android:contentDescription="@string/content_description_spinner_ufs_new_post"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post"
+            tools:ignore="RedundantDescriptionCheck" />
 
         <Button
             android:id="@+id/button_publish_new_post"
             style="@style/Widget.FpShare.Button"
             android:layout_width="@dimen/width_button_publish_new_post"
             android:layout_marginTop="@dimen/margin_top_button_publish_new_post"
-            android:height="@dimen/height_button_publish_new_post"
+            android:layout_height="@dimen/height_button_publish_new_post"
             android:text="@string/publish_new_post"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

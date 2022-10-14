@@ -19,7 +19,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/foto_peril_usuario" />
+            app:srcCompat="@drawable/foto_peril_usuario"
+            tools:ignore="ImageContrastCheck"
+            android:contentDescription="@string/foto_de_perfil_de_uduario_profile" />
 
         <TextView
             android:id="@+id/textView_name_profile"
@@ -29,7 +31,8 @@
             android:layout_marginTop="@dimen/margin_top_textview_name_profile"
             android:text="@string/name_profile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/image_profile"
+            tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_name_profile"
@@ -42,7 +45,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_profile" />
+                android:layout_height="@dimen/height_edittext_profile"
+                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,7 +57,8 @@
             android:layout_marginTop="@dimen/margin_top_textview_profile"
             android:text="@string/last_names_profile"
             app:layout_constraintStart_toStartOf="@+id/imput_name_profile"
-            app:layout_constraintTop_toBottomOf="@+id/imput_name_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/imput_name_profile"
+            tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_lastnames_profile"
@@ -66,7 +71,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_profile" />
+                android:layout_height="@dimen/height_edittext_profile"
+                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -76,7 +82,8 @@
             android:layout_marginTop="@dimen/margin_top_textview_profile"
             android:text="@string/email_profile"
             app:layout_constraintStart_toStartOf="@+id/imput_lastnames_profile"
-            app:layout_constraintTop_toBottomOf="@+id/imput_lastnames_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/imput_lastnames_profile"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_email_profile"
@@ -89,7 +96,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_profile" />
+                android:layout_height="@dimen/height_edittext_profile"
+                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -99,7 +107,8 @@
             android:layout_marginTop="@dimen/margin_top_textview_profile"
             android:text="@string/telephone_number_profile"
             app:layout_constraintStart_toStartOf="@+id/imput_email_profile"
-            app:layout_constraintTop_toBottomOf="@+id/imput_email_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/imput_email_profile"
+            tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_telephone_number_profile"
@@ -110,9 +119,10 @@
             app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView_telephone_number_profile">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_edittext_profile" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_edittext_profile"
+                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -121,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textview_profile"
             android:text="@string/institute_profile"
+            android:textColor="#1976D2"
             app:layout_constraintStart_toStartOf="@+id/imput_telephone_number_profile"
             app:layout_constraintTop_toBottomOf="@+id/imput_telephone_number_profile" />
 
@@ -135,7 +146,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_profile" />
+                android:layout_height="@dimen/height_edittext_profile"
+                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
