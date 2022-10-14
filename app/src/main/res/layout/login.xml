@@ -76,9 +76,9 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/button_singin_login"
-        style="@style/Widget.FpShare.Button"
+
         android:layout_width="@dimen/width_button_login"
         android:layout_height="@dimen/height_button_login"
         android:layout_marginTop="@dimen/marginTop_SingIn_button"
@@ -87,13 +87,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imput_password_login" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/button_register_login"
-        style="@style/Widget.FpShare.Button"
         android:layout_width="@dimen/width_button_login"
         android:layout_height="@dimen/height_button_login"
         android:layout_marginTop="@dimen/marginTop_register_button"
-
         android:text="@string/register_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

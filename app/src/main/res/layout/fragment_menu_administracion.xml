@@ -11,9 +11,8 @@
         android:layout_height="match_parent"
         tools:context=".MenuAdministracion">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/button_users_admin_menu"
-            style="@style/Widget.FpShare.Button"
             android:layout_width="@dimen/width_button_admin_menu"
             android:layout_height="@dimen/height_button_admin_menu"
             android:layout_marginTop="@dimen/margin_top_button_users_admin_menu"
@@ -22,9 +21,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/button_posts_admin_menu"
-            style="@style/Widget.FpShare.Button"
             android:layout_width="@dimen/width_button_admin_menu"
             android:layout_height="@dimen/height_button_admin_menu"
             android:layout_marginTop="@dimen/margin_top_button_posts_admin_menu"
@@ -33,9 +31,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_users_admin_menu" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/button_tags_admin_menu"
-            style="@style/Widget.FpShare.Button"
             android:layout_width="@dimen/width_button_admin_menu"
             android:layout_height="@dimen/height_button_admin_menu"
             android:layout_marginTop="@dimen/margin_top_button_tag_admin_menu"

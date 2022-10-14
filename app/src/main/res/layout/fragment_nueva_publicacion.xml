@@ -163,7 +163,6 @@
 
         <Button
             android:id="@+id/button_publish_new_post"
-            style="@style/Widget.FpShare.Button"
             android:layout_width="@dimen/width_button_publish_new_post"
             android:layout_marginTop="@dimen/margin_top_button_publish_new_post"
             android:layout_height="@dimen/height_button_publish_new_post"
