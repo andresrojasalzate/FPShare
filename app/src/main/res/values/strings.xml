@@ -29,27 +29,33 @@
     <!-- CIEGOS HELP -->
     <string name="btn_send">Button to send the message to the thread</string>
 
-    <!-- SIN CATEGORIZAR -->
+    <!-- pantalla login-->
     <string name="email_login">Email</string>
     <string name="password_login">Password</string>
     <string name="sign_in_login">sign in</string>
     <string name="register_login">register</string>
     <string name="forgot_your_password_login">Forgot your password?</string>
     <string name="sing_in_login">Sing in</string>
+
+    <!-- pantalla de recuperar contraseña -->
     <string name="title_activity_recovery_password">recoveryPassword</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
     <string name="email_recoverypassword">Email</string>
     <string name="recovery_password">recovery password</string>
+
+    <!--pantalla de perfil de usuario -->
     <string name="name_profile">Name</string>
     <string name="last_names_profile">Last names</string>
     <string name="email_profile">Email</string>
     <string name="telephone_number_profile">Telephone Number</string>
     <string name="institute_profile">Institute</string>
     <string name="save_changes_profile">save changes</string>
+
+    <!--pantalla de menu de administración -->
     <string name="users_admin_menu">users</string>
     <string name="posts_admin_menu">posts</string>
     <string name="tags_admin_menu">tags</string>
+
+    <!--pantalla de nueva publicación -->
     <string name="title_new_post">Title</string>
     <string name="description_new_post">Description</string>
     <string name="link_new_post">Link</string>
@@ -59,7 +65,13 @@
     <string name="asix_new_post">ASIX</string>
     <string name="smix__new_post">SMIX</string>
     <string name="publish_new_post">Publish</string>
-    <string name="andres">Andres</string>
+    <string name="content_description_spinner_modules_new_post">List of modules of the selected cycle</string>
+    <string name="content_description_spinner_ufs_new_post">List of the ufs of the selected module</string>
+    <string name="content_description_foto_de_perfil_de_usuario_profile">foto de perfil de usuario</string>
+
+    <!-- SIN CATEGORIZAR -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
     <string name="emailHint">Your email address</string>
     <string name="txtMail">E-Mail</string>
     <string name="txtPass">Password</string>
@@ -72,7 +84,6 @@
     <string name="textTitle">Resumen UF1 BBDD</string>
     <string name="titleEditarPublic">Editar Publicacion</string>
     <string name="logo_de_la_app_image_login">logo de la app</string>
-    <string name="foto_de_perfil_de_uduario_profile">foto de perfil de uduario</string>
-    <string name="content_description_spinner_modules_new_post">List of modules of the selected cycle</string>
-    <string name="content_description_spinner_ufs_new_post">List of the ufs of the selected module</string>
+
+
 </resources>

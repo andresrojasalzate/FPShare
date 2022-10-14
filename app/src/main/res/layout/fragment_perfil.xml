@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/foto_peril_usuario"
             tools:ignore="ImageContrastCheck"
-            android:contentDescription="@string/foto_de_perfil_de_uduario_profile" />
+            android:contentDescription="@string/content_description_foto_de_perfil_de_usuario_profile" />
 
         <TextView
             android:id="@+id/textView_name_profile"
