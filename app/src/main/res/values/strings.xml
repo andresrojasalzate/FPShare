@@ -100,6 +100,10 @@
     <string name="txtPublicationDescription">Publication Description</string>
     <string name="txtLink">Link</string>
     <string name="txtSave">Save Changes</string>
+    <string name="txtAsk">Already have an account?</string>
+    <string name="txt_new_name">New name</string>
+    <string name="txt_rename_user">Rename User</string>
+    <string name="txt_change">Change</string>
 
 
 </resources>

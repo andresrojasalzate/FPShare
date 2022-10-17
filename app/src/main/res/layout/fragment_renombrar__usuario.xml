@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="New name"
+        android:text="@string/txt_new_name"
         app:layout_constraintStart_toStartOf="@+id/titleRename"
         app:layout_constraintTop_toBottomOf="@+id/titleRename" />
 
@@ -31,7 +31,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="76dp"
-        android:text="Rename User"
+        android:text="@string/txt_rename_user"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
         android:layout_width="292dp"
         android:layout_height="57dp"
         android:layout_marginTop="80dp"
-        android:text="Change"
+        android:text="@string/txt_change"
         app:layout_constraintStart_toStartOf="@+id/introRename"
         app:layout_constraintTop_toBottomOf="@+id/introRename" />
 
