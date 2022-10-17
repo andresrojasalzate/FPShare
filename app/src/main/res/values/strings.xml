@@ -94,6 +94,12 @@
     <string name="strProfile">Carlos Trujillo</string>
     <string name="strPubli">Publication</string>
     <string name="strDesc">Description</string>
+    <string name="txtEdit">Edit Post</string>
+    <string name="txtUserEdit">Carlos Trujillo</string>
+    <string name="txtPublicationTitle">Publication Title</string>
+    <string name="txtPublicationDescription">Publication Description</string>
+    <string name="txtLink">Link</string>
+    <string name="txtSave">Save Changes</string>
 
 
 </resources>

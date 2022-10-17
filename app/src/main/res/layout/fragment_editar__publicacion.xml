@@ -14,7 +14,7 @@
         android:layout_height="@dimen/HeightTitulo"
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Edit Post"
+        android:text="@string/txtEdit"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="35dp"
-        android:text="Carlos Trujillo"
+        android:text="@string/txtUserEdit"
         app:layout_constraintStart_toEndOf="@+id/imagePerfil"
         app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
 
@@ -52,7 +52,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Publication Title" />
+            android:hint="@string/txtPublicationTitle" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,7 +67,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Publication Description" />
+            android:hint="@string/txtPublicationDescription" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="30dp"
-        android:text="Link"
+        android:text="@string/txtLink"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:text="Save Changes"
+        android:text="@string/txtSave"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo" />
 
