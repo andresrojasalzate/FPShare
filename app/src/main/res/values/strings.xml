@@ -84,6 +84,16 @@
     <string name="textTitle">Resumen UF1 BBDD</string>
     <string name="titleEditarPublic">Editar Publicacion</string>
     <string name="logo_de_la_app_image_login">logo de la app</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="strUF">UF</string>
+    <string name="strModule">Module</string>
+    <string name="strCicle">Cicle</string>
+    <string name="strLink">Link</string>
+    <string name="strTitle">Title</string>
+    <string name="strProfile">Carlos Trujillo</string>
+    <string name="strPubli">Publication</string>
+    <string name="strDesc">Description</string>
 
 
 </resources>
