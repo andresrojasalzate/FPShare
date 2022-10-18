@@ -8,30 +8,30 @@
     tools:context=".Renombrar_Usuario">
 
     <TextView
-        android:id="@+id/txtNewname"
+        android:id="@+id/txtRename"
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Nuevo nombre"
-        app:layout_constraintStart_toStartOf="@+id/txtRenombrar"
-        app:layout_constraintTop_toBottomOf="@+id/txtRenombrar" />
+        android:text="@string/txt_new_name"
+        app:layout_constraintStart_toStartOf="@+id/titleRename"
+        app:layout_constraintTop_toBottomOf="@+id/titleRename" />
 
     <EditText
-        android:id="@+id/introNewName"
+        android:id="@+id/introRename"
         android:layout_width="288dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtNewname"
-        tools:layout_editor_absoluteX="40dp" />
+        app:layout_constraintStart_toStartOf="@+id/txtRename"
+        app:layout_constraintTop_toBottomOf="@+id/txtRename" />
 
     <TextView
-        android:id="@+id/txtRenombrar"
+        android:id="@+id/titleRename"
         android:layout_width="282dp"
         android:layout_height="70dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="76dp"
-        android:text="Renombrar Usuario"
+        android:text="@string/txt_rename_user"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,8 +42,8 @@
         android:layout_width="292dp"
         android:layout_height="57dp"
         android:layout_marginTop="80dp"
-        android:text="Cambiar"
-        app:layout_constraintStart_toStartOf="@+id/introNewName"
-        app:layout_constraintTop_toBottomOf="@+id/introNewName" />
+        android:text="@string/txt_change"
+        app:layout_constraintStart_toStartOf="@+id/introRename"
+        app:layout_constraintTop_toBottomOf="@+id/introRename" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
