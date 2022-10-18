@@ -66,4 +66,6 @@
     <dimen name="margin_button_send">10dp</dimen>
     <dimen name="radio_width">100dp</dimen>
     <dimen name="radio_height">150dp</dimen>
+    <dimen name="saveButtonWidth">100dp</dimen>
+    <dimen name="saveButtonHeight">50dp</dimen>
 </resources>
