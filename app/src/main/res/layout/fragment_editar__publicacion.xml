@@ -74,45 +74,50 @@
         android:id="@+id/TextLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="@dimen/txtLinkMarginStart"
+        android:layout_marginTop="@dimen/txtLinkMarginTop"
         android:text="@string/txtLink"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        />
 
     <Spinner
         android:id="@+id/spinnerUF"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/spinnerUFWidth"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="@dimen/spinnerUFMarginStart"
+        android:layout_marginTop="@dimen/spinnerUFMarginTop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextLink" />
+        app:layout_constraintTop_toBottomOf="@+id/TextLink"
+        />
 
     <Spinner
         android:id="@+id/spinnerCiclo"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/spinnerCicloWidth"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="@dimen/spinnerCicloMarginTop"
         app:layout_constraintStart_toEndOf="@+id/spinnerUF"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        />
 
     <Spinner
         android:id="@+id/spinnerModulo"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/spinnerModuloWidth"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="@dimen/spinnerModuloMarginTop"
         app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        />
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/btnSaveWidth"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/btnSaveMarginStart"
+        android:layout_marginTop="@dimen/btnSaveMarginTop"
         android:text="@string/txtSave"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

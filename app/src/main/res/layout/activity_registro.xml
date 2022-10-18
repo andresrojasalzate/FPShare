@@ -11,31 +11,33 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="146dp"
-        android:layout_height="141dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="50dp"
+        android:id="@+id/fpShareLogo"
+        android:layout_width="@dimen/imgLogoWidth"
+        android:layout_height="@dimen/imgLogoHeight"
+        android:layout_marginStart="@dimen/imgLogoMarginStart"
+        android:layout_marginTop="@dimen/imgLogoMarginTop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_fpshare" />
+        app:srcCompat="@drawable/logo_fpshare"
+        />
 
     <!-- TEXTVIEW NOMBRE -->
     <TextView
         android:id="@+id/txtNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="@dimen/txtNombreMarginStart"
+        android:layout_marginTop="@dimen/txtNombreMarginTop"
         android:text="@string/txtName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/fpShareLogo"
+        />
 
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_nombre"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/layoutIntroNombre"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/txtNombre"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre">
@@ -55,23 +57,25 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/txtPasswordMarginStart"
+        android:layout_marginTop="@dimen/txtPasswordMarginTop"
         android:text="@string/txtPass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_nombre"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_password"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/layoutPasswordWidth"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword">
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
 
             android:id="@+id/InputPassword"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/inputPasswordWidth"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/txtNombre"
             app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
@@ -82,14 +86,15 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/txtMailMarginTop"
         android:text="@string/txtMail"
         app:layout_constraintStart_toStartOf="@+id/intro_password"
-        app:layout_constraintTop_toBottomOf="@+id/intro_password" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_password"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_mail"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/introMailWidth"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/txtMail"
         app:layout_constraintTop_toBottomOf="@+id/txtMail">
@@ -103,33 +108,36 @@
     <Button
         android:id="@+id/btnRegistrarse"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="303dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/txtLogin"
+        android:layout_width="@dimen/btnRegistrarseWidth"
+        android:layout_height="@dimen/btnRegistrarseHeight"
+        android:layout_marginTop="@dimen/btnRegistrarseMarginTop"
+        android:text="@string/txtRegister"
         app:layout_constraintStart_toStartOf="@+id/intro_mail"
-        app:layout_constraintTop_toBottomOf="@+id/intro_mail" />
+        app:layout_constraintTop_toBottomOf="@+id/intro_mail"
+        />
 
     <TextView
         android:id="@+id/txtSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/txtSignMarginStart"
+        android:layout_marginTop="@dimen/txtSignMarginTop"
         android:text="@string/txtSign"
         app:layout_constraintStart_toEndOf="@+id/txtAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse"
+        />
 
 
     <TextView
         android:id="@+id/txtAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/txtAccountMarginStart"
+        android:layout_marginTop="@dimen/txtAccountMarginTop"
         android:text="@string/txtAsk"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
