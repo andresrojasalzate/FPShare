@@ -132,4 +132,6 @@
     <dimen name="btnSaveWidth">300dp</dimen>
     <dimen name="btnSaveMarginStart">60dp</dimen>
     <dimen name="btnSaveMarginTop">20dp</dimen>
+    <dimen name="saveButtonWidth">100dp</dimen>
+    <dimen name="saveButtonHeight">50dp</dimen>
 </resources>
