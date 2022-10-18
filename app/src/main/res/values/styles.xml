@@ -5,12 +5,12 @@
         <item name="backgroundTint">@color/blue_200</item>
         <item name="cornerRadius">20dp</item>
     </style>
-    <!-- Style para titulos -->
+    <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <!-- Style para texto normal -->
+    <!-- Style para titulo -->
     <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">26sp</item>
