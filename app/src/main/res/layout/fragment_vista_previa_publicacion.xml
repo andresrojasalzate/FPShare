@@ -13,10 +13,10 @@
         <TextView
             android:id="@+id/txtDescview"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="300dp"
-            android:layout_height="159dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="@dimen/DescViewWidth"
+            android:layout_height="@dimen/DescViewHeight"
+            android:layout_marginStart="@dimen/DescViewMarginStart"
+            android:layout_marginTop="@dimen/DescViewMarginTop"
             android:text="@string/strDesc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTitleview" />
@@ -24,12 +24,12 @@
         <TextView
             android:id="@+id/titlePublicacion"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="285dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="@dimen/titlePubliWidth"
+            android:layout_height="@dimen/titlePubliHeight"
+            android:layout_marginStart="@dimen/titlePubliMarginStartTop"
+            android:layout_marginTop="@dimen/titlePubliMarginStartTop"
             android:text="@string/strPubli"
-            android:textSize="30sp"
+            android:textSize="@dimen/titlePubliTextSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/imgProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="@dimen/imgProfileMarginTop"
             android:src="@drawable/perfil"
             app:layout_constraintStart_toStartOf="@+id/titlePublicacion"
             app:layout_constraintTop_toBottomOf="@+id/titlePublicacion" />
@@ -47,62 +47,66 @@
             style="@style/Widget.FpShare.TextView.TextoNegro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginStart="@dimen/txtProfileMarginStart"
+            android:layout_marginTop="@dimen/txtProfileMarginTop"
             android:text="@string/strProfile"
             app:layout_constraintStart_toEndOf="@+id/imgProfile"
-            app:layout_constraintTop_toBottomOf="@+id/titlePublicacion" />
+            app:layout_constraintTop_toBottomOf="@+id/titlePublicacion"
+            />
 
         <TextView
             android:id="@+id/txtTitleview"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="300dp"
-            android:layout_height="69dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="@dimen/txtTitleViewWidth"
+            android:layout_height="@dimen/txtTitleViewHeight"
+            android:layout_marginStart="@dimen/txtTitleViewMarginStartTop"
+            android:layout_marginTop="@dimen/txtTitleViewMarginStartTop"
             android:text="@string/strTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/txtProfile"
+            />
 
         <TextView
             android:id="@+id/txtLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/txtLinkMarginTop"
             android:text="@string/strLink"
             app:layout_constraintStart_toStartOf="@+id/txtDescview"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescview" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDescview"
+            />
 
         <TextView
             android:id="@+id/txtCicleview"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/txtCicleViewWidth"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/txtCicleViewMarginTop"
             android:text="@string/strCicle"
             app:layout_constraintStart_toStartOf="@+id/txtLink"
-            app:layout_constraintTop_toBottomOf="@+id/txtLink" />
+            app:layout_constraintTop_toBottomOf="@+id/txtLink"
+            />
 
         <TextView
             android:id="@+id/textModuleview"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/txtModuleViewWidth"
             android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
+            android:layout_marginTop="@dimen/txtModuleViewMarginTop"
             android:text="@string/strModule"
             app:layout_constraintStart_toEndOf="@+id/txtCicleview"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescview" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDescview"
+            />
 
         <TextView
             android:id="@+id/txtUFview"
             style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/txtUFViewWidth"
             android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
+            android:layout_marginTop="@dimen/txtUFViewMarginTop"
             android:text="@string/strUF"
             app:layout_constraintStart_toEndOf="@+id/textModuleview"
             app:layout_constraintTop_toBottomOf="@+id/txtDescview" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
