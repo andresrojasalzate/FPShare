@@ -66,4 +66,25 @@
     <dimen name="margin_button_send">10dp</dimen>
     <dimen name="radio_width">100dp</dimen>
     <dimen name="radio_height">150dp</dimen>
+    <dimen name="DescViewWidth">300dp</dimen>
+    <dimen name="DescViewHeight">159dp</dimen>
+    <dimen name="DescViewMarginStart">60dp</dimen>
+    <dimen name="DescViewMarginTop">30dp</dimen>
+    <dimen name="titlePubliWidth">285dp</dimen>
+    <dimen name="titlePubliHeight">90dp</dimen>
+    <dimen name="titlePubliMarginStartTop">60dp</dimen>
+    <dimen name="titlePubliTextSize">30dp</dimen>
+    <dimen name="imgProfileMarginTop">60dp</dimen>
+    <dimen name="txtProfileMarginTop">70dp</dimen>
+    <dimen name="txtProfileMarginStart">50dp</dimen>
+    <dimen name="txtTitleViewWidth">300dp</dimen>
+    <dimen name="txtTitleViewHeight">69dp</dimen>
+    <dimen name="txtTitleViewMarginStartTop">60dp</dimen>
+    <dimen name="txtLinkMarginTop">30dp</dimen>
+    <dimen name="txtCicleViewWidth">100dp</dimen>
+    <dimen name="txtCicleViewMarginTop">32dp</dimen>
+    <dimen name="txtModuleViewWidth">100dp</dimen>
+    <dimen name="txtModuleViewMarginTop">85dp</dimen>
+    <dimen name="txtUFViewWidth">100dp</dimen>
+    <dimen name="txtUFViewMarginTop">85dp</dimen>
 </resources>
