@@ -87,4 +87,24 @@
     <dimen name="txtModuleViewMarginTop">85dp</dimen>
     <dimen name="txtUFViewWidth">100dp</dimen>
     <dimen name="txtUFViewMarginTop">85dp</dimen>
+    <dimen name="imgLogoWidth">146dp</dimen>
+    <dimen name="imgLogoHeight">141dp</dimen>
+    <dimen name="imgLogoMarginStart">130dp</dimen>
+    <dimen name="imgLogoMarginTop">50dp</dimen>
+    <dimen name="txtNombreMarginStart">40dp</dimen>
+    <dimen name="txtNombreMarginTop">30dp</dimen>
+    <dimen name="layoutIntroNombre">300dp</dimen>
+    <dimen name="txtPasswordMarginStart">40dp</dimen>
+    <dimen name="txtPasswordMarginTop">20dp</dimen>
+    <dimen name="layoutPasswordWidth">300dp</dimen>
+    <dimen name="inputPasswordWidth">300dp</dimen>
+    <dimen name="txtMailMarginTop">20dp</dimen>
+    <dimen name="introMailWidth">300dp</dimen>
+    <dimen name="btnRegistrarseWidth">303dp</dimen>
+    <dimen name="btnRegistrarseHeight">60dp</dimen>
+    <dimen name="btnRegistrarseMarginTop">30dp</dimen>
+    <dimen name="txtSignMarginStart">10dp</dimen>
+    <dimen name="txtSignMarginTop">20dp</dimen>
+    <dimen name="txtAccountMarginStart">70dp</dimen>
+    <dimen name="txtAccountMarginTop">20dp</dimen>
 </resources>
