@@ -11,7 +11,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <!-- Varios -->
-        <item name="android:textViewStyle">@style/Widget.FpShare.TextView</item>
+        <item name="android:textViewStyle">@style/Widget.FpShare.TextView.TextoNegro</item>
         <item name="textInputStyle">@style/Widget.FpShare.TextImputLayaout</item>
         <item name="materialButtonStyle">@style/Widget.FpShare.Button</item>
         <item name="android:spinnerStyle">@style/Widget.FpShare.Spinner</item>
