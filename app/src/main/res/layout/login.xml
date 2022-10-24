@@ -38,7 +38,7 @@
 
     <TextView
         android:id="@+id/email_textview_login"
-
+        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_emailtextview_login"
@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/password_texview_login"
-
+        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marigTop_password_textview_login"
@@ -71,6 +71,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_text_imput_edittext"
+            android:inputType="textPassword"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +107,4 @@
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
