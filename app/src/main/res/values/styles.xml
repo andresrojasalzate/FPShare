@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- Style para los ImageView de login, registro y splash screen -->
     <style name="ImageView">
         <item name="android:layout_height">@dimen/logo_size</item>
         <item name="android:layout_width">@dimen/logo_size</item>
@@ -12,12 +12,12 @@
     </style>
     <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
     <!-- Style para titulo -->
     <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/blue_500</item>
         <item name="android:textSize">26sp</item>
     </style>
     <!-- Style para el InputText -->
