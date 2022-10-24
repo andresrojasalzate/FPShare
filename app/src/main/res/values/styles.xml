@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="ImageView">
+        <item name="android:layout_height">@dimen/logo_size</item>
+        <item name="android:layout_width">@dimen/logo_size</item>
+    </style>
     <!-- Style para botones -->
     <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue_200</item>

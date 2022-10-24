@@ -9,8 +9,7 @@
 
     <ImageView
         android:id="@+id/imgSpSc"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"
+        style="@style/ImageView"
         android:contentDescription="@string/app_logo"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"

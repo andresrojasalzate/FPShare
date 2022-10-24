@@ -9,11 +9,10 @@
 
     <ImageView
         android:id="@+id/logo_login"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"
         android:layout_marginStart="@dimen/logo_margin_start"
         android:layout_marginTop="@dimen/logo_margin_top"
         android:layout_marginEnd="@dimen/logo_margin_end"
+        style="@style/ImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
