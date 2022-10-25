@@ -38,6 +38,7 @@ class Editar_Publicacion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        return null
     }
 
     companion object {
