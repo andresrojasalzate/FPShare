@@ -18,6 +18,12 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // TODO Descomentar cuando funcione el login
+        // Thread.sleep(2000)
+
+        // setTheme(R.style.Theme_Fpshare)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
