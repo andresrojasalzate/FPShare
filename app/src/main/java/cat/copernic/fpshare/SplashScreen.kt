@@ -31,7 +31,7 @@ class SplashScreen : AppCompatActivity() {
     private fun cambiarActivity() {
         Handler().postDelayed(Runnable {
             val intent =
-                Intent(this, MainActivity::class.java) // TODO Cambiar MainActivity por login
+                Intent(this, Login::class.java)
             startActivity(intent)
         }, DURACION)
     }
