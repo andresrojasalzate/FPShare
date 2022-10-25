@@ -12,7 +12,8 @@
         android:layout_marginStart="@dimen/logo_margin_start"
         android:layout_marginTop="@dimen/logo_margin_top"
         android:layout_marginEnd="@dimen/logo_margin_end"
-        style="@style/ImageView"
+        android:layout_width="@dimen/imgLogoWidth"
+        android:layout_height="@dimen/imgLogoHeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_login">
 
         <com.google.android.material.textfield.TextInputEditText
+
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_text_imput_edittext"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
