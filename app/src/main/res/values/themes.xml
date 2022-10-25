@@ -17,5 +17,8 @@
         <item name="android:spinnerStyle">@style/Widget.FpShare.Spinner</item>
 
     </style>
-
+    <!-- Splash Screen -->
+    <style name="SplashTheme" parent="Theme.Fpshare">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
