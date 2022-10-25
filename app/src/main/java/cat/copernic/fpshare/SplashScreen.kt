@@ -8,7 +8,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
-class SplashScreen : AppCompatActivity() {
+ class SplashScreen : AppCompatActivity() {
 
     val DURACION: Long = 1000
 

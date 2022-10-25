@@ -9,16 +9,15 @@
 
     <ImageView
         android:id="@+id/logo_login"
-        android:layout_marginStart="@dimen/logo_margin_start"
-        android:layout_marginTop="@dimen/logo_margin_top"
-        android:layout_marginEnd="@dimen/logo_margin_end"
         android:layout_width="@dimen/imgLogoWidth"
         android:layout_height="@dimen/imgLogoHeight"
+        android:layout_marginStart="@dimen/logo_margin_start"
+        android:layout_marginEnd="@dimen/logo_margin_end"
+        android:contentDescription="@string/logo_de_la_app_image_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_fpshare"
-        android:contentDescription="@string/logo_de_la_app_image_login" />
+        app:srcCompat="@drawable/logo_fpshare" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/imput_email_login"
@@ -31,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_login">
 
         <com.google.android.material.textfield.TextInputEditText
-
+            android:id="@+id/edittext_email_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_text_imput_edittext"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
@@ -71,6 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_texview_login">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_password_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_text_imput_edittext"
             android:inputType="textPassword"
@@ -102,11 +102,11 @@
         android:id="@+id/textView_forgotten_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginBottom_textView_forgotten_password"
+        android:layout_marginTop="36dp"
         android:text="@string/forgot_your_password_login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_register_login"
         tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
