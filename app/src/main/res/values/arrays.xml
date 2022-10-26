@@ -15,6 +15,12 @@
      limitations under the License.
 -->
 <resources>
+    <string-array name="ciclo">
+        <item>DAM</item>
+        <item>DAW</item>
+        <item>SMIX</item>
+        <item>ASIX</item>
+    </string-array>
     <string-array name="DAM">
         <item>Sistemas Informaticos</item>
         <item>Programacion</item>

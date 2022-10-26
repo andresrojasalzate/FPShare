@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,20 +23,9 @@ class MenuCiclos : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var Cicle: List<String> = ListOf{
-        "DAM"
-        "DAW"
-        "SMIX"
-        "ASIX"
-    }
 
-    fun initRecycler(){
-        rvCiclo.layoutManager = LinearLayoutManager(this)
-        val adapter = CicleAdapter()
-    }
-
-
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var _binding: FragmentMenuCiclosBinding
 
 
 
@@ -51,9 +42,22 @@ class MenuCiclos : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_ciclos, container, false)
+        _binding = FragmentMenuCiclosBinding.inflate(inflater, container, false)
+        val view = _binding.root
+        return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecycler()
+    }
+
+    private fun initRecycler(){
+        recyclerView = _binding
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CicleAdapter()
+    }
+
 
     companion object {
         /**
@@ -74,4 +78,4 @@ class MenuCiclos : Fragment() {
                 }
             }
     }
-}
+
