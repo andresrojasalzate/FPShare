@@ -27,9 +27,6 @@ class MenuCiclos : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var _binding: FragmentMenuCiclosBinding
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
