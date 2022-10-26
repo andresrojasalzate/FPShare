@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/logo_login"
-        android:layout_width="@dimen/imgLogoWidth"
-        android:layout_height="@dimen/imgLogoHeight"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
         android:layout_marginStart="@dimen/logo_margin_start"
         android:layout_marginEnd="@dimen/logo_margin_end"
         android:contentDescription="@string/logo_de_la_app_image_login"
@@ -80,8 +80,8 @@
 
     <Button
         android:id="@+id/button_singin_login"
-        android:layout_width="@dimen/width_button_login"
-        android:layout_height="@dimen/height_button_login"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
         android:layout_marginTop="@dimen/marginTop_SingIn_button"
         android:text="@string/sign_in_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +90,8 @@
 
     <Button
         android:id="@+id/button_register_login"
-        android:layout_width="@dimen/width_button_login"
-        android:layout_height="@dimen/height_button_login"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
         android:layout_marginTop="@dimen/marginTop_register_button"
         android:text="@string/register_login"
         app:layout_constraintEnd_toEndOf="parent"

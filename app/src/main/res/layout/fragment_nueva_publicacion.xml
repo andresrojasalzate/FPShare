@@ -24,7 +24,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_title_new_post"
-            android:layout_width="@dimen/width_imputtext_new_post"
+            android:layout_width="@dimen/width_text_imput_layaout"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/title_new_post"
@@ -33,7 +33,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post"
+                android:layout_height="@dimen/height_text_imput_edittext"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +50,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_description_new_post"
-            android:layout_width="@dimen/width_imputtext_new_post"
+            android:layout_width="@dimen/width_text_imput_layaout"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/description_new_post"
@@ -59,7 +59,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post"
+                android:layout_height="@dimen/height_text_imput_edittext"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +76,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_link_new_post"
-            android:layout_width="@dimen/width_imputtext_new_post"
+            android:layout_width="@dimen/width_text_imput_layaout"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/link_new_post"
@@ -85,7 +85,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edittext_new_post"
+                android:layout_height="@dimen/height_text_imput_edittext"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -163,9 +163,9 @@
 
         <Button
             android:id="@+id/button_publish_new_post"
-            android:layout_width="@dimen/width_button_publish_new_post"
+            android:layout_width="@dimen/width_button"
             android:layout_marginTop="@dimen/margin_top_button_publish_new_post"
-            android:layout_height="@dimen/height_button_publish_new_post"
+            android:layout_height="@dimen/height_button"
             android:text="@string/publish_new_post"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
