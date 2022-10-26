@@ -18,8 +18,9 @@ class CicleAdapter :
 
     private val list: List<String> = listOf("SMIX", "DAM", "DAW", "ASIX")
 
-    class CicleViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button = view.findViewById<Button>(R.id.button_list)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CicleHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return CicleHolder(layoutInflater.inflate(R.layout.fragment_menu_ciclos, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -67,8 +68,4 @@ class CicleAdapter :
     }
 
 }
-
-
-
-
 
