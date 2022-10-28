@@ -1,142 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/fpShareLogo"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"
-        android:layout_marginStart="@dimen/imgLogoMarginStart"
-        android:layout_marginTop="@dimen/imgLogoMarginTop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_fpshare" />
-
-    <!-- TEXTVIEW NOMBRE -->
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayoutregistro"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="@dimen/txtNombreMarginTop"
-        android:text="@string/txtName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
+        app:layout_constraintTop_toTopOf="parent">
 
 
+        <ImageView
+            android:id="@+id/fpShareLogo"
+            android:contentDescription="@string/logoDescription"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
+            android:layout_marginStart="@dimen/imgLogoMarginStart"
+            android:layout_marginTop="@dimen/imgLogoMarginTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_fpshare" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/intro_nombre"
-        android:layout_width="@dimen/layoutIntroNombre"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/txtNombre"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre">
+        <!-- TEXTVIEW NOMBRE -->
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="@dimen/txtNombreMarginTop"
+            android:text="@string/txtName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
 
-        <com.google.android.material.textfield.TextInputEditText
 
-            android:id="@+id/InputNombre"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/intro_nombre"
+            android:layout_width="@dimen/layoutIntroNombre"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/txtNombre"
-            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputNombre"
+                android:hint="@string/HintName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/txtNombre"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/txtPassword"
-        style="@style/Widget.FpShare.TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="@dimen/txtPasswordMarginTop"
-        android:text="@string/txtPass"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/intro_password"
-        android:layout_width="@dimen/layoutPasswordWidth"
-        android:inputType="textPassword"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/InputPassword"
-            android:layout_width="@dimen/inputPasswordWidth"
+        <TextView
+            android:id="@+id/txtPassword"
+            style="@style/Widget.FpShare.TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/txtNombre"
-            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="@dimen/txtPasswordMarginTop"
+            android:text="@string/txtPass"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
 
-    <TextView
-        android:id="@+id/txtMail"
-        style="@style/Widget.FpShare.TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/txtMailMarginTop"
-        android:text="@string/txtMail"
-        app:layout_constraintStart_toStartOf="@+id/intro_password"
-        app:layout_constraintTop_toBottomOf="@+id/intro_password"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/intro_mail"
-        android:layout_width="@dimen/introMailWidth"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/txtMail"
-        app:layout_constraintTop_toBottomOf="@+id/txtMail">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputMail"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/intro_password"
+            android:layout_width="@dimen/layoutPasswordWidth"
             android:layout_height="wrap_content"
-            android:hint="@string/emailHint" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/txtPassword"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword">
 
-    <Button
-        android:id="@+id/btnRegistrarse"
-        style="@style/Widget.FpShare.Button"
-        android:layout_width="@dimen/btnRegistrarseWidth"
-        android:layout_height="@dimen/btnRegistrarseHeight"
-        android:layout_marginTop="@dimen/btnRegistrarseMarginTop"
-        android:text="@string/txtRegister"
-        app:layout_constraintStart_toStartOf="@+id/intro_mail"
-        app:layout_constraintTop_toBottomOf="@+id/intro_mail"
-        />
+            <com.google.android.material.textfield.TextInputEditText
 
-    <TextView
-        android:id="@+id/txtSign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txtSignMarginStart"
-        android:layout_marginTop="@dimen/txtSignMarginTop"
-        android:text="@string/txtSign"
-        app:layout_constraintStart_toEndOf="@+id/txtAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse"
-        />
+                android:id="@+id/InputPassword"
+                android:layout_width="@dimen/inputPasswordWidth"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/txtNombre"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtMail"
+            style="@style/Widget.FpShare.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/txtMailMarginTop"
+            android:text="@string/txtMail"
+            app:layout_constraintStart_toStartOf="@+id/intro_password"
+            app:layout_constraintTop_toBottomOf="@+id/intro_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/intro_mail"
+            android:layout_width="@dimen/introMailWidth"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/txtMail"
+            app:layout_constraintTop_toBottomOf="@+id/txtMail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/emailHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnRegistrarse"
+            style="@style/Widget.FpShare.Button"
+            android:layout_width="@dimen/btnRegistrarseWidth"
+            android:layout_height="@dimen/btnRegistrarseHeight"
+            android:layout_marginTop="@dimen/btnRegistrarseMarginTop"
+            android:text="@string/txtRegister"
+            app:layout_constraintStart_toStartOf="@+id/intro_mail"
+            app:layout_constraintTop_toBottomOf="@+id/intro_mail" />
+
+        <TextView
+            android:id="@+id/txtSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/txtSignMarginStart"
+            android:layout_marginTop="@dimen/txtSignMarginTop"
+            android:text="@string/txtSign"
+            app:layout_constraintStart_toEndOf="@+id/txtAccount"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
 
-    <TextView
-        android:id="@+id/txtAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txtAccountMarginStart"
-        android:layout_marginTop="@dimen/txtAccountMarginTop"
-        android:text="@string/txtAsk"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse"
-        />
+        <TextView
+            android:id="@+id/txtAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/txtAccountMarginStart"
+            android:layout_marginTop="@dimen/txtAccountMarginTop"
+            android:text="@string/txtAsk"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

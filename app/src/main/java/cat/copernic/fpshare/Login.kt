@@ -1,8 +1,11 @@
 package cat.copernic.fpshare
 
+import android.app.ActionBar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -23,9 +26,11 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(2000)
         setTheme(R.style.Theme_Fpshare)
+        this.supportActionBar!!.hide()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
+
 
         inicializacion()
 
