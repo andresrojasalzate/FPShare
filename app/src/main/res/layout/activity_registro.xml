@@ -35,6 +35,17 @@
             android:text="@string/txtName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
+    <!-- TEXTVIEW NOMBRE -->
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="@dimen/txtNombreMarginTop"
+        android:text="@string/txtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -53,6 +64,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+    <TextView
+        android:id="@+id/txtPassword"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="@dimen/txtPasswordMarginTop"
+        android:text="@string/txtPass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
         <TextView
             android:id="@+id/txtPassword"
             style="@style/Widget.FpShare.TextView"
@@ -64,6 +86,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intro_nombre" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/intro_password"
+        android:layout_width="@dimen/layoutPasswordWidth"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        >
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/intro_password"
             android:layout_width="@dimen/layoutPasswordWidth"
