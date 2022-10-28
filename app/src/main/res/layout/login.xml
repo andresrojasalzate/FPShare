@@ -72,6 +72,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_password_login"
             android:layout_width="match_parent"
+
             android:layout_height="@dimen/height_text_imput_edittext"
             android:inputType="textPassword"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
