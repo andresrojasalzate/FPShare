@@ -1,11 +1,10 @@
 package cat.copernic.fpshare
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 
@@ -46,14 +45,14 @@ class MenuCiclos : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
+        // initRecycler()
     }
 
-    private fun initRecycler(){
+    /*private fun initRecycler() {
         recyclerView = _binding
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = CicleAdapter()
-    }
+    } */
 
 
     companion object {
@@ -75,4 +74,5 @@ class MenuCiclos : Fragment() {
                 }
             }
     }
+}
 
