@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
+import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,18 +16,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MenuCiclos.newInstance] factory method to
+ * Use the [MenuModulo.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MenuCiclos : Fragment() {
+class MenuModulo : Fragment() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var _binding: FragmentMenuModuloBinding
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var _binding: FragmentMenuCiclosBinding
-    private lateinit var cicleArrayList: ArrayList<String>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,27 +41,9 @@ class MenuCiclos : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMenuCiclosBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuModuloBinding.inflate(inflater, container, false)
         val view = _binding.root
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initRecycler()
-    }
-
-    private fun initRecycler(){
-        dataInitialize()
-        recyclerView = _binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-        recyclerView.adapter = CicleAdapter(cicleArrayList)
-    }
-
-    private fun dataInitialize(){
-        cicleArrayList = arrayListOf<String>()
-        val list = resources.getStringArray(R.array.ciclo)
-        cicleArrayList.addAll(list)
     }
 
     companion object {
@@ -71,12 +53,12 @@ class MenuCiclos : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment MenuCiclos.
+         * @return A new instance of fragment MenuModulo.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MenuCiclos().apply {
+            MenuModulo().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -84,4 +66,3 @@ class MenuCiclos : Fragment() {
             }
     }
 }
-
