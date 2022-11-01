@@ -27,4 +27,9 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
+    <!-- Style para los enlaces -->
+    <style name="Widget.FpShare.TextViewLink" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
