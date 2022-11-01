@@ -21,8 +21,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/imput_email_login"
-        android:layout_width="@dimen/width_text_imput_layaout"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.TextInputLayout"
         android:layout_marginTop="@dimen/margintop_textimputlayout1"
         android:hint="@string/email_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +61,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/imput_password_login"
-        android:layout_width="@dimen/width_text_imput_layaout"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.TextInputLayout"
         android:layout_marginTop="@dimen/marginTop_imputpassword_login"
         android:hint="@string/password_login"
         app:layout_constraintStart_toStartOf="@+id/password_texview_login"

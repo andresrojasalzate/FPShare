@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/input_title_new_post" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/imput_description_new_post"
+            android:id="@+id/input_description_new_post"
             style="@style/Widget.FpShare.TextInputLayout"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/description_new_post"
@@ -69,8 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textview_new_post"
             android:text="@string/link_new_post"
-            app:layout_constraintStart_toStartOf="@+id/imput_description_new_post"
-            app:layout_constraintTop_toBottomOf="@+id/imput_description_new_post" />
+            app:layout_constraintStart_toStartOf="@+id/input_description_new_post"
+            app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_link_new_post"
@@ -136,8 +136,7 @@
 
         <Spinner
             android:id="@+id/spinner_modules_new_post"
-            android:layout_width="@dimen/width_spinner_new_post"
-            android:layout_height="@dimen/height_spinner_new_post"
+            style="@style/Widget.FpShare.Spinner"
             android:layout_marginTop="@dimen/margin_top_spinner_modules_new_post"
             android:contentDescription="@string/content_description_spinner_modules_new_post"
             android:spinnerMode="dropdown"
@@ -148,8 +147,7 @@
 
         <Spinner
             android:id="@+id/spinner_ufs_new_post"
-            android:layout_width="@dimen/width_spinner_new_post"
-            android:layout_height="@dimen/height_spinner_new_post"
+            style="@style/Widget.FpShare.Spinner"
             android:layout_marginTop="@dimen/margin_top_spinner_ufs_new_post"
             android:contentDescription="@string/content_description_spinner_ufs_new_post"
             android:spinnerMode="dropdown"

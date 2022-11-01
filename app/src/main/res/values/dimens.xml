@@ -13,8 +13,6 @@
     <dimen name="Spinner_Height">wrap_content</dimen>
 
     <!-- HEIGHT -->
-    <dimen name="width_spinner_new_post">200dp</dimen>
-    <dimen name="height_spinner_new_post">48dp</dimen>
     <dimen name="spinnerUFMarginStart">60dp</dimen>
     <dimen name="spinnerUFMarginTop">30dp</dimen>
     <dimen name="spinnerCicloMarginTop">85dp</dimen>
@@ -30,9 +28,7 @@
     <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
 
 
-    <dimen name="introRenameWidth">288dp</dimen>
     <dimen name="introMailWidth">300dp</dimen>
-    <dimen name="introRenameHeight">56dp</dimen>
 
 
 

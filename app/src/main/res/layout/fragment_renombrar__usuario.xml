@@ -36,8 +36,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/introRename"
-        android:layout_width="@dimen/introRenameWidth"
-        android:layout_height="@dimen/introRenameHeight"
+        style="@style/Widget.FpShare.TextInputLayout"
         android:layout_marginTop="@dimen/introRenameMarginTop"
         app:layout_constraintStart_toStartOf="@+id/txtRename"
         app:layout_constraintTop_toBottomOf="@+id/txtRename"

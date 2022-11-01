@@ -37,8 +37,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_name_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:layout_marginTop="@dimen/margin_top_textimput"
             android:hint="@string/name_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_name_profile"
@@ -64,8 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_lastnames_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:hint="@string/last_names_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
             app:layout_constraintStart_toStartOf="@+id/textView_lastnames_profile"
@@ -90,8 +88,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_email_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:hint="@string/email_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
             app:layout_constraintStart_toStartOf="@+id/textView_email_profile"
@@ -116,8 +113,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_telephone_number_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:hint="@string/telephone_number_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
             app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_profile"
@@ -142,8 +138,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_institute_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:hint="@string/institute_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
             app:layout_constraintStart_toStartOf="@+id/textView_institute_profile"
