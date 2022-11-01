@@ -46,4 +46,10 @@
         <item name="android:layout_width">@dimen/TextInputLayoutWidth</item>
         <item name="android:layout_height">@dimen/TextInputLayoutWidthDescr</item>
     </style>
+    <!-- Style para los Titulos -->
+    <style name="Widget.FpShare.TextViewTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/WidthTitulo</item>
+        <item name="android:layout_height">@dimen/HeightTitulo</item>
+        <item name="android:textSize">@dimen/titleTextSize</item>
+    </style>
 </resources>

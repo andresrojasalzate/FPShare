@@ -28,13 +28,26 @@
     <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
 
 
-    <dimen name="introMailWidth">300dp</dimen>
-
-
 
     <dimen name="height_text_imput_edittext">48dp</dimen>
 
     <!-- Dimension Edit Text -->
+
+    <!-- Dimension Titulos -->
+    <dimen name="WidthTitulo">299dp</dimen>
+    <dimen name="HeightTitulo">69dp</dimen>
+    <dimen name="titleTextSize">30dp</dimen>
+
+    <dimen name="titlePubliWidth">285dp</dimen>
+    <dimen name="titlePubliHeight">90dp</dimen>
+    <dimen name="titlePubliMarginStartTop">60dp</dimen>
+
+    <dimen name="titleRenameWidth">282dp</dimen>
+    <dimen name="titleRenameHeight">70dp</dimen>
+    <dimen name="titleRenameMarginStart">40dp</dimen>
+    <dimen name="titleRenameMarginTop">76dp</dimen>
+    <dimen name="titleRenameTextSize">30dp</dimen>
+
 
 
     <!-- demas dimensions -->
@@ -59,8 +72,6 @@
     <dimen name="marginTop_SingIn_button">36dp</dimen>
     <dimen name="marginTop_register_button">16dp</dimen>
     <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
-    <dimen name="WidthTitulo">299dp</dimen>
-    <dimen name="HeightTitulo">69dp</dimen>
 
     <dimen name="margin_top_textimput_email_recoverypassword">68dp</dimen>
     <dimen name="margin_top_email_textview_recoverypassword">24dp</dimen>
@@ -92,10 +103,6 @@
     <dimen name="DescViewHeight">159dp</dimen>
     <dimen name="DescViewMarginStart">60dp</dimen>
     <dimen name="DescViewMarginTop">30dp</dimen>
-    <dimen name="titlePubliWidth">285dp</dimen>
-    <dimen name="titlePubliHeight">90dp</dimen>
-    <dimen name="titlePubliMarginStartTop">60dp</dimen>
-    <dimen name="titlePubliTextSize">30dp</dimen>
     <dimen name="imgProfileMarginTop">60dp</dimen>
     <dimen name="txtProfileMarginTop">70dp</dimen>
     <dimen name="txtProfileMarginStart">50dp</dimen>
@@ -120,11 +127,6 @@
     <dimen name="txtSignMarginTop">20dp</dimen>
     <dimen name="txtAccountMarginStart">70dp</dimen>
     <dimen name="txtAccountMarginTop">20dp</dimen>
-    <dimen name="titleRenameWidth">282dp</dimen>
-    <dimen name="titleRenameHeight">70dp</dimen>
-    <dimen name="titleRenameMarginStart">40dp</dimen>
-    <dimen name="titleRenameMarginTop">76dp</dimen>
-    <dimen name="titleRenameTextSize">30dp</dimen>
     <dimen name="introRenameMarginTop">10dp</dimen>
     <dimen name="txtRenameMarginTop">80dp</dimen>
     <dimen name="txtLinkMarginStart">60dp</dimen>
