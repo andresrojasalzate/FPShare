@@ -24,6 +24,8 @@
     </style>
     <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
         <item name="background">@color/lavada</item>
+        <item name="android:layout_width">@dimen/Spinner_Width</item>
+        <item name="android:layout_height">@dimen/Spinner_Height</item>
     </style>
     <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
@@ -33,5 +35,15 @@
     <style name="Widget.FpShare.TextViewLink" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
         <item name="android:textSize">16sp</item>
+    </style>
+    <!-- Style para TextInputLayouts -->
+    <style name="Widget.FpShare.TextInputLayout" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/TextInputLayoutWidth</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- Style para TextInputLayout Descripcion -->
+    <style name="Widget.FpShare.TextInputLayoutDescr" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/TextInputLayoutWidth</item>
+        <item name="android:layout_height">@dimen/TextInputLayoutWidthDescr</item>
     </style>
 </resources>

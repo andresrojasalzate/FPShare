@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Editar_Publicacion">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txtEditarPublicacion"
@@ -42,8 +45,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtTitle"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.TextInputLayout"
         android:layout_marginStart="60dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +59,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        style="@style/Widget.FpShare.TextInputLayoutDescr"
         android:layout_marginStart="60dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,18 +84,15 @@
 
     <Spinner
         android:id="@+id/spinnerUF"
-        android:layout_width="@dimen/spinnerUFWidth"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.Spinner"
         android:layout_marginStart="@dimen/spinnerUFMarginStart"
-        android:layout_marginTop="@dimen/spinnerUFMarginTop"
+        android:layout_marginTop="35dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextLink"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/TextLink" />
 
     <Spinner
         android:id="@+id/spinnerCiclo"
-        android:layout_width="@dimen/spinnerCicloWidth"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.Spinner"
         android:layout_marginTop="@dimen/spinnerCicloMarginTop"
         app:layout_constraintStart_toEndOf="@+id/spinnerUF"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
@@ -102,8 +100,7 @@
 
     <Spinner
         android:id="@+id/spinnerModulo"
-        android:layout_width="@dimen/spinnerModuloWidth"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.Spinner"
         android:layout_marginTop="@dimen/spinnerModuloMarginTop"
         app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
@@ -119,4 +116,5 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

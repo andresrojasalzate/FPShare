@@ -2,13 +2,46 @@
 <resources>
     <!-- dimensions globales-->
     <dimen name="logo_size">150dp</dimen>
-    <dimen name="width_text_imput_layaout">300dp</dimen>
-    <dimen name="height_text_imput_edittext">48dp</dimen>
 
     <!-- Dimension de los botones -->
     <dimen name="width_button">300dp</dimen>
     <dimen name="height_button">60dp</dimen>
 
+    <!-- Dimension de los spinners -->
+    <!-- WIDTH -->
+    <dimen name="Spinner_Width">100dp</dimen>
+    <dimen name="Spinner_Height">wrap_content</dimen>
+
+    <!-- HEIGHT -->
+    <dimen name="width_spinner_new_post">200dp</dimen>
+    <dimen name="height_spinner_new_post">48dp</dimen>
+    <dimen name="spinnerUFMarginStart">60dp</dimen>
+    <dimen name="spinnerUFMarginTop">30dp</dimen>
+    <dimen name="spinnerCicloMarginTop">85dp</dimen>
+    <dimen name="spinnerModuloMarginTop">85dp</dimen>
+
+    <!-- Dimension de los radios -->
+
+    <dimen name="radio_width">100dp</dimen>
+    <dimen name="radio_height">150dp</dimen>
+
+    <!-- Dimension InputLayout -->
+    <dimen name="TextInputLayoutWidth">300dp</dimen>
+    <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
+
+
+    <dimen name="introRenameWidth">288dp</dimen>
+    <dimen name="introMailWidth">300dp</dimen>
+    <dimen name="introRenameHeight">56dp</dimen>
+
+
+
+    <dimen name="height_text_imput_edittext">48dp</dimen>
+
+    <!-- Dimension Edit Text -->
+
+
+    <!-- demas dimensions -->
 
     <dimen name="btnRegistrarseMarginTop">30dp</dimen>
     <dimen name="btnCambiarMarginTop">80dp</dimen>
@@ -16,9 +49,6 @@
     <dimen name="btnSaveMarginStart">60dp</dimen>
     <dimen name="btnSaveMarginTop">20dp</dimen>
 
-
-
-    <!-- demas dimensions -->
     <dimen name="padding">24dp</dimen>
     <dimen name="logo_margin_start">136dp</dimen>
     <dimen name="logo_margin_top">64dp</dimen>
@@ -35,7 +65,7 @@
     <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
     <dimen name="WidthTitulo">299dp</dimen>
     <dimen name="HeightTitulo">69dp</dimen>
-    <dimen name="SpinnerWidth">100dp</dimen>
+
     <dimen name="margin_top_textimput_email_recoverypassword">68dp</dimen>
     <dimen name="margin_top_email_textview_recoverypassword">24dp</dimen>
     <dimen name="margin_top_button_recoverypassword">32dp</dimen>
@@ -56,16 +86,12 @@
     <dimen name="margin_top_textview_new_post">16dp</dimen>
     <dimen name="margin_end_radiobutton_new_post">16dp</dimen>
     <dimen name="margin_top_tags_cicles">8dp</dimen>
-    <dimen name="width_spinner_new_post">200dp</dimen>
-    <dimen name="height_spinner_new_post">48dp</dimen>
     <dimen name="margin_top_spinner_modules_new_post">16dp</dimen>
     <dimen name="margin_top_spinner_ufs_new_post">16dp</dimen>
     <dimen name="margin_top_button_publish_new_post">16dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
     <dimen name="size_button_send">55dp</dimen>
     <dimen name="margin_button_send">10dp</dimen>
-    <dimen name="radio_width">100dp</dimen>
-    <dimen name="radio_height">150dp</dimen>
     <dimen name="DescViewWidth">300dp</dimen>
     <dimen name="DescViewHeight">159dp</dimen>
     <dimen name="DescViewMarginStart">60dp</dimen>
@@ -91,13 +117,9 @@
     <dimen name="imgLogoMarginTop">50dp</dimen>
     <dimen name="txtNombreMarginStart">40dp</dimen>
     <dimen name="txtNombreMarginTop">30dp</dimen>
-    <dimen name="layoutIntroNombre">300dp</dimen>
     <dimen name="txtPasswordMarginStart">40dp</dimen>
     <dimen name="txtPasswordMarginTop">20dp</dimen>
-    <dimen name="layoutPasswordWidth">300dp</dimen>
-    <dimen name="inputPasswordWidth">300dp</dimen>
     <dimen name="txtMailMarginTop">20dp</dimen>
-    <dimen name="introMailWidth">300dp</dimen>
     <dimen name="txtSignMarginStart">10dp</dimen>
     <dimen name="txtSignMarginTop">20dp</dimen>
     <dimen name="txtAccountMarginStart">70dp</dimen>
@@ -107,16 +129,7 @@
     <dimen name="titleRenameMarginStart">40dp</dimen>
     <dimen name="titleRenameMarginTop">76dp</dimen>
     <dimen name="titleRenameTextSize">30dp</dimen>
-    <dimen name="introRenameWidth">288dp</dimen>
-    <dimen name="introRenameHeight">56dp</dimen>
     <dimen name="introRenameMarginTop">10dp</dimen>
     <dimen name="txtRenameMarginTop">80dp</dimen>
     <dimen name="txtLinkMarginStart">60dp</dimen>
-    <dimen name="spinnerUFWidth">100dp</dimen>
-    <dimen name="spinnerUFMarginStart">60dp</dimen>
-    <dimen name="spinnerUFMarginTop">30dp</dimen>
-    <dimen name="spinnerCicloWidth">100dp</dimen>
-    <dimen name="spinnerCicloMarginTop">85dp</dimen>
-    <dimen name="spinnerModuloWidth">100dp</dimen>
-    <dimen name="spinnerModuloMarginTop">85dp</dimen>
 </resources>

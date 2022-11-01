@@ -41,8 +41,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/intro_nombre"
-            android:layout_width="@dimen/layoutIntroNombre"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             app:layout_constraintStart_toStartOf="@+id/txtNombre"
             app:layout_constraintTop_toBottomOf="@+id/txtNombre">
 
@@ -69,8 +68,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/intro_password"
-            android:layout_width="@dimen/layoutPasswordWidth"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="@+id/txtPassword"
             app:layout_constraintTop_toBottomOf="@+id/txtPassword">
@@ -78,7 +76,7 @@
             <com.google.android.material.textfield.TextInputEditText
 
                 android:id="@+id/InputPassword"
-                android:layout_width="@dimen/inputPasswordWidth"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@+id/txtNombre"
                 app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
@@ -96,8 +94,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/intro_mail"
-            android:layout_width="@dimen/introMailWidth"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextInputLayout"
             app:layout_constraintStart_toStartOf="@+id/txtMail"
             app:layout_constraintTop_toBottomOf="@+id/txtMail">
 
