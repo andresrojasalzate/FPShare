@@ -1,11 +1,10 @@
 package cat.copernic.fpshare
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 
@@ -26,8 +25,6 @@ class MenuCiclos : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var _binding: FragmentMenuCiclosBinding
-    private lateinit var cicleArrayList: ArrayList<String>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,21 +45,15 @@ class MenuCiclos : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
+        // initRecycler()
     }
 
-    private fun initRecycler(){
-        dataInitialize()
-        recyclerView = _binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-        recyclerView.adapter = CicleAdapter(cicleArrayList)
-    }
+    /*private fun initRecycler() {
+        recyclerView = _binding
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CicleAdapter()
+    } */
 
-    private fun dataInitialize(){
-        cicleArrayList = arrayListOf<String>()
-        val list = resources.getStringArray(R.array.ciclo)
-        cicleArrayList.addAll(list)
-    }
 
     companion object {
         /**
