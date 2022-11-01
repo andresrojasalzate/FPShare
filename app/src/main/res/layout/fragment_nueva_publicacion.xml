@@ -24,7 +24,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_title_new_post"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/title_new_post"
@@ -50,7 +50,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_description_new_post"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/description_new_post"
@@ -76,7 +76,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_link_new_post"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput_new_post"
             android:hint="@string/link_new_post"

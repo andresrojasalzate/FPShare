@@ -37,7 +37,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_name_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_textimput"
             android:hint="@string/name_profile"
@@ -64,7 +64,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_lastnames_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:hint="@string/last_names_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
@@ -90,7 +90,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_email_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:hint="@string/email_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
@@ -116,7 +116,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_telephone_number_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:hint="@string/telephone_number_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
@@ -126,6 +126,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_text_imput_edittext"
+                android:inputType="number"
                 tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +143,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_institute_profile"
-            android:layout_width="@dimen/width_text_imput_layaout"
+            android:layout_width="@dimen/TextInputLayoutWidth"
             android:layout_height="wrap_content"
             android:hint="@string/institute_profile"
             android:layout_marginTop="@dimen/margin_top_textimput"
