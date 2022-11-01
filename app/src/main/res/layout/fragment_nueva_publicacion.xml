@@ -13,9 +13,7 @@
 
         <TextView
             android:id="@+id/textView_title_new_post"
-            style="@style/Widget.FpShare.TextViewTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.FpShare.TextViewTitle"
             android:layout_marginStart="@dimen/margin_start_textview_new_post"
             android:layout_marginTop="@dimen/margin_top_textview_title_new_post"
             android:text="@string/title_new_post"

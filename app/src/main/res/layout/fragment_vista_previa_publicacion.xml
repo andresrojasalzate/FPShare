@@ -23,13 +23,10 @@
 
         <TextView
             android:id="@+id/titlePublicacion"
-            style="@style/Widget.FpShare.TextView.TextoNegro"
-            android:layout_width="@dimen/titlePubliWidth"
-            android:layout_height="@dimen/titlePubliHeight"
+            style="@style/Widget.FpShare.TextViewTitle"
             android:layout_marginStart="@dimen/titlePubliMarginStartTop"
             android:layout_marginTop="@dimen/titlePubliMarginStartTop"
             android:text="@string/strPubli"
-            android:textSize="@dimen/titlePubliTextSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

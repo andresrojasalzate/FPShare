@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/txtEditarPublicacion"
-        style="@style/Widget.FpShare.TextView.TextoNegro"
+        style="@style/Widget.FpShare.TextViewTitle"
         android:layout_width="@dimen/WidthTitulo"
         android:layout_height="@dimen/HeightTitulo"
         android:layout_marginStart="60dp"
