@@ -9,8 +9,7 @@
 
     <ImageView
         android:id="@+id/logo_login"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"
+        style="@style/Widget.FpShare.ImageView"
         android:layout_marginStart="@dimen/logo_margin_start"
         android:layout_marginEnd="@dimen/logo_margin_end"
         android:contentDescription="@string/logo_de_la_app_image_login"

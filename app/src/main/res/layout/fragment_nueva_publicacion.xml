@@ -40,7 +40,7 @@
             style="@style/Widget.FpShare.TextViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_textview_new_post"
+            android:layout_marginTop="@dimen/size_16"
             android:text="@string/description_new_post"
             app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_title_new_post" />
@@ -65,7 +65,7 @@
             style="@style/Widget.FpShare.TextViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_textview_new_post"
+            android:layout_marginTop="@dimen/size_16"
             android:text="@string/link_new_post"
             app:layout_constraintStart_toStartOf="@+id/input_description_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
@@ -90,7 +90,7 @@
             style="@style/Widget.FpShare.TextViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_textview_new_post"
+            android:layout_marginTop="@dimen/size_16"
             android:text="@string/tags_new_post"
             app:layout_constraintStart_toStartOf="@+id/input_link_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_link_new_post" />
@@ -106,29 +106,25 @@
 
             <RadioButton
                 android:id="@+id/option_twenty_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_end_radiobutton_new_post"
+                style="@style/Widget.FpShare.RadioButton"
+                android:layout_marginEnd="@dimen/size_16"
                 android:text="@string/dam_new_post" />
 
             <RadioButton
                 android:id="@+id/option_eighteen_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_end_radiobutton_new_post"
+                style="@style/Widget.FpShare.RadioButton"
+                android:layout_marginEnd="@dimen/size_16"
                 android:text="@string/daw_new_post" />
 
             <RadioButton
                 android:id="@+id/option_fifteen_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_end_radiobutton_new_post"
+                style="@style/Widget.FpShare.RadioButton"
+                android:layout_marginEnd="@dimen/size_16"
                 android:text="@string/asix_new_post" />
 
             <RadioButton
                 android:id="@+id/option_fifteen_percent2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:text="@string/smix__new_post" />
         </RadioGroup>
 

@@ -47,20 +47,17 @@
 
             <RadioButton
                 android:id="@+id/rd_spain"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:text="@string/spanish" />
 
             <RadioButton
                 android:id="@+id/rd_catalan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:text="@string/catalan" />
 
             <RadioButton
                 android:id="@+id/rd_english"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:checked="true"
                 android:text="@string/english" />
         </RadioGroup>
@@ -76,21 +73,18 @@
 
             <RadioButton
                 android:id="@+id/rd_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:checked="true"
                 android:text="@string/system" />
 
             <RadioButton
                 android:id="@+id/rd_light"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:text="@string/light" />
 
             <RadioButton
                 android:id="@+id/rd_dark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Widget.FpShare.RadioButton"
                 android:text="@string/dark" />
         </RadioGroup>
 

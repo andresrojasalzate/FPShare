@@ -63,6 +63,12 @@
     <dimen name="margin_top_button_posts_admin_menu">72dp</dimen>
     <dimen name="margin_top_btton__tag_admin_menu">72dp</dimen>
     <dimen name="margin_top_button_tag_admin_menu">72dp</dimen>
+    <dimen name="margin_top_textview_title_new_post">72dp</dimen>
+
+    <!-- size 70 -->
+    <dimen name="txtProfileMarginTop">70dp</dimen>
+    <dimen name="txtAccountMarginStart">70dp</dimen>
+
 
     <!-- size 68 -->
     <dimen name="margin_top_textimput_email_recoverypassword">68dp</dimen>
@@ -74,6 +80,10 @@
     <dimen name="imgProfileMarginTop">60dp</dimen>
     <dimen name="txtTitleViewMarginStartTop">60dp</dimen>
     <dimen name="txtLinkMarginStart">60dp</dimen>
+
+    <!-- size 50 -->
+    <dimen name="imgLogoMarginTop">50dp</dimen>
+    <dimen name="txtProfileMarginStart">50dp</dimen>
 
     <!-- size 40 -->
     <dimen name="txtNombreMarginStart">40dp</dimen>
@@ -109,8 +119,7 @@
     <dimen name="txtMailMarginTop">20dp</dimen>
 
     <!-- size 16 -->
-    <dimen name="margin_top_textview_new_post">16dp</dimen>
-    <dimen name="margin_end_radiobutton_new_post">16dp</dimen>
+    <dimen name="size_16">16dp</dimen>
     <dimen name="margin_top_textview_profile">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="marginTop_register_button">16dp</dimen>
@@ -118,8 +127,13 @@
     <dimen name="margin_top_spinner_ufs_new_post">16dp</dimen>
     <dimen name="margin_top_button_publish_new_post">16dp</dimen>
 
+    <!-- size 10 -->
+    <dimen name="txtSignMarginStart">10dp</dimen>
+    <dimen name="margin_button_send">10dp</dimen>
+    <dimen name="introRenameMarginTop">10dp</dimen>
 
     <!-- size 8 -->
+    <dimen name="size_8">8dp</dimen>
     <dimen name="margin_end_image_profile">8dp</dimen>
     <dimen name="margin_top_textimput">8dp</dimen>
     <dimen name="margin_top_textimput_new_post">8dp</dimen>
@@ -131,27 +145,19 @@
 
     <!-- demas dimensions -->
 
-    <dimen name="logo_margin_start">136dp</dimen>
+    <dimen name="margin_top_button_users_admin_menu">184dp</dimen>
+    <dimen name="DescViewHeight">159dp</dimen>
     <dimen name="logo_margin_end">144dp</dimen>
+    <dimen name="logo_margin_start">136dp</dimen>
+    <dimen name="imgLogoMarginStart">130dp</dimen>
+    <dimen name="txtModuleViewMarginTop">85dp</dimen>
+    <dimen name="txtUFViewMarginTop">85dp</dimen>
+    <dimen name="txtRenameMarginTop">80dp</dimen>
+    <dimen name="txtTitleViewHeight">69dp</dimen>
+    <dimen name="margin_start_textview_new_post">56dp</dimen>
+    <dimen name="size_button_send">55dp</dimen>
     <dimen name="margin_top_text_imput_email">48dp</dimen>
     <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
     <dimen name="margin_top_textview_name_profile">26dp</dimen>
-    <dimen name="margin_top_button_users_admin_menu">184dp</dimen>
-    <dimen name="margin_start_textview_new_post">56dp</dimen>
-    <dimen name="margin_top_textview_title_new_post">72dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
-    <dimen name="size_button_send">55dp</dimen>
-    <dimen name="margin_button_send">10dp</dimen>
-    <dimen name="DescViewHeight">159dp</dimen>
-    <dimen name="txtProfileMarginTop">70dp</dimen>
-    <dimen name="txtProfileMarginStart">50dp</dimen>
-    <dimen name="txtTitleViewHeight">69dp</dimen>
-    <dimen name="txtModuleViewMarginTop">85dp</dimen>
-    <dimen name="txtUFViewMarginTop">85dp</dimen>
-    <dimen name="imgLogoMarginStart">130dp</dimen>
-    <dimen name="imgLogoMarginTop">50dp</dimen>
-    <dimen name="txtSignMarginStart">10dp</dimen>
-    <dimen name="txtAccountMarginStart">70dp</dimen>
-    <dimen name="introRenameMarginTop">10dp</dimen>
-    <dimen name="txtRenameMarginTop">80dp</dimen>
 </resources>

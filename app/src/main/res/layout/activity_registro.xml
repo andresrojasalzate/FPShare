@@ -18,8 +18,7 @@
         <ImageView
             android:id="@+id/fpShareLogo"
             android:contentDescription="@string/logoDescription"
-            android:layout_width="@dimen/logo_size"
-            android:layout_height="@dimen/logo_size"
+            style="@style/Widget.FpShare.ImageView"
             android:layout_marginStart="@dimen/imgLogoMarginStart"
             android:layout_marginTop="@dimen/imgLogoMarginTop"
             app:layout_constraintStart_toStartOf="parent"
