@@ -36,12 +36,11 @@ class Register : AppCompatActivity() {
         auth = Firebase.auth
 
         btnRegistrarse.setOnClickListener(){
-            var nombre = InputNombre.text.toString()
-            var password = InputPassword.text.toString()
-            var mail = InputMail.text.toString()
+            val nombre = InputNombre.text.toString()
+            val password = InputPassword.text.toString()
+            val mail = InputMail.text.toString()
 
-            if(campEsBuit(nombre,password,mail)){
-                //Registrem a l'usuari mitjançant la funció registrar creada per nosaltres
+            if(campoVacio(nombre,password,mail)){
                 registrar(nombre, password,mail)
             }
 
@@ -50,7 +49,7 @@ class Register : AppCompatActivity() {
 
     }
 
-    fun campEsBuit(nombre:String,password:String, mail:String):Boolean{
+    fun campoVacio(nombre:String,password:String, mail:String):Boolean{
         return nombre.isNotEmpty()&&password.isNotEmpty()&&mail.isNotEmpty()
     }
 
@@ -58,12 +57,11 @@ class Register : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(mail,password)
             .addOnCompleteListener(this) {task ->
-                if(task.isSuccessful){ //El registre (task) s'ha completat amb exit...
-                    //Anem al mainActivity des d'aquesta pantalla
+                if(task.isSuccessful){
                     startActivity(Intent(this,MainActivity::class.java))
-                    finish() //Alliberem memòria un cop finalitzada aquesta tasca.
+                    finish()
                 }else{
-                    Toast.makeText(applicationContext,"El registre ha fallat!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"El registro ha fallado!", Toast.LENGTH_LONG).show()
                 }
             }
     }
