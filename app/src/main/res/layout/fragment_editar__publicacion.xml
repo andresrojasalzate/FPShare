@@ -111,8 +111,7 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="@dimen/btnSaveWidth"
-        android:layout_height="wrap_content"
+        style="@style/Widget.FpShare.Button"
         android:layout_marginStart="@dimen/btnSaveMarginStart"
         android:layout_marginTop="@dimen/btnSaveMarginTop"
         android:text="@string/txtSave"

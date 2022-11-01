@@ -111,8 +111,6 @@
         <Button
             android:id="@+id/btnRegistrarse"
             style="@style/Widget.FpShare.Button"
-            android:layout_width="@dimen/btnRegistrarseWidth"
-            android:layout_height="@dimen/btnRegistrarseHeight"
             android:layout_marginTop="@dimen/btnRegistrarseMarginTop"
             android:text="@string/txtRegister"
             app:layout_constraintStart_toStartOf="@+id/intro_mail"

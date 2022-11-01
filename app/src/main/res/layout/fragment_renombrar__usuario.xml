@@ -54,8 +54,6 @@
     <Button
         android:id="@+id/btnCambiar"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="@dimen/btnCambiarWidth"
-        android:layout_height="@dimen/btnCambiarHeight"
         android:layout_marginTop="@dimen/btnCambiarMarginTop"
         android:text="@string/txt_change"
         app:layout_constraintStart_toStartOf="@+id/introRename"

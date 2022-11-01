@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- dimensions globales-->
-    <dimen name="width_button">300dp</dimen>
-    <dimen name="height_button">60dp</dimen>
     <dimen name="logo_size">150dp</dimen>
     <dimen name="width_text_imput_layaout">300dp</dimen>
     <dimen name="height_text_imput_edittext">48dp</dimen>
+
+    <!-- Dimension de los botones -->
+    <dimen name="width_button">300dp</dimen>
+    <dimen name="height_button">60dp</dimen>
+
+
+    <dimen name="btnRegistrarseMarginTop">30dp</dimen>
+    <dimen name="btnCambiarMarginTop">80dp</dimen>
+
+    <dimen name="btnSaveMarginStart">60dp</dimen>
+    <dimen name="btnSaveMarginTop">20dp</dimen>
+
+
 
     <!-- demas dimensions -->
     <dimen name="padding">24dp</dimen>
@@ -87,9 +98,6 @@
     <dimen name="inputPasswordWidth">300dp</dimen>
     <dimen name="txtMailMarginTop">20dp</dimen>
     <dimen name="introMailWidth">300dp</dimen>
-    <dimen name="btnRegistrarseWidth">303dp</dimen>
-    <dimen name="btnRegistrarseHeight">60dp</dimen>
-    <dimen name="btnRegistrarseMarginTop">30dp</dimen>
     <dimen name="txtSignMarginStart">10dp</dimen>
     <dimen name="txtSignMarginTop">20dp</dimen>
     <dimen name="txtAccountMarginStart">70dp</dimen>
@@ -102,9 +110,6 @@
     <dimen name="introRenameWidth">288dp</dimen>
     <dimen name="introRenameHeight">56dp</dimen>
     <dimen name="introRenameMarginTop">10dp</dimen>
-    <dimen name="btnCambiarWidth">292dp</dimen>
-    <dimen name="btnCambiarHeight">57dp</dimen>
-    <dimen name="btnCambiarMarginTop">80dp</dimen>
     <dimen name="txtRenameMarginTop">80dp</dimen>
     <dimen name="txtLinkMarginStart">60dp</dimen>
     <dimen name="spinnerUFWidth">100dp</dimen>
@@ -114,9 +119,4 @@
     <dimen name="spinnerCicloMarginTop">85dp</dimen>
     <dimen name="spinnerModuloWidth">100dp</dimen>
     <dimen name="spinnerModuloMarginTop">85dp</dimen>
-    <dimen name="btnSaveWidth">300dp</dimen>
-    <dimen name="btnSaveMarginStart">60dp</dimen>
-    <dimen name="btnSaveMarginTop">20dp</dimen>
-    <dimen name="saveButtonWidth">100dp</dimen>
-    <dimen name="saveButtonHeight">50dp</dimen>
 </resources>

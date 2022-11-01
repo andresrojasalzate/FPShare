@@ -157,8 +157,7 @@
 
         <Button
             android:id="@+id/button_save_changes_profile"
-            android:layout_width="@dimen/width_button"
-            android:layout_height="@dimen/height_button"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="16dp"
             android:text="@string/save_changes_profile"
             app:layout_constraintEnd_toEndOf="parent"

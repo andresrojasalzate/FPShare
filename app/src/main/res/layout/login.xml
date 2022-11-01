@@ -81,8 +81,7 @@
 
     <Button
         android:id="@+id/button_singin_login"
-        android:layout_width="@dimen/width_button"
-        android:layout_height="@dimen/height_button"
+        style="@style/Widget.FpShare.Button"
         android:layout_marginTop="@dimen/marginTop_SingIn_button"
         android:text="@string/sign_in_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,8 +90,7 @@
 
     <Button
         android:id="@+id/button_register_login"
-        android:layout_width="@dimen/width_button"
-        android:layout_height="@dimen/height_button"
+        style="@style/Widget.FpShare.Button"
         android:layout_marginTop="@dimen/marginTop_register_button"
         android:text="@string/register_login"
         app:layout_constraintEnd_toEndOf="parent"
