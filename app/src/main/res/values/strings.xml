@@ -56,7 +56,7 @@
     <string name="tags_admin_menu">tags</string>
 
     <!--pantalla de nueva publicación -->
-    <string name="title_new_post">Title</string>
+    <string name="title_new_post">New Post</string>
     <string name="description_new_post">Description</string>
     <string name="link_new_post">Link</string>
     <string name="tags_new_post">Tags</string>

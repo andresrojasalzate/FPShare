@@ -11,12 +11,10 @@
         android:layout_height="match_parent">
     <TextView
         android:id="@+id/titleRename"
-        android:layout_width="@dimen/titleRenameWidth"
-        android:layout_height="@dimen/titleRenameHeight"
+        style="@style/Widget.FpShare.TextViewTitle"
         android:layout_marginStart="@dimen/titleRenameMarginStart"
         android:layout_marginTop="@dimen/titleRenameMarginTop"
         android:text="@string/txt_rename_user"
-        android:textSize="@dimen/titleRenameTextSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -36,8 +34,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/introRename"
-        android:layout_width="@dimen/introRenameWidth"
-        android:layout_height="@dimen/introRenameHeight"
+        style="@style/Widget.FpShare.TextInputLayout"
         android:layout_marginTop="@dimen/introRenameMarginTop"
         app:layout_constraintStart_toStartOf="@+id/txtRename"
         app:layout_constraintTop_toBottomOf="@+id/txtRename"
