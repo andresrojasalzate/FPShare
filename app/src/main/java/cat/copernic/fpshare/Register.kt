@@ -21,6 +21,7 @@ class Register : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 

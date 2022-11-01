@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/constraintRename"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Renombrar_Usuario">
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/titleRename"
         android:layout_width="@dimen/titleRenameWidth"
@@ -22,7 +24,6 @@
 
     <TextView
         android:id="@+id/txtRename"
-        style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/txtRenameMarginTop"
@@ -55,12 +56,11 @@
     <Button
         android:id="@+id/btnCambiar"
         style="@style/Widget.FpShare.Button"
-        android:layout_width="@dimen/btnCambiarWidth"
-        android:layout_height="@dimen/btnCambiarHeight"
         android:layout_marginTop="@dimen/btnCambiarMarginTop"
         android:text="@string/txt_change"
         app:layout_constraintStart_toStartOf="@+id/introRename"
         app:layout_constraintTop_toBottomOf="@+id/introRename"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
