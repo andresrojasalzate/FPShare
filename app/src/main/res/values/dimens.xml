@@ -1,63 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- dimensions globales-->
-    <dimen name="logo_size">150dp</dimen>
 
-    <!-- Dimension de los botones -->
-    <dimen name="width_button">300dp</dimen>
-    <dimen name="height_button">60dp</dimen>
-
-    <!-- Dimension de los spinners -->
-    <!-- WIDTH -->
-    <dimen name="Spinner_Width">100dp</dimen>
     <dimen name="Spinner_Height">wrap_content</dimen>
 
-    <!-- HEIGHT -->
-    <dimen name="spinnerUFMarginStart">60dp</dimen>
-    <dimen name="spinnerUFMarginTop">30dp</dimen>
-    <dimen name="spinnerCicloMarginTop">85dp</dimen>
-    <dimen name="spinnerModuloMarginTop">85dp</dimen>
-
-    <!-- Dimension de los radios -->
-
-    <dimen name="radio_width">100dp</dimen>
-    <dimen name="radio_height">150dp</dimen>
-
-    <!-- Dimension InputLayout -->
-    <dimen name="TextInputLayoutWidth">300dp</dimen>
-    <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
-
-
-
-    <dimen name="height_text_imput_edittext">48dp</dimen>
-
-    <!-- Dimension Edit Text -->
-
     <!-- Dimension Titulos -->
-    <dimen name="WidthTitulo">299dp</dimen>
-    <dimen name="HeightTitulo">69dp</dimen>
-    <dimen name="titleTextSize">30dp</dimen>
 
-
-    <dimen name="titlePubliMarginStartTop">60dp</dimen>
-    <dimen name="titleRenameMarginStart">40dp</dimen>
     <dimen name="titleRenameMarginTop">76dp</dimen>
 
     <!-- margin top -->
     <dimen name="btnCambiarMarginTop">80dp</dimen>
-    <dimen name="btnRegistrarseMarginTop">30dp</dimen>
     <dimen name="logo_margin_top">64dp</dimen>
-    <dimen name="btnSaveMarginTop">20dp</dimen>
 
     <!-- size 300 -->
     <dimen name="txtTitleViewWidth">300dp</dimen>
     <dimen name="DescViewWidth">300dp</dimen>
+    <dimen name="WidthTitulo">299dp</dimen>
+    <dimen name="TextInputLayoutWidth">300dp</dimen>
+    <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
+    <dimen name="width_button">300dp</dimen>
+
+    <!-- size 150 -->
+    <dimen name="logo_size">150dp</dimen>
+    <dimen name="radio_height">150dp</dimen>
 
     <!-- size 100 -->
     <dimen name="txtUFViewWidth">100dp</dimen>
     <dimen name="txtCicleViewWidth">100dp</dimen>
     <dimen name="txtModuleViewWidth">100dp</dimen>
     <dimen name="porfile_image_size">100dp</dimen>
+    <dimen name="Spinner_Width">100dp</dimen>
+    <dimen name="radio_width">100dp</dimen>
+
+    <!-- size 85 -->
+    <dimen name="spinnerCicloMarginTop">85dp</dimen>
+    <dimen name="spinnerModuloMarginTop">85dp</dimen>
+    <dimen name="txtModuleViewMarginTop">85dp</dimen>
+    <dimen name="txtUFViewMarginTop">85dp</dimen>
 
     <!-- size 72 -->
     <dimen name="margin_top_button_posts_admin_menu">72dp</dimen>
@@ -68,7 +46,7 @@
     <!-- size 70 -->
     <dimen name="txtProfileMarginTop">70dp</dimen>
     <dimen name="txtAccountMarginStart">70dp</dimen>
-
+    <dimen name="HeightTitulo">69dp</dimen>
 
     <!-- size 68 -->
     <dimen name="margin_top_textimput_email_recoverypassword">68dp</dimen>
@@ -80,14 +58,23 @@
     <dimen name="imgProfileMarginTop">60dp</dimen>
     <dimen name="txtTitleViewMarginStartTop">60dp</dimen>
     <dimen name="txtLinkMarginStart">60dp</dimen>
+    <dimen name="titlePubliMarginStartTop">60dp</dimen>
+    <dimen name="height_button">60dp</dimen>
+    <dimen name="spinnerUFMarginStart">60dp</dimen>
+
 
     <!-- size 50 -->
     <dimen name="imgLogoMarginTop">50dp</dimen>
     <dimen name="txtProfileMarginStart">50dp</dimen>
 
+    <!-- size 48 -->
+    <dimen name="height_text_imput_edittext">48dp</dimen>
+    <dimen name="margin_top_text_imput_email">48dp</dimen>
+
     <!-- size 40 -->
     <dimen name="txtNombreMarginStart">40dp</dimen>
     <dimen name="txtPasswordMarginStart">40dp</dimen>
+    <dimen name="titleRenameMarginStart">40dp</dimen>
 
     <!-- size 36 -->
     <dimen name="margin_top_profile_image">36dp</dimen>
@@ -102,6 +89,9 @@
     <dimen name="txtLinkMarginTop">30dp</dimen>
     <dimen name="DescViewMarginTop">30dp</dimen>
     <dimen name="txtNombreMarginTop">30dp</dimen>
+    <dimen name="titleTextSize">30dp</dimen>
+    <dimen name="btnRegistrarseMarginTop">30dp</dimen>
+    <dimen name="spinnerUFMarginTop">30dp</dimen>
 
 
     <!-- size 24 -->
@@ -117,6 +107,7 @@
     <dimen name="txtAccountMarginTop">20dp</dimen>
     <dimen name="txtPasswordMarginTop">20dp</dimen>
     <dimen name="txtMailMarginTop">20dp</dimen>
+    <dimen name="btnSaveMarginTop">20dp</dimen>
 
     <!-- size 16 -->
     <dimen name="size_16">16dp</dimen>
@@ -140,23 +131,16 @@
     <dimen name="marginTop_imputpassword_login">8dp</dimen>
     <dimen name="margin_top_tags_cicles">8dp</dimen>
 
-
-
-
     <!-- demas dimensions -->
-
     <dimen name="margin_top_button_users_admin_menu">184dp</dimen>
     <dimen name="DescViewHeight">159dp</dimen>
     <dimen name="logo_margin_end">144dp</dimen>
     <dimen name="logo_margin_start">136dp</dimen>
     <dimen name="imgLogoMarginStart">130dp</dimen>
-    <dimen name="txtModuleViewMarginTop">85dp</dimen>
-    <dimen name="txtUFViewMarginTop">85dp</dimen>
     <dimen name="txtRenameMarginTop">80dp</dimen>
     <dimen name="txtTitleViewHeight">69dp</dimen>
     <dimen name="margin_start_textview_new_post">56dp</dimen>
     <dimen name="size_button_send">55dp</dimen>
-    <dimen name="margin_top_text_imput_email">48dp</dimen>
     <dimen name="marginBottom_textView_forgotten_password">28dp</dimen>
     <dimen name="margin_top_textview_name_profile">26dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
