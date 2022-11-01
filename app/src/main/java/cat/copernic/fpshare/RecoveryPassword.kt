@@ -23,7 +23,7 @@ class RecoveryPassword : AppCompatActivity() {
 
     private fun init() {
         emailRecovery = findViewById(R.id.editText_recovery)
-        buttonRecovery = findViewById(R.id.button_signin_recoverypassword)
+        buttonRecovery = findViewById(R.id.btn_recovery)
     }
 
     private fun listeners() {
