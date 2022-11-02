@@ -16,16 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_fpshare" />
 
-    <!-- TEXTVIEW NOMBRE -->
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="@dimen/size_30"
-        android:text="@string/txtName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
+        <!-- TEXTVIEW NOMBRE -->
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_50"
+            android:layout_marginTop="@dimen/size_30"
+            android:text="@string/txtName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fpShareLogo" />
     <!-- TEXTVIEW NOMBRE -->
 
 

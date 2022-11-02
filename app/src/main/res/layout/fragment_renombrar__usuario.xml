@@ -12,8 +12,8 @@
     <TextView
         android:id="@+id/titleRename"
         style="@style/Widget.FpShare.TextViewTitle"
-        android:layout_marginStart="@dimen/titleRenameMarginStart"
-        android:layout_marginTop="@dimen/titleRenameMarginTop"
+        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginTop="@dimen/size_76"
         android:text="@string/txt_rename_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/txtRename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/txtRenameMarginTop"
+        android:layout_marginTop="@dimen/size_80"
         android:text="@string/txt_new_name"
         app:layout_constraintStart_toStartOf="@+id/titleRename"
         app:layout_constraintTop_toBottomOf="@+id/titleRename"
@@ -35,7 +35,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/introRename"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginTop="@dimen/introRenameMarginTop"
+        android:layout_marginTop="@dimen/size_10"
         app:layout_constraintStart_toStartOf="@+id/txtRename"
         app:layout_constraintTop_toBottomOf="@+id/txtRename"
         >
@@ -53,7 +53,7 @@
     <Button
         android:id="@+id/btnCambiar"
         style="@style/Widget.FpShare.Button"
-        android:layout_marginTop="@dimen/btnCambiarMarginTop"
+        android:layout_marginTop="@dimen/size_80"
         android:text="@string/txt_change"
         app:layout_constraintStart_toStartOf="@+id/introRename"
         app:layout_constraintTop_toBottomOf="@+id/introRename"
