@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="Spinner_Height">wrap_content</dimen>
-
     <!-- Dimension Titulos -->
 
     <dimen name="titleRenameMarginTop">76dp</dimen>
@@ -27,7 +25,7 @@
     <dimen name="txtUFViewWidth">100dp</dimen>
     <dimen name="txtCicleViewWidth">100dp</dimen>
     <dimen name="txtModuleViewWidth">100dp</dimen>
-    <dimen name="porfile_image_size">100dp</dimen>
+  <dimen name="ggggg">100dp</dimen>
     <dimen name="Spinner_Width">100dp</dimen>
     <dimen name="radio_width">100dp</dimen>
 

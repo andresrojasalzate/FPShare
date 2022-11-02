@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import cat.copernic.fpshare.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -41,7 +40,7 @@ class Register : AppCompatActivity() {
             val mail = InputMail.text.toString()
 
             if(campoVacio(nombre,password,mail)){
-                registrar(nombre, password,mail)
+                registrar(password,mail)
             }
 
         }
@@ -53,7 +52,7 @@ class Register : AppCompatActivity() {
         return nombre.isNotEmpty()&&password.isNotEmpty()&&mail.isNotEmpty()
     }
 
-    fun registrar(nombre: String,password: String,mail: String){
+    fun registrar(password: String,mail: String){
 
         auth.createUserWithEmailAndPassword(mail,password)
             .addOnCompleteListener(this) {task ->
