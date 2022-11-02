@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp">
+    android:padding="@dimen/size_16">
 
     <TextView
         android:id="@+id/numUsuario"
@@ -17,10 +17,10 @@
 
     <TextView
         android:id="@+id/nombreUsuario"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/size_0"
         tools:text="Nombre de usuario"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/size_16"
         app:layout_constraintStart_toEndOf="@id/numUsuario"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

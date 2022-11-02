@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- size 360 -->
+    <dimen name="size_360">360dp</dimen>
+
+
+
     <!-- size 300 -->
     <dimen name="size_300">300dp</dimen>
     <dimen name="txtTitleViewWidth">300dp</dimen>
@@ -9,6 +14,13 @@
     <dimen name="TextInputLayoutWidth">300dp</dimen>
     <dimen name="TextInputLayoutWidthDescr">300dp</dimen>
     <dimen name="width_button">300dp</dimen>
+
+    <!-- size 272 -->
+    <dimen name="size_272">272dp</dimen>
+
+    <!-- size 240 -->
+    <dimen name="size_240">240dp</dimen>
+
 
     <!-- size 150 -->
     <dimen name="size_150">150dp</dimen>
@@ -86,6 +98,9 @@
     <dimen name="size_48">48dp</dimen>
     <dimen name="height_text_imput_edittext">48dp</dimen>
     <dimen name="margin_top_text_imput_email">48dp</dimen>
+
+    <!-- size 45 -->
+    <dimen name="size_45">45dp</dimen>
 
     <!-- size 40 -->
     <dimen name="size_40">40dp</dimen>
@@ -183,4 +198,8 @@
 
     <dimen name="size_5">5dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
+
+    <!-- size 0 -->
+    <dimen name="size_0">0dp</dimen>
+
 </resources>

@@ -13,11 +13,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tim_textHere"
-            android:layout_width="272dp"
+            android:layout_width="@dimen/size_272"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_horitzontal"
-            android:layout_marginEnd="@dimen/margin_horitzontal"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="@dimen/size_5"
+            android:layout_marginEnd="@dimen/size_5"
+            android:layout_marginBottom="@dimen/size_10"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintStart_toStartOf="parent">
@@ -31,11 +31,11 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="@dimen/size_button_send"
-            android:layout_height="@dimen/size_button_send"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="@dimen/margin_button_send"
-            android:layout_marginBottom="@dimen/margin_button_send"
+            android:layout_width="@dimen/size_55"
+            android:layout_height="@dimen/size_55"
+            android:layout_marginStart="@dimen/size_5"
+            android:layout_marginEnd="@dimen/size_10"
+            android:layout_marginBottom="@dimen/size_10"
             android:background="@drawable/bordes_redondos"
             android:contentDescription="@string/btn_send"
             android:src="@android:drawable/ic_menu_send"
