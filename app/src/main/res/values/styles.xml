@@ -3,7 +3,7 @@
     <!-- Style para botones -->
     <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue_200</item>
-        <item name="cornerRadius">20dp</item>
+        <item name="cornerRadius">@dimen/size_20</item>
         <item name="android:layout_width">@dimen/width_button</item>
         <item name="android:layout_height">@dimen/height_button</item>
     </style>
@@ -24,8 +24,8 @@
     </style>
     <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
         <item name="background">@color/lavada</item>
-        <item name="android:layout_width">@dimen/Spinner_Width</item>
-        <item name="android:layout_height">@dimen/Spinner_Height</item>
+        <item name="android:layout_width">@dimen/size_60</item>
+        <item name="android:layout_height">@dimen/size_20</item>
     </style>
     <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>

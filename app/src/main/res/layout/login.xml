@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding"
+    android:padding="@dimen/size_24"
     tools:context="cat.copernic.fpshare.MainActivity">
 
     <ImageView
         android:id="@+id/logo_login"
         style="@style/Widget.FpShare.ImageView"
-        android:layout_marginStart="@dimen/logo_margin_start"
-        android:layout_marginEnd="@dimen/logo_margin_end"
+        android:layout_marginStart="@dimen/size_136"
+        android:layout_marginEnd="@dimen/size_144"
         android:contentDescription="@string/logo_de_la_app_image_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/imput_email_login"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginTop="@dimen/margintop_textimputlayout1"
+        android:layout_marginTop="@dimen/size_68"
         android:hint="@string/email_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_email_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_text_imput_edittext"
+            android:layout_height="@dimen/size_48"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -40,7 +40,7 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTop_emailtextview_login"
+        android:layout_marginTop="@dimen/size_24"
         android:text="@string/email_login"
         app:layout_constraintBottom_toTopOf="@+id/imput_email_login"
         app:layout_constraintStart_toStartOf="@+id/imput_email_login"
@@ -52,7 +52,7 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marigTop_password_textview_login"
+        android:layout_marginTop="@dimen/size_24"
         android:text="@string/password_login"
         app:layout_constraintStart_toStartOf="@+id/imput_email_login"
         app:layout_constraintTop_toBottomOf="@+id/imput_email_login"
@@ -61,7 +61,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/imput_password_login"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginTop="@dimen/marginTop_imputpassword_login"
+        android:layout_marginTop="@dimen/size_8"
         android:hint="@string/password_login"
         app:layout_constraintStart_toStartOf="@+id/password_texview_login"
         app:layout_constraintTop_toBottomOf="@+id/password_texview_login">
@@ -69,7 +69,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_password_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_text_imput_edittext"
+            android:layout_height="@dimen/size_48"
             android:inputType="textPassword"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
