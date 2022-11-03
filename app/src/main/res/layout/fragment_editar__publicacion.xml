@@ -24,10 +24,10 @@
 
     <ImageView
         android:id="@+id/imagePerfil"
-        android:layout_width="31dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/size_30"
+        android:layout_height="@dimen/size_30"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_30"
         android:src="@drawable/perfil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
@@ -37,8 +37,8 @@
         style="@style/Widget.FpShare.TextView.TextoNegro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginTop="@dimen/size_36"
         android:text="@string/txtUserEdit"
         app:layout_constraintStart_toEndOf="@+id/imagePerfil"
         app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
@@ -46,8 +46,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtTitle"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUser">
 
@@ -60,8 +60,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         style="@style/Widget.FpShare.TextInputLayoutDescr"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle">
 
@@ -75,8 +75,8 @@
         android:id="@+id/TextLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txtLinkMarginStart"
-        android:layout_marginTop="@dimen/txtLinkMarginTop"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_30"
         android:text="@string/txtLink"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
@@ -85,15 +85,15 @@
     <Spinner
         android:id="@+id/spinnerUF"
         style="@style/Widget.FpShare.Spinner"
-        android:layout_marginStart="@dimen/spinnerUFMarginStart"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextLink" />
 
     <Spinner
         android:id="@+id/spinnerCiclo"
         style="@style/Widget.FpShare.Spinner"
-        android:layout_marginTop="@dimen/spinnerCicloMarginTop"
+        android:layout_marginTop="@dimen/size_85"
         app:layout_constraintStart_toEndOf="@+id/spinnerUF"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         />
@@ -101,20 +101,18 @@
     <Spinner
         android:id="@+id/spinnerModulo"
         style="@style/Widget.FpShare.Spinner"
-        android:layout_marginTop="@dimen/spinnerModuloMarginTop"
+        android:layout_marginTop="@dimen/size_85"
         app:layout_constraintStart_toEndOf="@+id/spinnerCiclo"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         />
-
     <Button
         android:id="@+id/btnSave"
         style="@style/Widget.FpShare.Button"
-        android:layout_marginStart="@dimen/btnSaveMarginStart"
-        android:layout_marginTop="@dimen/btnSaveMarginTop"
+        android:layout_marginStart="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtSave"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCiclo"
         />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

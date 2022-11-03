@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="50dp"
-    android:layout_marginLeft="50dp"
-    android:layout_width="300dp"
-    android:layout_height="360dp"
+    android:layout_marginTop="@dimen/size_50"
+    android:layout_marginLeft="@dimen/size_50"
+    android:layout_width="@dimen/size_300"
+    android:layout_height="@dimen/size_360"
     tools:context=".MenuCiclos">
 
     <androidx.constraintlayout.widget.ConstraintLayout
