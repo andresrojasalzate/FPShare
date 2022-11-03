@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/fpShareLogo"
         style="@style/Widget.FpShare.ImageView"
-        android:layout_marginTop="@dimen/imgLogoMarginTop"
+        android:layout_marginTop="@dimen/size_50"
         android:contentDescription="@string/logoDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_nombre"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginEnd="@dimen/size_40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre">
@@ -62,8 +62,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_password"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginEnd="@dimen/size_40"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         style="@style/Widget.FpShare.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtMail"
         app:layout_constraintStart_toStartOf="@+id/intro_password"
         app:layout_constraintTop_toBottomOf="@+id/intro_password" />
@@ -92,8 +92,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/intro_mail"
         style="@style/Widget.FpShare.TextInputLayout"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginEnd="@dimen/size_40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMail">
@@ -108,7 +108,7 @@
     <Button
         android:id="@+id/btnRegistrarse"
         style="@style/Widget.FpShare.Button"
-        android:layout_marginTop="@dimen/btnRegistrarseMarginTop"
+        android:layout_marginTop="@dimen/size_30"
         android:text="@string/txtRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,8 +119,8 @@
         style="@style/Widget.FpShare.TextViewLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txtSignMarginStart"
-        android:layout_marginTop="@dimen/txtSignMarginTop"
+        android:layout_marginStart="@dimen/size_10"
+        android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtSign"
         app:layout_constraintStart_toEndOf="@+id/txtAccount"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
@@ -130,8 +130,8 @@
         android:id="@+id/txtAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/txtAccountMarginStart"
-        android:layout_marginTop="@dimen/txtAccountMarginTop"
+        android:layout_marginStart="@dimen/size_70"
+        android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtAsk"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
