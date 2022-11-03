@@ -1,11 +1,12 @@
 package cat.copernic.fpshare
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -34,13 +35,13 @@ class Register : AppCompatActivity() {
         //Inicializacion Firebase
         auth = Firebase.auth
 
-        btnRegistrarse.setOnClickListener(){
+        btnRegistrarse.setOnClickListener() {
             val nombre = InputNombre.text.toString()
             val password = InputPassword.text.toString()
             val mail = InputMail.text.toString()
 
-            if(campoVacio(nombre,password,mail)){
-                registrar(password,mail)
+            if (campoVacio(nombre, password, mail)) {
+                registrar(password, mail)
             }
 
         }
@@ -48,22 +49,30 @@ class Register : AppCompatActivity() {
 
     }
 
-    fun campoVacio(nombre:String,password:String, mail:String):Boolean{
-        return nombre.isNotEmpty()&&password.isNotEmpty()&&mail.isNotEmpty()
+    fun campoVacio(nombre: String, password: String, mail: String): Boolean {
+        return nombre.isNotEmpty() && password.isNotEmpty() && mail.isNotEmpty()
+                && nombre.isNotBlank() && password.isNotBlank() && mail.isNotBlank()
     }
 
-    fun registrar(password: String,mail: String){
+    fun registrar(password: String, mail: String) {
 
-        auth.createUserWithEmailAndPassword(mail,password)
-            .addOnCompleteListener(this) {task ->
-                if(task.isSuccessful){
-                    startActivity(Intent(this,MainActivity::class.java))
+        auth.createUserWithEmailAndPassword(mail, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
-                }else{
-                    Toast.makeText(applicationContext,"El registro ha fallado!", Toast.LENGTH_LONG).show()
+                } else {
+                    error()
                 }
             }
     }
 
+    fun error() {
+        Snackbar.make(
+            findViewById(R.id.registroLayout),
+            "Register failed",
+            BaseTransientBottomBar.LENGTH_SHORT
+        ).show()
+    }
 
 }

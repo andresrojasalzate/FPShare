@@ -1,15 +1,13 @@
 package cat.copernic.fpshare
 
-import android.app.ActionBar
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -68,6 +66,7 @@ class Login : AppCompatActivity() {
 
     private fun camposVacios(correo: String, password: String): Boolean {
         return correo.isNotEmpty() && password.isNotEmpty()
+                && correo.isNotBlank() && password.isNotBlank()
     }
 
     private fun login(correo: String, password: String) {
@@ -86,6 +85,9 @@ class Login : AppCompatActivity() {
     }
 
     private fun error() {
-        Toast.makeText(applicationContext, "Wrong user or password", Toast.LENGTH_LONG).show()
+        Snackbar.make(
+            findViewById(R.id.loginLayout),
+            "Wrong user or password", BaseTransientBottomBar.LENGTH_SHORT
+        ).show()
     }
 }
