@@ -79,7 +79,7 @@
     <Button
         android:id="@+id/button_singin_login"
         style="@style/Widget.FpShare.Button"
-        android:layout_marginTop="@dimen/marginTop_SingIn_button"
+        android:layout_marginTop="@dimen/size_30"
         android:text="@string/sign_in_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -10,27 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtEditarPublicacion"
-        style="@style/Widget.FpShare.TextViewTitle"
-        android:layout_width="@dimen/WidthTitulo"
-        android:layout_height="@dimen/HeightTitulo"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/txtEdit"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtEditarPublicacion"
+            style="@style/Widget.FpShare.TextViewTitle"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/txtEdit"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imagePerfil"
-        android:layout_width="@dimen/size_30"
-        android:layout_height="@dimen/size_30"
-        android:layout_marginStart="@dimen/size_60"
-        android:layout_marginTop="@dimen/size_30"
-        android:src="@drawable/perfil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
+        <ImageView
+            android:id="@+id/imagePerfil"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:layout_marginStart="@dimen/size_60"
+            android:layout_marginTop="@dimen/size_30"
+            android:src="@drawable/perfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditarPublicacion" />
 
     <TextView
         android:id="@+id/txtUser"
