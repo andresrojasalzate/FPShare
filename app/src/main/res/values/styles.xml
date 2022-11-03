@@ -4,18 +4,18 @@
     <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue_200</item>
         <item name="cornerRadius">@dimen/size_20</item>
-        <item name="android:layout_width">@dimen/width_button</item>
-        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_60</item>
     </style>
     <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/size_18</item>
     </style>
     <!-- Style para titulo -->
     <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">@dimen/size_26</item>
     </style>
     <!-- Style para el InputText -->
     <style name="Widget.FpShare.TextImputLayaout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -29,29 +29,29 @@
     </style>
     <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/size_16</item>
     </style>
     <!-- Style para los enlaces -->
     <style name="Widget.FpShare.TextViewLink" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/size_16</item>
     </style>
     <!-- Style para TextInputLayouts -->
     <style name="Widget.FpShare.TextInputLayout" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_width">@dimen/TextInputLayoutWidth</item>
+        <item name="android:layout_width">@dimen/size_300</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
     <!-- Style para TextInputLayout Descripcion -->
     <style name="Widget.FpShare.TextInputLayoutDescr" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_width">@dimen/TextInputLayoutWidth</item>
-        <item name="android:layout_height">@dimen/TextInputLayoutWidthDescr</item>
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_300</item>
     </style>
     <!-- Style para los Titulos -->
     <style name="Widget.FpShare.TextViewTitle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">@dimen/WidthTitulo</item>
-        <item name="android:layout_height">@dimen/HeightTitulo</item>
-        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_70</item>
+        <item name="android:textSize">@dimen/size_30</item>
     </style>
     <!-- Style para RadioButtons -->
     <style name="Widget.FpShare.RadioButton" parent="Widget.AppCompat.TextView">
@@ -60,7 +60,7 @@
     </style>
     <!-- Style para ImageView -->
     <style name="Widget.FpShare.ImageView" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_width">@dimen/logo_size</item>
-        <item name="android:layout_height">@dimen/logo_size</item>
+        <item name="android:layout_width">@dimen/size_150</item>
+        <item name="android:layout_height">@dimen/size_150</item>
     </style>
 </resources>

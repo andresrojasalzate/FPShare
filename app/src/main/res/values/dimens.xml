@@ -196,6 +196,10 @@
     <dimen name="size_26">26dp</dimen>
     <dimen name="margin_top_textview_name_profile">26dp</dimen>
 
+    <!-- size 18 -->
+    <dimen name="size_18">18dp</dimen>
+
+
     <dimen name="size_5">5dp</dimen>
     <dimen name="margin_horitzontal">5dp</dimen>
 
