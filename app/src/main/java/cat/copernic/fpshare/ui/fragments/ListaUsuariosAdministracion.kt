@@ -1,13 +1,11 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import cat.copernic.fpshare.R
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,13 +15,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Editar_Publicacion.newInstance] factory method to
+ * Use the [ListaUsuariosAdminkistracion.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Editar_Publicacion : Fragment() {
+class ListaUsuariosAdminkistracion : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +37,7 @@ class Editar_Publicacion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return null
+        return inflater.inflate(R.layout.fragment_lista_usuarios_administracion, container, false)
     }
 
     companion object {
@@ -48,12 +47,12 @@ class Editar_Publicacion : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Editar_Publicacion.
+         * @return A new instance of fragment ListaUsuariosAdminkistracion.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Editar_Publicacion().apply {
+            ListaUsuariosAdminkistracion().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

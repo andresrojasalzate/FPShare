@@ -1,4 +1,4 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

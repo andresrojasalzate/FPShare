@@ -1,13 +1,11 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
-import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
+import androidx.fragment.app.Fragment
+import cat.copernic.fpshare.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,15 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MenuModulo.newInstance] factory method to
+ * Use the [Renombrar_Usuario.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MenuModulo : Fragment() {
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var _binding: FragmentMenuModuloBinding
-
-
+class Renombrar_Usuario : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,9 +34,8 @@ class MenuModulo : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMenuModuloBinding.inflate(inflater, container, false)
-        val view = _binding.root
-        return view
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_renombrar__usuario, container, false)
     }
 
     companion object {
@@ -53,12 +45,12 @@ class MenuModulo : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment MenuModulo.
+         * @return A new instance of fragment Renombrar_Usuario.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MenuModulo().apply {
+            Renombrar_Usuario().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

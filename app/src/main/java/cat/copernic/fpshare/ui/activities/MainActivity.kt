@@ -1,8 +1,8 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.activities
 
 import android.os.Bundle
-import cat.copernic.fpshare.R
 import androidx.appcompat.app.AppCompatActivity
+import cat.copernic.fpshare.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

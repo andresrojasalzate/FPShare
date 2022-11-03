@@ -1,10 +1,11 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRecoveryPasswordBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar

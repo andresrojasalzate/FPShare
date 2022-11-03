@@ -1,4 +1,4 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.adapters
 
 /*class PubliAdapter(private val publicacion: String, context: Context) :
     RecyclerView.Adapter<PubliAdapter.PubliViewHolder> {

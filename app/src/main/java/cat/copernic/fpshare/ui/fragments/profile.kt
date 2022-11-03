@@ -1,10 +1,11 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import cat.copernic.fpshare.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -13,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [vista_previa_publicacion.newInstance] factory method to
+ * Use the [profile.newInstance] factory method to
  * create an instance of this fragment.
  */
-class vista_previa_publicacion : Fragment() {
+class profile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +35,7 @@ class vista_previa_publicacion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vista_previa_publicacion, container, false)
+        return inflater.inflate(R.layout.fragment_perfil, container, false)
     }
 
     companion object {
@@ -44,12 +45,12 @@ class vista_previa_publicacion : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment vista_previa_publicacion.
+         * @return A new instance of fragment profile.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            vista_previa_publicacion().apply {
+            profile().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

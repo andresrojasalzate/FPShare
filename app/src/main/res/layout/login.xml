@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/size_24"
-    tools:context="cat.copernic.fpshare.MainActivity">
+    tools:context="cat.copernic.fpshare.ui.activities.MainActivity">
 
     <ImageView
         android:id="@+id/logo_login"

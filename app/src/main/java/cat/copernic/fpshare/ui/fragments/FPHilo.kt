@@ -1,13 +1,11 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
-
+import androidx.fragment.app.Fragment
+import cat.copernic.fpshare.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,14 +14,13 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ListaUsuariosAdminkistracion.newInstance] factory method to
+ * Use the [FPHilo.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListaUsuariosAdminkistracion : Fragment() {
+class FPHilo : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +35,7 @@ class ListaUsuariosAdminkistracion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_usuarios_administracion, container, false)
+        return inflater.inflate(R.layout.fragment_fp_hilo, container, false)
     }
 
     companion object {
@@ -48,12 +45,12 @@ class ListaUsuariosAdminkistracion : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ListaUsuariosAdminkistracion.
+         * @return A new instance of fragment FPHilo.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ListaUsuariosAdminkistracion().apply {
+            FPHilo().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

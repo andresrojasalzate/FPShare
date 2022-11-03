@@ -1,4 +1,4 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.clases
 
 data class User(val id: Int, var nombre: String){
 }

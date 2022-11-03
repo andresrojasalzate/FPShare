@@ -1,10 +1,12 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
+import cat.copernic.fpshare.clases.User
 import cat.copernic.fpshare.databinding.ItemUserBinding
 
 class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){

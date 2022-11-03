@@ -1,4 +1,4 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
+import cat.copernic.fpshare.ui.fragments.MenuModulo
 
 class CicleAdapter(private val cicleArrayList: ArrayList<String>/*, context: Context*/) :
     RecyclerView.Adapter<CicleAdapter.CicleViewHolder>() {
