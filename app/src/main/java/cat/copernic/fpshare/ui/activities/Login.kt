@@ -91,4 +91,13 @@ class Login : AppCompatActivity() {
             "Wrong user or password", BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (auth.currentUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
 }
