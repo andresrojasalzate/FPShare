@@ -11,15 +11,10 @@
         android:label="fragment_pantalla_principal"
         tools:layout="@layout/fragment_pantalla_principal" >
         <action
-            android:id="@+id/action_pantalla_principal_to_vista_previa_publicacion"
-            app:destination="@id/vista_previa_publicacion" />
-        <action
-            android:id="@+id/action_pantalla_principal_to_listaForos"
-            app:destination="@id/listaForos" />
-        <action
             android:id="@+id/action_pantalla_principal_to_nuevaPublicacion"
             app:destination="@id/nuevaPublicacion" />
     </fragment>
+
     <fragment
         android:id="@+id/vista_previa_publicacion"
         android:name="cat.copernic.fpshare.ui.fragments.vista_previa_publicacion"
@@ -36,14 +31,8 @@
         android:label="fragment_nueva_publicacion"
         tools:layout="@layout/fragment_nueva_publicacion" />
     <fragment
-        android:id="@+id/nav_home"
-        android:name="cat.copernic.fpshare.ui.fragments.perfil"
-        android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
-        android:label="@string/menu_ajustes"
-        tools:layout="@layout/fragment_fp_ajustes" />
+        android:id="@+id/menuCiclos"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuCiclos"
+        android:label="fragment_menu_ciclos"
+        tools:layout="@layout/fragment_menu_ciclos" />
 </navigation>
