@@ -3,21 +3,21 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/home"
-        android:title="home"
+        android:title="@string/bottom_home"
         />
 
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/brujula"
-        android:title="search" />
+        android:title="@string/bottom_search" />
 
     <item
         android:id="@+id/navigation_forum"
         android:icon="@drawable/internet"
-        android:title="forum" />
+        android:title="@string/bottom_forum" />
 
     <item
         android:id="@+id/navigation_new_post"
         android:icon="@drawable/mas"
-        android:title="new post" />
+        android:title="@string/bottom_new_post" />
 </menu>

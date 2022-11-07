@@ -37,18 +37,12 @@ class pantalla_principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
-        botonNewPost = binding
+        // botonNewPost = binding
 
         boton.setOnClickListener {
             val action = pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
             view.findNavController().navigate(action)
 
-        }
-
-        botonNewPost.setOnClickListener {
-
-            val action = pantalla_principalDirections.actionPantallaPrincipalToNuevaPublicacion()
-            view.findNavController().navigate(action)
         }
 
     }
