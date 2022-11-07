@@ -5,7 +5,7 @@
     android:id="@+id/fp_ajustes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FPAjustes">
+    tools:context=".ui.fragments.FPAjustes">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
