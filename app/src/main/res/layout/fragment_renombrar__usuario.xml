@@ -5,7 +5,7 @@
     android:id="@+id/constraintRename"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Renombrar_Usuario">
+    tools:context=".ui.fragments.Renombrar_Usuario">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
