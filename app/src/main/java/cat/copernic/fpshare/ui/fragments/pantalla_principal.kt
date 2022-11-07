@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,13 +34,14 @@ class pantalla_principal : Fragment() {
         return view
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
 
         boton.setOnClickListener {
-
-        val action = pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
+            val action = pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
             view.findNavController().navigate(action)
+
         }
     }
 
