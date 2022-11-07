@@ -118,4 +118,10 @@
     <string name="menu_publicaciones">Posts</string>
     <string name="menu_ajustes">Settings</string>
     <string name="menu_logout">Log out</string>
+
+    <!-- Menu inferior -->
+    <string name="bottom_home">home</string>
+    <string name="bottom_search">search</string>
+    <string name="bottom_forum">forum</string>
+    <string name="bottom_new_post">new post</string>
 </resources>
