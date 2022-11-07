@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/nav_home"
-        android:title="Home"
-        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:title="home"
+        />
 
-    <item android:id="@+id/nav_internet"
-        android:title="Internet"
-        android:icon="@drawable/internet"/>
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/brujula"
+        android:title="search" />
 
-    <item android:id="@+id/nav_profile"
-        android:title="Profile"
-        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/navigation_forum"
+        android:icon="@drawable/internet"
+        android:title="forum" />
 
-    <item android:id="@+id/nav_mas"
-        android:title="Mas"
-        android:icon="@drawable/mas"/>
+    <item
+        android:id="@+id/navigation_new_post"
+        android:icon="@drawable/mas"
+        android:title="new post" />
 </menu>
