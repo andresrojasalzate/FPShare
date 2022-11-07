@@ -30,7 +30,6 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
-
         inicializacion()
 
         bontonLogin.setOnClickListener {
@@ -81,8 +80,6 @@ class Login : AppCompatActivity() {
                     error()
                 }
             }
-
-
     }
 
     private fun error() {
@@ -94,10 +91,10 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
         if (auth.currentUser != null){
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
+
 }
