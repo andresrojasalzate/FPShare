@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import cat.copernic.fpshare.R
-import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
 import cat.copernic.fpshare.databinding.FragmentVistaPreviaPublicacionBinding
 
 const val ENLACE = "https://github.com/github"
+
 class vista_previa_publicacion : Fragment() {
+
     private var _binding: FragmentVistaPreviaPublicacionBinding? = null
     private val binding get() = _binding!!
     private lateinit var enlace: TextView

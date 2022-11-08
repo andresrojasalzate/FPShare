@@ -13,13 +13,8 @@
         <action
             android:id="@+id/action_pantalla_principal_to_vista_previa_publicacion"
             app:destination="@id/vista_previa_publicacion" />
-        <action
-            android:id="@+id/action_pantalla_principal_to_listaForos"
-            app:destination="@id/listaForos" />
-        <action
-            android:id="@+id/action_pantalla_principal_to_nuevaPublicacion"
-            app:destination="@id/nuevaPublicacion" />
     </fragment>
+
     <fragment
         android:id="@+id/vista_previa_publicacion"
         android:name="cat.copernic.fpshare.ui.fragments.vista_previa_publicacion"
@@ -29,21 +24,61 @@
         android:id="@+id/listaForos"
         android:name="cat.copernic.fpshare.ui.fragments.ListaForos"
         android:label="fragment_lista_foros"
-        tools:layout="@layout/fragment_lista_foros" />
+        tools:layout="@layout/fragment_lista_foros" >
+        <action
+            android:id="@+id/action_listaForos_to_FPHilo"
+            app:destination="@id/FPHilo" />
+    </fragment>
     <fragment
         android:id="@+id/nuevaPublicacion"
         android:name="cat.copernic.fpshare.ui.fragments.NuevaPublicacion"
         android:label="fragment_nueva_publicacion"
         tools:layout="@layout/fragment_nueva_publicacion" />
     <fragment
-        android:id="@+id/nav_home"
-        android:name="cat.copernic.fpshare.ui.fragments.perfil"
-        android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil" />
-
+        android:id="@+id/menuCiclos"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuCiclos"
+        android:label="fragment_menu_ciclos"
+        tools:layout="@layout/fragment_menu_ciclos" >
+        <action
+            android:id="@+id/action_menuCiclos_to_menuModulo"
+            app:destination="@id/menuModulo" />
+    </fragment>
+    <fragment
+        android:id="@+id/FPHilo"
+        android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
+        android:label="fragment_fp_hilo"
+        tools:layout="@layout/fragment_fp_hilo" />
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
         android:label="@string/menu_ajustes"
         tools:layout="@layout/fragment_fp_ajustes" />
+    <fragment
+        android:id="@+id/menuModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuModulo"
+        android:label="MenuModulo" >
+        <action
+            android:id="@+id/action_menuModulo_to_listaUFs"
+            app:destination="@id/listaUFs" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUFs"
+        android:name="cat.copernic.fpshare.ui.fragments.ListaUFs"
+        android:label="fragment_lista_u_fs"
+        tools:layout="@layout/fragment_lista_u_fs" />
+    <fragment
+        android:id="@+id/menuAdministracion"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuAdministracion"
+        android:label="fragment_menu_administracion"
+        tools:layout="@layout/fragment_menu_administracion" >
+        <action
+            android:id="@+id/action_menuAdministracion_to_listaUsuariosAdministracion"
+            app:destination="@id/listaUsuariosAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUsuariosAdministracion"
+        android:name="cat.copernic.fpshare.ui.fragments.ListaUsuariosAdministracion"
+        android:label="fragment_lista_usuarios_administracion"
+        tools:layout="@layout/fragment_lista_usuarios_administracion" />
+
 </navigation>
