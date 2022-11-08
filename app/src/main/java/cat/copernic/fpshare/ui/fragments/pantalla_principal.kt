@@ -1,19 +1,29 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.TextureView
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class pantalla_principal : Fragment() {
+
     private var _binding: FragmentPantallaPrincipalBinding? = null
     private val binding get() = _binding!!
     private lateinit var boton: Button
@@ -34,22 +44,20 @@ class pantalla_principal : Fragment() {
         return view
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
-        // botonNewPost = binding
 
-        boton.setOnClickListener {
-            val action = pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
-            view.findNavController().navigate(action)
 
-        }
 
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 }
