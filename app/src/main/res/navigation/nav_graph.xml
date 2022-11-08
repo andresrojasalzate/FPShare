@@ -44,4 +44,27 @@
         android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
         android:label="fragment_fp_hilo"
         tools:layout="@layout/fragment_fp_hilo" />
+        tools:layout="@layout/fragment_menu_ciclos" >
+        <action
+            android:id="@+id/action_menuCiclos_to_menuModulo"
+            app:destination="@id/menuModulo" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
+        android:label="@string/menu_ajustes"
+        tools:layout="@layout/fragment_fp_ajustes" />
+    <fragment
+        android:id="@+id/menuModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuModulo"
+        android:label="MenuModulo" >
+        <action
+            android:id="@+id/action_menuModulo_to_listaUFs"
+            app:destination="@id/listaUFs" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUFs"
+        android:name="cat.copernic.fpshare.ui.fragments.ListaUFs"
+        android:label="fragment_lista_u_fs"
+        tools:layout="@layout/fragment_lista_u_fs" />
 </navigation>
