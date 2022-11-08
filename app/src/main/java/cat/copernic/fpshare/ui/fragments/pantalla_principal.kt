@@ -47,8 +47,6 @@ class pantalla_principal : Fragment() {
 
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
