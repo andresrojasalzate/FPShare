@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cat.copernic.fpshare.R
+import cat.copernic.fpshare.databinding.FragmentListaUFsBinding
 import cat.copernic.fpshare.databinding.FragmentMenuAdministracionBinding
 
 class ListaUFs : Fragment() {
-    private var _binding: FragmentMenuAdministracionBinding? = null
+    private var _binding: FragmentListaUFsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class ListaUFs : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMenuAdministracionBinding.inflate(inflater, container, false)
+        _binding = FragmentListaUFsBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
