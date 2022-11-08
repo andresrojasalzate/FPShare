@@ -35,4 +35,15 @@
         android:name="cat.copernic.fpshare.ui.fragments.NuevaPublicacion"
         android:label="fragment_nueva_publicacion"
         tools:layout="@layout/fragment_nueva_publicacion" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="cat.copernic.fpshare.ui.fragments.perfil"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
+        android:label="@string/menu_ajustes"
+        tools:layout="@layout/fragment_fp_ajustes" />
 </navigation>

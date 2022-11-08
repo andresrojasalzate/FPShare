@@ -21,4 +21,8 @@
     <style name="SplashTheme" parent="Theme.Fpshare">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
+
+    <style name="Theme.FpShare.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Fpshare.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
