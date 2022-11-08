@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import cat.copernic.fpshare.R
-import cat.copernic.fpshare.databinding.FragmentFpHiloBinding
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
 
 

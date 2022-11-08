@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
-import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
+
 
 
 class CreacionForo : Fragment() {
