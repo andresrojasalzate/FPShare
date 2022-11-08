@@ -11,8 +11,8 @@
         android:label="fragment_pantalla_principal"
         tools:layout="@layout/fragment_pantalla_principal" >
         <action
-            android:id="@+id/action_pantalla_principal_to_nuevaPublicacion"
-            app:destination="@id/nuevaPublicacion" />
+            android:id="@+id/action_pantalla_principal_to_vista_previa_publicacion"
+            app:destination="@id/vista_previa_publicacion" />
     </fragment>
 
     <fragment
