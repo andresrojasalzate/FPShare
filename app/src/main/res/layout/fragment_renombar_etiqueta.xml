@@ -3,12 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.RenombarEtiqueta">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/titleRenameTag"
+            style="@style/Widget.FpShare.TextViewTitle"
+            android:layout_marginStart="@dimen/size_40"
+            android:layout_marginTop="@dimen/size_76"
+            android:text="@string/rename_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <TextView
+            android:id="@+id/txtRenameTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_80"
+            android:text="@string/new_tag"
+            app:layout_constraintStart_toStartOf="@+id/titleRenameTag"
+            app:layout_constraintTop_toBottomOf="@+id/titleRenameTag"
+            />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/introRename"
+            style="@style/Widget.FpShare.TextInputLayout"
+            android:layout_marginTop="@dimen/size_10"
+            app:layout_constraintStart_toStartOf="@+id/txtRenameTag"
+            app:layout_constraintTop_toBottomOf="@+id/txtRenameTag"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/InputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/txtNombre"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnCambiar"
+            style="@style/Widget.FpShare.Button"
+            android:layout_marginTop="@dimen/size_80"
+            android:text="@string/txt_change"
+            app:layout_constraintStart_toStartOf="@+id/introRename"
+            app:layout_constraintTop_toBottomOf="@+id/introRename"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

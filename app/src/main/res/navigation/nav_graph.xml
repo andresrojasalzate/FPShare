@@ -24,7 +24,11 @@
         android:id="@+id/listaForos"
         android:name="cat.copernic.fpshare.ui.fragments.ListaForos"
         android:label="fragment_lista_foros"
-        tools:layout="@layout/fragment_lista_foros" />
+        tools:layout="@layout/fragment_lista_foros" >
+        <action
+            android:id="@+id/action_listaForos_to_FPHilo"
+            app:destination="@id/FPHilo" />
+    </fragment>
     <fragment
         android:id="@+id/nuevaPublicacion"
         android:name="cat.copernic.fpshare.ui.fragments.NuevaPublicacion"
@@ -35,4 +39,9 @@
         android:name="cat.copernic.fpshare.ui.fragments.MenuCiclos"
         android:label="fragment_menu_ciclos"
         tools:layout="@layout/fragment_menu_ciclos" />
+    <fragment
+        android:id="@+id/FPHilo"
+        android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
+        android:label="fragment_fp_hilo"
+        tools:layout="@layout/fragment_fp_hilo" />
 </navigation>
