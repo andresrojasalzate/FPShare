@@ -18,12 +18,14 @@ class RecoveryPassword : AppCompatActivity() {
     private lateinit var emailRecovery: EditText
     private lateinit var buttonRecovery: Button
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityRecoveryPasswordBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
         val binding = ActivityRecoveryPasswordBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val view = binding.root
+        setContentView(view)
 
         init()
 

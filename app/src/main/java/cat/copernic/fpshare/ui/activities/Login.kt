@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
+import cat.copernic.fpshare.databinding.LoginBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,7 @@ class Login : AppCompatActivity() {
     private lateinit var bontonRegistre: Button
     private lateinit var textViewForgotPassword: TextView
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding: LoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(2000)
@@ -28,7 +30,9 @@ class Login : AppCompatActivity() {
         this.supportActionBar!!.hide()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        binding = LoginBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         inicializacion()
 
