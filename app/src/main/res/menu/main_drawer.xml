@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_profile"
             android:title="@string/menu_perfil" />
         <item
+            android:id="@+id/menuAdministracion"
+            android:icon="@drawable/ic_menu_admin"
+            android:title="@string/administration"/>
+        <item
             android:id="@+id/fp_ajustes"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/menu_ajustes" />
