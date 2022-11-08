@@ -21,4 +21,5 @@
             android:icon="@drawable/ic_menu_logout"
             android:title="@string/menu_logout" />
     </group>
+
 </menu>

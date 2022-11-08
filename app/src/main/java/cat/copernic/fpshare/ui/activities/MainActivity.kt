@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
-
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
