@@ -3,6 +3,7 @@ package cat.copernic.fpshare.ui.activities
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -10,6 +11,7 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import cat.copernic.fpshare.R
+import cat.copernic.fpshare.ui.fragments.pantalla_principal
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavMenu(navController)
         // Make sure actions in the ActionBar get propagated to the NavController
         setupActionBarWithNavController(navController)
-        setupBottomNavMenu(navController);
 
     }
 
