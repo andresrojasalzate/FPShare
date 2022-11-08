@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
+import cat.copernic.fpshare.databinding.ActivityRegistroBinding
+import cat.copernic.fpshare.databinding.LoginBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -19,12 +21,14 @@ class Register : AppCompatActivity() {
     private lateinit var InputPassword: EditText
     private lateinit var InputMail: EditText
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var binding: ActivityRegistroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
+        binding = ActivityRegistroBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         //Inicializacion de componentes
         InputNombre = findViewById(R.id.InputNombre)
