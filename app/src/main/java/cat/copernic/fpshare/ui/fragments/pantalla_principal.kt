@@ -36,7 +36,7 @@ class pantalla_principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
-
+        btn_logout = binding.btnLogout
         boton.setOnClickListener {
             val action =
                 pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
