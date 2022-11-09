@@ -2,9 +2,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_perfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.perfil">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,12 +18,12 @@
             android:layout_height="@dimen/size_100"
             android:layout_marginTop="@dimen/size_36"
             android:layout_marginEnd="@dimen/size_8"
+            android:contentDescription="@string/content_description_foto_de_perfil_de_usuario_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/foto_peril_usuario"
-            tools:ignore="ImageContrastCheck"
-            android:contentDescription="@string/content_description_foto_de_perfil_de_usuario_profile" />
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView_name_profile"
@@ -64,8 +66,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_lastnames_profile"
             style="@style/Widget.FpShare.TextInputLayout"
-            android:hint="@string/last_names_profile"
             android:layout_marginTop="@dimen/size_8"
+            android:hint="@string/last_names_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_lastnames_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView_lastnames_profile">
 
@@ -89,8 +91,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_email_profile"
             style="@style/Widget.FpShare.TextInputLayout"
-            android:hint="@string/email_profile"
             android:layout_marginTop="@dimen/size_8"
+            android:hint="@string/email_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_email_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView_email_profile">
 
@@ -114,8 +116,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_telephone_number_profile"
             style="@style/Widget.FpShare.TextInputLayout"
-            android:hint="@string/telephone_number_profile"
             android:layout_marginTop="@dimen/size_8"
+            android:hint="@string/telephone_number_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView_telephone_number_profile">
 
@@ -140,8 +142,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/imput_institute_profile"
             style="@style/Widget.FpShare.TextInputLayout"
-            android:hint="@string/institute_profile"
             android:layout_marginTop="@dimen/size_8"
+            android:hint="@string/institute_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_institute_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView_institute_profile">
 

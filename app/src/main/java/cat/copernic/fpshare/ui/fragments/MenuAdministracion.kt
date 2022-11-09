@@ -14,7 +14,9 @@ class MenuAdministracion : Fragment() {
 
     private var _binding: FragmentMenuAdministracionBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  bontonUsers : Button
+    private lateinit var  botonUsers : Button
+    private lateinit var botonPosts : Button
+    private lateinit var botonTags : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +34,23 @@ class MenuAdministracion : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        bontonUsers = binding.buttonUsersAdminMenu
+        botonUsers = binding.buttonUsersAdminMenu
+        botonPosts= binding.buttonPostsAdminMenu
+        botonTags = binding.buttonTagsAdminMenu
 
-        bontonUsers.setOnClickListener {
+        botonUsers.setOnClickListener {
             val action =
                 MenuAdministracionDirections.actionMenuAdministracionToListaUsuariosAdministracion()
+            view.findNavController().navigate(action)
+        }
+        botonPosts.setOnClickListener {
+            val action =
+                MenuAdministracionDirections.actionMenuAdministracionToListaPublicacionesAdministracion()
+            view.findNavController().navigate(action)
+        }
+        botonTags.setOnClickListener {
+            val action =
+                MenuAdministracionDirections.actionMenuAdministracionToListaTagsAdministracion()
             view.findNavController().navigate(action)
         }
     }
