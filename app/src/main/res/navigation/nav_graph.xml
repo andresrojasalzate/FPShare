@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pantalla_principal_to_vista_previa_publicacion"
             app:destination="@id/vista_previa_publicacion" />
+        <action
+            android:id="@+id/action_pantalla_principal_to_login"
+            app:destination="@id/login" />
     </fragment>
 
     <fragment
@@ -110,4 +113,8 @@
         android:name="cat.copernic.fpshare.ui.fragments.Renombrar_Usuario"
         android:label="fragment_rename_user"
         tools:layout="@layout/fragment_renombrar__usuario" />
+    <activity
+        android:id="@+id/login"
+        android:name="cat.copernic.fpshare.ui.activities.Login"
+        android:label="Login" />
 </navigation>

@@ -1,6 +1,7 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.view.*
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
+import cat.copernic.fpshare.ui.activities.Login
+import cat.copernic.fpshare.ui.activities.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -44,6 +47,10 @@ class pantalla_principal : Fragment() {
         }
         btn_logout.setOnClickListener{
             Firebase.auth.signOut()
+            val action =
+                pantalla_principalDirections.actionPantallaPrincipalToLogin()
+            view.findNavController().navigate(action)
+
         }
 
     }
