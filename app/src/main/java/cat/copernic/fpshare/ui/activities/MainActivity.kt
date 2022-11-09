@@ -26,9 +26,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Get the navigation host fragment from this Activity
+
+        // Instantiate the navController using the NavHostFragment
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        // Instantiate the navController using the NavHostFragment
+
         navController = navHostFragment.navController
         setupBottomNavMenu(navController)
         // Make sure actions in the ActionBar get propagated to the NavController
