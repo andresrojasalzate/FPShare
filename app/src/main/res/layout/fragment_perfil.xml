@@ -144,7 +144,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/institute_profile"
-                android:textColor="#1976D2"
                 app:layout_constraintStart_toStartOf="@+id/imput_telephone_number_profile"
                 app:layout_constraintTop_toBottomOf="@+id/imput_telephone_number_profile" />
 
@@ -174,6 +173,4 @@
                 app:layout_constraintTop_toBottomOf="@+id/imput_institute_profile" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </FrameLayout>

@@ -60,7 +60,11 @@
         android:id="@+id/fp_ajustes"
         android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
         android:label="@string/menu_ajustes"
-        tools:layout="@layout/fragment_fp_ajustes" />
+        tools:layout="@layout/fragment_fp_ajustes">
+        <action
+            android:id="@+id/action_fp_ajustes_to_pantalla_principal"
+            app:destination="@id/pantalla_principal" />
+    </fragment>
     <fragment
         android:id="@+id/menuModulo"
         android:name="cat.copernic.fpshare.ui.fragments.MenuModulo"
