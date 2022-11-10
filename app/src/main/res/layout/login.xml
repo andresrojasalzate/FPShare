@@ -31,7 +31,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_email_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_48"
+            android:layout_height="wrap_content"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +70,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_password_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_48"
+            android:layout_height="wrap_content"
             android:inputType="textPassword"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
