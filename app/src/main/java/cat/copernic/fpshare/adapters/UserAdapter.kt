@@ -13,7 +13,7 @@ class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserA
     private lateinit var contexto: Context
 
     inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
-         val ViewB = ItemUserBinding.bind(view)
+        val ViewB = ItemUserBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +25,14 @@ class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserA
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val usuario = usuarios.get(position)
         with(holder){
-            ViewB.numUsuario.text = usuario.id.toString()
+            ViewB.numUsuario.text =(position + 1).toString()
             ViewB.nombreUsuario.text = usuario.nombre
+
+            /*Glide.with(contexto)
+                .load(usuario.imagen)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .into(ViewB.imagenPerfil)*/
         }
 
     }
