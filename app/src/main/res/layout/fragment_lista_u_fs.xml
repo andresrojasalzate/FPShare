@@ -2,26 +2,26 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/size_50"
-    android:layout_marginLeft="@dimen/size_50"
-    android:layout_width="@dimen/size_300"
-    android:layout_height="@dimen/size_360"
-    tools:context=".ui.fragments.MenuCiclos">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.ListaUFs">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <Button
-            android:id="@+id/btn_uf"
+            android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:text="Modulos"
+            android:layout_marginStart="174dp"
+            android:layout_marginTop="356dp"
+            android:layout_marginEnd="143dp"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

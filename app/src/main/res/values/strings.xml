@@ -124,4 +124,11 @@
     <string name="bottom_search">search</string>
     <string name="bottom_forum">forum</string>
     <string name="bottom_new_post">new post</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rename_tag">Rename Tag</string>
+    <string name="new_tag">New Tag</string>
+    <string name="administration">Administration</string>
+    <string name="rename_user">Rename user</string>
+    <string name="delete_user">Delete user</string>
 </resources>

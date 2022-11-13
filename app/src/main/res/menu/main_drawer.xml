@@ -5,11 +5,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_perfil"
+            android:id="@+id/fragment_perfil"
             android:icon="@drawable/ic_menu_profile"
             android:title="@string/menu_perfil" />
         <item
-            android:id="@+id/nav_ajustes"
+            android:id="@+id/menuAdministracion"
+            android:icon="@drawable/ic_menu_admin"
+            android:title="@string/administration"/>
+        <item
+            android:id="@+id/fp_ajustes"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/menu_ajustes" />
         <item
@@ -17,4 +21,5 @@
             android:icon="@drawable/ic_menu_logout"
             android:title="@string/menu_logout" />
     </group>
+
 </menu>
