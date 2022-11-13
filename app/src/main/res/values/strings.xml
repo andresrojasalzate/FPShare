@@ -131,4 +131,8 @@
     <string name="administration">Administration</string>
     <string name="rename_user">Rename user</string>
     <string name="delete_user">Delete user</string>
+    <!-- Datos Ficticios Publicacion -->
+    <string name="profile_name">Albert Montero</string>
+    <string name="title_post">Resumen BBDD</string>
+    <string name="content_description">Dejo aqui el enlace a los apuntes de Base de datos donde explica todo lo relacionado al modelo relacional y tres ejercicios para practicar.</string>
 </resources>

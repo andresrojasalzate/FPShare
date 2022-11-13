@@ -29,6 +29,10 @@ class CicleAdapter(private val cicleArrayList: ArrayList<String>/*, context: Con
 
     class CicleViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val button = view.findViewById<Button>(R.id.button_list)!!
+        init {
+
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CicleViewHolder {

@@ -8,6 +8,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
+import cat.copernic.fpshare.clases.Datasource
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
 import cat.copernic.fpshare.ui.activities.Login
 import cat.copernic.fpshare.ui.activities.MainActivity
@@ -38,7 +41,18 @@ class pantalla_principal : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        boton = binding.button3
+
+        // Initialize data.
+        val myDataset = Datasource().loadPublicacion()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.adapter = ItemAdapter(this, myDataset)
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true)
+
+        /*boton = binding.button3
         btn_logout = binding.btnLogout
         boton.setOnClickListener {
             val action =
@@ -52,7 +66,7 @@ class pantalla_principal : Fragment() {
             view.findNavController().navigate(action)
 
 
-        }
+        }*/
 
     }
     override fun onDestroyView() {
