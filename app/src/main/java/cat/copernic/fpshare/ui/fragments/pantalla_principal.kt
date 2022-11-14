@@ -52,7 +52,6 @@ class pantalla_principal : Fragment() {
             view.findNavController().navigate(action)
 
         }
-
     }
     override fun onDestroyView() {
         super.onDestroyView()

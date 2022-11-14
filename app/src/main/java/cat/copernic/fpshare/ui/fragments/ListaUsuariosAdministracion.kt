@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.UserAdapter
-import cat.copernic.fpshare.clases.User
+import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
 
 class ListaUsuariosAdministracion : Fragment() {
@@ -58,11 +58,11 @@ class ListaUsuariosAdministracion : Fragment() {
 
         val usuarios = mutableListOf<User>()
 
-        val usuario1 = User(1, "Antoni", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
+        /*val usuario1 = User(1, "Antoni", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
         val usuario2 = User(2, "Guille", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
         val usuario3 = User(3, "Fran", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
         val usuario4 = User(4, "Andrés", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
-
+        val usuario5 = User(4,"","")
         usuarios.add(usuario1)
         usuarios.add(usuario2)
         usuarios.add(usuario3)
@@ -72,7 +72,7 @@ class ListaUsuariosAdministracion : Fragment() {
 
             usuarios.add(User(num, "Andrés", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg"))
 
-        }
+        }*/
 
         return usuarios
 

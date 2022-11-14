@@ -4,14 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
 import cat.copernic.fpshare.databinding.LoginBinding
+import cat.copernic.fpshare.modelo.User
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class Register : AppCompatActivity() {
@@ -22,6 +25,7 @@ class Register : AppCompatActivity() {
     private lateinit var InputMail: EditText
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegistroBinding
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
@@ -49,9 +53,23 @@ class Register : AppCompatActivity() {
                 registrar(password, mail)
             }
 
+            val usuario = User(mail, nombre, "", "", "", false)
+            anadirUsuario(usuario, mail)
         }
 
 
+    }
+
+    fun  anadirUsuario(usuario : User, email :String){
+        bd.collection("Usuarios").document(email).set(
+            usuario
+        )
+            .addOnSuccessListener { //S'ha afegit el departament...
+            Toast.makeText(applicationContext,"El user s'ha afegit correctament", Toast.LENGTH_LONG).show()
+        }
+            .addOnFailureListener{ //No s'ha afegit el departament...
+                Toast.makeText(applicationContext,"El user no s'ha afegit", Toast.LENGTH_LONG).show()
+            }
     }
 
     fun campoVacio(nombre: String, password: String, mail: String): Boolean {

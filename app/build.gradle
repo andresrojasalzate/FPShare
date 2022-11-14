@@ -79,4 +79,9 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.0'
+    //Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
 }

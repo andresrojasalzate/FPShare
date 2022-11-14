@@ -10,9 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
-import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.clases.Foro
-import cat.copernic.fpshare.clases.User
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
 
 
