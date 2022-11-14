@@ -11,11 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-47dp"
+            tools:layout_editor_absoluteY="-100dp" />
+
         <Button
             android:id="@+id/btn_modulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Button"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="48dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

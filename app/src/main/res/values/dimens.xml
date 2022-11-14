@@ -40,4 +40,5 @@
     <dimen name="size_0">0dp</dimen>
     <dimen name="size_550">550dp</dimen>
     <dimen name="size_450">450dp</dimen>
+    <dimen name="size_320">320dp</dimen>
 </resources>

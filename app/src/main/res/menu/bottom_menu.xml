@@ -3,7 +3,7 @@
     <item
         android:id="@+id/pantalla_principal"
         android:icon="@drawable/home"
-        android:title="@string/bottom_home"
+        android:title="home"
         />
     <item
         android:id="@+id/menuCiclos"
@@ -12,10 +12,10 @@
     <item
         android:id="@+id/listaForos"
         android:icon="@drawable/internet"
-        android:title="@string/bottom_forum" />
+        android:title="forum" />
 
     <item
         android:id="@+id/nuevaPublicacion"
         android:icon="@drawable/mas"
-        android:title="@string/bottom_new_post" />
+        android:title="new post" />
 </menu>

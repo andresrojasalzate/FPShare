@@ -1,16 +1,17 @@
 package cat.copernic.fpshare.ui.fragments
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.view.*
+import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
+import cat.copernic.fpshare.adapters.PubliAdapter
+import cat.copernic.fpshare.clases.Publicacion
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
-import cat.copernic.fpshare.ui.activities.Login
-import cat.copernic.fpshare.ui.activities.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -20,6 +21,8 @@ class pantalla_principal : Fragment() {
     private val binding get() = _binding!!
     private lateinit var boton: Button
     private lateinit var btn_logout: Button
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: Adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,8 @@ class pantalla_principal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
         btn_logout = binding.btnLogout
+
+
         boton.setOnClickListener {
             val action =
                 pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
@@ -51,13 +56,14 @@ class pantalla_principal : Fragment() {
                 pantalla_principalDirections.actionPantallaPrincipalToLogin()
             view.findNavController().navigate(action)
 
+
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }
