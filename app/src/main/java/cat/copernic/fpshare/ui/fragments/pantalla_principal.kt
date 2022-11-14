@@ -43,14 +43,7 @@ class pantalla_principal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
         btn_logout = binding.btnLogout
-        recyclerView = binding.recyclerView
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = PubliAdapter(crearPublicacion())
-
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
 
         boton.setOnClickListener {
             val action =
@@ -72,17 +65,6 @@ class pantalla_principal : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun crearPublicacion(): MutableList<Publicacion>{
-
-        val publicaciones = mutableListOf<Publicacion>()
-
-        for(num in 1 .. 10){
-            publicaciones.add(Publicacion(context.resources(R.drawable.perfil), "Albert Montero","Resumen BBDD","Resumen de la teoria de Bases de datos del modelo Relacional.", "link"))
-        }
-        return publicaciones
-    }
-
 
 
 }
