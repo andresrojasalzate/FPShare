@@ -131,4 +131,5 @@
     <string name="administration">Administration</string>
     <string name="rename_user">Rename user</string>
     <string name="delete_user">Delete user</string>
+    <string name="delete_tag">Delete Tag</string>
 </resources>
