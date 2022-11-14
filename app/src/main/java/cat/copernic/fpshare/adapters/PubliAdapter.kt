@@ -4,46 +4,48 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import org.w3c.dom.Text
+import cat.copernic.fpshare.clases.Publicacion
+import cat.copernic.fpshare.databinding.ItemPubliBinding
+import cat.copernic.fpshare.databinding.ItemViewBinding
 
-class PubliAdapter(private val publicacion: String, context: Context) :
-    RecyclerView.Adapter<PubliAdapter.PubliViewHolder>() {
+class PubliAdapter (private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter.PubliViewHolder>() {
+    private lateinit var contexto: Context
 
-    class PubliViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-
-        val imgIcon: ImageView = view.findViewById(R.id.imgIcon)
-        val textProf: TextView = view.findViewById(R.id.txtProf)
-        val txtDescr: TextView = view.findViewById(R.id.txtDescr)
-        val textLink: TextView = view.findViewById(R.id.textLink)
-
+    inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+        val viewB = ItemPubliBinding.bind(view)
     }
+
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PubliViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.publi_list_item, viewGroup, false)
+        contexto=viewGroup.context
+        val view = LayoutInflater.from(contexto)
+            .inflate(R.layout.item_publi, viewGroup, false)
 
         return PubliViewHolder(view)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: PubliViewHolder, position: Int) {
+        val publicacion = publicaciones.get(position)
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
        // viewHolder.imgIcon.ImageIcon = dataSet[position]
-        viewHolder.textProf.text = dataSet[position]
-        viewHolder.txtDescr.text = dataSet[position]
-        viewHolder.textLink.text = dataSet[position]
+        with(viewHolder){
+
+            //viewB.imgIcon.drawable =
+            viewB.txtProf.text= publicacion.perfil
+            viewB.textLink.text = publicacion.titulo
+            viewB.txtDescr.text = publicacion.descripcion
+
+        }
     }
 
     override fun getItemCount(): Int {
-        return 2
+        return publicaciones.size
     }
     /*
     val ciclos = context.resources.getStringArray(R.array.publicacion).toList()
