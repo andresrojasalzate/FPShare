@@ -1,6 +1,5 @@
 package cat.copernic.fpshare.clases
 
-class Cicle {
-
+data class cicle(var idCiclo: String, var nombre: String) {
 
 }
