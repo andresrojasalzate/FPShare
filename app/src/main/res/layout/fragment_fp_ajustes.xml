@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_50"
-            android:layout_marginTop="@dimen/size_64"
+            android:layout_marginTop="40dp"
             android:text="@string/language"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_50"
-            android:layout_marginTop="@dimen/size_45"
+            android:layout_marginTop="20dp"
             android:text="@string/theme"
             android:textAlignment="center"
             android:textStyle="bold"
@@ -41,7 +41,7 @@
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_150"
             android:layout_marginStart="@dimen/size_50"
-            android:layout_marginTop="@dimen/size_45"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_idioma">
 
@@ -67,7 +67,7 @@
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_150"
             android:layout_marginStart="@dimen/size_50"
-            android:layout_marginTop="@dimen/size_45"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_aspect">
 
@@ -91,12 +91,14 @@
         <Button
             android:id="@+id/btn_submit"
             style="@style/Widget.FpShare.Button"
-            android:layout_marginBottom="@dimen/size_20"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
             android:text="@string/btn_guardar"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_aspect" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -24,8 +24,8 @@
     </style>
     <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
         <item name="background">@color/lavada</item>
-        <item name="android:layout_width">@dimen/size_60</item>
-        <item name="android:layout_height">@dimen/size_20</item>
+        <item name="android:layout_width">@dimen/size_80</item>
+        <item name="android:layout_height">@dimen/size_48</item>
     </style>
     <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
