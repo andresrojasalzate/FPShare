@@ -4,14 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
-
+import cat.copernic.fpshare.modelo.Foro
+import cat.copernic.fpshare.modelo.Mensaje
+import cat.copernic.fpshare.modelo.User
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class CreacionForo : Fragment() {
     private var _binding: FragmentCreacionForoBinding? = null
     private val binding get() = _binding!!
+    private lateinit var titulo : EditText
+    private lateinit var descripcion : EditText
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +37,21 @@ class CreacionForo : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        titulo = binding.txtThreadInput
+        descripcion = binding.txtDescriptionInput
+        var mensajes = ArrayList<Mensaje>()
+        var foro = Foro(titulo.toString(), descripcion.toString(), mensajes)
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    fun  anadirForo(foro : Foro){
+        bd.collection("Foros").add(foro)
     }
 
 }

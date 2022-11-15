@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.MenuAdapter
-import cat.copernic.fpshare.clases.User
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 import cat.copernic.fpshare.clases.Menu
 

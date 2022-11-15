@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.clases.Foro
+import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.ItemForoBinding
 
 
@@ -25,11 +25,11 @@ class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAda
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
-
+        val numMensajes = foro.mensajes.size
         with(holder){
-            ViewB.autor.text = foro.autor
+            ViewB.autor.text = foro.emailautor
             ViewB.titulo.text = foro.titulo
-            ViewB.comentarios.text = foro.numComentario
+            ViewB.comentarios.text = numMensajes.toString()
         }
 
     }

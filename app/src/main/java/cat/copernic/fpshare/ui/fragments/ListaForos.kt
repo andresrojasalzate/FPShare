@@ -10,8 +10,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
-import cat.copernic.fpshare.clases.Foro
+import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
+import cat.copernic.fpshare.modelo.Mensaje
 
 
 class ListaForos : Fragment() {
@@ -56,10 +57,11 @@ class ListaForos : Fragment() {
     private fun obtenerForos(): MutableList<Foro>{
 
         val foros = mutableListOf<Foro>()
+        val mensajes = ArrayList<Mensaje>()
 
         for(num in 1..30){
 
-            foros.add(Foro("Titulo de foro","Andrés", "10"))
+            foros.add(Foro("Titulo de foro","Andrés", mensajes))
 
         }
 
