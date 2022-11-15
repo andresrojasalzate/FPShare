@@ -111,7 +111,11 @@
         android:id="@+id/listaTagsAdministracion"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentTags"
         android:label="fragment_lista_tags_administracion"
-        tools:layout="@layout/fragment_tags" />
+        tools:layout="@layout/fragment_tags">
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_crearTag"
+            app:destination="@id/crearTag" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_renombrar_usuario"
         android:name="cat.copernic.fpshare.ui.fragments.Renombrar_Usuario"
@@ -121,4 +125,9 @@
         android:id="@+id/login"
         android:name="cat.copernic.fpshare.ui.activities.Login"
         android:label="Login" />
+    <fragment
+        android:id="@+id/crearTag"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearTag"
+        android:label="fragment_crear_tag"
+        tools:layout="@layout/fragment_crear_tag" />
 </navigation>

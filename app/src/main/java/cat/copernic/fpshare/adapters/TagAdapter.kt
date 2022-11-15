@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.clases.Cicle
 import cat.copernic.fpshare.databinding.ItemTagBinding
+import cat.copernic.fpshare.modelo.Tag
 
-class TagAdapter (private val etiquetas: List<Cicle>) : RecyclerView.Adapter<TagAdapter.ViewHolder>() {
+class TagAdapter(private val etiquetas: List<Tag>) : RecyclerView.Adapter<TagAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val ViewB = ItemTagBinding.bind(view)
     }
 
@@ -22,10 +22,11 @@ class TagAdapter (private val etiquetas: List<Cicle>) : RecyclerView.Adapter<Tag
         return ViewHolder(vista)
     }
 
-    override fun onBindViewHolder(holder: UserAdapter.ViewHolder, position: Int) {
-        val usuario = etiquetas.get(position)
-        with(holder){
-            // ViewB.nombreTag.text = usuario.nombre
+    override fun onBindViewHolder(holder: TagAdapter.ViewHolder, position: Int) {
+        val etiqueta = etiquetas.get(position)
+        with(holder) {
+            ViewB.idTag.text = etiqueta.idTag
+            ViewB.nombreTag.text = etiqueta.nombreTag
         }
 
     }
