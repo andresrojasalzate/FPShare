@@ -6,20 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.adapters.TagAdapter
+import cat.copernic.fpshare.adapters.CicleAdminAdapter
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
+import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
-import cat.copernic.fpshare.modelo.Tag
+import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Uf
 
 class FragmentTags : Fragment() {
     private var _binding: FragmentTagsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var botonAdd: Button
-    private lateinit var botonDelete: Button
-    private lateinit var recyclerView: RecyclerView
+    // Botones
+    private lateinit var botonAddCiclo: Button
+    private lateinit var botonDeleteCiclo: Button
+    private lateinit var botonAddModulo: Button
+    private lateinit var botonDeleteModulo: Button
+    private lateinit var botonAddUF: Button
+    private lateinit var botonDeleteUF: Button
+
+    // RecyclerViews
+    private lateinit var recyclerViewCiclos: RecyclerView
+    private lateinit var recyclerViewModulos: RecyclerView
+    private lateinit var recyclerViewUFs: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,18 +50,35 @@ class FragmentTags : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        botonAdd = binding.buttonAddTag
-        botonDelete = binding.buttonDeleteTag
-        recyclerView = binding.recyclerView
+        // inicializar botones de ciclo
+        botonAddCiclo = binding.buttonAddCiclo
+        botonDeleteCiclo = binding.buttonDeleteCicle
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = TagAdapter(obtenerEtiquetas())
+        // inicializar botones de modulos
+        botonAddModulo = binding.buttonAddModulo
+        botonDeleteModulo = binding.buttonDeleteModule
 
-        botonAdd.setOnClickListener {
-            val action =
-                FragmentTagsDirections.actionListaTagsAdministracionToCrearTag()
-            view.findNavController().navigate(action)
-        }
+        // inicializar botones de UFs
+        botonAddUF = binding.buttonAddUF
+        botonDeleteUF = binding.buttonDeleteUF
+
+        // inicializar recyclerViews
+        recyclerViewCiclos = binding.recyclerViewCiclos
+        recyclerViewModulos = binding.recyclerViewModulos
+        recyclerViewUFs = binding.recyclerViewUFs
+
+        // recyclerView de Ciclos
+        recyclerViewCiclos.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewCiclos.adapter = CicleAdminAdapter(obtenerCiclos())
+
+        // recyclerView de Modulos
+        recyclerViewModulos.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewModulos.adapter = ModulAdminAdapter(obtenerModulos())
+
+        // recyclerView de UFs
+        recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewUFs.adapter = UfAdminAdapter(obtenerUFs())
+
     }
 
     override fun onDestroyView() {
@@ -57,9 +86,21 @@ class FragmentTags : Fragment() {
         _binding = null
     }
 
-    fun obtenerEtiquetas(): MutableList<Tag> {
-        val etiquetas = mutableListOf<Tag>()
+    fun obtenerCiclos(): MutableList<Cicle> {
+        val ciclos = mutableListOf<Cicle>()
 
-        return etiquetas
+        return ciclos
+    }
+
+    fun obtenerModulos(): MutableList<Modul> {
+        val modulos = mutableListOf<Modul>()
+
+        return modulos
+    }
+
+    fun obtenerUFs(): MutableList<Uf> {
+        val UFs = mutableListOf<Uf>()
+
+        return UFs
     }
 }

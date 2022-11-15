@@ -6,46 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.FragmentTags">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Tags">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="@dimen/size_300"
-            android:layout_height="@dimen/size_300"
-            android:layout_marginStart="@dimen/size_10"
-            android:layout_marginTop="@dimen/size_100"
-            android:layout_marginEnd="@dimen/size_10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             tools:context=".Tags">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/item_tag" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_ciclos"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_300"
+                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="@dimen/size_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:context=".Ciclo">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCiclos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_tag" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button_add_ciclo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Add Cicle"
+                app:layout_constraintStart_toStartOf="@+id/layout_UFs"
+                app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
+
+            <Button
+                android:id="@+id/button_delete_cicle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Delete Cicle"
+                app:layout_constraintEnd_toEndOf="@+id/layout_UFs"
+                app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_modulos"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_300"
+                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="@dimen/size_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_delete_cicle"
+                tools:context=".Modul">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewModulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_tag" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button_add_modulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Add Module"
+                app:layout_constraintStart_toStartOf="@+id/layout_modulos"
+                app:layout_constraintTop_toBottomOf="@+id/layout_modulos" />
+
+            <Button
+                android:id="@+id/button_delete_module"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Delete Module"
+                app:layout_constraintEnd_toEndOf="@+id/layout_modulos"
+                app:layout_constraintTop_toBottomOf="@+id/layout_modulos" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_UFs"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_300"
+                android:layout_marginStart="@dimen/size_10"
+                android:layout_marginEnd="@dimen/size_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:context=".Tags"
+                tools:layout_editor_absoluteY="100dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewUFs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_tag" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button_add_UF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_100"
+                android:text="Add UF"
+                app:layout_constraintStart_toStartOf="@+id/layout_UFs"
+                app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
+
+            <Button
+                android:id="@+id/button_delete_UF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_100"
+                android:text="Delete UF"
+                app:layout_constraintEnd_toEndOf="@+id/layout_UFs"
+                app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <Button
-            android:id="@+id/button_add_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_100"
-            android:text="Add Tag"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <Button
-            android:id="@+id/button_delete_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_100"
-            android:text="@string/delete_tag"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
