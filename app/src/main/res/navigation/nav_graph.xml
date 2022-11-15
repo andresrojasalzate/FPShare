@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_pantalla_principal_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_pantalla_principal_to_creacionForo"
+            app:destination="@id/creacionForo" />
     </fragment>
 
     <fragment
@@ -130,4 +133,9 @@
         android:name="cat.copernic.fpshare.ui.fragments.CrearTag"
         android:label="fragment_crear_tag"
         tools:layout="@layout/fragment_crear_tag" />
+    <fragment
+        android:id="@+id/creacionForo"
+        android:name="cat.copernic.fpshare.ui.fragments.CreacionForo"
+        android:label="fragment_creacion_foro"
+        tools:layout="@layout/fragment_creacion_foro" />
 </navigation>
