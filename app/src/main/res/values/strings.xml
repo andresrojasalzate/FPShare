@@ -141,4 +141,10 @@
     <string name="tag_name">Tag Name</string>
     <string name="id_of_tag">ID of tag..</string>
     <string name="create_new_tag">Create New Tag</string>
+    <string name="delete_uf">Delete UF</string>
+    <string name="add_uf">Add UF</string>
+    <string name="delete_module">Delete Module</string>
+    <string name="add_module">Add Module</string>
+    <string name="delete_cicle">Delete Cicle</string>
+    <string name="add_cicle">Add Cicle</string>
 </resources>
