@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.MsgAdapter
 import cat.copernic.fpshare.databinding.FragmentFpHiloBinding
+import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Mensaje
 
 
@@ -54,6 +55,12 @@ class FPHilo : Fragment() {
 
     fun obtenerMensajes(): MutableList<Mensaje> {
         val mensajes = mutableListOf<Mensaje>()
+
+        for(num in 1..30){
+
+            mensajes.add(Mensaje("Carles","Hola Buenas"))
+
+        }
 
         return mensajes
     }

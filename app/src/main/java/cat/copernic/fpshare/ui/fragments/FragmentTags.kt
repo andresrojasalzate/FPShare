@@ -14,6 +14,7 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
 import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Uf
 
@@ -115,17 +116,35 @@ class FragmentTags : Fragment() {
     fun obtenerCiclos(): MutableList<Cicle> {
         val ciclos = mutableListOf<Cicle>()
 
+        for(num in 1..30){
+
+            ciclos.add(Cicle("ID","Nombre Ciclo", emptyList()))
+
+        }
+
         return ciclos
     }
 
     fun obtenerModulos(): MutableList<Modul> {
         val modulos = mutableListOf<Modul>()
 
+        for(num in 1..30){
+
+            modulos.add(Modul("ID","Nombre Modulo", emptyList()))
+
+        }
+
         return modulos
     }
 
     fun obtenerUFs(): MutableList<Uf> {
         val UFs = mutableListOf<Uf>()
+
+        for(num in 1..30){
+
+            UFs.add(Uf("ID","Nombre UF"))
+
+        }
 
         return UFs
     }
