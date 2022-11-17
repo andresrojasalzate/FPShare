@@ -61,7 +61,7 @@ class ListaForos : Fragment() {
 
         for(num in 1..30){
 
-            foros.add(Foro("Titulo de foro","Andrés", mensajes))
+            foros.add(Foro("Titulo de foro","Andrés", "dvavev",mensajes))
 
         }
 
