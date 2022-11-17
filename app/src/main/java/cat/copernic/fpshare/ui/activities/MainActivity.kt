@@ -1,21 +1,20 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityMainBinding
-import cat.copernic.fpshare.ui.fragments.pantalla_principal
 import cat.copernic.fpshare.ui.fragments.pantalla_principalDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
