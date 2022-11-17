@@ -1,4 +1,6 @@
 package cat.copernic.fpshare.modelo
 
-class Uf(var idUf: String, var nombre: String) {
+import com.google.firebase.firestore.Exclude
+
+class Uf(@get:Exclude var idUf: String, var nombre: String) {
 }
