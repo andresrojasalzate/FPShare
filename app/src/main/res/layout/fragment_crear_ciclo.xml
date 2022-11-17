@@ -11,34 +11,36 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputIDciclo"
+            android:id="@+id/inputIDcicloMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_50"
+            android:layout_marginEnd="@dimen/size_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputIDCiclo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_id_cicle" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputNombreCicle"
+            android:id="@+id/inputNombreCicleMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_50"
+            android:layout_marginEnd="@dimen/size_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputIDciclo">
+            app:layout_constraintTop_toBottomOf="@+id/inputIDcicloMain">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputNombreCiclo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name_of_cicle" />
@@ -48,20 +50,20 @@
             android:id="@+id/btnAddCicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/size_50"
             android:text="@string/add_cicle"
             app:layout_constraintEnd_toStartOf="@+id/btnBack"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputNombreCicle" />
+            app:layout_constraintTop_toBottomOf="@+id/inputNombreCicleMain" />
 
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/size_50"
             android:text="@string/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnAddCicle"
-            app:layout_constraintTop_toBottomOf="@+id/inputNombreCicle" />
+            app:layout_constraintTop_toBottomOf="@+id/inputNombreCicleMain" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
