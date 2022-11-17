@@ -117,25 +117,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView_tags_new_post">
 
                 <RadioButton
-                    android:id="@+id/option_twenty_percent"
+                    android:id="@+id/option_dam"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
                     android:text="@string/dam_new_post" />
 
                 <RadioButton
-                    android:id="@+id/option_eighteen_percent"
+                    android:id="@+id/option_daw"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
                     android:text="@string/daw_new_post" />
 
                 <RadioButton
-                    android:id="@+id/option_fifteen_percent"
+                    android:id="@+id/option_asix"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
                     android:text="@string/asix_new_post" />
 
                 <RadioButton
-                    android:id="@+id/option_fifteen_percent2"
+                    android:id="@+id/option_smix"
                     style="@style/Widget.FpShare.RadioButton"
                     android:text="@string/smix__new_post" />
             </RadioGroup>
