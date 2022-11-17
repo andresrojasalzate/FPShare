@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.clases.Publicacion
 import cat.copernic.fpshare.databinding.ItemPubliBinding
-import cat.copernic.fpshare.databinding.ItemViewBinding
 
 class PubliAdapter (private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter.PubliViewHolder>() {
     private lateinit var contexto: Context
@@ -37,9 +36,9 @@ class PubliAdapter (private val publicaciones: List<Publicacion>) : RecyclerView
         with(viewHolder){
 
             //viewB.imgIcon.drawable =
-            viewB.txtProf.text= publicacion.perfil
+            /*viewB.txtProf.text= publicacion.perfil
             viewB.textLink.text = publicacion.titulo
-            viewB.txtDescr.text = publicacion.descripcion
+            viewB.txtDescr.text = publicacion.descripcion*/
 
         }
     }

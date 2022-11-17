@@ -58,6 +58,13 @@ class pantalla_principal : Fragment() {
 
 
         }
+        val boton2 = binding.button
+
+        boton2.setOnClickListener {
+            val action = pantalla_principalDirections.actionPantallaPrincipalToCreacionForo()
+            view.findNavController().navigate(action)
+        }
+
     }
 
     override fun onDestroyView() {

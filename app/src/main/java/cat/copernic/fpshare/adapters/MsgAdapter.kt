@@ -26,7 +26,7 @@ class MsgAdapter(private val mensajes: List<Mensaje>) :
     override fun onBindViewHolder(holder: MsgAdapter.ViewHolder, position: Int) {
         val mensajes = mensajes.get(position)
         with(holder) {
-            ViewB.nomUser.text = mensajes.user
+            ViewB.nomUser.text = mensajes.emailautor
             ViewB.txtMensaje.text = mensajes.mensaje
         }
 

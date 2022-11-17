@@ -147,4 +147,11 @@
     <string name="add_module">Add Module</string>
     <string name="delete_cicle">Delete Cicle</string>
     <string name="add_cicle">Add Cicle</string>
+    <string name="input_id_cicle">Enter the ID of the cicle</string>
+    <string name="name_of_cicle">Name of Cicle</string>
+    <string name="enter_id_uf">Enter the ID of the UF</string>
+    <string name="name_of_uf">Name of UF</string>
+    <string name="back">Back</string>
+    <string name="name_module">Name of the module</string>
+    <string name="enter_id_module">Enter the ID of the module</string>
 </resources>
