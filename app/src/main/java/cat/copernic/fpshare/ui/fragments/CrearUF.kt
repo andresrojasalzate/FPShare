@@ -61,7 +61,7 @@ class CrearUF : Fragment() {
 
     fun listeners() {
         buttonBack.setOnClickListener() {
-            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
+            val action = CrearUFDirections.actionCrearUFToListaTagsAdministracion()
             view?.findNavController()?.navigate(action)
         }
         buttonAddUf.setOnClickListener() {

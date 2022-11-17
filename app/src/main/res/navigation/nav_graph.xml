@@ -117,13 +117,13 @@
         tools:layout="@layout/fragment_tags">
         <action
             android:id="@+id/action_listaTagsAdministracion_to_crearCiclo"
-            app:destination="@id/crearCiclo" />
+            app:destination="@+id/crearCiclo" />
         <action
             android:id="@+id/action_listaTagsAdministracion_to_crearUF"
-            app:destination="@id/crearUF" />
+            app:destination="@+id/crearUF" />
         <action
             android:id="@+id/action_listaTagsAdministracion_to_crearModulo"
-            app:destination="@id/crearModulo" />
+            app:destination="@+id/crearModulo" />
     </fragment>
     <fragment
         android:id="@+id/fragment_renombrar_usuario"
@@ -135,13 +135,35 @@
         android:name="cat.copernic.fpshare.ui.activities.Login"
         android:label="Login" />
     <fragment
-        android:id="@+id/crearTag"
-        android:name="cat.copernic.fpshare.ui.fragments.CrearTag"
-        android:label="fragment_crear_tag"
-        tools:layout="@layout/fragment_crear_tag" />
-    <fragment
         android:id="@+id/creacionForo"
         android:name="cat.copernic.fpshare.ui.fragments.CreacionForo"
         android:label="fragment_creacion_foro"
         tools:layout="@layout/fragment_creacion_foro" />
+    <fragment
+        android:id="@+id/crearCiclo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
+        android:label="fragment_crear_ciclo"
+        tools:layout="@layout/fragment_crear_ciclo">
+        <action
+            android:id="@+id/action_crearCiclo_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearModulo"
+        android:label="fragment_crear_modulo"
+        tools:layout="@layout/fragment_crear_modulo">
+        <action
+            android:id="@+id/action_crearModulo_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearUF"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearUF"
+        android:label="fragment_crear_u"
+        tools:layout="@layout/fragment_crear_u">
+        <action
+            android:id="@+id/action_crearUF_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
 </navigation>
