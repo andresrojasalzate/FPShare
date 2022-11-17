@@ -4,57 +4,81 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import cat.copernic.fpshare.R
+import androidx.navigation.findNavController
+import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
+import cat.copernic.fpshare.modelo.Modul
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CrearModulo.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CrearModulo : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentCrearModuloBinding? = null
+    private val binding get() = _binding!!
+    private var bd = FirebaseFirestore.getInstance()
+
+    // Botones
+    private lateinit var buttonAddModulo: Button
+    private lateinit var buttonBack: Button
+
+    // EditText
+    private lateinit var inputIDModulo: EditText
+    private lateinit var inputNameModulo: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        inicializadores()
+        listeners()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_crear_modulo, container, false)
+    ): View {
+        _binding = FragmentCrearModuloBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CrearModulo.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CrearModulo().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    fun inicializadores() {
+        buttonAddModulo = binding.btnAddModul
+        buttonBack = binding.btnBack
+
+        inputIDModulo = binding.inputIDModul
+        inputNameModulo = binding.inputNombreModul
+    }
+
+    fun listeners() {
+        buttonBack.setOnClickListener() {
+            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
+        }
+        buttonAddModulo.setOnClickListener() {
+            val ID = inputIDModulo.text.toString()
+            val nombre = inputNameModulo.text.toString()
+
+            if (campoVacio(ID, nombre)) {
+                val modulo = Modul(ID, nombre, emptyList())
+                addModulo(modulo, ID)
             }
+        }
+    }
+
+    fun addModulo(modulo: Modul, id: String) {
+        bd.collection("Ciclos").document(id)
+            .collection("Modulos").document(id).set(modulo)
+    }
+
+    fun campoVacio(ID: String, nombre: String): Boolean {
+        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
     }
 }
