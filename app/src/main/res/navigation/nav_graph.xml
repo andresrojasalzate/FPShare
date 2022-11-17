@@ -113,8 +113,14 @@
         android:label="fragment_lista_tags_administracion"
         tools:layout="@layout/fragment_tags">
         <action
-            android:id="@+id/action_listaTagsAdministracion_to_crearTag"
-            app:destination="@id/crearTag" />
+            android:id="@+id/action_listaTagsAdministracion_to_crearCiclo"
+            app:destination="@id/crearCiclo" />
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_crearUF"
+            app:destination="@id/crearUF" />
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_crearModulo"
+            app:destination="@id/crearModulo" />
     </fragment>
     <fragment
         android:id="@+id/fragment_renombrar_usuario"
@@ -126,8 +132,18 @@
         android:name="cat.copernic.fpshare.ui.activities.Login"
         android:label="Login" />
     <fragment
-        android:id="@+id/crearTag"
-        android:name="cat.copernic.fpshare.ui.fragments.CrearTag"
-        android:label="fragment_crear_tag"
-        tools:layout="@layout/fragment_crear_tag" />
+        android:id="@+id/crearUF"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearUF"
+        android:label="fragment_crear_u"
+        tools:layout="@layout/fragment_crear_u" />
+    <fragment
+        android:id="@+id/crearModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearModulo"
+        android:label="fragment_crear_modulo"
+        tools:layout="@layout/fragment_crear_modulo" />
+    <fragment
+        android:id="@+id/crearCiclo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
+        android:label="fragment_crear_ciclo"
+        tools:layout="@layout/fragment_crear_ciclo" />
 </navigation>
