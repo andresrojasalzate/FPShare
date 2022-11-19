@@ -4,9 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.clases.Menu
 import cat.copernic.fpshare.R
@@ -14,7 +11,6 @@ import cat.copernic.fpshare.databinding.ItemMenuBinding
 
 class MenuAdapter (private val menus: List<Menu>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
     private lateinit var contexto: Context
-    //private lateinit var listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         contexto = parent.context

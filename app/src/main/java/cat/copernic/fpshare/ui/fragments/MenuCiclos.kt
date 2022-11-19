@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.MenuAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 import cat.copernic.fpshare.clases.Menu
@@ -59,6 +60,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     private fun crearMenu(): MutableList<Menu>{
+
         var menucicle = mutableListOf<Menu>()
 
         var ciclo1 = Menu(1,"DAM")
@@ -70,6 +72,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         menucicle.add(ciclo2)
         menucicle.add(ciclo3)
         menucicle.add(ciclo4)
+
 
         return menucicle
 

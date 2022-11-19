@@ -177,7 +177,9 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        TODO("Not yet implemented")
+        val view = binding.root
+        val action = MenuModuloDirections.actionMenuModuloToListaUFs()
+        view.findNavController().navigate(action)
     }
 
 }
