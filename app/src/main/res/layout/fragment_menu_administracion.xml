@@ -37,7 +37,7 @@
             android:layout_height="@dimen/size_60"
             android:layout_marginTop="@dimen/size_72"
             android:layout_marginBottom="@dimen/size_184"
-            android:text="@string/tags_admin_menu"
+            android:text="@string/cicles_menu_admin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
