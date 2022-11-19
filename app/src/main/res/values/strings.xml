@@ -154,4 +154,5 @@
     <string name="back">Back</string>
     <string name="name_module">Name of the module</string>
     <string name="enter_id_module">Enter the ID of the module</string>
+    <string name="cicles_menu_admin">cicles</string>
 </resources>
