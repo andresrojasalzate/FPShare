@@ -16,7 +16,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class MainActivity : AppCompatActivity() {
+class
+MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -63,13 +64,14 @@ class MainActivity : AppCompatActivity() {
             Firebase.auth.signOut()
             val action =
                 pantalla_principalDirections.actionPantallaPrincipalToLogin()
-            view.findNavController().navigate(action)
+            //view.findNavController().navigate(action)
         }
         else(
             return item.onNavDestinationSelected(
                 findNavController(R.id.nav_host_fragment)
             ) || super.onOptionsItemSelected(item)
         )
+            return true
     }
 
 }
