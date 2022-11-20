@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.CicleAdminAdapter
@@ -13,6 +14,7 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
 import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Uf
 
@@ -43,13 +45,24 @@ class FragmentTags : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTagsBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        inicializadoresButton()
+        inicializadoresRW()
+        listeners()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    fun inicializadoresButton() {
         // inicializar botones de ciclo
         botonAddCiclo = binding.buttonAddCiclo
         botonDeleteCiclo = binding.buttonDeleteCicle
@@ -61,7 +74,9 @@ class FragmentTags : Fragment() {
         // inicializar botones de UFs
         botonAddUF = binding.buttonAddUF
         botonDeleteUF = binding.buttonDeleteUF
+    }
 
+    fun inicializadoresRW() {
         // inicializar recyclerViews
         recyclerViewCiclos = binding.recyclerViewCiclos
         recyclerViewModulos = binding.recyclerViewModulos
@@ -78,16 +93,34 @@ class FragmentTags : Fragment() {
         // recyclerView de UFs
         recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewUFs.adapter = UfAdminAdapter(obtenerUFs())
-
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    fun listeners() {
+        botonAddCiclo.setOnClickListener() {
+            val action =
+                FragmentTagsDirections.actionListaTagsAdministracionToCrearCiclo()
+            view?.findNavController()?.navigate(action)
+        }
+        botonAddModulo.setOnClickListener() {
+            val action =
+                FragmentTagsDirections.actionListaTagsAdministracionToCrearModulo()
+            view?.findNavController()?.navigate(action)
+        }
+        botonAddUF.setOnClickListener() {
+            val action =
+                FragmentTagsDirections.actionListaTagsAdministracionToCrearUF()
+            view?.findNavController()?.navigate(action)
+        }
     }
 
     fun obtenerCiclos(): MutableList<Cicle> {
         val ciclos = mutableListOf<Cicle>()
+
+        for(num in 1..30){
+
+            ciclos.add(Cicle("ID","Nombre Ciclo", emptyList()))
+
+        }
 
         return ciclos
     }
@@ -95,11 +128,23 @@ class FragmentTags : Fragment() {
     fun obtenerModulos(): MutableList<Modul> {
         val modulos = mutableListOf<Modul>()
 
+        for(num in 1..30){
+
+            modulos.add(Modul("ID","Nombre Modulo", emptyList()))
+
+        }
+
         return modulos
     }
 
     fun obtenerUFs(): MutableList<Uf> {
         val UFs = mutableListOf<Uf>()
+
+        for(num in 1..30){
+
+            UFs.add(Uf("ID","Nombre UF"))
+
+        }
 
         return UFs
     }

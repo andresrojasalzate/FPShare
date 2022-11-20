@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.clases.Publicacion
 import cat.copernic.fpshare.databinding.ItemPubliBinding
+import cat.copernic.fpshare.modelo.Publicacion
 
 class PubliAdapter (private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter.PubliViewHolder>() {
     private lateinit var contexto: Context
@@ -34,26 +34,15 @@ class PubliAdapter (private val publicaciones: List<Publicacion>) : RecyclerView
         // contents of the view with that element
        // viewHolder.imgIcon.ImageIcon = dataSet[position]
         with(viewHolder){
-
-            //viewB.imgIcon.drawable =
-            /*viewB.txtProf.text= publicacion.perfil
+            viewB.txtProf.text= publicacion.perfil
             viewB.textLink.text = publicacion.titulo
-            viewB.txtDescr.text = publicacion.descripcion*/
-
+            viewB.txtDescr.text = publicacion.descripcion
+            viewB.textLink.text = publicacion.enlace
         }
     }
 
     override fun getItemCount(): Int {
         return publicaciones.size
     }
-    /*
-    val ciclos = context.resources.getStringArray(R.array.publicacion).toList()
-    publicacionList = ciclos
-        .filter { it.equals(publicacion, ignoreCase = true) }
-        .shuffled()
-
-        */
-
-
 
 }

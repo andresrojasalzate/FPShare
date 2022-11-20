@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
@@ -28,9 +29,9 @@ class NuevaPublicacion : Fragment() {
     private lateinit var titulo: EditText
     private lateinit var descripcion: TextInputEditText
     private lateinit var enlace: TextInputEditText
-
     private var user = Firebase.auth.currentUser
 
+    private lateinit var checked: String
     private lateinit var publicacion: Publicacion
     private lateinit var botonPublicar: Button
 
@@ -55,6 +56,7 @@ class NuevaPublicacion : Fragment() {
         descripcion = binding.textDescription
         enlace = binding.textLink
 
+
         botonPublicar.setOnClickListener{
 
             var publicacion = llegirDades()
@@ -78,9 +80,19 @@ class NuevaPublicacion : Fragment() {
         var perfil = user?.email.toString()
         var titulo = titulo.text.toString()
         var descripcion = descripcion.text.toString()
+        if(binding.optionDam.isChecked){
+            checked = "DAM"
+        }else if(binding.optionDaw.isChecked){
+            checked = "DAW"
+        }else if(binding.optionSmix.isChecked){
+            checked = "SMIX"
+        }else if(binding.optionAsix.isChecked){
+            checked = "ASIX"
+        }
         var enlace = enlace.text.toString()
 
-        return Publicacion(id, perfil, titulo, descripcion, enlace)
+
+        return Publicacion(id, perfil, titulo, descripcion, checked, enlace)
 
     }
 

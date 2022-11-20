@@ -8,21 +8,18 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.PubliAdapter
-import cat.copernic.fpshare.clases.Publicacion
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
+import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class pantalla_principal : Fragment() {
-
     private var _binding: FragmentPantallaPrincipalBinding? = null
     private val binding get() = _binding!!
     private lateinit var boton: Button
     private lateinit var btn_logout: Button
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: Adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +40,10 @@ class pantalla_principal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button3
         btn_logout = binding.btnLogout
+        recyclerView = binding.recyclerView
 
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = PubliAdapter(crearPublicacion())
 
         boton.setOnClickListener {
             val action =
@@ -70,6 +70,23 @@ class pantalla_principal : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun crearPublicacion(): MutableList<Publicacion>{
+        var publi = mutableListOf<Publicacion>()
+
+        var publicacion1 = Publicacion("a","Albert Montero","Resumen BBDD","En este enlace se explica todo sobre Modelo entidad relacion, se incluyen ejercicios.","a","https://www.google.es/")
+        var publicacion2 = Publicacion("a","Carlos Trujillo","Teoria Programacion","En este enlace se explica el funcionamiento de las etiquetas en Android. Vienen con algunos ejemplos.","a","https://www.google.es/")
+        var publicacion3 = Publicacion("a","Andres Rojas","Ejercicios JDBC","En este enlace se explica como hacer la conexion de MySQL con Java. Incluye ejercicios con una Base de Datos que contiene informacion de un aeropuerto.","a","https://www.google.es/")
+        var publicacion4 = Publicacion("a","Albert Montero","Resumen BBDD","En este enlace se explica todo sobre Modelo entidad relacion, se incluyen ejercicios.","a","https://www.google.es/")
+
+        publi.add(publicacion1)
+        publi.add(publicacion2)
+        publi.add(publicacion3)
+        publi.add(publicacion4)
+
+        return publi
+
     }
 
 

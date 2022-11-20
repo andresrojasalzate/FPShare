@@ -64,7 +64,8 @@ MainActivity : AppCompatActivity() {
             Firebase.auth.signOut()
             val action =
                 pantalla_principalDirections.actionPantallaPrincipalToLogin()
-            //view.findNavController().navigate(action)
+            // view.findNavController().navigate(action)
+            return true
         }
         else(
             return item.onNavDestinationSelected(

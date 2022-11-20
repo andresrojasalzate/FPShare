@@ -14,7 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHilo"
             android:layout_width="0dp"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +22,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tim_textHere"
-            android:layout_width="@dimen/size_272"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_5"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="@dimen/size_5"
-            android:layout_marginBottom="@dimen/size_8"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonSend"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewHilo">
@@ -44,12 +43,11 @@
             android:layout_width="@dimen/size_55"
             android:layout_height="@dimen/size_55"
             android:layout_marginStart="@dimen/size_5"
-            android:layout_marginEnd="@dimen/size_10"
-            android:layout_marginBottom="@dimen/size_8"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/bordes_redondos"
             android:contentDescription="@string/btn_send"
             android:src="@android:drawable/ic_menu_send"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tim_textHere"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewHilo"

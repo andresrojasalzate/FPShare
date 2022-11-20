@@ -5,16 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.MenuAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 import cat.copernic.fpshare.clases.Menu
+import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
 
-
-class MenuCiclos : Fragment() {
+class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     private var _binding: FragmentMenuCiclosBinding? = null
     private val binding get() = _binding!!
     private lateinit var boton: Button
@@ -39,14 +42,16 @@ class MenuCiclos : Fragment() {
         boton = binding.btnModulo
         recyclerView = binding.recyclerView
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = MenuAdapter(crearMenu())
+        var adapter = MenuAdapter(crearMenu(), this)
 
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
 
         boton.setOnClickListener {
             val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo()
             view.findNavController().navigate(action)
         }
+
     }
 
     override fun onDestroyView() {
@@ -55,6 +60,7 @@ class MenuCiclos : Fragment() {
     }
 
     private fun crearMenu(): MutableList<Menu>{
+
         var menucicle = mutableListOf<Menu>()
 
         var ciclo1 = Menu(1,"DAM")
@@ -67,8 +73,15 @@ class MenuCiclos : Fragment() {
         menucicle.add(ciclo3)
         menucicle.add(ciclo4)
 
+
         return menucicle
 
+    }
+
+    override fun onItemClick(position: Int) {
+        val view = binding.root
+        val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo(position)
+        view.findNavController().navigate(action)
     }
 
 }
