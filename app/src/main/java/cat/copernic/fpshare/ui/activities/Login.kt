@@ -24,8 +24,10 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: LoginBinding
 
+    private var splashScreenMS: Long = 1000
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(2000)
+        Thread.sleep(splashScreenMS)
         setTheme(R.style.Theme_Fpshare)
         this.supportActionBar!!.hide()
 
@@ -95,7 +97,7 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null){
+        if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
