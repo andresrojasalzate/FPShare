@@ -33,7 +33,7 @@ class perfil : Fragment() {
     private lateinit var  botonGuardarCambios : Button
     private lateinit var emailEdittext : EditText
     private var storage = FirebaseStorage.getInstance()
-    private var storageRef = storage.reference.child("imagenes/")
+    private var storageRef = storage.reference.child("Imagenes/image") // TODO hay que corregir esto
     private lateinit var imagen: ImageView
 
     private var photoSelectedUri: Uri?=null
