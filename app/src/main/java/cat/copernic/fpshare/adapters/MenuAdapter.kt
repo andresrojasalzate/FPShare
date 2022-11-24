@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +21,9 @@ class MenuAdapter (private val menus: List<Menu>, private val listener: OnItemCl
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var menu = menus.get(position)
+        val menu = menus.get(position)
             with(holder){
                 ViewB.txtMenu.text = menu.opcion
             }

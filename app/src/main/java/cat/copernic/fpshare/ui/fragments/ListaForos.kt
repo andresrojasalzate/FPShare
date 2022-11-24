@@ -15,12 +15,16 @@ import cat.copernic.fpshare.databinding.FragmentListaForosBinding
 import cat.copernic.fpshare.modelo.Mensaje
 
 
-class ListaForos : Fragment() {
+class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     private var _binding: FragmentListaForosBinding? = null
     private val binding get() = _binding!!
     private lateinit var boton: Button
     private lateinit var recyclerView : RecyclerView
 
+    companion object {
+        const val FORO = "foro"
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -41,12 +45,8 @@ class ListaForos : Fragment() {
         recyclerView = binding.recyclerView
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = ForoAdapter(obtenerForos())
-        boton.setOnClickListener {
-            val action =
-                ListaForosDirections.actionListaForosToFPHilo()
-            view.findNavController().navigate(action)
-        }
+        recyclerView.adapter = ForoAdapter(obtenerForos(),this)
+
     }
 
     override fun onDestroyView() {
@@ -55,18 +55,18 @@ class ListaForos : Fragment() {
     }
 
     private fun obtenerForos(): MutableList<Foro>{
-
         val foros = mutableListOf<Foro>()
         val mensajes = ArrayList<Mensaje>()
-
         for(num in 1..30){
-
             foros.add(Foro("Titulo de foro","Andrés", "dvavev",mensajes))
-
         }
-
         return foros
+    }
 
+    override fun onItemClick(foro: Foro) {
+        val action =
+            ListaForosDirections.actionListaForosToFPHilo(autor = foro.emailautor, titulo = foro.titulo)
+        view?.findNavController()?.navigate(action)
     }
 
 }

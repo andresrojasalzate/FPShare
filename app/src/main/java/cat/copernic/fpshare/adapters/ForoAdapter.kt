@@ -10,11 +10,23 @@ import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.ItemForoBinding
 
 
-class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){
+class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdapter.OnItemClickListener) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
-    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
         val ViewB = ItemForoBinding.bind(view)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            val foro = foros.get(position)
+            if(position != RecyclerView.NO_POSITION)  {
+                listener.onItemClick(foro)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,5 +48,9 @@ class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAda
 
     override fun getItemCount(): Int {
         return foros.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(foro: Foro)
     }
 }

@@ -53,7 +53,12 @@
         android:id="@+id/FPHilo"
         android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
         android:label="fragment_fp_hilo"
-        tools:layout="@layout/fragment_fp_hilo" />
+        tools:layout="@layout/fragment_fp_hilo" >
+        <argument
+            android:name="autor"
+            app:argType="string" />
+        <argument android:name="titulo" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_perfil"
         android:name="cat.copernic.fpshare.ui.fragments.perfil"

@@ -27,12 +27,6 @@ class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserA
         with(holder){
             ViewB.numUsuario.text =(position + 1).toString()
             ViewB.nombreUsuario.text = usuario.nombre
-
-            /*Glide.with(contexto)
-                .load(usuario.imagen)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(ViewB.imagenPerfil)*/
         }
 
     }
