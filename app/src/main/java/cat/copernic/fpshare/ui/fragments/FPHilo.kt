@@ -31,6 +31,7 @@ class FPHilo : Fragment() {
     private lateinit var  titulo : String
     private lateinit var textViewTitulo: TextView
     private lateinit var  textViewAutor: TextView
+
     companion object{
         val AUTOR = "autor"
         val TITULO = "titulo"
