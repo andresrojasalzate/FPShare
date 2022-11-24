@@ -48,7 +48,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'androidx.fragment:fragment:1.5.4'
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -88,4 +87,9 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Corrutinas y lectura de base de datos
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 }

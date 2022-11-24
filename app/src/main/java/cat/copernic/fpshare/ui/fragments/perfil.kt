@@ -14,7 +14,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
 import cat.copernic.fpshare.modelo.User
 import com.google.firebase.auth.ktx.auth
@@ -34,7 +33,7 @@ class perfil : Fragment() {
     private lateinit var  botonGuardarCambios : Button
     private lateinit var emailEdittext : EditText
     private var storage = FirebaseStorage.getInstance()
-    private var storageRef = storage.reference.child("image/imatges")
+    private var storageRef = storage.reference.child("Imagenes/image") // TODO hay que corregir esto
     private lateinit var imagen: ImageView
 
     private var photoSelectedUri: Uri?=null

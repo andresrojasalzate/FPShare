@@ -14,7 +14,6 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
 import cat.copernic.fpshare.modelo.Cicle
-import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Uf
 
