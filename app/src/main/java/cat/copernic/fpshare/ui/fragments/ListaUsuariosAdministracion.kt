@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 
 class ListaUsuariosAdministracion : Fragment() {
     private var _binding: FragmentListaUsuariosAdministracionBinding? = null
@@ -19,6 +21,7 @@ class ListaUsuariosAdministracion : Fragment() {
     private lateinit var botonRename : Button
     private lateinit var botonDelete : Button
     private lateinit var recyclerView : RecyclerView
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +39,8 @@ class ListaUsuariosAdministracion : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        botonRename = binding.buttonRenameUser
-        botonDelete = binding.buttonDeleteUser
-        recyclerView = binding.recyclerView
-
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = UserAdapter(obtenerUsuarios())
+        inicializar()
+        llamarecycleview()
 
         botonRename.setOnClickListener {
             val action =
@@ -54,6 +53,32 @@ class ListaUsuariosAdministracion : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    private fun llamarecycleview(){
+        val userList = ArrayList<User>()
+        val adapterUser = UserAdapter(userList)
+        bd.collection("Usuarios").get().addOnSuccessListener {documents ->
+            for (document in documents){
+                val wallitem = document.toObject(User::class.java)
+                wallitem.email = document.id
+                wallitem.nombre = document["nombre"].toString()
+                wallitem.apellidos = document["apellidos"].toString()
+                wallitem.telefono = document["telefono"].toString()
+                wallitem.insituto = document["instituto"].toString()
+                wallitem.esAdmin = document["esAdmin"] as Boolean
+
+                userList.add(wallitem)
+            }
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = adapterUser
+        }
+
+        }
+
+   private fun inicializar(){
+       botonRename = binding.buttonRenameUser
+       botonDelete = binding.buttonDeleteUser
+       recyclerView = binding.recyclerView
+   }
     private fun obtenerUsuarios(): MutableList<User>{
         val usuarios = mutableListOf<User>()
         for(num in 1..30){
