@@ -5,23 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.MenuAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
-import cat.copernic.fpshare.clases.Menu
-import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
+import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Uf
+import com.google.firebase.firestore.FirebaseFirestore
+import io.grpc.InternalChannelz.id
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     private var _binding: FragmentMenuCiclosBinding? = null
     private val binding get() = _binding!!
     private lateinit var boton: Button
     private lateinit var recyclerView : RecyclerView
+    private var bd = FirebaseFirestore.getInstance()
+    private lateinit var adapter: MenuAdapter
+    private lateinit var cicloList: MutableList<Cicle>
+    private lateinit var resultado: MutableList<Cicle>
+    private lateinit var modulos: List<Modul>
+    private lateinit var UFs: List<Uf>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,15 +52,8 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.btnModulo
         recyclerView = binding.recyclerView
-
-        var adapter = MenuAdapter(crearMenu(), this)
-
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
-
-        boton.setOnClickListener {
-            val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo()
-            view.findNavController().navigate(action)
+        lifecycleScope.launch(Dispatchers.Main){
+           cicloList = withContext(Dispatchers.IO){ crearMenu()}
         }
 
     }
@@ -58,9 +62,8 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         super.onDestroyView()
         _binding = null
     }
-
+/*
     private fun crearMenu(): MutableList<Menu>{
-
         var menucicle = mutableListOf<Menu>()
 
         var ciclo1 = Menu(1,"DAM")
@@ -72,15 +75,35 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         menucicle.add(ciclo2)
         menucicle.add(ciclo3)
         menucicle.add(ciclo4)
-
-
         return menucicle
 
     }
+*/
 
-    override fun onItemClick(position: Int) {
+    fun crearMenu(): MutableList<Cicle>{
+        var cicloList = mutableListOf<Cicle>()
+        bd.collection("Ciclos")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    val idCiclo = document.id
+                    val nombreCiclo = document["nombre"].toString()
+                    val ciclo = Cicle(idCiclo,nombreCiclo, listOf(Modul("", "", listOf(Uf("", "")))))
+                    cicloList.add(ciclo)
+                }
+                adapter=MenuAdapter(cicloList, this)
+                binding.recyclerView.adapter = adapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            }
+
+        return cicloList
+    }
+
+
+
+    override fun onItemClick(id: String) {
         val view = binding.root
-        val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo(position)
+        val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo(id)
         view.findNavController().navigate(action)
     }
 

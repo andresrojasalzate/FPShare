@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.clases.Menu
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemMenuBinding
+import cat.copernic.fpshare.modelo.Cicle
 
-class MenuAdapter (private val menus: List<Menu>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
+class MenuAdapter (private val ciclos: MutableList<Cicle>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,9 +22,9 @@ class MenuAdapter (private val menus: List<Menu>, private val listener: OnItemCl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var menu = menus.get(position)
+        var ciclo = ciclos.get(position)
             with(holder){
-                ViewB.txtMenu.text = menu.opcion
+                ViewB.txtMenu.text = ciclo.nombre
             }
     }
 
@@ -37,19 +38,20 @@ class MenuAdapter (private val menus: List<Menu>, private val listener: OnItemCl
 
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
+            val id = ciclos.get(position).idCiclo
             if(position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
+                listener.onItemClick(id)
             }
         }
 
     }
 
     override fun getItemCount(): Int {
-        return menus.size
+        return ciclos.size
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(id: String)
     }
 
 }

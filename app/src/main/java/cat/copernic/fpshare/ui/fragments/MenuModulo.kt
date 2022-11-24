@@ -13,12 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.MenuAdapter
 import cat.copernic.fpshare.clases.Menu
 import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
+import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Modul
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
     private var _binding: FragmentMenuModuloBinding? = null
     private val binding get() = _binding!!
     private lateinit var button: Button
     private lateinit var recyclerView : RecyclerView
+    val bd = FirebaseFirestore.getInstance();
+    private lateinit var adapter: MenuAdapter
+    private lateinit var cicloList: ArrayList<Cicle>
+    private lateinit var ciclo: Cicle
 
     val args: MenuModuloArgs by navArgs()
 
@@ -43,7 +50,25 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
         button = binding.btnUf
         recyclerView = binding.recyclerView
 
-        var adapter = MenuAdapter(crearMenu(), this)
+        val id = args.id
+
+        cicloList = ArrayList()
+        adapter=MenuAdapter(cicloList, this)
+        var resultado = bd.collection("Ciclos").document(id).collection("Modulos")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                        var wallItem = document.toObject(Cicle::class.java)
+                        ciclo.idCiclo = document.id
+                        ciclo.nombre = document["nombre"].toString()
+                        binding.recyclerView.adapter = adapter
+                        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        cicloList.add(wallItem)
+
+
+                }
+            }
+
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
@@ -58,10 +83,9 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
         super.onDestroyView()
         _binding = null
     }
-
+/*
     private fun crearMenu(): MutableList<Menu>{
         var menucicle = mutableListOf<Menu>()
-        val numero = args.number
         if(numero == 0){
             var ciclo1 = Menu(1,"Sistemas Informaticos")
             var ciclo2 = Menu(2,"Programacion")
@@ -176,10 +200,10 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
 
     }
 
-    override fun onItemClick(position: Int) {
-        val view = binding.root
-        val action = MenuModuloDirections.actionMenuModuloToListaUFs()
-        view.findNavController().navigate(action)
+ */
+
+    override fun onItemClick(id: String) {
+        TODO("Not yet implemented")
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
@@ -13,9 +14,14 @@ class CicleAdminAdapter(private val ciclos: List<Cicle>) :
     RecyclerView.Adapter<CicleAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-        val ViewB = ItemTagBinding.bind(view)
-    }
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+
+        {
+            val ViewB = ItemTagBinding.bind(view)
+        }
+
+
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -38,4 +44,6 @@ class CicleAdminAdapter(private val ciclos: List<Cicle>) :
     override fun getItemCount(): Int {
         return ciclos.size
     }
+
+
 }

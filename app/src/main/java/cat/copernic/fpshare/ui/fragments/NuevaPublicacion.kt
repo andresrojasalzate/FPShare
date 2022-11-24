@@ -56,7 +56,6 @@ class NuevaPublicacion : Fragment() {
         descripcion = binding.textDescription
         enlace = binding.textLink
 
-
         botonPublicar.setOnClickListener{
 
             var publicacion = llegirDades()
