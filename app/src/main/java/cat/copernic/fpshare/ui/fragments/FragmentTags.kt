@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,11 +16,24 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
 import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FragmentTags : Fragment() {
     private var _binding: FragmentTagsBinding? = null
     private val binding get() = _binding!!
+    private val bd = FirebaseFirestore.getInstance()
+    private lateinit var cicloList: MutableList<Cicle>
+
+    // Adaptadores
+
+    private lateinit var adapterC : CicleAdminAdapter
+    private lateinit var adapterM : ModulAdminAdapter
+    private lateinit var adapterU : UfAdminAdapter
 
     // Botones
     private lateinit var botonAddCiclo: Button
@@ -54,6 +68,9 @@ class FragmentTags : Fragment() {
         inicializadoresButton()
         inicializadoresRW()
         listeners()
+        lifecycleScope.launch(Dispatchers.Main){
+            cicloList = withContext(Dispatchers.IO){ crearMenu()}
+        }
     }
 
     override fun onDestroyView() {
@@ -83,15 +100,36 @@ class FragmentTags : Fragment() {
 
         // recyclerView de Ciclos
         recyclerViewCiclos.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewCiclos.adapter = CicleAdminAdapter(obtenerCiclos())
+        recyclerViewCiclos.adapter = adapterC
 
         // recyclerView de Modulos
         recyclerViewModulos.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewModulos.adapter = ModulAdminAdapter(obtenerModulos())
+        recyclerViewModulos.adapter = adapterM
 
         // recyclerView de UFs
         recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewUFs.adapter = UfAdminAdapter(obtenerUFs())
+        recyclerViewUFs.adapter = adapterU
+    }
+
+    fun crearMenu(): MutableList<Cicle>{
+        var cicloList = mutableListOf<Cicle>()
+        bd.collection("Ciclos")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    val idCiclo = document.id
+                    val nombreCiclo = document["nombre"].toString()
+                    val ciclo = Cicle(idCiclo,nombreCiclo, listOf(Modul("", "", listOf(Uf("", "", listOf(
+                        Publicacion("","","","","","")
+                    ))))))
+                    cicloList.add(ciclo)
+                }
+                adapterC = CicleAdminAdapter(cicloList, this)
+                binding.recyclerViewCiclos.adapter = adapterC
+                binding.recyclerViewCiclos.layoutManager = LinearLayoutManager(requireContext())
+            }
+
+        return cicloList
     }
 
     fun listeners() {
@@ -141,7 +179,7 @@ class FragmentTags : Fragment() {
 
         for(num in 1..30){
 
-            UFs.add(Uf("ID","Nombre UF"))
+            UFs.add(Uf("ID","Nombre UF", emptyList()))
 
         }
 

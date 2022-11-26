@@ -14,6 +14,7 @@ import cat.copernic.fpshare.adapters.MenuAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
 import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
 import io.grpc.InternalChannelz.id
@@ -88,7 +89,9 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
                 for (document in documents){
                     val idCiclo = document.id
                     val nombreCiclo = document["nombre"].toString()
-                    val ciclo = Cicle(idCiclo,nombreCiclo, listOf(Modul("", "", listOf(Uf("", "")))))
+                    val ciclo = Cicle(idCiclo,nombreCiclo, listOf(Modul("", "", listOf(Uf("", "", listOf(
+                        Publicacion("","","","","","")
+                    ))))))
                     cicloList.add(ciclo)
                 }
                 adapter=MenuAdapter(cicloList, this)
