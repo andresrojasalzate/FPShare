@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -23,7 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class FragmentTags : Fragment() {
+class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener {
     private var _binding: FragmentTagsBinding? = null
     private val binding get() = _binding!!
     private val bd = FirebaseFirestore.getInstance()
@@ -184,5 +185,9 @@ class FragmentTags : Fragment() {
         }
 
         return UFs
+    }
+
+    override fun onItemClick(id: String) {
+        TODO("Not yet implemented")
     }
 }
