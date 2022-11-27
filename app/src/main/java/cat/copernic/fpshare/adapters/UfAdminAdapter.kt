@@ -26,7 +26,6 @@ class UfAdminAdapter(private val uf: List<Uf>) :
     override fun onBindViewHolder(holder: UfAdminAdapter.ViewHolder, position: Int) {
         val uf = uf.get(position)
         with(holder) {
-            ViewB.idTag.text = uf.idUf
             ViewB.nombreTag.text = uf.nombre
         }
 

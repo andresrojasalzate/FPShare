@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.databinding.ItemMenuBinding
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Cicle
 
@@ -44,7 +43,6 @@ class CicleAdminAdapter(private val ciclos: MutableList<Cicle>, private val list
     override fun onBindViewHolder(holder: CicleAdminAdapter.ViewHolder, position: Int) {
         val ciclos = ciclos.get(position)
         with(holder) {
-            ViewB.idTag.text = ciclos.idCiclo
             ViewB.nombreTag.text = ciclos.nombre
         }
 
