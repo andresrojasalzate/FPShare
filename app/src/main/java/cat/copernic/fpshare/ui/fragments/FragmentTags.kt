@@ -46,8 +46,7 @@ class FragmentTags : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTagsBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,57 +93,57 @@ class FragmentTags : Fragment() {
         recyclerViewUFs.adapter = UfAdminAdapter(obtenerUFs())
     }
 
-    fun listeners() {
-        botonAddCiclo.setOnClickListener() {
+    private fun listeners() {
+        botonAddCiclo.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearCiclo()
             view?.findNavController()?.navigate(action)
         }
-        botonAddModulo.setOnClickListener() {
+        botonAddModulo.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearModulo()
             view?.findNavController()?.navigate(action)
         }
-        botonAddUF.setOnClickListener() {
+        botonAddUF.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearUF()
             view?.findNavController()?.navigate(action)
         }
     }
 
-    fun obtenerCiclos(): MutableList<Cicle> {
+    private fun obtenerCiclos(): MutableList<Cicle> {
         val ciclos = mutableListOf<Cicle>()
 
-        for(num in 1..30){
+        for (num in 1..30) {
 
-            ciclos.add(Cicle("ID","Nombre Ciclo", emptyList()))
+            ciclos.add(Cicle("ID", "Nombre Ciclo", emptyList()))
 
         }
 
         return ciclos
     }
 
-    fun obtenerModulos(): MutableList<Modul> {
+    private fun obtenerModulos(): MutableList<Modul> {
         val modulos = mutableListOf<Modul>()
 
-        for(num in 1..30){
+        for (num in 1..30) {
 
-            modulos.add(Modul("ID","Nombre Modulo", emptyList()))
+            modulos.add(Modul("ID", "Nombre Modulo", emptyList()))
 
         }
 
         return modulos
     }
 
-    fun obtenerUFs(): MutableList<Uf> {
-        val UFs = mutableListOf<Uf>()
+    private fun obtenerUFs(): MutableList<Uf> {
+        val ufs = mutableListOf<Uf>()
 
-        for(num in 1..30){
+        for (num in 1..30) {
 
-            UFs.add(Uf("ID","Nombre UF"))
+            ufs.add(Uf("ID", "Nombre UF"))
 
         }
 
-        return UFs
+        return ufs
     }
 }
