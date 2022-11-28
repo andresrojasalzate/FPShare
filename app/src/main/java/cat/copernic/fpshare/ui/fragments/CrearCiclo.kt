@@ -69,6 +69,9 @@ class CrearCiclo : Fragment() {
                 val ciclo = Cicle(ID, nombre)
                 addCiclo(ciclo, ID)
             }
+
+            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
         }
     }
 

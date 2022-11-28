@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ListAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -42,6 +44,7 @@ class CrearModulo : Fragment() {
             var resultado = withContext(Dispatchers.IO) {
                 idSpinner = leerIds()
 
+                // TODO esto lo dejamos en stand by
                 
             }
         }
@@ -57,24 +60,23 @@ class CrearModulo : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCrearModuloBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
-    suspend fun leerIds(): MutableList<String> {
+    private suspend fun leerIds(): MutableList<String> {
 
-        var arrayCiclo = mutableListOf<String>()
-        var resultado = bd.collection("Ciclos").get().await()
+        val arrayCiclo = mutableListOf<String>()
+        val resultado = bd.collection("Ciclos").get().await()
 
         for (document in resultado) {
-            var idCiclo = document.id
+            val idCiclo = document.id
             arrayCiclo.add(idCiclo)
         }
         return arrayCiclo
     }
 
 
-    fun inicializadores() {
+    private fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
         buttonBack = binding.btnBack
 
@@ -84,29 +86,32 @@ class CrearModulo : Fragment() {
         spinnerCiclos = binding.selectCiclo
     }
 
-    fun listeners() {
+    private fun listeners() {
 
-        buttonBack.setOnClickListener() {
+        buttonBack.setOnClickListener {
             val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
             view?.findNavController()?.navigate(action)
         }
-        buttonAddModulo.setOnClickListener() {
-            val ID = inputIDModulo.text.toString()
+        buttonAddModulo.setOnClickListener {
+            val id = inputIDModulo.text.toString()
             val nombre = inputNameModulo.text.toString()
 
-            if (campoVacio(ID, nombre)) {
-                val modulo = Modul(ID, nombre)
-                addModulo(modulo, ID)
+            if (campoVacio(id, nombre)) {
+                val modulo = Modul(id, nombre)
+                addModulo(modulo, id)
             }
+
+            val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
         }
     }
 
-    fun addModulo(modulo: Modul, id: String) {
+    private fun addModulo(modulo: Modul, id: String) {
         bd.collection("Ciclos").document(id)
             .collection("Modulos").document(id).set(modulo)
     }
 
-    fun campoVacio(ID: String, nombre: String): Boolean {
+    private fun campoVacio(ID: String, nombre: String): Boolean {
         return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
     }
 }

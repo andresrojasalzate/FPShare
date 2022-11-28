@@ -72,6 +72,9 @@ class CrearUF : Fragment() {
                 val uf = Uf(ID, nombre)
                 addUF(uf, ID)
             }
+
+            val action = CrearUFDirections.actionCrearUFToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
         }
     }
 
