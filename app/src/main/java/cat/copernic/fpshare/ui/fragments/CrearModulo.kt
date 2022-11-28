@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
-import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -51,9 +49,7 @@ class CrearModulo : Fragment() {
     }
 
     private fun spinnerCiclos() {
-        val cicloList : MutableList<Cicle>
-
-        val adapter : ArrayAdapter<Cicle>
+        var ciclosSpinner = bd.collection("Ciclos").get()
     }
 
     fun inicializadores() {
@@ -81,11 +77,11 @@ class CrearModulo : Fragment() {
                 addModulo(modulo, ID)
             }
         }
+        spinnerCiclos.
     }
 
     fun addModulo(modulo: Modul, id: String) {
-        bd.collection("Ciclos").document(id)
-            .collection("Modulos").document(id).set(modulo)
+
     }
 
     fun campoVacio(ID: String, nombre: String): Boolean {

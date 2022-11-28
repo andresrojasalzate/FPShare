@@ -110,7 +110,7 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
         //recyclerViewUFs.adapter = adapterU
     }
 
-    private fun crearCiclos(): MutableList<Cicle> {
+    suspend private fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
         bd.collection("Ciclos")
             .get()
