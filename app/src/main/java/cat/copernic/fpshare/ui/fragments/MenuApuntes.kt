@@ -15,6 +15,7 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.PubliAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuApuntesBinding
+import cat.copernic.fpshare.databinding.FragmentMenuUfBinding
 import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
@@ -47,8 +48,9 @@ class MenuApuntes : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_apuntes, container, false)
+        _binding = FragmentMenuApuntesBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
