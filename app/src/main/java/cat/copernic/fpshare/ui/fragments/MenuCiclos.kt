@@ -89,9 +89,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
                 for (document in documents){
                     val idCiclo = document.id
                     val nombreCiclo = document["nombre"].toString()
-                    val ciclo = Cicle(idCiclo,nombreCiclo, listOf(Modul("", "", listOf(Uf("", "", listOf(
-                        Publicacion("","","","","","")
-                    ))))))
+                    val ciclo = Cicle(idCiclo,nombreCiclo)
                     cicloList.add(ciclo)
                 }
                 adapter=MenuAdapter(cicloList, this)

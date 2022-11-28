@@ -58,7 +58,7 @@ class NuevaPublicacion : Fragment() {
 
         botonPublicar.setOnClickListener{
 
-            var publicacion = llegirDades()
+            val publicacion = llegirDades()
             if(publicacion.id.isNotEmpty()){
                 anadirPublicacion(publicacion)
             }
@@ -75,10 +75,11 @@ class NuevaPublicacion : Fragment() {
     fun llegirDades():Publicacion{
 
         //Guardem les dades introduïdes per l'usuari
-        var id = "a"
-        var perfil = user?.email.toString()
-        var titulo = titulo.text.toString()
-        var descripcion = descripcion.text.toString()
+        val id = "a"
+        val perfil = user?.email.toString()
+        val titulo = titulo.text.toString()
+        val descripcion = descripcion.text.toString()
+
         if(binding.optionDam.isChecked){
             checked = "DAM"
         }else if(binding.optionDaw.isChecked){
@@ -98,30 +99,9 @@ class NuevaPublicacion : Fragment() {
     fun anadirPublicacion(publicacion:Publicacion){
         val appContext = context
 
-        bd.collection("Publicaciones").add(publicacion)
-            .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(appContext,"El Deparatment s'ha afegit correctament", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(appContext,"El Deparatment no s'ha afegit", Toast.LENGTH_LONG).show()
-            }
-        /*
-        bd.collection("Publicaciones").document(id).set(
-            //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
-            // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
-            hashMapOf(
-                "perfil" to perfil, //Atribut nom amb el valor introduït per l'usuari
-                "titulo" to titulo.text.toString(), //Atribut planta amb el valor introduït per l'usuari
-                "descripcion" to descripcion.text.toString(),
-                "enlace" to enlace.text.toString()
-            ))
-            .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(requireContext(),"Publicacion añadida correctament", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(requireContext(),"La publicacion no se ha añadido", Toast.LENGTH_LONG).show()
-            }
-
-         */
+        bd.collection("Ciclos").document()
+            .collection("Modulos").document()
+            .collection("UFs").document()
+            .collection("Publicaciones").document().set(publicacion)
     }
 }

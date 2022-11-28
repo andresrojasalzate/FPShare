@@ -95,14 +95,15 @@ class CrearModulo : Fragment() {
             val nombre = inputNameModulo.text.toString()
 
             if (campoVacio(ID, nombre)) {
-                val modulo = Modul(ID, nombre, emptyList())
+                val modulo = Modul(ID, nombre)
                 addModulo(modulo, ID)
             }
         }
     }
 
     fun addModulo(modulo: Modul, id: String) {
-
+        bd.collection("Ciclos").document(id)
+            .collection("Modulos").document(id).set(modulo)
     }
 
     fun campoVacio(ID: String, nombre: String): Boolean {

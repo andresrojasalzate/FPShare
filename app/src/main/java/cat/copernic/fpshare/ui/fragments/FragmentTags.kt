@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
-    ModulAdminAdapter.OnItemClickListener {
+    ModulAdminAdapter.OnItemClickListener, UfAdminAdapter.OnItemClickListener {
     private var _binding: FragmentTagsBinding? = null
     private val binding get() = _binding!!
     private val bd = FirebaseFirestore.getInstance()
@@ -32,6 +32,7 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
     // Listas
     private lateinit var cicloList: MutableList<Cicle>
     private lateinit var moduloList: MutableList<Modul>
+    private lateinit var ufList: MutableList<Uf>
 
     // Adaptadores
 
@@ -78,6 +79,9 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
         lifecycleScope.launch(Dispatchers.Main) {
             moduloList = withContext(Dispatchers.IO) { crearModulos() }
         }
+        lifecycleScope.launch(Dispatchers.Main) {
+            ufList = withContext(Dispatchers.IO) { crearUFs() }
+        }
     }
 
     override fun onDestroyView() {
@@ -95,22 +99,18 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
         botonDeleteModulo = binding.buttonDeleteModule
 
         // inicializar botones de UFs
-        //botonAddUF = binding.buttonAddUF
-        //botonDeleteUF = binding.buttonDeleteUF*/
+        botonAddUF = binding.buttonAddUF
+        botonDeleteUF = binding.buttonDeleteUF
     }
 
     private fun inicializadoresRW() {
         // inicializar recyclerViews
         recyclerViewCiclos = binding.recyclerViewCiclos
         recyclerViewModulos = binding.recyclerViewModulos
-        //recyclerViewUFs = binding.recyclerViewUFs
-
-        // recyclerView de UFs
-        //recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
-        //recyclerViewUFs.adapter = adapterU
+        recyclerViewUFs = binding.recyclerViewUFs
     }
 
-    suspend private fun crearCiclos(): MutableList<Cicle> {
+    fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
         bd.collection("Ciclos")
             .get()
@@ -118,20 +118,8 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
                 for (document in documents) {
                     val idCiclo = document.id
                     val nombreCiclo = document["nombre"].toString()
-                    val ciclo = Cicle(
-                        idCiclo, nombreCiclo, listOf(
-                            Modul(
-                                "", "", listOf(
-                                    Uf(
-                                        "", "", listOf(
-                                            Publicacion("", "", "", "", "", "")
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                    cicloList.add(ciclo)
+
+                    cicloList.add(Cicle(idCiclo, nombreCiclo))
                 }
                 adapterC = CicleAdminAdapter(cicloList, this)
                 binding.recyclerViewCiclos.adapter = adapterC
@@ -151,8 +139,7 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
                     val nombreModul = document["nombre"].toString()
                     val modulo = Modul(
                         idModul,
-                        nombreModul,
-                        listOf(Uf("", "", listOf(Publicacion("", "", "", "", "", ""))))
+                        nombreModul
                     )
                     moduloList.add(modulo)
                 }
@@ -163,22 +150,43 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
         return moduloList
     }
 
+    private fun crearUFs(): MutableList<Uf> {
+        val ufList = mutableListOf<Uf>()
+        bd.collection("Ciclos").document().collection("Modulos").document().collection("UFs")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val idUf = document.id
+                    val nombreUf = document["nombre"].toString()
+                    val uf = Modul(
+                        idUf,
+                        nombreUf
+                    )
+                    moduloList.add(uf)
+                }
+                adapterU = UfAdminAdapter(ufList, this)
+                binding.recyclerViewModulos.adapter = adapterU
+                binding.recyclerViewModulos.layoutManager = LinearLayoutManager(requireContext())
+            }
+        return ufList
+    }
+
     private fun listeners() {
-        botonAddCiclo.setOnClickListener() {
+        botonAddCiclo.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearCiclo()
             view?.findNavController()?.navigate(action)
         }
-        botonAddModulo.setOnClickListener() {
+        botonAddModulo.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearModulo()
             view?.findNavController()?.navigate(action)
         }
-        /*botonAddUF.setOnClickListener() {
+        botonAddUF.setOnClickListener {
             val action =
                 FragmentTagsDirections.actionListaTagsAdministracionToCrearUF()
             view?.findNavController()?.navigate(action)
-        } */
+        }
     }
 
     override fun onItemClick(id: String) {

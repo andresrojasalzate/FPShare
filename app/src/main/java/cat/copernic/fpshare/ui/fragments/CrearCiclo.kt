@@ -66,7 +66,7 @@ class CrearCiclo : Fragment() {
             val nombre = inputNameCicle.text.toString()
 
             if (campoVacio(ID, nombre)) {
-                val ciclo = Cicle(ID, nombre, emptyList())
+                val ciclo = Cicle(ID, nombre)
                 addCiclo(ciclo, ID)
             }
         }
