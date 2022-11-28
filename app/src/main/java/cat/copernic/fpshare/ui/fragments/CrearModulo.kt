@@ -1,16 +1,18 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
+import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -49,7 +51,29 @@ class CrearModulo : Fragment() {
     }
 
     private fun spinnerCiclos() {
-        var ciclosSpinner = bd.collection("Ciclos").get()
+        var arrayCiclo = mutableListOf<Cicle>()
+
+        bd.collection("Ciclos").document().get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var idCiclo = document.id
+                    var nombreCiclo = document["nombre"].toString()
+                    val ciclo = Cicle(
+                        idCiclo, nombreCiclo,
+                        listOf(
+                            Modul(
+                                "", "",
+                                listOf(
+                                    Uf(
+                                        "", "", listOf(
+                                            Publicacion("", "", "", "", "", "")
+                                                    arrayCiclo . add (ciclo)
+                                            var ciclosSpinner = Cicle (it.id)
+                }
+
+                val resultado = ListAdapter(this, R.layout.simple_spinner_item, ciclosSpinner)
+                resultado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
     }
 
     fun inicializadores() {
