@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ class MenuAdapter (private val ciclos: MutableList<Cicle>, private val listener:
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var ciclo = ciclos.get(position)
             with(holder){

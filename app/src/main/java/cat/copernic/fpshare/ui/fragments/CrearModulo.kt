@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
+import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -18,6 +21,8 @@ class CrearModulo : Fragment() {
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
 
+    private lateinit var spinnerCiclos: Spinner
+
     // Botones
     private lateinit var buttonAddModulo: Button
     private lateinit var buttonBack: Button
@@ -25,10 +30,6 @@ class CrearModulo : Fragment() {
     // EditText
     private lateinit var inputIDModulo: EditText
     private lateinit var inputNameModulo: EditText
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
@@ -49,15 +50,24 @@ class CrearModulo : Fragment() {
         return view
     }
 
+    private fun spinnerCiclos() {
+        val cicloList : MutableList<Cicle>
+
+        val adapter : ArrayAdapter<Cicle>
+    }
+
     fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
         buttonBack = binding.btnBack
 
         inputIDModulo = binding.inputIDModul
         inputNameModulo = binding.inputNombreModul
+
+        spinnerCiclos = binding.selectCiclo
     }
 
     fun listeners() {
+
         buttonBack.setOnClickListener() {
             val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
             view?.findNavController()?.navigate(action)

@@ -69,7 +69,7 @@ class CrearUF : Fragment() {
             val nombre = inputNameUf.text.toString()
 
             if (campoVacio(ID, nombre)) {
-                val uf = Uf(ID, nombre)
+                val uf = Uf(ID, nombre, emptyList())
                 addUF(uf, ID)
             }
         }

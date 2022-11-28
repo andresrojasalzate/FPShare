@@ -155,4 +155,5 @@
     <string name="name_module">Name of the module</string>
     <string name="enter_id_module">Enter the ID of the module</string>
     <string name="cicles_menu_admin">cicles</string>
+    <string name="select_a_cicle">Select a Cicle</string>
 </resources>

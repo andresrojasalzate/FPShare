@@ -10,18 +10,26 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Cicle
 
-class CicleAdminAdapter(private val ciclos: List<Cicle>) :
+class CicleAdminAdapter(private val ciclos: MutableList<Cicle>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<CicleAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
+        var ViewB = ItemTagBinding.bind(view)
 
-        {
-            val ViewB = ItemTagBinding.bind(view)
+        init {
+            view.setOnClickListener(this)
         }
 
-
-
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            val id = ciclos.get(position).idCiclo
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(id)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,7 +43,6 @@ class CicleAdminAdapter(private val ciclos: List<Cicle>) :
     override fun onBindViewHolder(holder: CicleAdminAdapter.ViewHolder, position: Int) {
         val ciclos = ciclos.get(position)
         with(holder) {
-            ViewB.idTag.text = ciclos.idCiclo
             ViewB.nombreTag.text = ciclos.nombre
         }
 
@@ -45,5 +52,7 @@ class CicleAdminAdapter(private val ciclos: List<Cicle>) :
         return ciclos.size
     }
 
-
+    interface OnItemClickListener {
+        fun onItemClick(id: String)
+    }
 }
