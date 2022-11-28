@@ -26,7 +26,7 @@ class CrearModulo : Fragment() {
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
 
-    private lateinit var spinnerCiclos: Spinner
+    // private lateinit var spinnerCiclos: Spinner
     private lateinit var idSpinner: MutableList<String>
 
     // Botones
@@ -34,6 +34,7 @@ class CrearModulo : Fragment() {
     private lateinit var buttonBack: Button
 
     // EditText
+    private lateinit var inputIDCiclo: EditText
     private lateinit var inputIDModulo: EditText
     private lateinit var inputNameModulo: EditText
 
@@ -42,10 +43,7 @@ class CrearModulo : Fragment() {
         listeners()
         lifecycleScope.launch {
             var resultado = withContext(Dispatchers.IO) {
-                idSpinner = leerIds()
 
-                // TODO esto lo dejamos en stand by
-                
             }
         }
     }
@@ -80,10 +78,11 @@ class CrearModulo : Fragment() {
         buttonAddModulo = binding.btnAddModul
         buttonBack = binding.btnBack
 
+        inputIDCiclo = binding.selectCiclo
         inputIDModulo = binding.inputIDModul
         inputNameModulo = binding.inputNombreModul
 
-        spinnerCiclos = binding.selectCiclo
+        // spinnerCiclos = binding.selectCiclo
     }
 
     private fun listeners() {
@@ -93,12 +92,13 @@ class CrearModulo : Fragment() {
             view?.findNavController()?.navigate(action)
         }
         buttonAddModulo.setOnClickListener {
+            val idCiclo = inputIDCiclo.text.toString()
             val id = inputIDModulo.text.toString()
             val nombre = inputNameModulo.text.toString()
 
-            if (campoVacio(id, nombre)) {
+            if (campoVacio(idCiclo, id, nombre)) {
                 val modulo = Modul(id, nombre)
-                addModulo(modulo, id)
+                addModulo(idCiclo, modulo, id)
             }
 
             val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
@@ -106,12 +106,12 @@ class CrearModulo : Fragment() {
         }
     }
 
-    private fun addModulo(modulo: Modul, id: String) {
-        bd.collection("Ciclos").document(id)
+    private fun addModulo(idCiclo: String, modulo: Modul, id: String) {
+        bd.collection("Ciclos").document(idCiclo)
             .collection("Modulos").document(id).set(modulo)
     }
 
-    private fun campoVacio(ID: String, nombre: String): Boolean {
-        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
+    private fun campoVacio(idCiclo: String, ID: String, nombre: String): Boolean {
+        return idCiclo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty() && idCiclo.isNotBlank() && ID.isNotBlank() && nombre.isNotBlank()
     }
 }

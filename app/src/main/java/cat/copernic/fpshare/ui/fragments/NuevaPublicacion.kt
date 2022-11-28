@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -35,6 +32,9 @@ class NuevaPublicacion : Fragment() {
     private lateinit var publicacion: Publicacion
     private lateinit var botonPublicar: Button
 
+    private lateinit var idModulo: EditText
+    private lateinit var idUf: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -46,8 +46,7 @@ class NuevaPublicacion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,11 +55,14 @@ class NuevaPublicacion : Fragment() {
         descripcion = binding.textDescription
         enlace = binding.textLink
 
+        idModulo = binding.setModule
+        idUf = binding.setUF
+
         botonPublicar.setOnClickListener{
 
             val publicacion = llegirDades()
-            if(publicacion.id.isNotEmpty()){
-                anadirPublicacion(publicacion)
+            if(publicacion.id.isNotEmpty() && publicacion.id.isNotBlank()){
+                anadirPublicacion(idModulo.text.toString(), idUf.text.toString(), publicacion)
             }
         }
     }
@@ -72,7 +74,7 @@ class NuevaPublicacion : Fragment() {
 
     //Funció que llegeix les dades introduïdes per un usuari i retorna el departament instanciat amb aquestes
     //dades.
-    fun llegirDades():Publicacion{
+    private fun llegirDades():Publicacion{
 
         //Guardem les dades introduïdes per l'usuari
         val id = "a"
@@ -85,23 +87,23 @@ class NuevaPublicacion : Fragment() {
         }else if(binding.optionDaw.isChecked){
             checked = "DAW"
         }else if(binding.optionSmix.isChecked){
-            checked = "SMIX"
+            checked = "SMIR"
         }else if(binding.optionAsix.isChecked){
-            checked = "ASIX"
+            checked = "ASIR"
         }
-        var enlace = enlace.text.toString()
+        val enlace = enlace.text.toString()
 
 
         return Publicacion(id, perfil, titulo, descripcion, checked, enlace)
 
     }
 
-    fun anadirPublicacion(publicacion:Publicacion){
-        val appContext = context
+    fun anadirPublicacion(idModulo: String, idUf: String, publicacion:Publicacion){
+        // val appContext = context
 
-        bd.collection("Ciclos").document()
-            .collection("Modulos").document()
-            .collection("UFs").document()
+        bd.collection("Ciclos").document(checked)
+            .collection("Modulos").document(idModulo)
+            .collection("UFs").document(idUf)
             .collection("Publicaciones").document().set(publicacion)
     }
 }

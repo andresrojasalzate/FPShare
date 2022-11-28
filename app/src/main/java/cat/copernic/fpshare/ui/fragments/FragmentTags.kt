@@ -16,7 +16,6 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentTagsBinding
 import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
-import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +24,7 @@ import kotlinx.coroutines.withContext
 
 class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
     ModulAdminAdapter.OnItemClickListener, UfAdminAdapter.OnItemClickListener {
+
     private var _binding: FragmentTagsBinding? = null
     private val binding get() = _binding!!
     private val bd = FirebaseFirestore.getInstance()
@@ -35,7 +35,6 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
     private lateinit var ufList: MutableList<Uf>
 
     // Adaptadores
-
     private lateinit var adapterC: CicleAdminAdapter
     private lateinit var adapterM: ModulAdminAdapter
     private lateinit var adapterU: UfAdminAdapter
@@ -52,12 +51,6 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
     private lateinit var recyclerViewCiclos: RecyclerView
     private lateinit var recyclerViewModulos: RecyclerView
     private lateinit var recyclerViewUFs: RecyclerView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -110,7 +103,7 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
         recyclerViewUFs = binding.recyclerViewUFs
     }
 
-    fun crearCiclos(): MutableList<Cicle> {
+    private fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
         bd.collection("Ciclos")
             .get()
@@ -158,11 +151,11 @@ class FragmentTags : Fragment(), CicleAdminAdapter.OnItemClickListener,
                 for (document in documents) {
                     val idUf = document.id
                     val nombreUf = document["nombre"].toString()
-                    val uf = Modul(
+                    val uf = Uf(
                         idUf,
                         nombreUf
                     )
-                    moduloList.add(uf)
+                    ufList.add(uf)
                 }
                 adapterU = UfAdminAdapter(ufList, this)
                 binding.recyclerViewModulos.adapter = adapterU
