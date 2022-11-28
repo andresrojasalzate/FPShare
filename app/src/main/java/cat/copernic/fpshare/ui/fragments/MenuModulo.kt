@@ -6,30 +6,31 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.adapters.MenuAdapter
-import cat.copernic.fpshare.clases.Menu
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
 import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
+class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
     private var _binding: FragmentMenuModuloBinding? = null
     private val binding get() = _binding!!
     private lateinit var button: Button
     private lateinit var recyclerView : RecyclerView
     val bd = FirebaseFirestore.getInstance();
-    private lateinit var adapter: MenuAdapter
-    private lateinit var cicloList: ArrayList<Cicle>
+    private lateinit var adapter: ModulAdminAdapter
+    private lateinit var cicloList: MutableList<Modul>
     private lateinit var ciclo: Cicle
 
     val args: MenuModuloArgs by navArgs()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,35 +48,11 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        button = binding.btnUf
         recyclerView = binding.recyclerView
 
-        val id = args.id
 
-        cicloList = ArrayList()
-        adapter=MenuAdapter(cicloList, this)
-        var resultado = bd.collection("Ciclos").document(id).collection("Modulos")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
-                        var wallItem = document.toObject(Cicle::class.java)
-                        ciclo.idCiclo = document.id
-                        ciclo.nombre = document["nombre"].toString()
-                        binding.recyclerView.adapter = adapter
-                        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                        cicloList.add(wallItem)
-
-
-                }
-            }
-
-
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
-
-        button.setOnClickListener {
-            val action = MenuModuloDirections.actionMenuModuloToListaUFs()
-            view.findNavController().navigate(action)
+        lifecycleScope.launch(Dispatchers.Main){
+            cicloList = withContext(Dispatchers.IO){ crearMenu()}
         }
     }
 
@@ -83,127 +60,35 @@ class MenuModulo : Fragment(), MenuAdapter.OnItemClickListener {
         super.onDestroyView()
         _binding = null
     }
-/*
-    private fun crearMenu(): MutableList<Menu>{
-        var menucicle = mutableListOf<Menu>()
-        if(numero == 0){
-            var ciclo1 = Menu(1,"Sistemas Informaticos")
-            var ciclo2 = Menu(2,"Programacion")
-            var ciclo3 = Menu(3,"Bases de Datos")
-            var ciclo4 = Menu(4,"Lenguaje de Marcas y Sistemas de Gestion de la informacion")
-            var ciclo5 = Menu(5,"Entornos de Desarrollo")
-            var ciclo6 = Menu(6,"Formacion y Orientacion Laboral")
-            var ciclo7 = Menu(7,"Empresa Iniciativa Emprendedora")
-            var ciclo8 = Menu(8,"ABP: Proyecto Android")
-            var ciclo9 = Menu(9,"ABP: Proyecto ERP")
-            var ciclo10 = Menu(10,"ABP: Proyecto Unity")
-            var ciclo11 = Menu(11,"Programacion Pack 2")
 
-            menucicle.add(ciclo1)
-            menucicle.add(ciclo2)
-            menucicle.add(ciclo3)
-            menucicle.add(ciclo4)
-            menucicle.add(ciclo5)
-            menucicle.add(ciclo6)
-            menucicle.add(ciclo7)
-            menucicle.add(ciclo8)
-            menucicle.add(ciclo9)
-            menucicle.add(ciclo10)
-            menucicle.add(ciclo11)
+    private fun crearMenu(): MutableList<Modul>{
 
-        }
-        else if(numero == 1){
+        var idCic = args.cicloid
 
-            var ciclo1 = Menu(1,"Sistemas Informaticos")
-            var ciclo2 = Menu(2,"Programacion")
-            var ciclo3 = Menu(3,"Bases de Datos")
-            var ciclo4 = Menu(4,"Lenguaje de Marcas y Sistemas de Gestion de la informacion")
-            var ciclo5 = Menu(5,"Entornos de Desarrollo")
-            var ciclo6 = Menu(6,"Formacion y Orientacion Laboral")
-            var ciclo7 = Menu(7,"Empresa Iniciativa Emprendedora")
-            var ciclo8 = Menu(8,"Desarrollo Web en entorno Cliente")
-            var ciclo9 = Menu(9,"Desarrollo Web en entorno Servidor")
-            var ciclo10 = Menu(10,"Despliegue de aplicaciones Web")
-            var ciclo11 = Menu(11,"Diseño de Interfaces Web")
+        var cicloList = mutableListOf<Modul>()
+            bd.collection("Ciclos").document(idCic).collection("Modulos")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        val idModul = document.id
+                        val nombreModul = document["nombre"].toString()
+                        val modulo = Modul(idModul,nombreModul)
+                        cicloList.add(modulo)
+                    }
+                    adapter=ModulAdminAdapter(cicloList, this)
+                    binding.recyclerView.adapter = adapter
+                    binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                }
 
-            menucicle.add(ciclo1)
-            menucicle.add(ciclo2)
-            menucicle.add(ciclo3)
-            menucicle.add(ciclo4)
-            menucicle.add(ciclo5)
-            menucicle.add(ciclo6)
-            menucicle.add(ciclo7)
-            menucicle.add(ciclo8)
-            menucicle.add(ciclo9)
-            menucicle.add(ciclo10)
-            menucicle.add(ciclo11)
-
-        }else if(numero == 2){
-
-            var ciclo1 = Menu(1,"Montaje i Mantenimiento de Equipos")
-            var ciclo2 = Menu(2,"Sistemas Operativos Monousuario")
-            var ciclo3 = Menu(3,"Aplicaciones Ofimaticas")
-            var ciclo4 = Menu(4,"Sistemas Operativos en Red")
-            var ciclo5 = Menu(5,"Redes Locales")
-            var ciclo6 = Menu(6,"Seguridad Informatica")
-            var ciclo7 = Menu(7,"Servicios de Red")
-            var ciclo8 = Menu(8,"Aplicaciones Web")
-            var ciclo9 = Menu(9,"Formacion y Orientacion Laboral")
-            var ciclo10 = Menu(10,"Empresa Iniciativa Emprendedora")
-            var ciclo11 = Menu(11,"Ingles")
-
-            menucicle.add(ciclo1)
-            menucicle.add(ciclo2)
-            menucicle.add(ciclo3)
-            menucicle.add(ciclo4)
-            menucicle.add(ciclo5)
-            menucicle.add(ciclo6)
-            menucicle.add(ciclo7)
-            menucicle.add(ciclo8)
-            menucicle.add(ciclo9)
-            menucicle.add(ciclo10)
-            menucicle.add(ciclo11)
-
-        }else if(numero == 3){
-
-            var ciclo1 = Menu(1,"Sistemas Informaticos")
-            var ciclo2 = Menu(2,"Programacion")
-            var ciclo3 = Menu(3,"Bases de Datos")
-            var ciclo4 = Menu(4,"Lenguaje de Marcas y Sistemas de Gestion de la informacion")
-            var ciclo5 = Menu(5,"Formacion y Orientacion Laboral")
-            var ciclo6 = Menu(6,"Empresa Iniciativa Emprendedora")
-            var ciclo7 = Menu(7,"Fundamentos de Maquinaria")
-            var ciclo8 = Menu(8,"Administracion de Sistemas Operativos")
-            var ciclo9 = Menu(9,"Planificacion y administracion de Redes")
-            var ciclo10 = Menu(10,"Servicios de red y internet")
-            var ciclo11 = Menu(11,"Administracion de Bases de Datos")
-            var ciclo12 = Menu(12,"Seguridad i Alta Disponibilidad")
-            var ciclo13 = Menu(13,"Implantacion de Aplicaciones Web")
-
-            menucicle.add(ciclo1)
-            menucicle.add(ciclo2)
-            menucicle.add(ciclo3)
-            menucicle.add(ciclo4)
-            menucicle.add(ciclo5)
-            menucicle.add(ciclo6)
-            menucicle.add(ciclo7)
-            menucicle.add(ciclo8)
-            menucicle.add(ciclo9)
-            menucicle.add(ciclo10)
-            menucicle.add(ciclo11)
-            menucicle.add(ciclo12)
-            menucicle.add(ciclo13)
+            return cicloList
         }
 
 
-        return menucicle
-
-    }
-
- */
 
     override fun onItemClick(id: String) {
-        TODO("Not yet implemented")
+        val view = binding.root
+        val action = MenuModuloDirections.actionMenuModuloToListaUFs(args.cicloid,id)
+        view.findNavController().navigate(action)
     }
 
 }
