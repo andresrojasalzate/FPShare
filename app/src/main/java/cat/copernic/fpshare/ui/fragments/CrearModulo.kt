@@ -1,19 +1,22 @@
 package cat.copernic.fpshare.ui.fragments
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
-import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
-import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 
 class CrearModulo : Fragment() {
@@ -22,6 +25,7 @@ class CrearModulo : Fragment() {
     private var bd = FirebaseFirestore.getInstance()
 
     private lateinit var spinnerCiclos: Spinner
+    private lateinit var idSpinner: MutableList<String>
 
     // Botones
     private lateinit var buttonAddModulo: Button
@@ -34,6 +38,13 @@ class CrearModulo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
+        lifecycleScope.launch {
+            var resultado = withContext(Dispatchers.IO) {
+                idSpinner = leerIds()
+
+                
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -50,31 +61,18 @@ class CrearModulo : Fragment() {
         return view
     }
 
-    private fun spinnerCiclos() {
-        var arrayCiclo = mutableListOf<Cicle>()
+    suspend fun leerIds(): MutableList<String> {
 
-        bd.collection("Ciclos").document().get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var idCiclo = document.id
-                    var nombreCiclo = document["nombre"].toString()
-                    val ciclo = Cicle(
-                        idCiclo, nombreCiclo,
-                        listOf(
-                            Modul(
-                                "", "",
-                                listOf(
-                                    Uf(
-                                        "", "", listOf(
-                                            Publicacion("", "", "", "", "", "")
-                                                    arrayCiclo . add (ciclo)
-                                            var ciclosSpinner = Cicle (it.id)
-                }
+        var arrayCiclo = mutableListOf<String>()
+        var resultado = bd.collection("Ciclos").get().await()
 
-                val resultado = ListAdapter(this, R.layout.simple_spinner_item, ciclosSpinner)
-                resultado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            }
+        for (document in resultado) {
+            var idCiclo = document.id
+            arrayCiclo.add(idCiclo)
+        }
+        return arrayCiclo
     }
+
 
     fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
@@ -101,7 +99,6 @@ class CrearModulo : Fragment() {
                 addModulo(modulo, ID)
             }
         }
-        spinnerCiclos.
     }
 
     fun addModulo(modulo: Modul, id: String) {
