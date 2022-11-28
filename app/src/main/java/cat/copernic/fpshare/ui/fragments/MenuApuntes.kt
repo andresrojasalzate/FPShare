@@ -5,12 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
+import cat.copernic.fpshare.adapters.PubliAdapter
+import cat.copernic.fpshare.adapters.UfAdminAdapter
+import cat.copernic.fpshare.databinding.FragmentMenuApuntesBinding
+import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.modelo.Uf
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * A simple [Fragment] subclass.
@@ -18,16 +29,18 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MenuApuntes : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentMenuApuntesBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var recyclerView : RecyclerView
+    val bd = FirebaseFirestore.getInstance();
+    private lateinit var adapter: PubliAdapter
+    private lateinit var cicloList: MutableList<Publicacion>
+
+    val args: MenuApuntesArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -38,23 +51,41 @@ class MenuApuntes : Fragment() {
         return inflater.inflate(R.layout.fragment_menu_apuntes, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MenuApuntes.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MenuApuntes().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerView = binding.recyclerView
+
+
+        lifecycleScope.launch(Dispatchers.Main){
+            cicloList = withContext(Dispatchers.IO){ crearMenu()}
+        }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun crearMenu(): MutableList<Publicacion>{
+        var cicloList = mutableListOf<Publicacion>()
+        bd.collection("Ciclos").document(args.cicloId).collection("Modulos").document(args.moduloId).collection("UFs").document(args.ufId).collection("Publicaciones")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    val idPubli = document.id
+                    val publiTitle = document["titulo"].toString()
+                    val publiDescr = document["nombre"].toString()
+                    val publiProfile = document["perfil"].toString()
+                    val checked = document["checked"].toString()
+                    val publiLink = document["enlace"].toString()
+                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked, publiLink)
+                    cicloList.add(publi)
+                }
+                adapter= PubliAdapter(cicloList)
+                binding.recyclerView.adapter = adapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            }
+
+        return cicloList
+    }
+
 }
