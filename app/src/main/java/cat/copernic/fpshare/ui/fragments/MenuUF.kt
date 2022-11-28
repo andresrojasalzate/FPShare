@@ -1,36 +1,38 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.MenuAdapter
-import cat.copernic.fpshare.databinding.FragmentMenuCiclosBinding
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
+import cat.copernic.fpshare.adapters.UfAdminAdapter
+import cat.copernic.fpshare.databinding.FragmentMenuUfBinding
 import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
-import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
-import io.grpc.InternalChannelz.id
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
-    private var _binding: FragmentMenuCiclosBinding? = null
+class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
+    private var _binding: FragmentMenuUfBinding? = null
     private val binding get() = _binding!!
-    private lateinit var boton: Button
     private lateinit var recyclerView : RecyclerView
-    private var bd = FirebaseFirestore.getInstance()
-    private lateinit var adapter: MenuAdapter
-    private lateinit var cicloList: MutableList<Cicle>
+    val bd = FirebaseFirestore.getInstance();
+    private lateinit var adapter: UfAdminAdapter
+    private lateinit var cicloList: MutableList<Uf>
+
+    val args: MenuUFArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +44,18 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMenuCiclosBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuUfBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        boton = binding.btnModulo
         recyclerView = binding.recyclerView
-        lifecycleScope.launch(Dispatchers.Main){
-           cicloList = withContext(Dispatchers.IO){ crearMenu()}
-        }
 
+
+        lifecycleScope.launch(Dispatchers.Main){
+            cicloList = withContext(Dispatchers.IO){ crearMenu()}
+        }
     }
 
     override fun onDestroyView() {
@@ -61,18 +63,22 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         _binding = null
     }
 
-    fun crearMenu(): MutableList<Cicle>{
-        var cicloList = mutableListOf<Cicle>()
-        bd.collection("Ciclos")
+    private fun crearMenu(): MutableList<Uf>{
+
+        var idCic = args.cicloId
+        var idMod = args.moduloId
+
+        var cicloList = mutableListOf<Uf>()
+        bd.collection("Ciclos").document(idCic).collection("Modulos").document(idMod).collection("UFs")
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents){
-                    val idCiclo = document.id
-                    val nombreCiclo = document["nombre"].toString()
-                    val ciclo = Cicle(idCiclo,nombreCiclo)
-                    cicloList.add(ciclo)
+                    val idUf = document.id
+                    val nombreUf = document["nombre"].toString()
+                    val uf = Uf(idUf,nombreUf)
+                    cicloList.add(uf)
                 }
-                adapter=MenuAdapter(cicloList, this)
+                adapter=UfAdminAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             }
@@ -80,13 +86,10 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         return cicloList
     }
 
-
-
     override fun onItemClick(id: String) {
         val view = binding.root
-        val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo(id)
+        val action = MenuUFDirections.actionListaUFsToMenuApuntes(args.cicloId,args.moduloId,id)
         view.findNavController().navigate(action)
     }
 
 }
-
