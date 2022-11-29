@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,9 @@ import cat.copernic.fpshare.modelo.Mensaje
 import cat.copernic.fpshare.modelo.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
@@ -42,9 +46,13 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        boton = binding.button5
-        recyclerView = binding.recyclerView
-        llamarecycleview()
+        lifecycleScope.launch {
+            boton = binding.button5
+            recyclerView = binding.recyclerView
+            withContext(Dispatchers.IO) {
+                llamarecycleview()
+            }
+        }
     }
 
     override fun onDestroyView() {

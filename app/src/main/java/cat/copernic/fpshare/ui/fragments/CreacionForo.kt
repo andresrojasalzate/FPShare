@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
@@ -17,7 +18,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonDisposableHandle.parent
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CreacionForo : Fragment() {
@@ -45,26 +49,29 @@ class CreacionForo : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        titulo = binding.txtThreadInput
-        descripcion = binding.txtDescriptionInput
-        boton = binding.btnSave
-
-
-
+        inicializar()
         boton.setOnClickListener {
 
             if (titulo.text.isNotEmpty() || descripcion.text.isNotEmpty()) {
-                crearForo()
+                lifecycleScope.launch{
+                    withContext(Dispatchers.IO) {
+                        crearForo()
+                    }
+
+                }
             }
         }
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun inicializar(){
+        titulo = binding.txtThreadInput
+        descripcion = binding.txtDescriptionInput
+        boton = binding.btnSave
     }
 
     private fun crearForo() {

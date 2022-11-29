@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,9 @@ import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListaUsuariosAdministracion : Fragment() {
     private var _binding: FragmentListaUsuariosAdministracionBinding? = null
@@ -39,15 +43,19 @@ class ListaUsuariosAdministracion : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        inicializar()
-        llamarecycleview()
+        lifecycleScope.launch{
+            inicializar()
+            withContext(Dispatchers.IO){
+                llamarecycleview()
+            }
 
-
-        botonRename.setOnClickListener {
-            val action =
-                ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
-            view.findNavController().navigate(action)
+            botonRename.setOnClickListener {
+                val action =
+                    ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
+                view.findNavController().navigate(action)
+            }
         }
+
     }
 
     override fun onDestroyView() {
