@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.adapters.ForoAdapter
 import cat.copernic.fpshare.adapters.MsgAdapter
 import cat.copernic.fpshare.databinding.FragmentFpHiloBinding
 import cat.copernic.fpshare.modelo.Cicle
+import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,15 +24,26 @@ class FPHilo : Fragment() {
     private var _binding: FragmentFpHiloBinding? = null
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
-
     private lateinit var botonSend: ImageButton
     private lateinit var inputMsg: EditText
     private lateinit var recyclerView: RecyclerView
+    private lateinit var autor : String
+    private lateinit var  titulo : String
+    private lateinit var textViewTitulo: TextView
+    private lateinit var  textViewAutor: TextView
 
-
+    companion object{
+        val AUTOR = "autor"
+        val TITULO = "titulo"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
+        arguments?.let {
+            autor = it.getString(AUTOR).toString()
+            titulo = it.getString(TITULO).toString()
+        }
     }
 
     override fun onCreateView(
@@ -57,6 +71,10 @@ class FPHilo : Fragment() {
         botonSend = binding.buttonSend
         inputMsg = binding.timInput
         recyclerView = binding.recyclerViewHilo
+        textViewAutor = binding.autorForo
+        textViewTitulo = binding.tituloForo
+        textViewTitulo.setText(titulo)
+        textViewAutor.setText(autor)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = MsgAdapter(obtenerMensajes())
@@ -94,4 +112,5 @@ class FPHilo : Fragment() {
     fun campoVacio(mensaje: String): Boolean {
         return mensaje.isNotEmpty() && mensaje.isNotBlank()
     }
+
 }

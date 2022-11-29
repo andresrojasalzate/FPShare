@@ -6,12 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListaUsuariosAdministracion : Fragment() {
     private var _binding: FragmentListaUsuariosAdministracionBinding? = null
@@ -19,6 +25,7 @@ class ListaUsuariosAdministracion : Fragment() {
     private lateinit var botonRename : Button
     private lateinit var botonDelete : Button
     private lateinit var recyclerView : RecyclerView
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,46 +43,58 @@ class ListaUsuariosAdministracion : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        botonRename = binding.buttonRenameUser
-        botonDelete = binding.buttonDeleteUser
-        recyclerView = binding.recyclerView
+        lifecycleScope.launch{
+            inicializar()
+            withContext(Dispatchers.IO){
+                llamarecycleview()
+            }
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = UserAdapter(obtenerUsuarios())
-
-        botonRename.setOnClickListener {
-            val action =
-                ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
-            view.findNavController().navigate(action)
+            botonRename.setOnClickListener {
+                val action =
+                    ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
+                view.findNavController().navigate(action)
+            }
         }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    private fun llamarecycleview(){
+        val userList = ArrayList<User>()
+        val adapterUser = UserAdapter(userList)
+
+        bd.collection("Usuarios").get().addOnSuccessListener {documents ->
+            for (document in documents){
+                val wallitem = document.toObject(User::class.java)
+                wallitem.email = document.id
+                wallitem.nombre = document["nombre"].toString()
+                wallitem.apellidos = document["apellidos"].toString()
+                wallitem.telefono = document["telefono"].toString()
+                wallitem.insituto = document["instituto"].toString()
+                wallitem.esAdmin = document["esAdmin"] as Boolean
+
+                userList.add(wallitem)
+            }
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = adapterUser
+        }
+
+        }
+
+   private fun inicializar(){
+       botonRename = binding.buttonRenameUser
+       botonDelete = binding.buttonDeleteUser
+       recyclerView = binding.recyclerView
+   }
     private fun obtenerUsuarios(): MutableList<User>{
-
         val usuarios = mutableListOf<User>()
-
-        /*val usuario1 = User(1, "Antoni", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
-        val usuario2 = User(2, "Guille", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
-        val usuario3 = User(3, "Fran", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
-        val usuario4 = User(4, "Andrés", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg")
-        val usuario5 = User(4,"","")
-        usuarios.add(usuario1)
-        usuarios.add(usuario2)
-        usuarios.add(usuario3)
-        usuarios.add(usuario4)
-
         for(num in 1..30){
-
-            usuarios.add(User(num, "Andrés", "https://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg"))
-
-        }*/
-
+            usuarios.add(User("email@gmail.com", "Andrés", "Rojas Alzate",
+                "", " ", false))
+        }
         return usuarios
-
     }
-
 }

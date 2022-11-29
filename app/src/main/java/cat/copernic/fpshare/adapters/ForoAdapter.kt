@@ -10,11 +10,23 @@ import cat.copernic.fpshare.databinding.ItemForoBinding
 import cat.copernic.fpshare.modelo.Foro
 
 
-class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){
+class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdapter.OnItemClickListener) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
-    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
-        val viewB = ItemForoBinding.bind(view)
+    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
+        val ViewB = ItemForoBinding.bind(view)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            val foro = foros.get(position)
+            if(position != RecyclerView.NO_POSITION)  {
+                listener.onItemClick(foro)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,15 +38,21 @@ class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAda
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
         val numMensajes = foro.mensajes.size
-        with(holder) {
-            viewB.autor.text = foro.emailautor
-            viewB.titulo.text = foro.titulo
-            viewB.comentarios.text = numMensajes.toString()
+        with(holder){
+            ViewB.autor.text = foro.emailautor
+            ViewB.titulo.text = foro.titulo
+            ViewB.comentarios.text = numMensajes.toString()
         }
 
     }
 
     override fun getItemCount(): Int {
         return foros.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(foro: Foro)
+
+
     }
 }

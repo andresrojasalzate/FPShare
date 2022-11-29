@@ -50,25 +50,16 @@ class Register : AppCompatActivity() {
 
             if (campoVacio(nombre, password, mail)) {
                 registrar(password, mail)
+
+                val usuario = User(mail, nombre, "", "", "", false)
+                anadirUsuario(usuario)
             }
-
-            val usuario = User(mail, nombre, "", "", "", false)
-            anadirUsuario(usuario, mail)
         }
-
-
     }
 
-    fun  anadirUsuario(usuario : User, email :String){
-        bd.collection("Usuarios").document(email).set(
-            usuario
-        )
-            .addOnSuccessListener { //S'ha afegit el departament...
-            Toast.makeText(applicationContext,"El user s'ha afegit correctament", Toast.LENGTH_LONG).show()
-        }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(applicationContext,"El user no s'ha afegit", Toast.LENGTH_LONG).show()
-            }
+    fun  anadirUsuario(usuario : User) {
+
+        bd.collection("Usuarios").document(usuario.email).set(usuario)
     }
 
     fun campoVacio(nombre: String, password: String, mail: String): Boolean {
