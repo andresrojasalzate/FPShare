@@ -33,7 +33,7 @@ class MenuApuntes : Fragment() {
     private var _binding: FragmentMenuApuntesBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView : RecyclerView
-    val bd = FirebaseFirestore.getInstance();
+    val bd = FirebaseFirestore.getInstance()
     private lateinit var adapter: PubliAdapter
     private lateinit var cicloList: MutableList<Publicacion>
 
@@ -74,12 +74,13 @@ class MenuApuntes : Fragment() {
             .addOnSuccessListener { documents ->
                 for (document in documents){
                     val idPubli = document.id
-                    val publiTitle = document["titulo"].toString()
-                    val publiDescr = document["nombre"].toString()
-                    val publiProfile = document["perfil"].toString()
                     val checked = document["checked"].toString()
+                    val publiDescr = document["descripcion"].toString()
                     val publiLink = document["enlace"].toString()
-                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked, publiLink)
+                    val publiProfile = document["perfil"].toString()
+                    val publiTitle = document["titulo"].toString()
+
+                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink)
                     cicloList.add(publi)
                 }
                 adapter= PubliAdapter(cicloList)
