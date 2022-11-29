@@ -42,6 +42,7 @@ class ListaUsuariosAdministracion : Fragment() {
         inicializar()
         llamarecycleview()
 
+
         botonRename.setOnClickListener {
             val action =
                 ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
@@ -56,6 +57,7 @@ class ListaUsuariosAdministracion : Fragment() {
     private fun llamarecycleview(){
         val userList = ArrayList<User>()
         val adapterUser = UserAdapter(userList)
+
         bd.collection("Usuarios").get().addOnSuccessListener {documents ->
             for (document in documents){
                 val wallitem = document.toObject(User::class.java)

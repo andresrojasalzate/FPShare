@@ -10,9 +10,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
+import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
 import cat.copernic.fpshare.modelo.Mensaje
+import cat.copernic.fpshare.modelo.User
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 
 class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
@@ -20,11 +24,8 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     private val binding get() = _binding!!
     private lateinit var boton: Button
     private lateinit var recyclerView : RecyclerView
+    private var bd = FirebaseFirestore.getInstance()
 
-    companion object {
-        const val FORO = "foro"
-
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -43,22 +44,30 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         boton = binding.button5
         recyclerView = binding.recyclerView
-
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = ForoAdapter(obtenerForos(),this)
-
+        llamarecycleview()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    private fun llamarecycleview() {
+        val foroList = ArrayList<Foro>()
 
+        bd.collection("Foros").get().addOnSuccessListener { documents ->
+            for (document in documents){
+                val wallitem = document.toObject(Foro::class.java)
+                foroList.add(wallitem)
+            }
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = ForoAdapter(foroList,this)
+        }
+    }
     private fun obtenerForos(): MutableList<Foro>{
         val foros = mutableListOf<Foro>()
         val mensajes = ArrayList<Mensaje>()
         for(num in 1..30){
-            foros.add(Foro("Titulo de foro","Andrés", "dvavev",mensajes))
+            foros.add(Foro("1", "Titulo de foro","Andrés", "dvavev",mensajes))
         }
         return foros
     }
@@ -68,5 +77,4 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
             ListaForosDirections.actionListaForosToFPHilo(autor = foro.emailautor, titulo = foro.titulo)
         view?.findNavController()?.navigate(action)
     }
-
 }
