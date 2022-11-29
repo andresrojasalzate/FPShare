@@ -100,4 +100,8 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
             }
         return ufList
     }
+
+    override fun onItemClick(id: String) {
+        TODO("Implementar cuando tengamos que hacer el delete")
+    }
 }
