@@ -75,7 +75,7 @@ class CrearModulo : Fragment() {
     private fun listeners() {
 
         buttonBack.setOnClickListener {
-            val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
+            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos("")
             view?.findNavController()?.navigate(action)
         }
         buttonAddModulo.setOnClickListener {
@@ -88,7 +88,7 @@ class CrearModulo : Fragment() {
                 addModulo(idCiclo, modulo, id)
             }
 
-            val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
+            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos("")
             view?.findNavController()?.navigate(action)
         }
     }
