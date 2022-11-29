@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.ItemForoBinding
+import cat.copernic.fpshare.modelo.Foro
 
 
 class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdapter.OnItemClickListener) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){

@@ -4,21 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListAdapter
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 
 class CrearModulo : Fragment() {
@@ -27,7 +19,7 @@ class CrearModulo : Fragment() {
     private var bd = FirebaseFirestore.getInstance()
 
     // private lateinit var spinnerCiclos: Spinner
-    private lateinit var idSpinner: MutableList<String>
+    // private lateinit var idSpinner: MutableList<String>
 
     // Botones
     private lateinit var buttonAddModulo: Button
@@ -41,11 +33,6 @@ class CrearModulo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
-        lifecycleScope.launch {
-            var resultado = withContext(Dispatchers.IO) {
-
-            }
-        }
     }
 
     override fun onDestroyView() {
@@ -61,7 +48,7 @@ class CrearModulo : Fragment() {
         return binding.root
     }
 
-    private suspend fun leerIds(): MutableList<String> {
+    /*private suspend fun leerIds(): MutableList<String> {
 
         val arrayCiclo = mutableListOf<String>()
         val resultado = bd.collection("Ciclos").get().await()
@@ -71,7 +58,7 @@ class CrearModulo : Fragment() {
             arrayCiclo.add(idCiclo)
         }
         return arrayCiclo
-    }
+    }*/
 
 
     private fun inicializadores() {
