@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -35,6 +32,9 @@ class NuevaPublicacion : Fragment() {
     private lateinit var publicacion: Publicacion
     private lateinit var botonPublicar: Button
 
+    private lateinit var idModulo: EditText
+    private lateinit var idUf: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -46,8 +46,7 @@ class NuevaPublicacion : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,12 +55,14 @@ class NuevaPublicacion : Fragment() {
         descripcion = binding.textDescription
         enlace = binding.textLink
 
+        idModulo = binding.setModule
+        idUf = binding.setUF
 
         botonPublicar.setOnClickListener{
 
-            var publicacion = llegirDades()
-            if(publicacion.id.isNotEmpty()){
-                anadirPublicacion(publicacion)
+            val publicacion = llegirDades()
+            if(publicacion.id.isNotEmpty() && publicacion.id.isNotBlank()){
+                anadirPublicacion(idModulo.text.toString(), idUf.text.toString(), publicacion)
             }
         }
     }
@@ -73,56 +74,36 @@ class NuevaPublicacion : Fragment() {
 
     //Funció que llegeix les dades introduïdes per un usuari i retorna el departament instanciat amb aquestes
     //dades.
-    fun llegirDades():Publicacion{
+    private fun llegirDades():Publicacion{
 
         //Guardem les dades introduïdes per l'usuari
-        var id = "a"
-        var perfil = user?.email.toString()
-        var titulo = titulo.text.toString()
-        var descripcion = descripcion.text.toString()
+        val id = "a"
+        val perfil = user?.email.toString()
+        val titulo = titulo.text.toString()
+        val descripcion = descripcion.text.toString()
+
         if(binding.optionDam.isChecked){
             checked = "DAM"
         }else if(binding.optionDaw.isChecked){
             checked = "DAW"
         }else if(binding.optionSmix.isChecked){
-            checked = "SMIX"
+            checked = "SMIR"
         }else if(binding.optionAsix.isChecked){
-            checked = "ASIX"
+            checked = "ASIR"
         }
-        var enlace = enlace.text.toString()
+        val enlace = enlace.text.toString()
 
 
         return Publicacion(id, perfil, titulo, descripcion, checked, enlace)
 
     }
 
-    fun anadirPublicacion(publicacion:Publicacion){
-        val appContext = context
+    fun anadirPublicacion(idModulo: String, idUf: String, publicacion:Publicacion){
+        // val appContext = context
 
-        bd.collection("Publicaciones").add(publicacion)
-            .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(appContext,"El Deparatment s'ha afegit correctament", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(appContext,"El Deparatment no s'ha afegit", Toast.LENGTH_LONG).show()
-            }
-        /*
-        bd.collection("Publicaciones").document(id).set(
-            //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
-            // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
-            hashMapOf(
-                "perfil" to perfil, //Atribut nom amb el valor introduït per l'usuari
-                "titulo" to titulo.text.toString(), //Atribut planta amb el valor introduït per l'usuari
-                "descripcion" to descripcion.text.toString(),
-                "enlace" to enlace.text.toString()
-            ))
-            .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(requireContext(),"Publicacion añadida correctament", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(requireContext(),"La publicacion no se ha añadido", Toast.LENGTH_LONG).show()
-            }
-
-         */
+        bd.collection("Ciclos").document(checked)
+            .collection("Modulos").document(idModulo)
+            .collection("UFs").document(idUf)
+            .collection("Publicaciones").document().set(publicacion)
     }
 }

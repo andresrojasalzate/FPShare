@@ -1,4 +1,4 @@
 package cat.copernic.fpshare.clases
 
-data class Menu (var id: Int, var opcion: String) {
+data class Menu (var id: String, var opcion: String) {
 }

@@ -155,5 +155,9 @@
     <string name="name_module">Name of the module</string>
     <string name="enter_id_module">Enter the ID of the module</string>
     <string name="cicles_menu_admin">cicles</string>
-    <string name="comments">Comments:</string>
+    <string name="select_a_cicle">Select a Cicle</string>
+    <string name="id_of_cicle">ID of Cicle</string>
+    <string name="cicle">Cicle</string>
+    <string name="module">Module</string>
+    <string name="uf">UF</string>
 </resources>

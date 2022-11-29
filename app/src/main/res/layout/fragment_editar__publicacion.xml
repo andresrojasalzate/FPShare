@@ -50,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUser">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/renameTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/txtPublicationTitle" />
@@ -64,13 +65,14 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTitle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/renameDesc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/txtPublicationDescription" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/TextLink"
+        android:id="@+id/renameLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_60"
@@ -86,7 +88,7 @@
         android:layout_marginStart="@dimen/size_60"
         android:layout_marginTop="@dimen/size_36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextLink" />
+        app:layout_constraintTop_toBottomOf="@+id/renameLink" />
 
     <Spinner
         android:id="@+id/spinnerCiclo"

@@ -3,6 +3,7 @@ package cat.copernic.fpshare.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -10,14 +11,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityMainBinding
-import cat.copernic.fpshare.ui.fragments.pantalla_principalDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
-class
-MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -37,10 +35,10 @@ MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         setupBottomNavMenu(navController)
         // Make sure actions in the ActionBar get propagated to the NavController
-        setupActionBarWithNavController(navController)
+        //setupActionBarWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.pantalla_principal, R.id.menuAdministracion, R.id.fp_ajustes),
+            setOf(R.id.pantalla_principal, R.id.menuAdministracion, R.id.fp_ajustes, R.id.login),
             binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
@@ -58,21 +56,21 @@ MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+             item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
+                if (item.itemId == R.id.login){
+                    Firebase.auth.signOut()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+                return super.onOptionsItemSelected(item)
 
-        val id = item.getItemId()
-        if (id == R.id.nav_logout) {
-            Firebase.auth.signOut()
-            val action =
-                pantalla_principalDirections.actionPantallaPrincipalToLogin()
-            // view.findNavController().navigate(action)
-            return true
-        }
-        else(
-            return item.onNavDestinationSelected(
-                findNavController(R.id.nav_host_fragment)
-            ) || super.onOptionsItemSelected(item)
-        )
-            return true
+        /*
+        return item.onNavDestinationSelected(
+            findNavController(R.id.nav_host_fragment)
+        ) || super.onOptionsItemSelected(item)
+        startActivity(Intent(this, Login::class.java))
+        finish()
+         */
     }
 
 }

@@ -7,14 +7,28 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
+import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 
-class ModulAdminAdapter(private val modulos: List<Modul>) :
+class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<ModulAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-        val ViewB = ItemTagBinding.bind(view)
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
+        var ViewB = ItemTagBinding.bind(view)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            val id = modulos.get(position).idModul
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(id)
+            }
+        }
     }
 
     override fun onCreateViewHolder(
@@ -29,7 +43,6 @@ class ModulAdminAdapter(private val modulos: List<Modul>) :
     override fun onBindViewHolder(holder: ModulAdminAdapter.ViewHolder, position: Int) {
         val modulos = modulos.get(position)
         with(holder) {
-            ViewB.idTag.text = modulos.idModul
             ViewB.nombreTag.text = modulos.nombre
         }
 
@@ -37,5 +50,9 @@ class ModulAdminAdapter(private val modulos: List<Modul>) :
 
     override fun getItemCount(): Int {
         return modulos.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(id: String)
     }
 }

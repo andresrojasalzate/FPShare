@@ -24,6 +24,8 @@ class CrearUF : Fragment() {
     private lateinit var buttonBack: Button
 
     // EditText
+    private lateinit var inputIDCiclo: EditText
+    private lateinit var inputIDModulo: EditText
     private lateinit var inputIDUf: EditText
     private lateinit var inputNameUf: EditText
 
@@ -55,6 +57,8 @@ class CrearUF : Fragment() {
         buttonAddUf = binding.btnAddUf
         buttonBack = binding.btnBack
 
+        inputIDCiclo = binding.selectCiclo
+        inputIDModulo = binding.selectIDModul
         inputIDUf = binding.inputIDuf
         inputNameUf = binding.inputNombreUf
     }
@@ -65,23 +69,29 @@ class CrearUF : Fragment() {
             view?.findNavController()?.navigate(action)
         }
         buttonAddUf.setOnClickListener() {
+            val idCiclo = inputIDCiclo.text.toString()
+            val idModulo = inputIDModulo.text.toString()
             val ID = inputIDUf.text.toString()
             val nombre = inputNameUf.text.toString()
 
-            if (campoVacio(ID, nombre)) {
+            if (campoVacio(idCiclo, idModulo, ID, nombre)) {
                 val uf = Uf(ID, nombre)
-                addUF(uf, ID)
+                addUF(idCiclo, idModulo, uf, ID)
             }
+
+            val action = CrearUFDirections.actionCrearUFToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
         }
     }
 
-    fun addUF(uf: Uf, id: String) {
-        bd.collection("Ciclos").document(id)
-            .collection("Modulos").document(id)
+    fun addUF(idCiclo: String, idModulo: String, uf: Uf, id: String) {
+        bd.collection("Ciclos").document(idCiclo)
+            .collection("Modulos").document(idModulo)
             .collection("UFs").document(id).set(uf)
     }
 
-    fun campoVacio(ID: String, nombre: String): Boolean {
-        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
+    fun campoVacio(idCiclo: String, idModulo: String, ID: String, nombre: String): Boolean {
+        return idCiclo.isNotEmpty() && idModulo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty()
+                && ID.isNotBlank() && nombre.isNotBlank() && idCiclo.isNotBlank() && idModulo.isNotBlank()
     }
 }

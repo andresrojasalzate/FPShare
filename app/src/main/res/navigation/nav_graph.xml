@@ -81,15 +81,24 @@
             android:id="@+id/action_menuModulo_to_listaUFs"
             app:destination="@id/listaUFs" />
         <argument
-            android:name="number"
-            app:argType="integer"
-            android:defaultValue="1" />
+            android:name="cicloid"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/listaUFs"
-        android:name="cat.copernic.fpshare.ui.fragments.ListaUFs"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuUF"
         android:label="fragment_lista_u_fs"
-        tools:layout="@layout/fragment_lista_u_fs" />
+        tools:layout="@layout/fragment_menu_uf" >
+        <argument
+            android:name="cicloId"
+            app:argType="string" />
+        <argument
+            android:name="moduloId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_listaUFs_to_menuApuntes"
+            app:destination="@id/menuApuntes" />
+    </fragment>
     <fragment
         android:id="@+id/menuAdministracion"
         android:name="cat.copernic.fpshare.ui.fragments.MenuAdministracion"
@@ -174,5 +183,20 @@
         <action
             android:id="@+id/action_crearUF_to_listaTagsAdministracion"
             app:destination="@id/listaTagsAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuApuntes"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuApuntes"
+        android:label="fragment_menu_apuntes"
+        tools:layout="@layout/fragment_menu_apuntes" >
+        <argument
+            android:name="cicloId"
+            app:argType="string" />
+        <argument
+            android:name="moduloId"
+            app:argType="string" />
+        <argument
+            android:name="ufId"
+            app:argType="string" />
     </fragment>
 </navigation>

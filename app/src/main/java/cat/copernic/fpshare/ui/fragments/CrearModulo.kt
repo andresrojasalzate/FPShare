@@ -4,13 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ListAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 
 class CrearModulo : Fragment() {
@@ -18,21 +26,26 @@ class CrearModulo : Fragment() {
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
 
+    // private lateinit var spinnerCiclos: Spinner
+    private lateinit var idSpinner: MutableList<String>
+
     // Botones
     private lateinit var buttonAddModulo: Button
     private lateinit var buttonBack: Button
 
     // EditText
+    private lateinit var inputIDCiclo: EditText
     private lateinit var inputIDModulo: EditText
     private lateinit var inputNameModulo: EditText
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
+        lifecycleScope.launch {
+            var resultado = withContext(Dispatchers.IO) {
+
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -45,40 +58,60 @@ class CrearModulo : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCrearModuloBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
-    fun inicializadores() {
+    private suspend fun leerIds(): MutableList<String> {
+
+        val arrayCiclo = mutableListOf<String>()
+        val resultado = bd.collection("Ciclos").get().await()
+
+        for (document in resultado) {
+            val idCiclo = document.id
+            arrayCiclo.add(idCiclo)
+        }
+        return arrayCiclo
+    }
+
+
+    private fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
         buttonBack = binding.btnBack
 
+        inputIDCiclo = binding.selectCiclo
         inputIDModulo = binding.inputIDModul
         inputNameModulo = binding.inputNombreModul
+
+        // spinnerCiclos = binding.selectCiclo
     }
 
-    fun listeners() {
-        buttonBack.setOnClickListener() {
+    private fun listeners() {
+
+        buttonBack.setOnClickListener {
             val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
             view?.findNavController()?.navigate(action)
         }
-        buttonAddModulo.setOnClickListener() {
-            val ID = inputIDModulo.text.toString()
+        buttonAddModulo.setOnClickListener {
+            val idCiclo = inputIDCiclo.text.toString()
+            val id = inputIDModulo.text.toString()
             val nombre = inputNameModulo.text.toString()
 
-            if (campoVacio(ID, nombre)) {
-                val modulo = Modul(ID, nombre, emptyList())
-                addModulo(modulo, ID)
+            if (campoVacio(idCiclo, id, nombre)) {
+                val modulo = Modul(id, nombre)
+                addModulo(idCiclo, modulo, id)
             }
+
+            val action = CrearModuloDirections.actionCrearModuloToListaTagsAdministracion()
+            view?.findNavController()?.navigate(action)
         }
     }
 
-    fun addModulo(modulo: Modul, id: String) {
-        bd.collection("Ciclos").document(id)
+    private fun addModulo(idCiclo: String, modulo: Modul, id: String) {
+        bd.collection("Ciclos").document(idCiclo)
             .collection("Modulos").document(id).set(modulo)
     }
 
-    fun campoVacio(ID: String, nombre: String): Boolean {
-        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
+    private fun campoVacio(idCiclo: String, ID: String, nombre: String): Boolean {
+        return idCiclo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty() && idCiclo.isNotBlank() && ID.isNotBlank() && nombre.isNotBlank()
     }
 }
