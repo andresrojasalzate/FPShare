@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,12 +19,13 @@ class CrearModulo : Fragment() {
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
 
+    private val args: FragmentAdminModulosArgs by navArgs()
+
     // private lateinit var spinnerCiclos: Spinner
     // private lateinit var idSpinner: MutableList<String>
 
     // Botones
     private lateinit var buttonAddModulo: Button
-    private lateinit var buttonBack: Button
 
     // EditText
     private lateinit var inputIDCiclo: EditText
@@ -63,7 +65,6 @@ class CrearModulo : Fragment() {
 
     private fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
-        buttonBack = binding.btnBack
 
         inputIDCiclo = binding.selectCiclo
         inputIDModulo = binding.inputIDModul
@@ -74,10 +75,6 @@ class CrearModulo : Fragment() {
 
     private fun listeners() {
 
-        buttonBack.setOnClickListener {
-            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos("")
-            view?.findNavController()?.navigate(action)
-        }
         buttonAddModulo.setOnClickListener {
             val idCiclo = inputIDCiclo.text.toString()
             val id = inputIDModulo.text.toString()
@@ -88,7 +85,7 @@ class CrearModulo : Fragment() {
                 addModulo(idCiclo, modulo, id)
             }
 
-            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos("")
+            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos(args.idCiclo)
             view?.findNavController()?.navigate(action)
         }
     }

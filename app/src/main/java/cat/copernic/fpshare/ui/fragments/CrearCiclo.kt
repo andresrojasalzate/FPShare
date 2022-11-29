@@ -20,7 +20,6 @@ class CrearCiclo : Fragment() {
 
     // Botones
     private lateinit var buttonAddCicle: Button
-    private lateinit var buttonBack: Button
 
     // EditText
     private lateinit var inputIDCicle: EditText
@@ -45,17 +44,13 @@ class CrearCiclo : Fragment() {
 
     private fun inicializadores() {
         buttonAddCicle = binding.btnAddCicle
-        buttonBack = binding.btnBack
 
         inputIDCicle = binding.inputIDCiclo
         inputNameCicle = binding.inputNombreCiclo
     }
 
     private fun listeners() {
-        buttonBack.setOnClickListener {
-            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
-            view?.findNavController()?.navigate(action)
-        }
+
         buttonAddCicle.setOnClickListener {
             val id = inputIDCicle.text.toString()
             val nombre = inputNameCicle.text.toString()
