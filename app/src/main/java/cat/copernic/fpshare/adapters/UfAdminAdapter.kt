@@ -15,7 +15,7 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
 
     inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
-        var ViewB = ItemTagBinding.bind(view)
+        var viewB = ItemTagBinding.bind(view)
 
         init {
             view.setOnClickListener(this)
@@ -42,7 +42,7 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
     override fun onBindViewHolder(holder: UfAdminAdapter.ViewHolder, position: Int) {
         val uf = uf[position]
         with(holder) {
-            ViewB.nombreTag.text = uf.nombre
+            viewB.nombreTag.text = uf.nombre
         }
 
     }

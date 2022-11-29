@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.ItemForoBinding
+import cat.copernic.fpshare.modelo.Foro
 
 
 class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
     inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
-        val ViewB = ItemForoBinding.bind(view)
+        val viewB = ItemForoBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,10 +26,10 @@ class ForoAdapter (private val foros: List<Foro>) : RecyclerView.Adapter<ForoAda
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
         val numMensajes = foro.mensajes.size
-        with(holder){
-            ViewB.autor.text = foro.emailautor
-            ViewB.titulo.text = foro.titulo
-            ViewB.comentarios.text = numMensajes.toString()
+        with(holder) {
+            viewB.autor.text = foro.emailautor
+            viewB.titulo.text = foro.titulo
+            viewB.comentarios.text = numMensajes.toString()
         }
 
     }

@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.ItemUserBinding
+import cat.copernic.fpshare.modelo.User
 
-class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(private val usuarios: List<User>) :
+    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
-        val ViewB = ItemUserBinding.bind(view)
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+        val viewB = ItemUserBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +25,9 @@ class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val usuario = usuarios.get(position)
-        with(holder){
-            ViewB.numUsuario.text =(position + 1).toString()
-            ViewB.nombreUsuario.text = usuario.nombre
+        with(holder) {
+            viewB.numUsuario.text = (position + 1).toString()
+            viewB.nombreUsuario.text = usuario.nombre
 
             /*Glide.with(contexto)
                 .load(usuario.imagen)

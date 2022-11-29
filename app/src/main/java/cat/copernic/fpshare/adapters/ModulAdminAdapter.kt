@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
-import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 
 class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val listener: OnItemClickListener) :
@@ -16,7 +15,7 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
 
     inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
-        var ViewB = ItemTagBinding.bind(view)
+        var viewB = ItemTagBinding.bind(view)
 
         init {
             view.setOnClickListener(this)
@@ -43,7 +42,7 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
     override fun onBindViewHolder(holder: ModulAdminAdapter.ViewHolder, position: Int) {
         val modulos = modulos.get(position)
         with(holder) {
-            ViewB.nombreTag.text = modulos.nombre
+            viewB.nombreTag.text = modulos.nombre
         }
 
     }
