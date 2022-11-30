@@ -22,9 +22,9 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
 
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
-            val foro = foros.get(position)
+            val foroID = foros.get(position).id
             if(position != RecyclerView.NO_POSITION)  {
-                listener.onItemClick(foro)
+                listener.onItemClick(foroID)
             }
         }
     }
@@ -51,7 +51,7 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
     }
 
     interface OnItemClickListener {
-        fun onItemClick(foro: Foro)
+        fun onItemClick(id: String)
 
 
     }

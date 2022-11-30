@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
@@ -17,7 +18,10 @@ import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
 import cat.copernic.fpshare.modelo.Modul
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 
 
 class FPHilo : Fragment() {
@@ -26,18 +30,14 @@ class FPHilo : Fragment() {
     private lateinit var botonSend: ImageButton
     private lateinit var inputMsg: EditText
     private lateinit var recyclerView: RecyclerView
-    private lateinit var autor : String
-    private lateinit var  titulo : String
-    private lateinit var  id: String
+    private lateinit var textviewDescripcion : TextView
     private lateinit var textViewTitulo: TextView
     private lateinit var  textViewAutor: TextView
     private var bd = FirebaseFirestore.getInstance()
+    private var user = Firebase.auth.currentUser
 
-    companion object{
-        val AUTOR = "autor"
-        val TITULO = "titulo"
-        val ID = "ID"
-    }
+    private val args: FPHiloArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -56,20 +56,16 @@ class FPHilo : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.let {
-            autor = it.getString(AUTOR).toString()
-            titulo = it.getString(TITULO).toString()
-            id = it.getString(ID).toString()
-        }
+
         inicializadores()
-        llamarecycleview()
+        infoforo()
+        llamarecycleviewmensajes()
 
         botonSend.setOnClickListener() {
             val texto = inputMsg.text.toString()
 
             if (campoVacio(texto)) {
-                val mensaje = Mensaje("ID", "autor@gmail.com", texto)
-                addMensaje(mensaje, id)
+                addMensaje(texto)
             }
         }
 
@@ -80,10 +76,18 @@ class FPHilo : Fragment() {
         _binding = null
     }
 
-    private fun llamarecycleview(){
+    private fun infoforo(){
+        val idForo = args.idforo
+        bd.collection("Foros").document(idForo).get().addOnSuccessListener { document ->
+            textViewTitulo.setText(document["titulo"].toString())
+            textViewAutor.setText(document["emailautor"].toString())
+            textviewDescripcion.setText(document["descripcion"].toString())
+        }
+    }
+    private fun llamarecycleviewmensajes(){
         val mensajesList = ArrayList<Mensaje>()
-        val idForo = id
-     
+        val idForo = args.idforo
+
         bd.collection("Foros").document(idForo).collection("Mensajes").get().addOnSuccessListener { documents ->
             for (document in documents){
                 val wallitem = document.toObject(Mensaje::class.java)
@@ -99,16 +103,29 @@ class FPHilo : Fragment() {
         recyclerView = binding.recyclerViewHilo
         textViewAutor = binding.autorForo
         textViewTitulo = binding.tituloForo
-        textViewTitulo.setText(titulo)
-        textViewAutor.setText(autor)
+        textviewDescripcion = binding.descripcion
 
     }
 
-    fun addMensaje(mensaje: Mensaje, id: String) {
-        bd.collection("Foros").document(id)
-            .collection("Mensajes").document(id).set(mensaje)
-    }
+    fun addMensaje(mensaje: String) {
+        val idForo = args.idforo
+        val email = user?.email.toString()
+        bd.collection("Foros").document(idForo).collection("Mensajes").orderBy("idMensaje", Query.Direction.DESCENDING).limit(1).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val wallitem = document.toObject(Mensaje::class.java)
+                    wallitem.idMensaje = document["idMensaje"].toString()
+                    var idtxt = wallitem.idMensaje
+                    var idint = idtxt.toInt()
+                    idint += 1
+                    idtxt = idint.toString()
+                    val nuevomensaje = Mensaje(idtxt, email, mensaje)
 
+                bd.collection("Foros").document(idForo)
+                    .collection("Mensajes").document(idtxt).set(nuevomensaje)
+                }
+            }
+    }
     fun campoVacio(mensaje: String): Boolean {
         return mensaje.isNotEmpty() && mensaje.isNotBlank()
     }

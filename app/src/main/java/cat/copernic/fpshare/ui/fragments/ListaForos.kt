@@ -71,18 +71,10 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
             recyclerView.adapter = ForoAdapter(foroList,this)
         }
     }
-    private fun obtenerForos(): MutableList<Foro>{
-        val foros = mutableListOf<Foro>()
-        val mensajes = ArrayList<Mensaje>()
-        for(num in 1..30){
-            foros.add(Foro("1", "Titulo de foro","Andrés", "dvavev",mensajes))
-        }
-        return foros
-    }
 
-    override fun onItemClick(foro: Foro) {
+    override fun onItemClick(id: String) {
         val action =
-            ListaForosDirections.actionListaForosToFPHilo(autor = foro.emailautor, titulo = foro.titulo, id = foro.id)
+            ListaForosDirections.actionListaForosToFPHilo(id)
         view?.findNavController()?.navigate(action)
     }
 }

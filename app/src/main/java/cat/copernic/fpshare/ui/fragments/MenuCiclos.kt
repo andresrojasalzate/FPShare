@@ -63,7 +63,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     fun crearMenu(): MutableList<Cicle>{
-        var cicloList = mutableListOf<Cicle>()
+        val cicloList = mutableListOf<Cicle>()
         bd.collection("Ciclos")
             .get()
             .addOnSuccessListener { documents ->

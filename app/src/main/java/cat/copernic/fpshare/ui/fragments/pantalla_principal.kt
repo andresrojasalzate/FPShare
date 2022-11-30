@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.Adapter
@@ -77,6 +78,7 @@ class pantalla_principal : Fragment() {
         _binding = null
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
         val ciclo = bd.collection("Ciclos")
@@ -87,10 +89,10 @@ class pantalla_principal : Fragment() {
                 val modulo =ciclo.document(docuciclo.id).collection("Modulos")
                 modulo.get().addOnSuccessListener { documodulos ->
                     for (documodulo in documodulos){
-                        val uf_s =modulo.document(documodulo.id).collection("UFs")
-                            uf_s.get().addOnSuccessListener { docuufs ->
+                        val ufs =modulo.document(documodulo.id).collection("UFs")
+                            ufs.get().addOnSuccessListener { docuufs ->
                                 for (docuuf in docuufs){
-                                     uf_s.document(docuuf.id).collection("Publicaciones")
+                                     ufs.document(docuuf.id).collection("Publicaciones")
                                         .get()
                                         .addOnSuccessListener { docupublis ->
                                             for (docupubli in docupublis){
@@ -104,8 +106,8 @@ class pantalla_principal : Fragment() {
                                                     cicloList.add(publi)
                                             }
                                             adapter= PubliAdapter(cicloList)
-                                            binding.recyclerView.adapter = adapter
-                                            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                            //binding.recyclerView.adapter = adapter
+                                            //binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
                                         }
 
 

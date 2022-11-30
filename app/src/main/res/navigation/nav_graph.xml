@@ -55,11 +55,7 @@
         android:label="fragment_fp_hilo"
         tools:layout="@layout/fragment_fp_hilo" >
         <argument
-            android:name="autor"
-            app:argType="string" />
-        <argument android:name="titulo" />
-        <argument
-            android:name="id"
+            android:name="idforo"
             app:argType="string" />
     </fragment>
     <fragment
