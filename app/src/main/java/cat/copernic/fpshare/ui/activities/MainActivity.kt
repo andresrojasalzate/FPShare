@@ -12,6 +12,7 @@ import androidx.navigation.ui.*
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,15 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        val signupmenuitem = binding.navView.menu.findItem(R.id.nav_logout)
+        signupmenuitem.setOnMenuItemClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this,Login::class.java))
+            finish()
+            true
+        }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -53,24 +64,26 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavMenu(navController: NavController){
         val bottomNav=findViewById<BottomNavigationView>(R.id.bottom_view)
         bottomNav?.setupWithNavController(navController)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-             item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
-                if (item.itemId == R.id.login){
-                    Firebase.auth.signOut()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
-                return super.onOptionsItemSelected(item)
-
-        /*
         return item.onNavDestinationSelected(
             findNavController(R.id.nav_host_fragment)
         ) || super.onOptionsItemSelected(item)
+    }
+        /*
+        return item.onNavDestinationSelected(
+
+            findNavController(R.id.nav_host_fragment)
+        ) || super.onOptionsItemSelected(item)
+
+
+
+
         startActivity(Intent(this, Login::class.java))
         finish()
          */
-    }
+
 
 }

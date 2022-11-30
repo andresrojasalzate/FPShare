@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cat.copernic.fpshare.ui.activities.MainActivity"
-    android:id="@+id/drawer_layout">
+    android:id="@+id/drawer_layout"
+    tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
