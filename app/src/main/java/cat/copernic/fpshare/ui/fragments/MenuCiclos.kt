@@ -48,7 +48,6 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        boton = binding.btnModulo
         recyclerView = binding.recyclerView
 
         lifecycleScope.launch(Dispatchers.Main){
