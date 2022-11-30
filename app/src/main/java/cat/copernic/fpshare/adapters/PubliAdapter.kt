@@ -30,7 +30,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
 
         with(viewHolder) {
             viewB.txtProf.text = publicacion.perfil
-            viewB.textLink.text = publicacion.titulo
+            viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
         }
