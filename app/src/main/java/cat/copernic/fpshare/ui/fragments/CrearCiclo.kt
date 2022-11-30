@@ -20,15 +20,10 @@ class CrearCiclo : Fragment() {
 
     // Botones
     private lateinit var buttonAddCicle: Button
-    private lateinit var buttonBack: Button
 
     // EditText
     private lateinit var inputIDCicle: EditText
     private lateinit var inputNameCicle: EditText
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
@@ -44,30 +39,25 @@ class CrearCiclo : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCrearCicloBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
-    fun inicializadores() {
+    private fun inicializadores() {
         buttonAddCicle = binding.btnAddCicle
-        buttonBack = binding.btnBack
 
         inputIDCicle = binding.inputIDCiclo
         inputNameCicle = binding.inputNombreCiclo
     }
 
-    fun listeners() {
-        buttonBack.setOnClickListener() {
-            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
-            view?.findNavController()?.navigate(action)
-        }
-        buttonAddCicle.setOnClickListener() {
-            val ID = inputIDCicle.text.toString()
+    private fun listeners() {
+
+        buttonAddCicle.setOnClickListener {
+            val id = inputIDCicle.text.toString()
             val nombre = inputNameCicle.text.toString()
 
-            if (campoVacio(ID, nombre)) {
-                val ciclo = Cicle(ID, nombre)
-                addCiclo(ciclo, ID)
+            if (campoVacio(id, nombre)) {
+                val ciclo = Cicle(id, nombre)
+                addCiclo(ciclo, id)
             }
 
             val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
@@ -75,11 +65,11 @@ class CrearCiclo : Fragment() {
         }
     }
 
-    fun addCiclo(ciclo: Cicle, id: String) {
+    private fun addCiclo(ciclo: Cicle, id: String) {
         bd.collection("Ciclos").document(id).set(ciclo)
     }
 
-    fun campoVacio(ID: String, nombre: String): Boolean {
+    private fun campoVacio(ID: String, nombre: String): Boolean {
         return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
     }
 }
