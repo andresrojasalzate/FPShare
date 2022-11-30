@@ -82,7 +82,7 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
 
     override fun onItemClick(foro: Foro) {
         val action =
-            ListaForosDirections.actionListaForosToFPHilo(autor = foro.emailautor, titulo = foro.titulo)
+            ListaForosDirections.actionListaForosToFPHilo(autor = foro.emailautor, titulo = foro.titulo, id = foro.id)
         view?.findNavController()?.navigate(action)
     }
 }

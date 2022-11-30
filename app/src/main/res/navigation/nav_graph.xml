@@ -58,6 +58,9 @@
             android:name="autor"
             app:argType="string" />
         <argument android:name="titulo" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_perfil"

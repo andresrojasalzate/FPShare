@@ -23,27 +23,26 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FPHilo : Fragment() {
     private var _binding: FragmentFpHiloBinding? = null
     private val binding get() = _binding!!
-    private var bd = FirebaseFirestore.getInstance()
     private lateinit var botonSend: ImageButton
     private lateinit var inputMsg: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var autor : String
     private lateinit var  titulo : String
+    private lateinit var  id: String
     private lateinit var textViewTitulo: TextView
     private lateinit var  textViewAutor: TextView
+    private var bd = FirebaseFirestore.getInstance()
 
     companion object{
         val AUTOR = "autor"
         val TITULO = "titulo"
+        val ID = "ID"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 
-        arguments?.let {
-            autor = it.getString(AUTOR).toString()
-            titulo = it.getString(TITULO).toString()
-        }
+
     }
 
     override fun onCreateView(
@@ -57,9 +56,23 @@ class FPHilo : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        arguments?.let {
+            autor = it.getString(AUTOR).toString()
+            titulo = it.getString(TITULO).toString()
+            id = it.getString(ID).toString()
+        }
         inicializadores()
-        listeners()
+        llamarecycleview()
+
+        botonSend.setOnClickListener() {
+            val texto = inputMsg.text.toString()
+
+            if (campoVacio(texto)) {
+                val mensaje = Mensaje("ID", "autor@gmail.com", texto)
+                addMensaje(mensaje, id)
+            }
+        }
+
     }
 
     override fun onDestroyView() {
@@ -67,7 +80,20 @@ class FPHilo : Fragment() {
         _binding = null
     }
 
-    fun inicializadores() {
+    private fun llamarecycleview(){
+        val mensajesList = ArrayList<Mensaje>()
+        val idForo = id
+     
+        bd.collection("Foros").document(idForo).collection("Mensajes").get().addOnSuccessListener { documents ->
+            for (document in documents){
+                val wallitem = document.toObject(Mensaje::class.java)
+                mensajesList.add(wallitem)
+            }
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = MsgAdapter(mensajesList)
+        }
+    }
+    private fun inicializadores() {
         botonSend = binding.buttonSend
         inputMsg = binding.timInput
         recyclerView = binding.recyclerViewHilo
@@ -76,36 +102,10 @@ class FPHilo : Fragment() {
         textViewTitulo.setText(titulo)
         textViewAutor.setText(autor)
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = MsgAdapter(obtenerMensajes())
-    }
-
-    fun listeners() {
-        botonSend.setOnClickListener() {
-            val texto = inputMsg.text.toString()
-
-            if (campoVacio(texto)) {
-                val mensaje = Mensaje("ID", "autor@gmail.com", texto)
-                addMensaje(mensaje, "ID")
-            }
-        }
-    }
-
-    fun obtenerMensajes(): MutableList<Mensaje> {
-        val mensajes = mutableListOf<Mensaje>()
-
-        for (num in 1..30) {
-
-            mensajes.add(Mensaje("Carles", "autor@gmail.com", "Hola Buenas"))
-
-        }
-
-        return mensajes
     }
 
     fun addMensaje(mensaje: Mensaje, id: String) {
         bd.collection("Foros").document(id)
-            .collection("Hilos").document(id)
             .collection("Mensajes").document(id).set(mensaje)
     }
 

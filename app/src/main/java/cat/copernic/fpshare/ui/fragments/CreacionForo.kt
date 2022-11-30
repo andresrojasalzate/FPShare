@@ -88,7 +88,7 @@ class CreacionForo : Fragment() {
                     idtxt = idint.toString()
                     val mensajes = ArrayList<Mensaje>()
                     val foro = Foro(idtxt, titulo.text.toString(), descripcion.text.toString(), email, mensajes)
-                    val mensajeInicial = Mensaje("", "", "")
+                    val mensajeInicial = Mensaje("0", "shtht", "mensaje de prueba")
                     bd.collection("Foros").document(idtxt).set(foro)
                     bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
                 }
