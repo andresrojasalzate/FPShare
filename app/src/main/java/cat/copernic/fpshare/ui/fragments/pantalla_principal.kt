@@ -61,10 +61,10 @@ class pantalla_principal : Fragment() {
                 val modulo =ciclo.document(docuciclo.id).collection("Modulos")
                 modulo.get().addOnSuccessListener { documodulos ->
                     for (documodulo in documodulos){
-                        val uf_s =modulo.document(documodulo.id).collection("UFs")
-                            uf_s.get().addOnSuccessListener { docuufs ->
+                        val uf =modulo.document(documodulo.id).collection("UFs")
+                            uf.get().addOnSuccessListener { docuufs ->
                                 for (docuuf in docuufs){
-                                     uf_s.document(docuuf.id).collection("Publicaciones")
+                                     uf.document(docuuf.id).collection("Publicaciones")
                                         .get()
                                         .addOnSuccessListener { docupublis ->
                                             for (docupubli in docupublis){
@@ -81,8 +81,6 @@ class pantalla_principal : Fragment() {
                                             binding.recyclerView.adapter = adapter
                                             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
                                         }
-
-
                                 }
 
                             }
