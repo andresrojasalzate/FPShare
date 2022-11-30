@@ -42,17 +42,9 @@ class pantalla_principal : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        boton = binding.button3
         recyclerView = binding.recyclerView
-
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = withContext(Dispatchers.IO){ crearMenu()}
-        }
-
-        boton.setOnClickListener {
-            val action =
-                pantalla_principalDirections.actionPantallaPrincipalToVistaPreviaPublicacion()
-            view.findNavController().navigate(action)
         }
     }
 
