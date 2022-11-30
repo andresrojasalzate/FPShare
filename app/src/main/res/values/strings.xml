@@ -161,4 +161,21 @@
     <string name="module">Module</string>
     <string name="uf">UF</string>
     <string name="comentarios">Comentarios:</string>
+    <string name="cicles_admin">Cicles Administration</string>
+    <string name="new_forum">New Forum</string>
+    <string name="new_cicle">New Cicle</string>
+    <string name="new_module">New Module</string>
+    <string name="new_uf">New UF</string>
+    <string name="posts">Posts</string>
+    <string name="modules">Modules</string>
+    <string name="ufs">UFs</string>
+    <string name="post_admin">Posts Administration</string>
+    <string name="user_admin">Users Administration</string>
+    <string name="admin">Administration</string>
+    <string name="thread">Threads</string>
+    <string name="cicles">Cicles</string>
+    <string name="new_post">New Post</string>
+    <string name="forums">Forum</string>
+    <string name="post">Post</string>
+    <string name="home">Home</string>
 </resources>
