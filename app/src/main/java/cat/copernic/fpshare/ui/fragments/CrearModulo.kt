@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,8 +16,6 @@ class CrearModulo : Fragment() {
     private var _binding: FragmentCrearModuloBinding? = null
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
-
-    private val args: FragmentAdminModulosArgs by navArgs()
 
     // private lateinit var spinnerCiclos: Spinner
     // private lateinit var idSpinner: MutableList<String>
@@ -84,9 +80,6 @@ class CrearModulo : Fragment() {
                 val modulo = Modul(id, nombre)
                 addModulo(idCiclo, modulo, id)
             }
-
-            val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos(args.idCiclo)
-            view?.findNavController()?.navigate(action)
         }
     }
 

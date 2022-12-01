@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearUBinding
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,8 +17,6 @@ class CrearUF : Fragment() {
     private var _binding: FragmentCrearUBinding? = null
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
-
-    private val args: FragmentAdminUFsArgs by navArgs()
 
     // Botones
     private lateinit var buttonAddUf: Button
@@ -70,9 +66,6 @@ class CrearUF : Fragment() {
                 val uf = Uf(id, nombre)
                 addUF(idCiclo, idModulo, uf, id)
             }
-
-            val action = CrearUFDirections.actionCrearUFToFragmentAdminUFs(args.idModulo, args.idCiclo)
-            view?.findNavController()?.navigate(action)
         }
     }
 
