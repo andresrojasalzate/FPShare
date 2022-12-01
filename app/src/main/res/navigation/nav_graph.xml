@@ -157,29 +157,17 @@
         android:id="@+id/crearCiclo"
         android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
         android:label="@string/new_cicle"
-        tools:layout="@layout/fragment_crear_ciclo">
-        <action
-            android:id="@+id/action_crearCiclo_to_listaTagsAdministracion"
-            app:destination="@id/listaTagsAdministracion" />
-    </fragment>
+        tools:layout="@layout/fragment_crear_ciclo" />
     <fragment
         android:id="@+id/crearModulo"
         android:name="cat.copernic.fpshare.ui.fragments.CrearModulo"
         android:label="@string/new_module"
-        tools:layout="@layout/fragment_crear_modulo">
-        <action
-            android:id="@+id/action_crearModulo_to_fragmentAdminModulos"
-            app:destination="@id/fragmentAdminModulos" />
-    </fragment>
+        tools:layout="@layout/fragment_crear_modulo" />
     <fragment
         android:id="@+id/crearUF"
         android:name="cat.copernic.fpshare.ui.fragments.CrearUF"
         android:label="@string/new_uf"
-        tools:layout="@layout/fragment_crear_u">
-        <action
-            android:id="@+id/action_crearUF_to_fragmentAdminUFs"
-            app:destination="@id/fragmentAdminUFs" />
-    </fragment>
+        tools:layout="@layout/fragment_crear_u" />
     <fragment
         android:id="@+id/menuApuntes"
         android:name="cat.copernic.fpshare.ui.fragments.MenuApuntes"

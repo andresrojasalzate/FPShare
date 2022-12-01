@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearCicloBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.firebase.firestore.FirebaseFirestore
@@ -59,9 +58,6 @@ class CrearCiclo : Fragment() {
                 val ciclo = Cicle(id, nombre)
                 addCiclo(ciclo, id)
             }
-
-            val action = CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
-            view?.findNavController()?.navigate(action)
         }
     }
 

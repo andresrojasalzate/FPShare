@@ -2,6 +2,7 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -20,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class perfil : Fragment() {
@@ -79,6 +81,7 @@ class perfil : Fragment() {
                 numero.text.toString(),
                 insituto.text.toString(),
                 false
+
             )
             bd.collection("Usuarios").document(email).set(user)
         }
@@ -113,8 +116,7 @@ class perfil : Fragment() {
                     Toast.makeText(requireActivity(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
                 }
         }
-
-
     }
+
 
 }
