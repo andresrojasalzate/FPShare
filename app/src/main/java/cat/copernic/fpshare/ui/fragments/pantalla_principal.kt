@@ -80,8 +80,8 @@ class pantalla_principal : Fragment() {
                                                     cicloList.add(publi)
                                             }
                                             adapter= PubliAdapter(cicloList)
-                                            //binding.recyclerView.adapter = adapter
-                                            //binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                            binding.recyclerView.adapter = adapter
+                                            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
                                         }
 
 
