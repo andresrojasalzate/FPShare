@@ -2,7 +2,6 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
 import cat.copernic.fpshare.modelo.User
@@ -21,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import java.io.File
 
 
@@ -65,25 +66,37 @@ class perfil : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        inicizalizar()
         val email = user?.email.toString()
-        val imagen = binding.imageProfile
+        inicizalizar()
 
         imagen.setOnClickListener{
             subirArchivos()
         }
 
         botonGuardarCambios.setOnClickListener {
-            val user = User(
-                emailEdittext.text.toString(),
-                nombreEditText.text.toString(),
-                apellidosEditText.text.toString(),
-                numero.text.toString(),
-                insituto.text.toString(),
-                false
-
-            )
-            bd.collection("Usuarios").document(email).set(user)
+            if(bd.collection("Usuarios").document(email).get().getResult().exists()){
+                bd.collection("Usuarios").document(email)
+                    .update("email",emailEdittext.text.toString(),
+                    "nombre",nombreEditText.text.toString(),
+                    "apellidos",apellidosEditText.text.toString(),
+                    "numero",numero.text.toString(),
+                    "instituto",insituto.text.toString(),
+                    "imgPerfil",photoSelectedUri.toString())
+                    .addOnSuccessListener {
+                        Toast.makeText(requireActivity(),"Se ha realizado la modificacion con exito", Toast.LENGTH_LONG).show()
+                    }
+            }else{
+                val user = User(
+                    emailEdittext.text.toString(),
+                    nombreEditText.text.toString(),
+                    apellidosEditText.text.toString(),
+                    numero.text.toString(),
+                    insituto.text.toString(),
+                    photoSelectedUri.toString(),
+                    false
+                )
+                bd.collection("Usuarios").document(email).set(user)
+            }
         }
     }
 
@@ -93,20 +106,36 @@ class perfil : Fragment() {
     }
 
     fun  inicizalizar(){
-
+        val email = user?.email.toString()
         nombreEditText = binding.edittextName
         apellidosEditText = binding.edittextApellidos
         numero = binding.edittextNumero
         insituto = binding.edittextInstitute
         botonGuardarCambios = binding.buttonSaveChangesProfile
         emailEdittext = binding.editextEmail
+        imagen = binding.imageProfile
+        bd.collection("Usuarios").document(email).get()
+            .addOnSuccessListener {
+                var user = User(it.id,
+                    it["nombre"].toString(),
+                    it["apellidos"].toString(),
+                    it["telefono"].toString(),
+                    it["insituto"].toString(),
+                    it["imgPerfil"].toString())
+
+                nombreEditText.setText(user.nombre)
+                apellidosEditText.setText(user.apellidos)
+                numero.setText(user.telefono)
+                insituto.setText(user.insituto)
+                emailEdittext.setText(user.email)
+                Picasso.get().load(user.imgPerfil.toUri()).into(imagen)
+            }
+
 
     }
 
     private fun subirArchivos(){
-
         resultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
-
         //Afegim la imatge seleccionada a storage
         photoSelectedUri?.let{uri-> //Hem seleccionat una imatge...
             //Afegim (pujem) la imatge que hem seleccionat mitjançant el mètode putFile de la classe FirebasStorage, passant-li com a
@@ -116,6 +145,7 @@ class perfil : Fragment() {
                     Toast.makeText(requireActivity(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
                 }
         }
+        Picasso.get().load(photoSelectedUri).into(imagen)
     }
 
 
