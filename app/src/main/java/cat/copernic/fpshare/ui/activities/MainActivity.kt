@@ -14,13 +14,15 @@ import cat.copernic.fpshare.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var auth: FirebaseAuth
+    private var user = Firebase.auth.currentUser
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding.navView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        esAdmin()
 
         val signupmenuitem = binding.navView.menu.findItem(R.id.nav_logout)
         signupmenuitem.setOnMenuItemClickListener {
@@ -54,6 +57,17 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+    }
+    private fun esAdmin(){
+        val email = user?.email.toString()
+
+        bd.collection("Usuarios").document(email).get().addOnSuccessListener { document ->
+            val esAdmin = document["esAdmin"] as Boolean
+            if(!esAdmin){
+                binding.navView.menu.findItem(R.id.menuAdministracion).setVisible(false)
+            }
+
+        }
 
     }
 

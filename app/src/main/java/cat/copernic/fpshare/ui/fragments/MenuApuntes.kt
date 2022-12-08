@@ -81,7 +81,7 @@ class MenuApuntes : Fragment() {
                     val publiTitle = document["titulo"].toString()
 
                     val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink)
-                    cicloList.add(publi)//TODO DESCOMENTAR
+                    cicloList.add(publi)
                 }
                 adapter= PubliAdapter(cicloList)
                 binding.recyclerView.adapter = adapter
