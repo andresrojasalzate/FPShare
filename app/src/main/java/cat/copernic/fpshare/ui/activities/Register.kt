@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
@@ -51,7 +50,7 @@ class Register : AppCompatActivity() {
             if (campoVacio(nombre, password, mail)) {
                 registrar(password, mail)
 
-                val usuario = User(mail, nombre, "", "", "", false)
+                val usuario = User(mail, nombre)
                 anadirUsuario(usuario)
             }
         }
@@ -68,7 +67,6 @@ class Register : AppCompatActivity() {
     }
 
     fun registrar(password: String, mail: String) {
-
         auth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {

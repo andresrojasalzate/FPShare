@@ -119,8 +119,8 @@
         android:label="@string/user_admin"
         tools:layout="@layout/fragment_lista_usuarios_administracion">
         <action
-            android:id="@+id/action_fragment_lista_usuarios_administracion_to_rename_user"
-            app:destination="@+id/fragment_renombrar_usuario" />
+            android:id="@+id/action_listaUsuariosAdministracion_to_mostarInfoUsuario"
+            app:destination="@id/mostarInfoUsuario" />
     </fragment>
     <fragment
         android:id="@+id/listaPostsAdministracion"
@@ -143,7 +143,11 @@
         android:id="@+id/fragment_renombrar_usuario"
         android:name="cat.copernic.fpshare.ui.fragments.Renombrar_Usuario"
         android:label="@string/rename_user"
-        tools:layout="@layout/fragment_renombrar__usuario" />
+        tools:layout="@layout/fragment_renombrar__usuario" >
+        <argument
+            android:name="idUsuario"
+            app:argType="string" />
+    </fragment>
     <activity
         android:id="@+id/login"
         android:name="cat.copernic.fpshare.ui.activities.Login"
@@ -212,5 +216,17 @@
         <action
             android:id="@+id/action_fragmentAdminUFs_to_crearUF"
             app:destination="@id/crearUF" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostarInfoUsuario"
+        android:name="cat.copernic.fpshare.ui.fragments.MostarInfoUsuario"
+        android:label="fragment_mostar_info_usuario"
+        tools:layout="@layout/fragment_mostar_info_usuario" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_mostarInfoUsuario_to_fragment_renombrar_usuario"
+            app:destination="@id/fragment_renombrar_usuario" />
     </fragment>
 </navigation>

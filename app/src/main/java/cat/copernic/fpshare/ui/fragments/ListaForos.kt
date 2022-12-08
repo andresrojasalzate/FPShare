@@ -11,13 +11,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
-import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
-import cat.copernic.fpshare.modelo.Mensaje
-import cat.copernic.fpshare.modelo.User
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

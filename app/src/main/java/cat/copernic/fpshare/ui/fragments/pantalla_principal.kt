@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +55,7 @@ class pantalla_principal : Fragment() {
         _binding = null
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
         val ciclo = bd.collection("Ciclos")
@@ -79,8 +81,8 @@ class pantalla_principal : Fragment() {
                                                     cicloList.add(publi)
                                             }
                                             adapter = PubliAdapter(cicloList)
-                                            binding.recyclerView.adapter = adapter
-                                            binding.recyclerView.layoutManager =
+                                              binding.recyclerView.adapter = adapter
+                                              binding.recyclerView.layoutManager =
                                                 LinearLayoutManager(requireContext())
                                         }
 

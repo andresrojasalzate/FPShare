@@ -178,4 +178,5 @@
     <string name="forums">Forum</string>
     <string name="post">Post</string>
     <string name="home">Home</string>
+    <string name="administrator_info_usuario">Administrator</string>
 </resources>

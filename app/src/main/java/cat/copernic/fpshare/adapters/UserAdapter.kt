@@ -9,11 +9,23 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.ItemUserBinding
 
-class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(private val usuarios: List<User>, private val listener: UserAdapter.OnItemClickListener) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
-    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
         val ViewB = ItemUserBinding.bind(view)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            val foroID = usuarios.get(position).email
+            if(position != RecyclerView.NO_POSITION)  {
+                listener.onItemClick(foroID)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,5 +45,9 @@ class UserAdapter(private val usuarios: List<User>) : RecyclerView.Adapter<UserA
 
     override fun getItemCount(): Int {
         return usuarios.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(email: String)
     }
 }

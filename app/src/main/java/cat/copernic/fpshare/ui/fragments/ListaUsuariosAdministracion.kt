@@ -14,16 +14,13 @@ import cat.copernic.fpshare.adapters.UserAdapter
 import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListaUsuariosAdministracion : Fragment() {
+class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener {
     private var _binding: FragmentListaUsuariosAdministracionBinding? = null
     private val binding get() = _binding!!
-    private lateinit var botonRename : Button
-    private lateinit var botonDelete : Button
     private lateinit var recyclerView : RecyclerView
     private var bd = FirebaseFirestore.getInstance()
 
@@ -48,12 +45,6 @@ class ListaUsuariosAdministracion : Fragment() {
             withContext(Dispatchers.IO){
                 llamarecycleview()
             }
-
-            botonRename.setOnClickListener {
-                val action =
-                    ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser()
-                view.findNavController().navigate(action)
-            }
         }
 
     }
@@ -64,7 +55,7 @@ class ListaUsuariosAdministracion : Fragment() {
     }
     private fun llamarecycleview(){
         val userList = ArrayList<User>()
-        val adapterUser = UserAdapter(userList)
+        val adapterUser = UserAdapter(userList, this)
 
         bd.collection("Usuarios").get().addOnSuccessListener {documents ->
             for (document in documents){
@@ -85,16 +76,12 @@ class ListaUsuariosAdministracion : Fragment() {
         }
 
    private fun inicializar(){
-       botonRename = binding.buttonRenameUser
-       botonDelete = binding.buttonDeleteUser
        recyclerView = binding.recyclerView
    }
-    private fun obtenerUsuarios(): MutableList<User>{
-        val usuarios = mutableListOf<User>()
-        for(num in 1..30){
-            usuarios.add(User("email@gmail.com", "Andrés", "Rojas Alzate",
-                "", " ", false))
-        }
-        return usuarios
+
+
+    override fun onItemClick(email: String) {
+        val action = ListaUsuariosAdministracionDirections.actionListaUsuariosAdministracionToMostarInfoUsuario(email)
+        view?.findNavController()?.navigate(action)
     }
 }
