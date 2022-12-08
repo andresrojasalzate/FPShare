@@ -52,7 +52,5 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
 
     interface OnItemClickListener {
         fun onItemClick(id: String)
-
-
     }
 }

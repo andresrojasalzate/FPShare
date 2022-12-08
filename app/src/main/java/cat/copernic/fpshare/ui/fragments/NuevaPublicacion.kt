@@ -20,18 +20,12 @@ class NuevaPublicacion : Fragment() {
     private var _binding: FragmentNuevaPublicacionBinding? = null
     private val binding get() = _binding!!
     private var bd = FirebaseFirestore.getInstance()
-
-    private lateinit var perfil: String
-
     private lateinit var titulo: EditText
     private lateinit var descripcion: TextInputEditText
     private lateinit var enlace: TextInputEditText
     private var user = Firebase.auth.currentUser
-
     private lateinit var checked: String
-    private lateinit var publicacion: Publicacion
     private lateinit var botonPublicar: Button
-
     private lateinit var idModulo: EditText
     private lateinit var idUf: EditText
 

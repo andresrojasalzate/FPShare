@@ -2,7 +2,6 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,12 +15,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
-import cat.copernic.fpshare.modelo.User
+import cat.copernic.fpshare.modelo.Usuario
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.io.File
 
 
 class perfil : Fragment() {
@@ -74,7 +72,7 @@ class perfil : Fragment() {
         }
 
         botonGuardarCambios.setOnClickListener {
-            val user = User(
+            val user = Usuario(
                 emailEdittext.text.toString(),
                 nombreEditText.text.toString(),
                 apellidosEditText.text.toString(),

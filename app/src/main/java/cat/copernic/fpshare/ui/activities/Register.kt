@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
-import cat.copernic.fpshare.modelo.User
+import cat.copernic.fpshare.modelo.Usuario
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -51,13 +50,13 @@ class Register : AppCompatActivity() {
             if (campoVacio(nombre, password, mail)) {
                 registrar(password, mail)
 
-                val usuario = User(mail, nombre, "", "", "", false)
+                val usuario = Usuario(mail, nombre)
                 anadirUsuario(usuario)
             }
         }
     }
 
-    fun  anadirUsuario(usuario : User) {
+    fun  anadirUsuario(usuario : Usuario) {
 
         bd.collection("Usuarios").document(usuario.email).set(usuario)
     }
@@ -68,7 +67,6 @@ class Register : AppCompatActivity() {
     }
 
     fun registrar(password: String, mail: String) {
-
         auth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
