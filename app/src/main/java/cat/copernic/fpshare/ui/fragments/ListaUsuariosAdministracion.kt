@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.UserAdapter
-import cat.copernic.fpshare.modelo.Usuario
+import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +21,6 @@ import kotlinx.coroutines.withContext
 class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener {
     private var _binding: FragmentListaUsuariosAdministracionBinding? = null
     private val binding get() = _binding!!
-    private lateinit var botonRename : Button
-    private lateinit var botonDelete : Button
     private lateinit var recyclerView : RecyclerView
     private var bd = FirebaseFirestore.getInstance()
 
@@ -47,12 +45,6 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
             withContext(Dispatchers.IO){
                 llamarecycleview()
             }
-
-            botonRename.setOnClickListener {
-                val action =
-                    ListaUsuariosAdministracionDirections.actionFragmentListaUsuariosAdministracionToRenameUser(idUsuario = "xg")
-                view.findNavController().navigate(action)
-            }
         }
 
     }
@@ -62,12 +54,12 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
         _binding = null
     }
     private fun llamarecycleview(){
-        val userList = ArrayList<Usuario>()
+        val userList = ArrayList<User>()
         val adapterUser = UserAdapter(userList, this)
 
         bd.collection("Usuarios").get().addOnSuccessListener {documents ->
             for (document in documents){
-                val wallitem = document.toObject(Usuario::class.java)
+                val wallitem = document.toObject(User::class.java)
                 wallitem.email = document.id
                 wallitem.nombre = document["nombre"].toString()
                 wallitem.apellidos = document["apellidos"].toString()
@@ -84,8 +76,6 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
         }
 
    private fun inicializar(){
-       botonRename = binding.buttonRenameUser
-       botonDelete = binding.buttonDeleteUser
        recyclerView = binding.recyclerView
    }
 

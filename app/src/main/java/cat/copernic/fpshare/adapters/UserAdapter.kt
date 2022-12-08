@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.modelo.Usuario
+import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.ItemUserBinding
 
-class UserAdapter(private val usuarios: List<Usuario>, private val listener: UserAdapter.OnItemClickListener) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(private val usuarios: List<User>, private val listener: UserAdapter.OnItemClickListener) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
     private lateinit var contexto: Context
 
     inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{

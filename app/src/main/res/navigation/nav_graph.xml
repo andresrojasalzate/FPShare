@@ -119,9 +119,6 @@
         android:label="@string/user_admin"
         tools:layout="@layout/fragment_lista_usuarios_administracion">
         <action
-            android:id="@+id/action_fragment_lista_usuarios_administracion_to_rename_user"
-            app:destination="@+id/fragment_renombrar_usuario" />
-        <action
             android:id="@+id/action_listaUsuariosAdministracion_to_mostarInfoUsuario"
             app:destination="@id/mostarInfoUsuario" />
     </fragment>

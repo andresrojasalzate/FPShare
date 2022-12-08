@@ -7,7 +7,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
-import cat.copernic.fpshare.modelo.Usuario
+import cat.copernic.fpshare.modelo.User
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -50,13 +50,13 @@ class Register : AppCompatActivity() {
             if (campoVacio(nombre, password, mail)) {
                 registrar(password, mail)
 
-                val usuario = Usuario(mail, nombre)
+                val usuario = User(mail, nombre)
                 anadirUsuario(usuario)
             }
         }
     }
 
-    fun  anadirUsuario(usuario : Usuario) {
+    fun  anadirUsuario(usuario : User) {
 
         bd.collection("Usuarios").document(usuario.email).set(usuario)
     }

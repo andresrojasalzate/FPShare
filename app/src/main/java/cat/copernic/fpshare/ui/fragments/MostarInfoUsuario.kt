@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentMostarInfoUsuarioBinding
-import cat.copernic.fpshare.modelo.Usuario
+import cat.copernic.fpshare.modelo.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -84,7 +84,7 @@ class MostarInfoUsuario : Fragment() {
 
     private fun recuparUsuario(){
         val idUsuario = args.email
-        val usuario = Usuario()
+        val usuario = User()
         bd.collection("Usuarios").document(idUsuario).get().addOnSuccessListener { document ->
 
             usuario.email = document.id
@@ -97,7 +97,7 @@ class MostarInfoUsuario : Fragment() {
         }
 
     }
-    private fun rellenarcampos(usuario: Usuario){
+    private fun rellenarcampos(usuario: User){
         nombre.setText(comprobarcampos(usuario.nombre))
         apellidos.setText(comprobarcampos(usuario.apellidos))
         numeroTelefono.setText(comprobarcampos(usuario.telefono))
