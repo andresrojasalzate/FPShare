@@ -15,9 +15,8 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminUFsBinding
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
 
@@ -25,7 +24,7 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private val binding get() = _binding!!
     private val bd = FirebaseFirestore.getInstance()
 
-    private lateinit var ufList: MutableList<Uf>
+    private lateinit var ufList: Deferred<MutableList<Uf>>
     private lateinit var adapterU: UfAdminAdapter
 
     private lateinit var botonAddUF: Button
@@ -48,7 +47,7 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         inicializadoresRW()
         listeners()
         lifecycleScope.launch(Dispatchers.Main) {
-            ufList = withContext(Dispatchers.IO) { crearUF() }
+            ufList = async { crearUF() }
         }
     }
 
@@ -75,29 +74,28 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         }
     }
 
-    private fun crearUF(): MutableList<Uf> {
+    private suspend fun crearUF(): MutableList<Uf> {
         val ufList = mutableListOf<Uf>()
         val idCiclo = args.idCiclo
         val idModulo = args.idModulo
 
 
-        bd.collection("Ciclos").document(idCiclo).collection("Modulos")
+        val ufs = bd.collection("Ciclos").document(idCiclo).collection("Modulos")
             .document(idModulo).collection("UFs")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val idUf = document.id
-                    val nombreUf = document["nombre"].toString()
-                    val uf = Uf(
-                        idUf,
-                        nombreUf
-                    )
-                    ufList.add(uf)
-                }
-                adapterU = UfAdminAdapter(ufList, this)
-                binding.recyclerViewUFs.adapter = adapterU
-                binding.recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
-            }
+            .get().await()
+        for (document in ufs) {
+            val idUf = document.id
+            val nombreUf = document["nombre"].toString()
+            val uf = Uf(
+                idUf,
+                nombreUf
+            )
+            ufList.add(uf)
+        }
+        adapterU = UfAdminAdapter(ufList, this)
+        binding.recyclerViewUFs.adapter = adapterU
+        binding.recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
+
         return ufList
     }
 

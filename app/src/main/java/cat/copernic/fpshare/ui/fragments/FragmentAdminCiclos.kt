@@ -15,9 +15,8 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminCiclosBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
     UfAdminAdapter.OnItemClickListener {
@@ -27,7 +26,7 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
     private val bd = FirebaseFirestore.getInstance()
 
     // Listas
-    private lateinit var cicloList: MutableList<Cicle>
+    private lateinit var cicloList: Deferred<MutableList<Cicle>>
 
     // Adaptadores
     private lateinit var adapterC: CicleAdminAdapter
@@ -53,7 +52,7 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
         inicializadoresRW()
         listeners()
         lifecycleScope.launch(Dispatchers.Main) {
-            cicloList = withContext(Dispatchers.IO) { crearCiclos() }
+            cicloList = async { crearCiclos() }
         }
     }
 
@@ -73,21 +72,19 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
         recyclerViewCiclos = binding.recyclerViewCiclos
     }
 
-    private fun crearCiclos(): MutableList<Cicle> {
+    private suspend fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
-        bd.collection("Ciclos")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val idCiclo = document.id
-                    val nombreCiclo = document["nombre"].toString()
+        val ciclos = bd.collection("Ciclos").get().await()
+        for (document in ciclos) {
+            val idCiclo = document.id
+            val nombreCiclo = document["nombre"].toString()
 
-                    cicloList.add(Cicle(idCiclo, nombreCiclo))
-                }
-                adapterC = CicleAdminAdapter(cicloList, this)
-                binding.recyclerViewCiclos.adapter = adapterC
-                binding.recyclerViewCiclos.layoutManager = LinearLayoutManager(requireContext())
-            }
+            cicloList.add(Cicle(idCiclo, nombreCiclo))
+        }
+        adapterC = CicleAdminAdapter(cicloList, this)
+        binding.recyclerViewCiclos.adapter = adapterC
+        binding.recyclerViewCiclos.layoutManager = LinearLayoutManager(requireContext())
+
         return cicloList
     }
 

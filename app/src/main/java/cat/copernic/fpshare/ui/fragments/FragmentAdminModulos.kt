@@ -15,9 +15,8 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminModulosBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
@@ -25,7 +24,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
     private val binding get() = _binding!!
     private val bd = FirebaseFirestore.getInstance()
 
-    private lateinit var moduloList: MutableList<Modul>
+    private lateinit var moduloList: Deferred<MutableList<Modul>>
     private lateinit var adapterM: ModulAdminAdapter
 
     private lateinit var botonAddModulo: Button
@@ -48,7 +47,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
         inicializadoresRW()
         listeners()
         lifecycleScope.launch(Dispatchers.Main) {
-            moduloList = withContext(Dispatchers.IO) { crearModulos() }
+            moduloList = async { crearModulos() }
         }
 
 
@@ -77,26 +76,25 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
         }
     }
 
-    private fun crearModulos(): MutableList<Modul> {
+    private suspend fun crearModulos(): MutableList<Modul> {
         val moduloList = mutableListOf<Modul>()
         val idCiclo = args.idCiclo
 
-        bd.collection("Ciclos").document(idCiclo).collection("Modulos")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val idModul = document.id
-                    val nombreModul = document["nombre"].toString()
-                    val modulo = Modul(
-                        idModul,
-                        nombreModul
-                    )
-                    moduloList.add(modulo)
-                }
-                adapterM = ModulAdminAdapter(moduloList, this)
-                binding.recyclerViewModulos.adapter = adapterM
-                binding.recyclerViewModulos.layoutManager = LinearLayoutManager(requireContext())
-            }
+        val modulos = bd.collection("Ciclos").document(idCiclo).collection("Modulos")
+            .get().await()
+        for (document in modulos) {
+            val idModul = document.id
+            val nombreModul = document["nombre"].toString()
+            val modulo = Modul(
+                idModul,
+                nombreModul
+            )
+            moduloList.add(modulo)
+        }
+        adapterM = ModulAdminAdapter(moduloList, this)
+        binding.recyclerViewModulos.adapter = adapterM
+        binding.recyclerViewModulos.layoutManager = LinearLayoutManager(requireContext())
+
         return moduloList
     }
 
