@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
 import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.modelo.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,6 +36,8 @@ class NuevaPublicacion : Fragment() {
 
     private lateinit var idModulo: EditText
     private lateinit var idUf: EditText
+
+    private lateinit var publi: Publicacion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,27 +78,36 @@ class NuevaPublicacion : Fragment() {
 
     //Funció que llegeix les dades introduïdes per un usuari i retorna el departament instanciat amb aquestes
     //dades.
-    private fun llegirDades():Publicacion{
-
+    private fun llegirDades():Publicacion {
         //Guardem les dades introduïdes per l'usuari
-        val id = "a"
-        val perfil = user?.email.toString()
-        val titulo = titulo.text.toString()
-        val descripcion = descripcion.text.toString()
+        publi.id = "a"
+        bd.collection("Usuarios").document(user?.email.toString()).get()
+            .addOnSuccessListener {
+                var user = User(
+                    it.id,
+                    it["nombre"].toString(),
+                    it["apellidos"].toString(),
+                    it["telefono"].toString(),
+                    it["insituto"].toString(),
+                    it["imgPerfil"].toString()
+                )
+            publi.perfil = user.nombre + " " + user.apellidos
+            publi.titulo = titulo.text.toString()
+            publi.descripcion = descripcion.text.toString()
+            publi.imgPubli = user.imgPerfil
 
-        if(binding.optionDam.isChecked){
-            checked = "DAM"
-        }else if(binding.optionDaw.isChecked){
-            checked = "DAW"
-        }else if(binding.optionSmix.isChecked){
-            checked = "SMIR"
-        }else if(binding.optionAsix.isChecked){
-            checked = "ASIR"
+            if (binding.optionDam.isChecked) {
+                publi.checked = "DAM"
+            } else if (binding.optionDaw.isChecked) {
+                publi.checked = "DAW"
+            } else if (binding.optionSmix.isChecked) {
+                publi.checked = "SMIR"
+            } else if (binding.optionAsix.isChecked) {
+                publi.checked = "ASIR"
+            }
+            publi.enlace = enlace.text.toString()
         }
-        val enlace = enlace.text.toString()
-
-
-        return Publicacion(id, perfil, titulo, descripcion, checked, enlace)
+        return publi
 
     }
 

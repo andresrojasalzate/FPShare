@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
+import com.squareup.picasso.Picasso
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>() {
@@ -33,6 +35,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
+            Picasso.get().load(publicacion.imgPubli.toUri()).into(viewB.imgIcon)
         }
     }
 
