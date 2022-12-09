@@ -14,9 +14,8 @@ import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
@@ -25,7 +24,7 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ModulAdminAdapter
-    private lateinit var cicloList: MutableList<Modul>
+    private lateinit var cicloList: Deferred<MutableList<Modul>>
 
     val bd = FirebaseFirestore.getInstance()
 
@@ -44,8 +43,8 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         recyclerView = binding.recyclerView
 
 
-        lifecycleScope.launch(Dispatchers.Main) {
-            cicloList = withContext(Dispatchers.IO) { crearMenu() }
+        lifecycleScope.launch(Dispatchers.Main){
+            cicloList = async{ crearMenu()}
         }
     }
 
@@ -54,15 +53,13 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         _binding = null
     }
 
-    private fun crearMenu(): MutableList<Modul> {
+    private suspend fun crearMenu(): MutableList<Modul> {
 
         val idCic = args.cicloid
 
         val cicloList = mutableListOf<Modul>()
-        bd.collection("Ciclos").document(idCic).collection("Modulos")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
+        val modulos = bd.collection("Ciclos").document(idCic).collection("Modulos").get().await()
+                for (document in modulos) {
                     val idModul = document.id
                     val nombreModul = document["nombre"].toString()
                     val modulo = Modul(idModul, nombreModul)
@@ -71,7 +68,7 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
                 adapter = ModulAdminAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            }
+
 
         return cicloList
     }
