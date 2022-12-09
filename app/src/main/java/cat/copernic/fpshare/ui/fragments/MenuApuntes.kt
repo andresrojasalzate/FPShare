@@ -20,9 +20,8 @@ import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +34,7 @@ class MenuApuntes : Fragment() {
     private lateinit var recyclerView : RecyclerView
     val bd = FirebaseFirestore.getInstance()
     private lateinit var adapter: PubliAdapter
-    private lateinit var cicloList: MutableList<Publicacion>
+    private lateinit var cicloList: Deferred<MutableList<Publicacion>>
 
     val args: MenuApuntesArgs by navArgs()
 
@@ -58,7 +57,7 @@ class MenuApuntes : Fragment() {
 
 
         lifecycleScope.launch(Dispatchers.Main){
-            cicloList = withContext(Dispatchers.IO){ crearMenu()}
+            cicloList = async{ crearMenu()}
         }
     }
 
@@ -67,26 +66,24 @@ class MenuApuntes : Fragment() {
         _binding = null
     }
 
-    private fun crearMenu(): MutableList<Publicacion>{
+    private suspend fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
-        bd.collection("Ciclos").document(args.cicloId).collection("Modulos").document(args.moduloId).collection("UFs").document(args.ufId).collection("Publicaciones")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
+        var publicaciones = bd.collection("Ciclos").document(args.cicloId).collection("Modulos").document(args.moduloId).collection("UFs").document(args.ufId).collection("Publicaciones").get().await()
+                for (document in publicaciones){
                     val idPubli = document.id
                     val checked = document["checked"].toString()
                     val publiDescr = document["descripcion"].toString()
                     val publiLink = document["enlace"].toString()
                     val publiProfile = document["perfil"].toString()
                     val publiTitle = document["titulo"].toString()
-
-                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink,"")
+                    val imgPubli = document["imgPubli"].toString()
+                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink, imgPubli)
                     cicloList.add(publi)
                 }
                 adapter= PubliAdapter(cicloList)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            }
+
 
         return cicloList
     }

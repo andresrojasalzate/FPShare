@@ -18,10 +18,8 @@ import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
 import io.grpc.InternalChannelz.id
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     private var _binding: FragmentMenuCiclosBinding? = null
@@ -30,7 +28,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
     private lateinit var recyclerView : RecyclerView
     private var bd = FirebaseFirestore.getInstance()
     private lateinit var adapter: MenuAdapter
-    private lateinit var cicloList: MutableList<Cicle>
+    private lateinit var cicloList: Deferred<MutableList<Cicle>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +49,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         recyclerView = binding.recyclerView
 
         lifecycleScope.launch(Dispatchers.Main){
-           cicloList = withContext(Dispatchers.IO){ crearMenu()}
+            cicloList = async{ crearMenu()}
         }
 
     }
@@ -61,12 +59,11 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         _binding = null
     }
 
-    fun crearMenu(): MutableList<Cicle>{
+    private suspend fun crearMenu(): MutableList<Cicle>{
         val cicloList = mutableListOf<Cicle>()
-        bd.collection("Ciclos")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
+        val ciclos = bd.collection("Ciclos")
+            .get().await()
+                for (document in ciclos){
                     val idCiclo = document.id
                     val nombreCiclo = document["nombre"].toString()
                     val ciclo = Cicle(idCiclo,nombreCiclo)
@@ -75,7 +72,7 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
                 adapter=MenuAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            }
+
 
         return cicloList
     }

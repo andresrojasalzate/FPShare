@@ -20,9 +20,8 @@ import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
     private var _binding: FragmentMenuUfBinding? = null
@@ -30,7 +29,7 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
     private lateinit var recyclerView : RecyclerView
     val bd = FirebaseFirestore.getInstance();
     private lateinit var adapter: UfAdminAdapter
-    private lateinit var cicloList: MutableList<Uf>
+    private lateinit var cicloList: Deferred<MutableList<Uf>>
 
     val args: MenuUFArgs by navArgs()
 
@@ -54,7 +53,7 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
 
 
         lifecycleScope.launch(Dispatchers.Main){
-            cicloList = withContext(Dispatchers.IO){ crearMenu()}
+            cicloList = async{ crearMenu()}
         }
     }
 
@@ -63,16 +62,14 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
         _binding = null
     }
 
-    private fun crearMenu(): MutableList<Uf>{
+    private suspend fun crearMenu(): MutableList<Uf>{
 
         var idCic = args.cicloId
         var idMod = args.moduloId
 
         var cicloList = mutableListOf<Uf>()
-        bd.collection("Ciclos").document(idCic).collection("Modulos").document(idMod).collection("UFs")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
+        var ufs = bd.collection("Ciclos").document(idCic).collection("Modulos").document(idMod).collection("UFs").get().await()
+                for (document in ufs){
                     val idUf = document.id
                     val nombreUf = document["nombre"].toString()
                     val uf = Uf(idUf,nombreUf)
@@ -81,7 +78,7 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
                 adapter=UfAdminAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            }
+
 
         return cicloList
     }
