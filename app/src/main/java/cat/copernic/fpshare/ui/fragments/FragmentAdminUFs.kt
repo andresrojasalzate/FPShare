@@ -100,6 +100,8 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(id: String) {
-        TODO("Implementar cuando tengamos que hacer el delete")
+        val view = binding.root
+        val action = FragmentAdminUFsDirections.actionFragmentAdminUFsToFragmentAdminPosts(args.idCiclo,args.idModulo,id)
+        view.findNavController().navigate(action)
     }
 }
