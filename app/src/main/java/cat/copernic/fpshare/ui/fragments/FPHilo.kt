@@ -76,6 +76,8 @@ class FPHilo : Fragment() {
         _binding = null
     }
 
+
+
     private fun infoforo(){
         val idForo = args.idforo
         bd.collection("Foros").document(idForo).get().addOnSuccessListener { document ->

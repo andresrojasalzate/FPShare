@@ -80,7 +80,7 @@ class MenuApuntes : Fragment() {
                     val publiProfile = document["perfil"].toString()
                     val publiTitle = document["titulo"].toString()
 
-                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink)
+                    val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink,"")
                     cicloList.add(publi)
                 }
                 adapter= PubliAdapter(cicloList)
