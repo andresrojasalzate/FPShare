@@ -74,7 +74,7 @@ class perfil : Fragment() {
         }
 
         botonGuardarCambios.setOnClickListener {
-            if(bd.collection("Usuarios").document(email).get().getResult().exists()){
+            bd.collection("Usuarios").document(email).get().addOnSuccessListener{
                 bd.collection("Usuarios").document(email)
                     .update("email",emailEdittext.text.toString(),
                     "nombre",nombreEditText.text.toString(),
@@ -85,7 +85,8 @@ class perfil : Fragment() {
                     .addOnSuccessListener {
                         Toast.makeText(requireActivity(),"Se ha realizado la modificacion con exito", Toast.LENGTH_LONG).show()
                     }
-            }else{
+            }
+            .addOnFailureListener {
                 val user = User(
                     emailEdittext.text.toString(),
                     nombreEditText.text.toString(),

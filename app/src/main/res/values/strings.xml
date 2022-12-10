@@ -179,4 +179,6 @@
     <string name="post">Post</string>
     <string name="home">Home</string>
     <string name="administrator_info_usuario">Administrator</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>
