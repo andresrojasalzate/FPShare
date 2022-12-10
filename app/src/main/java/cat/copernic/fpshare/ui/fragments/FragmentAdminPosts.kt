@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.PubliAdapter
+import cat.copernic.fpshare.adapters.PubliAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminPostsBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,13 +23,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class FragmentAdminPosts : Fragment() {
+class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
     private var _binding: FragmentAdminPostsBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView : RecyclerView
     val bd = FirebaseFirestore.getInstance()
-    private lateinit var adapter: PubliAdapter
+    private lateinit var adapter: PubliAdminAdapter
     private lateinit var postsList: Deferred<MutableList<Publicacion>>
+    var publi = ""
 
     private val args: FragmentAdminPostsArgs by navArgs()
 
@@ -43,6 +48,7 @@ class FragmentAdminPosts : Fragment() {
         lifecycleScope.launch(Dispatchers.Main){
             postsList = async{ crearMenu()}
         }
+
     }
 
     override fun onDestroyView() {
@@ -64,11 +70,23 @@ class FragmentAdminPosts : Fragment() {
             val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink, imgPubli)
             postsList.add(publi)
         }
-        adapter= PubliAdapter(postsList)
+        adapter= PubliAdminAdapter(postsList, this)
         binding.ViewApuntes.adapter = adapter
         binding.ViewApuntes.layoutManager = LinearLayoutManager(requireContext())
 
 
         return postsList
+    }
+
+    override fun onItemClick(id: String) {
+        bd.collection("Ciclos").document(args.idCiclo).
+        collection("Modulos").document(args.idModulo).
+        collection("UFs").document(args.idUf).
+        collection("Publicaciones").document(id)
+            .get().addOnSuccessListener {
+                val view = binding.root
+                val action = FragmentAdminPostsDirections.actionFragmentAdminPostsToFragmentAdminModPost(args.idCiclo, args.idModulo, args.idUf, id)
+                view.findNavController().navigate(action)
+            }
     }
 }

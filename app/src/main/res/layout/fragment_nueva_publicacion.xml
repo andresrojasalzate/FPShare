@@ -16,14 +16,24 @@
             android:layout_height="wrap_content"
             tools:context=".NuevaPublicacion">
 
+            <TextView
+                android:id="@+id/textView_title_new_post"
+                style="@style/Widget.FpShare.TextViewTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Title"
+                app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_title_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
-                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginTop="8dp"
                 android:hint="@string/title_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/textView_title_new_post">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_post"
