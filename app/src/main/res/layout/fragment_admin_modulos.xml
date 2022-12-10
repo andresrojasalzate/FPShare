@@ -38,10 +38,11 @@
             android:id="@+id/button_delete_module"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="30dp"
             android:text="@string/delete_module"
-            app:layout_constraintEnd_toEndOf="@+id/layout_modulos"
-            app:layout_constraintTop_toBottomOf="@+id/layout_modulos" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_module" />
 
         <Button
             android:id="@+id/button_add_module"
@@ -50,6 +51,15 @@
             android:layout_marginTop="100dp"
             android:text="@string/add_module"
             app:layout_constraintStart_toStartOf="@+id/layout_modulos"
+            app:layout_constraintTop_toBottomOf="@+id/layout_modulos" />
+
+        <Button
+            android:id="@+id/btnEditModule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/edit_module"
+            app:layout_constraintEnd_toEndOf="@+id/layout_modulos"
             app:layout_constraintTop_toBottomOf="@+id/layout_modulos" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

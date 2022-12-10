@@ -181,4 +181,7 @@
     <string name="administrator_info_usuario">Administrator</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="edit_uf">Edit UF</string>
+    <string name="edit_module">Edit Module</string>
+    <string name="edit_cicle">Edit Cicle</string>
 </resources>
