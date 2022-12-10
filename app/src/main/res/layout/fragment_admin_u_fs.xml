@@ -35,8 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_20"
             android:text="@string/delete_uf"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnEditUF"
             app:layout_constraintTop_toBottomOf="@+id/button_add_UF" />
 
         <Button
@@ -56,6 +55,15 @@
             android:text="@string/edit_uf"
             app:layout_constraintEnd_toEndOf="@+id/layout_UFs"
             app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
+
+        <Button
+            android:id="@+id/btnSeePosts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/see_posts"
+            app:layout_constraintStart_toStartOf="@+id/button_add_UF"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_UF" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

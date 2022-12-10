@@ -184,4 +184,7 @@
     <string name="edit_uf">Edit UF</string>
     <string name="edit_module">Edit Module</string>
     <string name="edit_cicle">Edit Cicle</string>
+    <string name="see_modules">See Modules</string>
+    <string name="see_ufs">See UFs</string>
+    <string name="see_posts">See Posts</string>
 </resources>
