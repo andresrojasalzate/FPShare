@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         val email = user?.email.toString()
 
         bd.collection("Usuarios").document(email).get().addOnSuccessListener { document ->
+
             val esAdmin = document["esAdmin"] as Boolean
             if(!esAdmin){
                 binding.navView.menu.findItem(R.id.menuAdministracion).setVisible(false)

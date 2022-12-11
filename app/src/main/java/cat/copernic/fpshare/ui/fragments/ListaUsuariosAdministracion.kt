@@ -64,7 +64,7 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
                 wallitem.nombre = document["nombre"].toString()
                 wallitem.apellidos = document["apellidos"].toString()
                 wallitem.telefono = document["telefono"].toString()
-                wallitem.insituto = document["instituto"].toString()
+                wallitem.instituto = document["instituto"].toString()
                 wallitem.esAdmin = document["esAdmin"] as Boolean
 
                 userList.add(wallitem)

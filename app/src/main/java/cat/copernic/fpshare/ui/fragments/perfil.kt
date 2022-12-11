@@ -2,6 +2,7 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import java.io.File
 
 
 class perfil : Fragment() {
@@ -79,7 +81,7 @@ class perfil : Fragment() {
                     .update("email",emailEdittext.text.toString(),
                     "nombre",nombreEditText.text.toString(),
                     "apellidos",apellidosEditText.text.toString(),
-                    "numero",numero.text.toString(),
+                    "telefono",numero.text.toString(),
                     "instituto",insituto.text.toString(),
                     "imgPerfil",photoSelectedUri.toString())
                     .addOnSuccessListener {
@@ -115,27 +117,46 @@ class perfil : Fragment() {
         botonGuardarCambios = binding.buttonSaveChangesProfile
         emailEdittext = binding.editextEmail
         imagen = binding.imageProfile
+
+
+        val appContext = context
+
         bd.collection("Usuarios").document(email).get()
             .addOnSuccessListener {
                 var user = User(it.id,
                     it["nombre"].toString(),
                     it["apellidos"].toString(),
                     it["telefono"].toString(),
-                    it["insituto"].toString(),
+                    it["instituto"].toString(),
                     it["imgPerfil"].toString())
 
                 nombreEditText.setText(user.nombre)
                 apellidosEditText.setText(user.apellidos)
                 numero.setText(user.telefono)
-                insituto.setText(user.insituto)
+                insituto.setText(user.instituto)
                 emailEdittext.setText(user.email)
-                Picasso.get().load(user.imgPerfil.toUri()).into(imagen)
+                val localfile = File.createTempFile("tempImage","jpg")
+                storageRef.getFile(localfile).addOnSuccessListener {
+                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    binding.imageProfile.setImageBitmap(bitmap)
+                }.addOnFailureListener{ //La carrega a fallat...
+
+                    Toast.makeText(appContext,"La carrega de la imatge a fallat", Toast.LENGTH_LONG).show()
+
+                }
+
+                    //Picasso.get().load(user.imgPerfil.toUri())
+                    //.into(imagen)
+
+                //Picasso.get().load(photoSelectedUri).into(imagen)
+                //Picasso.get().load(user.imgPerfil.toUri()).into(imagen)
             }
 
 
     }
 
     private fun subirArchivos(){
+        val appContext = context
         resultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
         //Afegim la imatge seleccionada a storage
         photoSelectedUri?.let{uri-> //Hem seleccionat una imatge...
@@ -143,10 +164,10 @@ class perfil : Fragment() {
             //paràmetre l'URI de la imatge.
             storageRef.putFile(uri)
                 .addOnSuccessListener {
-                    Toast.makeText(requireActivity(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
+                    Toast.makeText(appContext,"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
                 }
         }
-        Picasso.get().load(photoSelectedUri).into(imagen)
+        //Picasso.get().load(photoSelectedUri).into(imagen)
     }
 
 

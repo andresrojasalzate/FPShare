@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
@@ -15,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 
 class NuevaPublicacion : Fragment() {
@@ -52,15 +54,15 @@ class NuevaPublicacion : Fragment() {
         titulo = binding.textPost
         descripcion = binding.textDescription
         enlace = binding.textLink
+        publi = Publicacion()
 
         idModulo = binding.setModule
         idUf = binding.setUF
-
-        botonPublicar.setOnClickListener{
-
-            val publicacion = llegirDades()
-            if(publicacion.id.isNotEmpty() && publicacion.id.isNotBlank()){
-                anadirPublicacion(idModulo.text.toString(), idUf.text.toString(), publicacion)
+        botonPublicar.setOnClickListener {
+            publi = llegirDades()
+            checked = publi.checked
+            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
+                anadirPublicacion(checked, idModulo.text.toString(), idUf.text.toString(), publi)
             }
         }
     }
@@ -72,19 +74,18 @@ class NuevaPublicacion : Fragment() {
 
     //Funció que llegeix les dades introduïdes per un usuari i retorna el departament instanciat amb aquestes
     //dades.
-    private fun llegirDades():Publicacion {
+    private fun llegirDades(): Publicacion {
         //Guardem les dades introduïdes per l'usuari
         publi.id = "a"
-        bd.collection("Usuarios").document(user?.email.toString()).get()
-            .addOnSuccessListener {
-                var user = User(
-                    it.id,
-                    it["nombre"].toString(),
-                    it["apellidos"].toString(),
-                    it["telefono"].toString(),
-                    it["insituto"].toString(),
-                    it["imgPerfil"].toString()
-                )
+        bd.collection("Usuarios").document(user?.email.toString()).get().addOnSuccessListener {
+            var user = User(
+                it.id,
+                it["nombre"].toString(),
+                it["apellidos"].toString(),
+                it["telefono"].toString(),
+                it["insituto"].toString(),
+                it["imgPerfil"].toString()
+            )
             publi.perfil = user.nombre + " " + user.apellidos
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
@@ -100,17 +101,20 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
             }
             publi.enlace = enlace.text.toString()
+
         }
         return publi
-
     }
 
-    fun anadirPublicacion(idModulo: String, idUf: String, publicacion:Publicacion){
-        // val appContext = context
 
-        bd.collection("Ciclos").document(checked)
-            .collection("Modulos").document(idModulo)
-            .collection("UFs").document(idUf)
-            .collection("Publicaciones").document().set(publicacion)
+    private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
+        val appContext = context
+         bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo).collection("UFs").document(idUf).collection("Publicaciones").document().set(publi)
+            .addOnSuccessListener { //S'ha afegit el departament...
+                Toast.makeText(appContext,"Documento añadido", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener{ //No s'ha afegit el departament...
+                Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()
+            }
     }
 }

@@ -91,7 +91,7 @@ class MostarInfoUsuario : Fragment() {
             usuario.nombre = document["nombre"].toString()
             usuario.apellidos = document["apellidos"].toString()
             usuario.telefono = document["telefono"].toString()
-            usuario.insituto = document["insituto"].toString()
+            usuario.instituto = document["insituto"].toString()
             usuario.esAdmin = document["esAdmin"] as Boolean
             rellenarcampos(usuario)
         }
@@ -101,7 +101,7 @@ class MostarInfoUsuario : Fragment() {
         nombre.setText(comprobarcampos(usuario.nombre))
         apellidos.setText(comprobarcampos(usuario.apellidos))
         numeroTelefono.setText(comprobarcampos(usuario.telefono))
-        institute.setText(comprobarcampos(usuario.insituto))
+        institute.setText(comprobarcampos(usuario.instituto))
         email.setText(comprobarcampos(usuario.email))
         if(usuario.esAdmin) {
             esAdmin.setChecked(true);
