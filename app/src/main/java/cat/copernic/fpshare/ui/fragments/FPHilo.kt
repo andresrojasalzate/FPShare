@@ -66,6 +66,7 @@ class FPHilo : Fragment() {
 
             if (campoVacio(texto)) {
                 addMensaje(texto)
+                llamarecycleviewmensajes()
             }
         }
 
@@ -75,6 +76,8 @@ class FPHilo : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
     private fun infoforo(){
         val idForo = args.idforo
@@ -90,8 +93,10 @@ class FPHilo : Fragment() {
 
         bd.collection("Foros").document(idForo).collection("Mensajes").get().addOnSuccessListener { documents ->
             for (document in documents){
-                val wallitem = document.toObject(Mensaje::class.java)
-                mensajesList.add(wallitem)
+                if(document["idMensaje"].toString() != "0") {
+                    val wallitem = document.toObject(Mensaje::class.java)
+                    mensajesList.add(wallitem)
+                }
             }
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = MsgAdapter(mensajesList)

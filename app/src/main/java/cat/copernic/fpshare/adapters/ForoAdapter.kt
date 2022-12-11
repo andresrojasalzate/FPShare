@@ -41,7 +41,7 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
         with(holder){
             ViewB.autor.text = foro.emailautor
             ViewB.titulo.text = foro.titulo
-            ViewB.comentarios.text = numMensajes.toString()
+            ViewB.numComentarios.text = numMensajes.toString()
         }
 
     }

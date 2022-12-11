@@ -79,8 +79,8 @@ class pantalla_principal : Fragment() {
                             imgPubli
                         )
                         adapter = PubliAdapter(cicloList)
-                        binding.recyclerView.adapter = adapter
-                        binding.recyclerView.layoutManager =
+                         binding.recyclerView.adapter = adapter
+                         binding.recyclerView.layoutManager =
                             LinearLayoutManager(requireContext())
                         cicloList.add(publi)
                     }

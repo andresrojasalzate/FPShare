@@ -15,7 +15,9 @@ import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.databinding.FragmentListaForosBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 
@@ -42,30 +44,30 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
-            boton = binding.button5
-            recyclerView = binding.recyclerView
-            withContext(Dispatchers.IO) {
-                llamarecycleview()
-            }
+
+        recyclerView = binding.recyclerView
+        lifecycleScope.launch(Dispatchers.Main) {
+            val algo = async{llamarecycleview()}
         }
+
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    private fun llamarecycleview() {
+    private suspend fun llamarecycleview() {
         val foroList = ArrayList<Foro>()
 
-        bd.collection("Foros").get().addOnSuccessListener { documents ->
-            for (document in documents){
+        val foros = bd.collection("Foros").get().await()
+            for (document in foros){
                 val wallitem = document.toObject(Foro::class.java)
                 foroList.add(wallitem)
             }
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = ForoAdapter(foroList,this)
-        }
+
     }
 
     override fun onItemClick(id: String) {
