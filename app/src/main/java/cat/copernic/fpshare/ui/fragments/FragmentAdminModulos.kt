@@ -105,5 +105,6 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
             args.idCiclo
         )
         view.findNavController().navigate(action)
+
     }
 }

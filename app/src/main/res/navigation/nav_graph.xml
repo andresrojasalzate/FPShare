@@ -107,9 +107,6 @@
             android:id="@+id/action_menuAdministracion_to_listaUsuariosAdministracion"
             app:destination="@id/listaUsuariosAdministracion" />
         <action
-            android:id="@+id/action_menuAdministracion_to_listaPublicacionesAdministracion"
-            app:destination="@+id/listaPostsAdministracion" />
-        <action
             android:id="@+id/action_menuAdministracion_to_listaTagsAdministracion"
             app:destination="@+id/listaTagsAdministracion" />
     </fragment>
@@ -123,11 +120,6 @@
             app:destination="@id/mostarInfoUsuario" />
     </fragment>
     <fragment
-        android:id="@+id/listaPostsAdministracion"
-        android:name="cat.copernic.fpshare.ui.fragments.FragmentPosts"
-        android:label="@string/post_admin"
-        tools:layout="@layout/fragment_posts" />
-    <fragment
         android:id="@+id/listaTagsAdministracion"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminCiclos"
         android:label="@string/cicles_admin"
@@ -138,6 +130,9 @@
         <action
             android:id="@+id/action_listaTagsAdministracion_to_crearCiclo"
             app:destination="@id/crearCiclo" />
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_fragmentAdminEditCicle"
+            app:destination="@id/fragmentAdminEditCicle" />
     </fragment>
     <fragment
         android:id="@+id/fragment_renombrar_usuario"
@@ -201,6 +196,9 @@
         <action
             android:id="@+id/action_fragmentAdminModulos_to_crearModulo"
             app:destination="@id/crearModulo" />
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_fragmentAdminEditModule"
+            app:destination="@id/fragmentAdminEditModule" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAdminUFs"
@@ -219,6 +217,9 @@
         <action
             android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminPosts"
             app:destination="@id/fragmentAdminPosts" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminEditUF"
+            app:destination="@id/fragmentAdminEditUF" />
     </fragment>
     <fragment
         android:id="@+id/mostarInfoUsuario"
@@ -233,10 +234,10 @@
             app:destination="@id/fragment_renombrar_usuario" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentAdminPosts"
-        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminPosts"
-        android:label="fragment_admin_posts"
-        tools:layout="@layout/fragment_admin_posts" >
+        android:id="@+id/fragmentAdminModPost"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminModPost"
+        android:label="fragment_admin_mod_post"
+        tools:layout="@layout/fragment_admin_mod_post" >
         <argument
             android:name="idCiclo"
             app:argType="string" />
@@ -245,6 +246,62 @@
             app:argType="string" />
         <argument
             android:name="idUf"
+            app:argType="string" />
+        <argument
+            android:name="idPubli"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminPosts"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminPosts"
+        android:label="fragment_admin_posts"
+        tools:layout="@layout/fragment_admin_posts" >
+        <action
+            android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminModPost"
+            app:destination="@id/fragmentAdminModPost" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="idUf"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditCicle"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditCicle"
+        android:label="fragment_admin_edit_cicle"
+        tools:layout="@layout/fragment_admin_edit_cicle" >
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument android:name="nombreCiclo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditModule"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditModule"
+        android:label="fragment_admin_edit_module"
+        tools:layout="@layout/fragment_admin_edit_module" >
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="nombreModulo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditUF"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditUF"
+        android:label="fragment_admin_edit_u"
+        tools:layout="@layout/fragment_admin_edit_u" >
+        <argument
+            android:name="idUF"
+            app:argType="string" />
+        <argument
+            android:name="nombreUF"
             app:argType="string" />
     </fragment>
 </navigation>

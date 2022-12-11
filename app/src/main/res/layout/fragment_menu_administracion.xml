@@ -22,25 +22,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_posts_admin_menu"
-            android:layout_width="@dimen/size_300"
-            android:layout_height="@dimen/size_60"
-            android:layout_marginTop="@dimen/size_72"
-            android:text="@string/posts_admin_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_users_admin_menu" />
-
-        <Button
             android:id="@+id/button_tags_admin_menu"
             android:layout_width="@dimen/size_300"
             android:layout_height="@dimen/size_60"
-            android:layout_marginTop="@dimen/size_72"
             android:layout_marginBottom="@dimen/size_184"
             android:text="@string/cicles_menu_admin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_posts_admin_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/button_users_admin_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

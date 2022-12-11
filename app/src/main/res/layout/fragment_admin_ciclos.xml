@@ -34,7 +34,7 @@
             android:id="@+id/button_add_ciclo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:text="@string/add_cicle"
             app:layout_constraintStart_toStartOf="@+id/layout_ciclos"
             app:layout_constraintTop_toBottomOf="@+id/layout_ciclos" />
@@ -43,10 +43,28 @@
             android:id="@+id/button_delete_cicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/delete_cicle"
+            app:layout_constraintEnd_toEndOf="@+id/btnEditCicle"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_ciclo" />
+
+        <Button
+            android:id="@+id/btnEditCicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/edit_cicle"
             app:layout_constraintEnd_toEndOf="@+id/layout_ciclos"
             app:layout_constraintTop_toBottomOf="@+id/layout_ciclos" />
+
+        <Button
+            android:id="@+id/btnSeeModules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/see_modules"
+            app:layout_constraintStart_toStartOf="@+id/button_add_ciclo"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_ciclo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
