@@ -14,8 +14,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHilo"
             android:layout_width="0dp"
-            android:layout_height="400dp"
-            android:layout_marginTop="140dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="210dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_5"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/size_5"
             app:layout_constraintEnd_toStartOf="@+id/buttonSend"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
             android:layout_width="@dimen/size_55"
             android:layout_height="@dimen/size_55"
             android:layout_marginStart="@dimen/size_5"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/bordes_redondos"
             android:contentDescription="@string/btn_send"
@@ -60,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="23dp"
-            tools:text="autor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="autor" />
 
         <TextView
             android:id="@+id/titulo_foro"
@@ -70,6 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="91dp"
             android:layout_marginTop="20dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/autor_foro"
             tools:text="titulo" />
@@ -78,13 +80,31 @@
             android:id="@+id/descripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            tools:text="descripcion"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewHilo"
             app:layout_constraintStart_toStartOf="@+id/titulo_foro"
-            app:layout_constraintTop_toBottomOf="@+id/titulo_foro" />
+            app:layout_constraintTop_toBottomOf="@+id/titulo_foro"
+            tools:text="descripcion" />
+
+        <TextView
+            android:id="@+id/respuestas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Respuestas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
+        <View
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewHilo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/respuestas" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,7 +15,9 @@ import cat.copernic.fpshare.modelo.User
 import cat.copernic.fpshare.databinding.FragmentListaUsuariosAdministracionBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener {
@@ -40,12 +42,12 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycleScope.launch{
+
             inicializar()
-            withContext(Dispatchers.IO){
-                llamarecycleview()
-            }
+        lifecycleScope.launch(Dispatchers.Main) {
+            val algo = async{llamarecycleview()}
         }
+
 
     }
 
@@ -53,12 +55,12 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
         super.onDestroyView()
         _binding = null
     }
-    private fun llamarecycleview(){
+    private suspend fun llamarecycleview(){
         val userList = ArrayList<User>()
         val adapterUser = UserAdapter(userList, this)
 
-        bd.collection("Usuarios").get().addOnSuccessListener {documents ->
-            for (document in documents){
+        val usuarios = bd.collection("Usuarios").get().await()
+            for (document in usuarios){
                 val wallitem = document.toObject(User::class.java)
                 wallitem.email = document.id
                 wallitem.nombre = document["nombre"].toString()
@@ -68,7 +70,7 @@ class ListaUsuariosAdministracion : Fragment(), UserAdapter.OnItemClickListener 
                 wallitem.esAdmin = document["esAdmin"] as Boolean
 
                 userList.add(wallitem)
-            }
+
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapterUser
         }
