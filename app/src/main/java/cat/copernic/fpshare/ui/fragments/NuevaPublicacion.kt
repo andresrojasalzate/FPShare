@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
 import cat.copernic.fpshare.modelo.Publicacion
@@ -16,7 +15,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.tasks.await
 
 
 class NuevaPublicacion : Fragment() {
@@ -89,7 +87,7 @@ class NuevaPublicacion : Fragment() {
             publi.perfil = user.nombre + " " + user.apellidos
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
-            publi.imgPubli = user.imgPerfil
+            publi.imgPubli = user.email
 
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"

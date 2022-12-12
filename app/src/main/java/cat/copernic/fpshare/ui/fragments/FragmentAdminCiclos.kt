@@ -15,7 +15,10 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminCiclosBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
@@ -64,7 +67,6 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
     private fun inicializadoresButton() {
         // inicializar botones de ciclo
         botonAddCiclo = binding.buttonAddCiclo
-        botonDeleteCiclo = binding.buttonDeleteCicle
     }
 
     private fun inicializadoresRW() {

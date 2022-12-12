@@ -15,7 +15,10 @@ import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminUFsBinding
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
@@ -28,7 +31,6 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private lateinit var adapterU: UfAdminAdapter
 
     private lateinit var botonAddUF: Button
-    private lateinit var botonDeleteUF: Button
 
     private lateinit var recyclerViewUF: RecyclerView
     private val args: FragmentAdminUFsArgs by navArgs()
@@ -59,7 +61,6 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private fun inicializadoresButton() {
         // inicializar botones de UF
         botonAddUF = binding.buttonAddUF
-        botonDeleteUF = binding.buttonDeleteUF
     }
 
     private fun inicializadoresRW() {
