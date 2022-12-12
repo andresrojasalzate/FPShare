@@ -49,7 +49,11 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
         lifecycleScope.launch(Dispatchers.Main) {
             val algo = async{llamarecycleview()}
         }
-
+        binding.fab.setOnClickListener {
+            val action =
+                ListaForosDirections.actionListaForosToCreacionForo()
+            view.findNavController().navigate(action)
+        }
 
     }
 
