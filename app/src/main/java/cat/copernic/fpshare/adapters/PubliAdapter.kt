@@ -1,19 +1,21 @@
 package cat.copernic.fpshare.adapters
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
-import com.squareup.picasso.Picasso
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>() {
     private lateinit var contexto: Context
+    var storage = FirebaseStorage.getInstance()
 
     inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val viewB = ItemPubliBinding.bind(view)
@@ -35,8 +37,15 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
-            Picasso.get().load(publicacion.imgPubli.toUri()).into(viewB.imgIcon)
+            var storageRef = storage.reference.child("Imagenes/" + publicacion.imgPubli)
+
+            val localfile = File.createTempFile("tempImage", "jpg")
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                viewB.imgIcon.setImageBitmap(bitmap)
+            }
         }
+
     }
 
     override fun getItemCount(): Int {
