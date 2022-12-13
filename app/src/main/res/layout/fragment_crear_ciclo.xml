@@ -25,7 +25,8 @@
                 android:id="@+id/inputIDCiclo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/input_id_cicle" />
+                android:hint="@string/input_id_cicle"
+                android:inputType="textCapCharacters" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +44,8 @@
                 android:id="@+id/inputNombreCiclo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name_of_cicle" />
+                android:hint="@string/name_of_cicle"
+                android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

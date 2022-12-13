@@ -21,6 +21,10 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
             view.setOnClickListener(this)
         }
 
+        /**
+         * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
+         * del click recoge la ID y la envia hacia la función onItemClick
+         */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
             val id = uf.get(position).idUf
@@ -30,6 +34,10 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
         }
     }
 
+    /**
+     * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
+     * del archivo item (por ejemplo, item_tag)
+     */
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -39,6 +47,9 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
         return ViewHolder(vista)
     }
 
+    /**
+     * Función que recoge las IDs de ciclos y las muestra en el recyclerView
+     */
     override fun onBindViewHolder(holder: UfAdminAdapter.ViewHolder, position: Int) {
         val uf = uf[position]
         with(holder) {
