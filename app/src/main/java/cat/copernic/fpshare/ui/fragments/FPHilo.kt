@@ -1,5 +1,7 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +9,13 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.ForoAdapter
 import cat.copernic.fpshare.adapters.MsgAdapter
 import cat.copernic.fpshare.databinding.FragmentFpHiloBinding
@@ -18,6 +23,10 @@ import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
 import cat.copernic.fpshare.modelo.Modul
+import cat.copernic.fpshare.ui.activities.Login
+import cat.copernic.fpshare.ui.activities.MainActivity
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -60,10 +69,12 @@ class FPHilo : Fragment() {
         inicializadores()
         infoforo()
         llamarecycleviewmensajes()
+        var idNoti = 0
 
         botonSend.setOnClickListener() {
             val texto = inputMsg.text.toString()
-
+            idNoti++
+            crearNotificacion(idNoti)
             if (campoVacio(texto)) {
                 addMensaje(texto)
                 llamarecycleviewmensajes()
@@ -76,9 +87,27 @@ class FPHilo : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    private  fun crearNotificacion(idNoti: Int){
+        //establacemos los atributos de la notificación
+        val textTitle = "Notificación de FPShare"
+        val textContent = "Contenido de la notificación"
+        val CHANNEL_ID = "1"
 
+        //creamos la notificación y asigamos los atributos
+        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+            .setSmallIcon(R.drawable.logo_fpshare)
+            .setContentTitle(textTitle)
+            .setContentText(textContent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
 
+        //enviamos la notificación
+        with(NotificationManagerCompat.from(requireContext())) {
 
+            val notificationId = idNoti
+            notify(notificationId, builder.build())
+        }
+    }
     private fun infoforo(){
         val idForo = args.idforo
         bd.collection("Foros").document(idForo).get().addOnSuccessListener { document ->
