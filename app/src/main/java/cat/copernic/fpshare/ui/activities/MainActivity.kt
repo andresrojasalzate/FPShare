@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+
     }
     private fun esAdmin(){
         val email = user?.email.toString()

@@ -34,7 +34,10 @@
         tools:layout="@layout/fragment_lista_foros">
         <action
             android:id="@+id/action_listaForos_to_FPHilo"
-            app:destination="@id/FPHilo"
+            app:destination="@id/FPHilo" />
+        <action
+            android:id="@+id/action_listaForos_to_creacionForo"
+            app:destination="@id/creacionForo"
             app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
@@ -153,7 +156,11 @@
         android:id="@+id/creacionForo"
         android:name="cat.copernic.fpshare.ui.fragments.CreacionForo"
         android:label="@string/new_forum"
-        tools:layout="@layout/fragment_creacion_foro" />
+        tools:layout="@layout/fragment_creacion_foro" >
+        <action
+            android:id="@+id/action_creacionForo_to_FPHilo"
+            app:destination="@id/FPHilo" />
+    </fragment>
     <fragment
         android:id="@+id/crearCiclo"
         android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
@@ -309,5 +316,8 @@
         <argument
             android:name="nombreUF"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminEditUF_self"
+            app:destination="@id/fragmentAdminEditUF" />
     </fragment>
 </navigation>

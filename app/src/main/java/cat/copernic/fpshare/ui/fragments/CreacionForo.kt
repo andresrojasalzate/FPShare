@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
@@ -87,10 +88,16 @@ class CreacionForo : Fragment() {
                     val mensajeInicial = Mensaje("0", "shtht", "mensaje de prueba")
                     bd.collection("Foros").document(idtxt).set(foro)
                     bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
+                    cambiarPantalla(idtxt)
                 }
 
                 }
             }
+    private fun cambiarPantalla(id: String){
+        val action =
+            CreacionForoDirections.actionCreacionForoToFPHilo(id)
+        view?.findNavController()?.navigate(action)
+    }
 
     }
 
