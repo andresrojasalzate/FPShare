@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="@string/edit_module"
     app:startDestination="@id/pantalla_principal">
 
     <fragment
@@ -65,7 +66,7 @@
         android:id="@+id/FPHilo"
         android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
         android:label="@string/thread"
-        tools:layout="@layout/fragment_fp_hilo" >
+        tools:layout="@layout/fragment_fp_hilo">
         <argument
             android:name="idforo"
             app:argType="string" />
@@ -103,7 +104,7 @@
         android:id="@+id/listaUFs"
         android:name="cat.copernic.fpshare.ui.fragments.MenuUF"
         android:label="@string/ufs"
-        tools:layout="@layout/fragment_menu_uf" >
+        tools:layout="@layout/fragment_menu_uf">
         <argument
             android:name="cicloId"
             app:argType="string" />
@@ -163,7 +164,7 @@
         android:id="@+id/fragment_renombrar_usuario"
         android:name="cat.copernic.fpshare.ui.fragments.Renombrar_Usuario"
         android:label="@string/rename_user"
-        tools:layout="@layout/fragment_renombrar__usuario" >
+        tools:layout="@layout/fragment_renombrar__usuario">
         <argument
             android:name="idUsuario"
             app:argType="string" />
@@ -176,7 +177,7 @@
         android:id="@+id/creacionForo"
         android:name="cat.copernic.fpshare.ui.fragments.CreacionForo"
         android:label="@string/new_forum"
-        tools:layout="@layout/fragment_creacion_foro" >
+        tools:layout="@layout/fragment_creacion_foro">
         <action
             android:id="@+id/action_creacionForo_to_FPHilo"
             app:destination="@id/FPHilo" />
@@ -276,8 +277,8 @@
     <fragment
         android:id="@+id/mostarInfoUsuario"
         android:name="cat.copernic.fpshare.ui.fragments.MostarInfoUsuario"
-        android:label="fragment_mostar_info_usuario"
-        tools:layout="@layout/fragment_mostar_info_usuario" >
+        android:label="User info"
+        tools:layout="@layout/fragment_mostar_info_usuario">
         <argument
             android:name="email"
             app:argType="string" />
@@ -288,8 +289,8 @@
     <fragment
         android:id="@+id/fragmentAdminModPost"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminModPost"
-        android:label="fragment_admin_mod_post"
-        tools:layout="@layout/fragment_admin_mod_post" >
+        android:label="Edit Post"
+        tools:layout="@layout/fragment_admin_mod_post">
         <argument
             android:name="idCiclo"
             app:argType="string" />
@@ -306,8 +307,8 @@
     <fragment
         android:id="@+id/fragmentAdminPosts"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminPosts"
-        android:label="fragment_admin_posts"
-        tools:layout="@layout/fragment_admin_posts" >
+        android:label="@string/posts"
+        tools:layout="@layout/fragment_admin_posts">
         <action
             android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminModPost"
             app:destination="@id/fragmentAdminModPost" />
@@ -327,7 +328,7 @@
     <fragment
         android:id="@+id/fragmentAdminEditCicle"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditCicle"
-        android:label="fragment_admin_edit_cicle"
+        android:label="@string/edit_cicle"
         tools:layout="@layout/fragment_admin_edit_cicle">
         <argument
             android:name="idCiclo"
@@ -339,7 +340,7 @@
     <fragment
         android:id="@+id/fragmentAdminEditModule"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditModule"
-        android:label="fragment_admin_edit_module"
+        android:label="@string/edit_module"
         tools:layout="@layout/fragment_admin_edit_module">
         <argument
             android:name="idModulo"
@@ -351,8 +352,8 @@
     <fragment
         android:id="@+id/fragmentAdminEditUF"
         android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditUF"
-        android:label="fragment_admin_edit_u"
-        tools:layout="@layout/fragment_admin_edit_u" >
+        android:label="@string/edit_uf"
+        tools:layout="@layout/fragment_admin_edit_u">
         <argument
             android:name="idUF"
             app:argType="string" />
