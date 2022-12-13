@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.CicleAdminAdapter
-import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminCiclosBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,11 +20,13 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
-    UfAdminAdapter.OnItemClickListener {
+class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
 
+    // Binding
     private var _binding: FragmentAdminCiclosBinding? = null
     private val binding get() = _binding!!
+
+    // Firebase
     private val bd = FirebaseFirestore.getInstance()
 
     // Listas
@@ -36,7 +37,6 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
 
     // Botones
     private lateinit var botonAddCiclo: Button
-    private lateinit var botonDeleteCiclo: Button
 
     // RecyclerViews
     private lateinit var recyclerViewCiclos: RecyclerView
@@ -74,6 +74,9 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
         recyclerViewCiclos = binding.recyclerViewCiclos
     }
 
+    /**
+     * Lectura de la colección de Ciclos de la base de datos
+     */
     private suspend fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
         val ciclos = bd.collection("Ciclos").get().await()
@@ -98,6 +101,7 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener,
         }
     }
 
+    // Navegabilidad hacia Modulos
     override fun onItemClick(id: String) {
         val view = binding.root
         val action =

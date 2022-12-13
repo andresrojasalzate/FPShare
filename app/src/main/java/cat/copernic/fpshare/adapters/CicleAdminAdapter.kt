@@ -23,6 +23,10 @@ class CicleAdminAdapter(
             view.setOnClickListener(this)
         }
 
+        /**
+         * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
+         * del click recoge la ID y la envia hacia la función onItemClick
+         */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
             val id = ciclos.get(position).idCiclo
@@ -32,6 +36,10 @@ class CicleAdminAdapter(
         }
     }
 
+    /**
+     * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
+     * del archivo item (por ejemplo, item_tag)
+     */
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -41,6 +49,9 @@ class CicleAdminAdapter(
         return ViewHolder(vista)
     }
 
+    /**
+     * Función que recoge las IDs de ciclos y las muestra en el recyclerView
+     */
     override fun onBindViewHolder(holder: CicleAdminAdapter.ViewHolder, position: Int) {
         val ciclos = ciclos.get(position)
         with(holder) {
