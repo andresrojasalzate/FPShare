@@ -10,36 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- <Spinner Hemos sustituido este spinner por un EditText hasta que sepamos como funciona
-            android:id="@+id/selectCiclo"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/add_cicle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectCicle" /> -->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/selectCicloMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_20"
-            android:layout_marginTop="@dimen/size_20"
-            android:layout_marginEnd="@dimen/size_20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/selectCiclo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/id_of_cicle" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputIDModulMain"
             android:layout_width="match_parent"
@@ -49,7 +19,7 @@
             android:layout_marginEnd="@dimen/size_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectCicloMain">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputIDModul"

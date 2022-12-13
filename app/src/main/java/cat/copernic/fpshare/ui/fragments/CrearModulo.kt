@@ -6,27 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class CrearModulo : Fragment() {
+
+    // Binding
     private var _binding: FragmentCrearModuloBinding? = null
     private val binding get() = _binding!!
-    private var bd = FirebaseFirestore.getInstance()
 
-    // private lateinit var spinnerCiclos: Spinner
-    // private lateinit var idSpinner: MutableList<String>
+    // Firebase
+    private var bd = FirebaseFirestore.getInstance()
 
     // Botones
     private lateinit var buttonAddModulo: Button
 
     // EditText
-    private lateinit var inputIDCiclo: EditText
     private lateinit var inputIDModulo: EditText
     private lateinit var inputNameModulo: EditText
+
+    // Args
+    private val args: CrearModuloArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
@@ -39,56 +45,54 @@ class CrearModulo : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCrearModuloBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    /*private suspend fun leerIds(): MutableList<String> {
-
-        val arrayCiclo = mutableListOf<String>()
-        val resultado = bd.collection("Ciclos").get().await()
-
-        for (document in resultado) {
-            val idCiclo = document.id
-            arrayCiclo.add(idCiclo)
-        }
-        return arrayCiclo
-    }*/
-
-
     private fun inicializadores() {
         buttonAddModulo = binding.btnAddModul
 
-        inputIDCiclo = binding.selectCiclo
         inputIDModulo = binding.inputIDModul
         inputNameModulo = binding.inputNombreModul
-
-        // spinnerCiclos = binding.selectCiclo
     }
 
     private fun listeners() {
-
         buttonAddModulo.setOnClickListener {
-            val idCiclo = inputIDCiclo.text.toString()
             val id = inputIDModulo.text.toString()
             val nombre = inputNameModulo.text.toString()
 
-            if (campoVacio(idCiclo, id, nombre)) {
+            if (campoVacio(id, nombre)) {
                 val modulo = Modul(id, nombre)
-                addModulo(idCiclo, modulo, id)
+                addModulo(modulo, id)
             }
+            modulosBack()
         }
     }
 
-    private fun addModulo(idCiclo: String, modulo: Modul, id: String) {
-        bd.collection("Ciclos").document(idCiclo)
-            .collection("Modulos").document(id).set(modulo)
+    /**
+     * Escritura de nuevo modulo, añadido dentro del ciclo que hemos seleccionado anteriormente
+     * en la pantalla de ciclos
+     */
+    private fun addModulo(modulo: Modul, id: String) {
+        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(id)
+            .set(modulo).addOnSuccessListener {
+                Toast.makeText(context, "Modulo creado correctamente", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(context, "Error al crear modulo", Toast.LENGTH_LONG).show()
+            }
     }
 
-    private fun campoVacio(idCiclo: String, ID: String, nombre: String): Boolean {
-        return idCiclo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty() && idCiclo.isNotBlank() && ID.isNotBlank() && nombre.isNotBlank()
+    // Comprobar que los campos no esten en blanco o vacíos
+    private fun campoVacio(ID: String, nombre: String): Boolean {
+        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
+    }
+
+    // Volver a la pantalla de modulos
+    private fun modulosBack() {
+        val view = binding.root
+        val action = CrearModuloDirections.actionCrearModuloToFragmentAdminModulos(args.idCiclo)
+        view.findNavController().navigate(action)
     }
 }

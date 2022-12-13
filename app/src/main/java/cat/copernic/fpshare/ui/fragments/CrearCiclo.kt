@@ -65,13 +65,12 @@ class CrearCiclo : Fragment() {
 
     // Adición del ciclo nuevo en la base de datos
     private fun addCiclo(ciclo: Cicle, id: String) {
-        val appContext = context
         bd.collection("Ciclos").document(id).set(ciclo)
             .addOnSuccessListener {
-                Toast.makeText(appContext, "Ciclo añadido correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Ciclo añadido correctamente", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {
-                Toast.makeText(appContext, "Error al añadir el ciclo", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG).show()
             }
     }
 

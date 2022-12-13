@@ -54,6 +54,9 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
         inicializadoresButton()
         inicializadoresRW()
         listeners()
+        /**
+         * Corrutina para la lectura de Ciclos
+         */
         lifecycleScope.launch(Dispatchers.Main) {
             cicloList = async { crearCiclos() }
         }
