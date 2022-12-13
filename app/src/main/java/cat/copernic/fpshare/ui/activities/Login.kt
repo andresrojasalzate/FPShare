@@ -1,11 +1,17 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -26,6 +32,10 @@ class Login : AppCompatActivity() {
 
     private var splashScreenMS: Long = 1000
 
+    companion object {
+        val IDCanal = "FPShare"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(splashScreenMS)
         setTheme(R.style.Theme_Fpshare)
@@ -37,6 +47,30 @@ class Login : AppCompatActivity() {
         setContentView(view)
 
         inicializacion()
+        createNotificationChannel()
+
+        val textTitle = "gggg"
+        val textContent = "ffff"
+        val CHANNEL_ID = "ccccc"
+        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.logo_fpshare)
+            .setContentTitle(textTitle)
+            .setContentText(textContent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        binding.button2.setOnClickListener {
+
+            with(NotificationManagerCompat.from(this)) {
+                // notificationId is a unique int for each notification that you must define
+                val notificationId = 1
+                Snackbar.make(
+                    findViewById(R.id.loginLayout),
+                    "puta", BaseTransientBottomBar.LENGTH_SHORT
+                ).show()
+                notify(notificationId, builder.build())
+            }
+
+        }
 
         bontonLogin.setOnClickListener {
             val correo = correoLogin.text.toString()
@@ -97,10 +131,36 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
+    private fun createNotificationChannel() {
+
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            val name = getString(R.string.channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val CHANNEL_ID = "ccccc"
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+                Snackbar.make(
+                    findViewById(R.id.loginLayout),
+                    "puta2", BaseTransientBottomBar.LENGTH_SHORT
+                ).show()
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+
 
 }
