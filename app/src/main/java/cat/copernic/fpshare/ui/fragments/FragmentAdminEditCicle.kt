@@ -71,6 +71,7 @@ class FragmentAdminEditCicle : Fragment() {
         }
     }
 
+    // Función para navegar hacia atrás de nuevo
     private fun modulosBack() {
         val view = binding.root
         val action =
@@ -78,6 +79,7 @@ class FragmentAdminEditCicle : Fragment() {
         view.findNavController().navigate(action)
     }
 
+    // Función para borrar el ciclo en el que nos encontramos
     private fun borrarCiclo() {
         bd.collection("Ciclos").document(args.idCiclo).delete()
             .addOnSuccessListener {
@@ -88,6 +90,7 @@ class FragmentAdminEditCicle : Fragment() {
             }
     }
 
+    // Función para modificar el nombre del ciclo
     private fun modificarCiclo(nombreNuevo: String) {
         bd.collection("Ciclos").document(args.idCiclo).update("nombre", nombreNuevo)
     }
