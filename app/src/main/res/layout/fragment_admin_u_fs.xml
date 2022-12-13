@@ -39,23 +39,14 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
 
         <Button
-            android:id="@+id/btnEditUF"
+            android:id="@+id/btnEditModule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_100"
-            android:text="@string/edit_uf"
+            android:text="@string/edit_module"
             app:layout_constraintEnd_toEndOf="@+id/layout_UFs"
             app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
 
-        <Button
-            android:id="@+id/btnSeePosts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/see_posts"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_add_UF" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
