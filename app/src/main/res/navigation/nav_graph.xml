@@ -18,7 +18,8 @@
             app:destination="@id/login" />
         <action
             android:id="@+id/action_pantalla_principal_to_creacionForo"
-            app:destination="@id/creacionForo" />
+            app:destination="@id/creacionForo"
+            app:enterAnim="@android:anim/accelerate_interpolator" />
     </fragment>
 
     <fragment
@@ -33,7 +34,8 @@
         tools:layout="@layout/fragment_lista_foros">
         <action
             android:id="@+id/action_listaForos_to_FPHilo"
-            app:destination="@id/FPHilo" />
+            app:destination="@id/FPHilo"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/nuevaPublicacion"
@@ -156,7 +158,11 @@
         android:id="@+id/crearCiclo"
         android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
         android:label="@string/new_cicle"
-        tools:layout="@layout/fragment_crear_ciclo" />
+        tools:layout="@layout/fragment_crear_ciclo">
+        <action
+            android:id="@+id/action_crearCiclo_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
     <fragment
         android:id="@+id/crearModulo"
         android:name="cat.copernic.fpshare.ui.fragments.CrearModulo"
