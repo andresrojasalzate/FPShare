@@ -316,6 +316,9 @@
         <action
             android:id="@+id/action_fragmentAdminEditModule_to_fragmentAdminUFs"
             app:destination="@id/fragmentAdminUFs" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAdminEditUF"

@@ -14,8 +14,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class CrearUF : Fragment() {
 
+    // Binding
     private var _binding: FragmentCrearUBinding? = null
     private val binding get() = _binding!!
+
+    // Firebase
     private var bd = FirebaseFirestore.getInstance()
 
     // Botones
@@ -69,12 +72,16 @@ class CrearUF : Fragment() {
         }
     }
 
+    /**
+     * Función para añadir UFs dentro de un ciclo y de un modulo especificado por el usuario
+     */
     private fun addUF(idCiclo: String, idModulo: String, uf: Uf, id: String) {
         bd.collection("Ciclos").document(idCiclo)
             .collection("Modulos").document(idModulo)
             .collection("UFs").document(id).set(uf)
     }
 
+    // Función para comprobar que no está vacio o en blanco los campos introducidos
     private fun campoVacio(idCiclo: String, idModulo: String, ID: String, nombre: String): Boolean {
         return idCiclo.isNotEmpty() && idModulo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty()
                 && ID.isNotBlank() && nombre.isNotBlank() && idCiclo.isNotBlank() && idModulo.isNotBlank()
