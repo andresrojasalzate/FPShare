@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearUBinding
 import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,10 +26,11 @@ class CrearUF : Fragment() {
     private lateinit var buttonAddUf: Button
 
     // EditText
-    private lateinit var inputIDCiclo: EditText
-    private lateinit var inputIDModulo: EditText
     private lateinit var inputIDUf: EditText
     private lateinit var inputNameUf: EditText
+
+    // Args
+    private val args: CrearUFArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
@@ -51,8 +53,6 @@ class CrearUF : Fragment() {
     private fun inicializadores() {
         buttonAddUf = binding.btnAddUf
 
-        inputIDCiclo = binding.selectCiclo
-        inputIDModulo = binding.selectIDModul
         inputIDUf = binding.inputIDuf
         inputNameUf = binding.inputNombreUf
     }
@@ -60,14 +60,12 @@ class CrearUF : Fragment() {
     private fun listeners() {
 
         buttonAddUf.setOnClickListener {
-            val idCiclo = inputIDCiclo.text.toString()
-            val idModulo = inputIDModulo.text.toString()
             val id = inputIDUf.text.toString()
             val nombre = inputNameUf.text.toString()
 
-            if (campoVacio(idCiclo, idModulo, id, nombre)) {
+            if (campoVacio(id, nombre)) {
                 val uf = Uf(id, nombre)
-                addUF(idCiclo, idModulo, uf, id)
+                addUF(uf, id)
             }
         }
     }
@@ -75,15 +73,15 @@ class CrearUF : Fragment() {
     /**
      * Función para añadir UFs dentro de un ciclo y de un modulo especificado por el usuario
      */
-    private fun addUF(idCiclo: String, idModulo: String, uf: Uf, id: String) {
-        bd.collection("Ciclos").document(idCiclo)
-            .collection("Modulos").document(idModulo)
+    private fun addUF(uf: Uf, id: String) {
+        bd.collection("Ciclos").document(args.idCiclo)
+            .collection("Modulos").document(args.idModulo)
             .collection("UFs").document(id).set(uf)
     }
 
     // Función para comprobar que no está vacio o en blanco los campos introducidos
-    private fun campoVacio(idCiclo: String, idModulo: String, ID: String, nombre: String): Boolean {
-        return idCiclo.isNotEmpty() && idModulo.isNotEmpty() && ID.isNotEmpty() && nombre.isNotEmpty()
-                && ID.isNotBlank() && nombre.isNotBlank() && idCiclo.isNotBlank() && idModulo.isNotBlank()
+    private fun campoVacio(ID: String, nombre: String): Boolean {
+        return ID.isNotEmpty() && nombre.isNotEmpty()
+                && ID.isNotBlank() && nombre.isNotBlank()
     }
 }

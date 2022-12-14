@@ -80,7 +80,10 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private fun listeners() {
         botonAddUF.setOnClickListener {
             val action =
-                FragmentAdminUFsDirections.actionFragmentAdminUFsToCrearUF()
+                FragmentAdminUFsDirections.actionFragmentAdminUFsToCrearUF(
+                    args.idCiclo,
+                    args.idModulo
+                )
             view?.findNavController()?.navigate(action)
         }
         botonEditModulo.setOnClickListener {
