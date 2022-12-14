@@ -116,7 +116,6 @@ class perfil : Fragment() {
         emailEdittext = binding.editextEmail
         imagen = binding.imageProfile
 
-
         val appContext = context
 
         bd.collection("Usuarios").document(email).get()
@@ -142,15 +141,7 @@ class perfil : Fragment() {
                     Toast.makeText(appContext,"La carrega de la imatge a fallat", Toast.LENGTH_LONG).show()
 
                 }
-
-                    //Picasso.get().load(user.imgPerfil.toUri())
-                    //.into(imagen)
-
-                //Picasso.get().load(photoSelectedUri).into(imagen)
-                //Picasso.get().load(user.imgPerfil.toUri()).into(imagen)
             }
-
-
     }
 
     private fun subirArchivos(){
@@ -165,7 +156,6 @@ class perfil : Fragment() {
                     Toast.makeText(appContext,"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
                 }
         }
-        //Picasso.get().load(photoSelectedUri).into(imagen)
     }
 
 
