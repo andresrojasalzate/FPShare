@@ -25,7 +25,8 @@
                 android:id="@+id/inputIDModul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_id_module" />
+                android:hint="@string/enter_id_module"
+                android:inputType="textCapCharacters" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +44,8 @@
                 android:id="@+id/inputNombreModul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name_module" />
+                android:hint="@string/name_module"
+                android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
