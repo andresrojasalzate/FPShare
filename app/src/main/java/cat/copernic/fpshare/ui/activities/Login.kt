@@ -1,11 +1,17 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -25,6 +31,10 @@ class Login : AppCompatActivity() {
     private lateinit var binding: LoginBinding
 
     private var splashScreenMS: Long = 1000
+
+    companion object {
+        val IDCanal = "FPShare"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(splashScreenMS)
@@ -97,10 +107,30 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        createNotificationChannel()
         if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
+    private fun createNotificationChannel() {
+        //Creamos el Canal de notificacion pero solo apartir de android 8.0
+        // porque en versiones anteriores no existe
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Canal de notificaciones de FPShare"
+            val descriptionText = "Aqui se puede gestionar las notificaciones de FPShare"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val CHANNEL_ID = "1"
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            // Aqui registramos finalmente el canal
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+
 
 }
