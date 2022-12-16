@@ -1,24 +1,27 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
+import cat.copernic.fpshare.modelo.AlarmReceiver
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class Login : AppCompatActivity() {
 
@@ -29,6 +32,8 @@ class Login : AppCompatActivity() {
     private lateinit var textViewForgotPassword: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: LoginBinding
+    private var alarmMgr: AlarmManager? = null
+    private lateinit var alarmIntent: PendingIntent
 
     private var splashScreenMS: Long = 1000
 
@@ -129,8 +134,20 @@ class Login : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
-    }
 
+    }
+    fun setAlarm(context: Context) {
+        alarmMgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
+            PendingIntent.getBroadcast(context, 0, intent, 0)
+        }
+
+        alarmMgr?.set(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + 60 * 1000,
+            alarmIntent
+        )
+    }
 
 
 }
