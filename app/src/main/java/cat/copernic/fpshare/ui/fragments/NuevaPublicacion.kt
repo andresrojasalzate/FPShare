@@ -1,16 +1,7 @@
 package cat.copernic.fpshare.ui.fragments
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.app.Activity
-import android.app.appsearch.SetSchemaRequest.READ_EXTERNAL_STORAGE
-import android.content.Context
-import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
-import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.text.TextPaint
@@ -20,32 +11,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.fpshare.Manifest
-import cat.copernic.fpshare.adapters.MenuAdapter
-import cat.copernic.fpshare.databinding.ActivityMainBinding
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
-import cat.copernic.fpshare.modelo.Cicle
 import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.User
-import cat.copernic.fpshare.ui.activities.MainActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.itextpdf.text.pdf.PdfWriter
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.asDeferred
-import kotlinx.coroutines.tasks.await
 import java.io.File
 import java.io.FileOutputStream
 
@@ -92,12 +65,7 @@ class NuevaPublicacion : Fragment() {
         botonPdf = binding.btnPdf
 
         botonPublicar.setOnClickListener {
-            var usuario = leerUsuario()
-            var publi = llegirDades(usuario)
-
-            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
-            }
+            llegirDades()
         }
 
         botonPdf.setOnClickListener {
@@ -158,28 +126,24 @@ class NuevaPublicacion : Fragment() {
         pdfDocument.close()
     }
 
-    private fun leerUsuario():User{
-         usuario = User()
-         val correo = user?.email.toString()
-         print(correo)
-         bd.collection("Usuarios").document(user?.email.toString()).get().addOnSuccessListener { doc ->
-             val usuario = doc.toObject(User::class.java)
-             usuario!!.nombre = doc["nombre"].toString()
-             usuario!!.email = doc["email"].toString()
-             usuario!!.telefono = doc["telefono"].toString()
-             usuario!!.instituto = doc["instituto"].toString()
-             usuario!!.apellidos = doc["apellidos"].toString()
-             usuario!!.imgPerfil = doc["imgPerfil"].toString()
-             usuario!!.esAdmin = doc["esAdmin"] as Boolean
-         }
-         return usuario
-     }
 
-    private fun llegirDades(usuario:User): Publicacion {
+    private fun llegirDades() {
         var publi = Publicacion()
-        publi.id = "a"
+        var usuario = User()
+        val correo = user?.email.toString()
+        bd.collection("Usuarios").document(correo).get().addOnSuccessListener { doc ->
+            //val usuario = doc.toObject(User::class.java)
+            usuario.nombre = doc["nombre"].toString()
+            usuario.email = doc["email"].toString()
+            usuario.telefono = doc["telefono"].toString()
+            usuario.instituto = doc["instituto"].toString()
+            usuario.apellidos = doc["apellidos"].toString()
+            usuario.imgPerfil = doc["imgPerfil"].toString()
+            usuario.esAdmin = doc["esAdmin"] as Boolean
 
-            publi.imgPubli = usuario.imgPerfil
+
+            publi.id = "a"
+            publi.imgPubli = usuario.email
             publi.perfil = usuario.nombre + " " + usuario.apellidos
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
@@ -195,7 +159,11 @@ class NuevaPublicacion : Fragment() {
             }
             publi.enlace = enlace.text.toString()
 
-        return publi
+            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
+                anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
+            }
+        }
+
     }
 
     private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
