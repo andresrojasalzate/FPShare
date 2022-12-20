@@ -74,7 +74,15 @@ class perfil : Fragment() {
         }
 
         botonGuardarCambios.setOnClickListener {
+            /***
+             * Primero comprobamos si en la coleccion Usuarios existe un documento con el email como
+             * id del usuario.
+             */
             bd.collection("Usuarios").document(email).get().addOnSuccessListener{
+                /***
+                 * Si el documento existe, actualizara los datos del documento con los datos nuevos
+                 * introducidos.
+                 */
                 bd.collection("Usuarios").document(email)
                     .update("email",emailEdittext.text.toString(),
                     "nombre",nombreEditText.text.toString(),
@@ -86,6 +94,10 @@ class perfil : Fragment() {
                         Toast.makeText(requireActivity(),"Se ha realizado la modificacion con exito", Toast.LENGTH_LONG).show()
                     }
             }
+                /***
+                 * Si el documento no existe, generara un documento nuevo con los datos introducidos
+                 * en los campos de texto.
+                 */
             .addOnFailureListener {
                 val user = User(
                     emailEdittext.text.toString(),
@@ -117,28 +129,41 @@ class perfil : Fragment() {
         imagen = binding.imageProfile
 
         val appContext = context
-
+        /***
+         * Para cargar los datos en el fragment perfil, comprobamos si el usuario existe en
+         * la coleccion Usuarios.
+         */
         bd.collection("Usuarios").document(email).get()
             .addOnSuccessListener {
+                /***
+                 * Si el usuario existe, creara un objeto de clase User donde guardara toda la
+                 * informacion de nuestro usuario actual. De lo contrario, mostrara los datos
+                 * introducidos en el registro, como el nombre y el email.
+                 */
                 var user = User(it.id,
                     it["nombre"].toString(),
                     it["apellidos"].toString(),
                     it["telefono"].toString(),
                     it["instituto"].toString(),
                     it["imgPerfil"].toString())
-
+                /***
+                 * Aqui insertara los datos del usuario en los camps de texto.
+                 */
                 nombreEditText.setText(user.nombre)
                 apellidosEditText.setText(user.apellidos)
                 numero.setText(user.telefono)
                 insituto.setText(user.instituto)
                 emailEdittext.setText(user.email)
+                /***
+                 * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
+                 * del usuario, puesto que nada mas puede tener un email.
+                 */
                 val localfile = File.createTempFile("tempImage","jpg")
                 storageRef.getFile(localfile).addOnSuccessListener {
                     val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                     binding.imageProfile.setImageBitmap(bitmap)
-                }.addOnFailureListener{ //La carrega a fallat...
-
-                    Toast.makeText(appContext,"La carrega de la imatge a fallat", Toast.LENGTH_LONG).show()
+                }.addOnFailureListener{
+                    Toast.makeText(appContext,"La carga de la imagen ha fallado.", Toast.LENGTH_LONG).show()
 
                 }
             }
@@ -147,13 +172,17 @@ class perfil : Fragment() {
     private fun subirArchivos(){
         val appContext = context
         resultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
-        //Afegim la imatge seleccionada a storage
-        photoSelectedUri?.let{uri-> //Hem seleccionat una imatge...
-            //Afegim (pujem) la imatge que hem seleccionat mitjançant el mètode putFile de la classe FirebasStorage, passant-li com a
-            //paràmetre l'URI de la imatge.
+        /***
+         * Añadimos la imagen en Firestore
+         */
+        photoSelectedUri?.let{uri->
+            /***
+             * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
+             * parametro la URI de la imagen.
+             */
             storageRef.putFile(uri)
                 .addOnSuccessListener {
-                    Toast.makeText(appContext,"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
+                    Toast.makeText(appContext,"La imagen se ha subido con exito.", Toast.LENGTH_LONG).show()
                 }
         }
     }

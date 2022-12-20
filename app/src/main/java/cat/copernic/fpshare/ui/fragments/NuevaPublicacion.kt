@@ -131,6 +131,12 @@ class NuevaPublicacion : Fragment() {
         var publi = Publicacion()
         var usuario = User()
         val correo = user?.email.toString()
+        /***
+         * Leemos los datos del usuario actual.
+         * NOTA: Si queremos tratar con datos de dos publicaciones, debe de ser en la misma
+         * snapshot. No podemos tratar con datos que esten fuera de la snapshot, porque kotlin
+         * no puede guardarlos fuera.
+         */
         bd.collection("Usuarios").document(correo).get().addOnSuccessListener { doc ->
             //val usuario = doc.toObject(User::class.java)
             usuario.nombre = doc["nombre"].toString()
@@ -142,6 +148,9 @@ class NuevaPublicacion : Fragment() {
             usuario.esAdmin = doc["esAdmin"] as Boolean
 
 
+            /***
+             * Creamos una publicacion y utilizamos los datos del usuario para generar la publicacion.
+             */
             publi.id = "a"
             publi.imgPubli = usuario.email
             publi.perfil = usuario.nombre + " " + usuario.apellidos
@@ -158,7 +167,9 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
             }
             publi.enlace = enlace.text.toString()
-
+            /***
+             * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
+             */
             if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
                 anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
             }
@@ -168,6 +179,11 @@ class NuevaPublicacion : Fragment() {
 
     private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
         val appContext = context
+        /***
+         * En añadir publicacion se define la ruta donde se guardara la publicacion.
+         * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
+         * en los EditText abajo.
+         */
          bd.collection("Ciclos").document(checked)
              .collection("Modulos").document(idModulo)
              .collection("UFs").document(idUf)

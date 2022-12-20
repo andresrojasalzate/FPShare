@@ -42,7 +42,12 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
 
-
+        /***
+         * Iniciamos la corrutina con lifecycleScope.launch y llamamos a crearMenu como
+         * una funcion asincrona con la opcion async.
+         * Para realizar esto, tenemos que declarar nuestra variable cicloList como
+         * Deferred<MutableList<Modulo>>.
+         */
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = async{ crearMenu()}
         }
@@ -53,18 +58,29 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         _binding = null
     }
 
+    /***
+     * Declaramos nuestra funcion como suspend fun.
+     */
     private suspend fun crearMenu(): MutableList<Modul> {
-
         val idCic = args.cicloid
-
         val cicloList = mutableListOf<Modul>()
+        /***
+         * En la consulta conseguimos el documento con .get().await(), de lo contrario,
+         * siempre realizara consultas gastando muchos recursos de nuestro sistema.
+         */
         val modulos = bd.collection("Ciclos").document(idCic).collection("Modulos").get().await()
                 for (document in modulos) {
+                    /***
+                     * Recogemos los datos del modulo y lo añadimos al arrayList.
+                     */
                     val idModul = document.id
                     val nombreModul = document["nombre"].toString()
                     val modulo = Modul(idModul, nombreModul)
                     cicloList.add(modulo)
                 }
+                /***
+                 * Cargamos la lista en el Adapter y lo mostramos en pantalla.
+                 */
                 adapter = ModulAdminAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -73,8 +89,14 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         return cicloList
     }
 
-
+    /***
+     * Interfaz creada desde modulAdapter.
+     */
     override fun onItemClick(id: String) {
+        /***
+         * Realizamos la navegacion con la id del Modulo seleccionada en el Adapter, y la id del
+         * Ciclo, que es la que hemos seleccionado en la pantalla anterior.
+         */
         val view = binding.root
         val action = MenuModuloDirections.actionMenuModuloToListaUFs(args.cicloid, id)
         view.findNavController().navigate(action)
