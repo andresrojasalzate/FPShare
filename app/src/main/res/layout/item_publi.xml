@@ -9,8 +9,8 @@ android:layout_marginStart="8dp"
 android:layout_marginEnd="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="406dp"
-        android:layout_height="325dp">
+        android:layout_width="403dp"
+        android:layout_height="334dp">
 
         <ImageView
             android:id="@+id/imgIcon"

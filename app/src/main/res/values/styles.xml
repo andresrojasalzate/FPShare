@@ -6,6 +6,7 @@
         <item name="cornerRadius">@dimen/size_20</item>
         <item name="android:layout_width">@dimen/size_300</item>
         <item name="android:layout_height">@dimen/size_60</item>
+        <item name="android:onClick">makeSound</item>
     </style>
     <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
