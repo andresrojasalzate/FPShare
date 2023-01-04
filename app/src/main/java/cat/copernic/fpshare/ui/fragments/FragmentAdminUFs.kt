@@ -23,16 +23,23 @@ import kotlinx.coroutines.tasks.await
 
 class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
 
+    // Binding
     private var _binding: FragmentAdminUFsBinding? = null
     private val binding get() = _binding!!
+
+    // Firebase
     private val bd = FirebaseFirestore.getInstance()
 
     private lateinit var ufList: Deferred<MutableList<Uf>>
     private lateinit var adapterU: UfAdminAdapter
 
+    // Botones
     private lateinit var botonAddUF: Button
+    private lateinit var botonEditModulo: Button
 
     private lateinit var recyclerViewUF: RecyclerView
+
+    // Args
     private val args: FragmentAdminUFsArgs by navArgs()
 
     override fun onCreateView(
@@ -48,6 +55,8 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         inicializadoresButton()
         inicializadoresRW()
         listeners()
+
+        // Corrutina para cargar las UFs
         lifecycleScope.launch(Dispatchers.Main) {
             ufList = async { crearUF() }
         }
@@ -61,6 +70,7 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private fun inicializadoresButton() {
         // inicializar botones de UF
         botonAddUF = binding.buttonAddUF
+        botonEditModulo = binding.btnEditModule
     }
 
     private fun inicializadoresRW() {
@@ -70,16 +80,30 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private fun listeners() {
         botonAddUF.setOnClickListener {
             val action =
-                FragmentAdminUFsDirections.actionFragmentAdminUFsToCrearUF()
+                FragmentAdminUFsDirections.actionFragmentAdminUFsToCrearUF(
+                    args.idCiclo,
+                    args.idModulo
+                )
+            view?.findNavController()?.navigate(action)
+        }
+        botonEditModulo.setOnClickListener {
+            val action =
+                FragmentAdminUFsDirections.actionFragmentAdminUFsToFragmentAdminEditModule(
+                    args.idModulo,
+                    args.idCiclo
+                )
             view?.findNavController()?.navigate(action)
         }
     }
 
+    /**
+     * Función para la lectura de UFs dentro de un ciclo y un modulo especificado en anteriores
+     * fragments
+     */
     private suspend fun crearUF(): MutableList<Uf> {
         val ufList = mutableListOf<Uf>()
         val idCiclo = args.idCiclo
         val idModulo = args.idModulo
-
 
         val ufs = bd.collection("Ciclos").document(idCiclo).collection("Modulos")
             .document(idModulo).collection("UFs")
@@ -100,9 +124,17 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         return ufList
     }
 
+    /**
+     * OnItemClick que lleva las IDs de idCiclo, idModulo y idUF hacia la pantalla de Publicaciones
+     * para mostrar las publicaciones que se encuentran dentro de la UF especificada
+     */
     override fun onItemClick(id: String) {
         val view = binding.root
-        val action = FragmentAdminUFsDirections.actionFragmentAdminUFsToFragmentAdminPosts(args.idCiclo,args.idModulo,id)
+        val action = FragmentAdminUFsDirections.actionFragmentAdminUFsToFragmentAdminPosts(
+            args.idCiclo,
+            args.idModulo,
+            id
+        )
         view.findNavController().navigate(action)
     }
 }

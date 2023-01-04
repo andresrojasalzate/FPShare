@@ -1,18 +1,16 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.adapters.PubliAdapter
 import cat.copernic.fpshare.adapters.PubliAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminPostsBinding
 import cat.copernic.fpshare.modelo.Publicacion
@@ -24,14 +22,25 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
+
+    // Binding
     private var _binding: FragmentAdminPostsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var recyclerView : RecyclerView
+
+    private lateinit var recyclerView: RecyclerView
+
+    // Firebase
     val bd = FirebaseFirestore.getInstance()
+
     private lateinit var adapter: PubliAdminAdapter
     private lateinit var postsList: Deferred<MutableList<Publicacion>>
-    var publi = ""
 
+    // Botones
+    private lateinit var botonEditUF: Button
+
+    // ? var publi = ""
+
+    // Args
     private val args: FragmentAdminPostsArgs by navArgs()
 
     override fun onCreateView(
@@ -43,10 +52,12 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.ViewApuntes
+        inicializadores()
+        listeners()
 
-        lifecycleScope.launch(Dispatchers.Main){
-            postsList = async{ crearMenu()}
+        // Corrutina para la lectura de publicaciones en la base de datos
+        lifecycleScope.launch(Dispatchers.Main) {
+            postsList = async { crearMenu() }
         }
 
     }
@@ -56,10 +67,30 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
         _binding = null
     }
 
-    private suspend fun crearMenu(): MutableList<Publicacion>{
+    private fun listeners() {
+        botonEditUF.setOnClickListener {
+            val action =
+                FragmentAdminPostsDirections.actionFragmentAdminPostsToFragmentAdminEditUF(
+                    args.idCiclo, args.idModulo, args.idUf
+                )
+            view?.findNavController()?.navigate(action)
+        }
+    }
+
+    private fun inicializadores() {
+        recyclerView = binding.ViewApuntes
+        botonEditUF = binding.btnEditUF
+    }
+
+    /**
+     * Función para mostrar las publicaciones de un ciclo, modulo y UF en especifico
+     */
+    private suspend fun crearMenu(): MutableList<Publicacion> {
         val postsList = mutableListOf<Publicacion>()
-        val publicaciones = bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo).collection("UFs").document(args.idUf).collection("Publicaciones").get().await()
-        for (document in publicaciones){
+        val publicaciones = bd.collection("Ciclos").document(args.idCiclo).collection("Modulos")
+            .document(args.idModulo).collection("UFs").document(args.idUf)
+            .collection("Publicaciones").get().await()
+        for (document in publicaciones) {
             val idPubli = document.id
             val checked = document["checked"].toString()
             val publiDescr = document["descripcion"].toString()
@@ -70,7 +101,7 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
             val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink, imgPubli)
             postsList.add(publi)
         }
-        adapter= PubliAdminAdapter(postsList, this)
+        adapter = PubliAdminAdapter(postsList, this)
         binding.ViewApuntes.adapter = adapter
         binding.ViewApuntes.layoutManager = LinearLayoutManager(requireContext())
 
@@ -78,14 +109,21 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
         return postsList
     }
 
+    /**
+     * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
+     */
     override fun onItemClick(id: String) {
-        bd.collection("Ciclos").document(args.idCiclo).
-        collection("Modulos").document(args.idModulo).
-        collection("UFs").document(args.idUf).
-        collection("Publicaciones").document(id)
+        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
+            .collection("UFs").document(args.idUf).collection("Publicaciones").document(id)
             .get().addOnSuccessListener {
                 val view = binding.root
-                val action = FragmentAdminPostsDirections.actionFragmentAdminPostsToFragmentAdminModPost(args.idCiclo, args.idModulo, args.idUf, id)
+                val action =
+                    FragmentAdminPostsDirections.actionFragmentAdminPostsToFragmentAdminModPost(
+                        args.idCiclo,
+                        args.idModulo,
+                        args.idUf,
+                        id
+                    )
                 view.findNavController().navigate(action)
             }
     }

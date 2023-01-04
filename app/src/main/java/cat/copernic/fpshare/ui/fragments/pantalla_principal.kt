@@ -54,14 +54,31 @@ class pantalla_principal : Fragment() {
 
     suspend fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
+
+        /***
+         * Guardamos la ruta en una variable
+         */
         val ciclo = bd.collection("Ciclos").get().await()
+
+        /***
+         * Recorremos la variable ciclos.
+         */
         for(doc1 in ciclo){
+            /***
+             * Una vez que estamos recorriendo la variable ciclo, podemos consultar la id
+             * del documento que estamos recorriendo.
+             */
             val modulo = bd.collection("Ciclos").document(doc1.id).collection("Modulos").get().await()
             for(doc2 in modulo){
                 val uf = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id).collection("UFs").get().await()
                 for(doc3 in uf){
                     val publi = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id).collection("UFs").document(doc3.id).collection("Publicaciones").get().await()
                     for(doc4 in publi){
+                        /***
+                         * Hacemos esto consecutivamente hasta llegar a las publicaciones.
+                         * Una vez que llegamos aqui, recogemos todos los valores y guardamos las
+                         * publicaciones en una MutableList<Publicacion>.
+                         */
                         val idPubli = doc4.id
                         val checked = doc4["checked"].toString()
                         val publiDescr = doc4["descripcion"].toString()
@@ -78,7 +95,10 @@ class pantalla_principal : Fragment() {
                             publiLink,
                             imgPubli
                         )
-                        adapter = PubliAdapter(cicloList)
+                        /***
+                         * Cargamos la lista en el adapter.
+                         */
+                         adapter = PubliAdapter(cicloList)
                          binding.recyclerView.adapter = adapter
                          binding.recyclerView.layoutManager =
                             LinearLayoutManager(requireContext())

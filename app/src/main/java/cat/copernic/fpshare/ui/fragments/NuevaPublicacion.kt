@@ -1,6 +1,10 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.graphics.Typeface
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
+import android.os.Environment
+import android.text.TextPaint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +19,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.io.File
+import java.io.FileOutputStream
 
 
 class NuevaPublicacion : Fragment() {
@@ -26,12 +32,14 @@ class NuevaPublicacion : Fragment() {
     private lateinit var descripcion: TextInputEditText
     private lateinit var enlace: TextInputEditText
     private var user = Firebase.auth.currentUser
-    private lateinit var checked: String
     private lateinit var botonPublicar: Button
+    private lateinit var botonPdf: Button
     private lateinit var idModulo: EditText
     private lateinit var idUf: EditText
-
-    private lateinit var publi: Publicacion
+    private lateinit var usuario: User
+    private var isReadPermissionGranted = false
+    private var isWritePermissionGranted = false
+    private var CODIGO_PERMISOS_WR = 2108
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,16 +60,16 @@ class NuevaPublicacion : Fragment() {
         titulo = binding.textPost
         descripcion = binding.textDescription
         enlace = binding.textLink
-        publi = Publicacion()
-
         idModulo = binding.setModule
         idUf = binding.setUF
+        botonPdf = binding.btnPdf
+
         botonPublicar.setOnClickListener {
-            publi = llegirDades()
-            checked = publi.checked
-            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                anadirPublicacion(checked, idModulo.text.toString(), idUf.text.toString(), publi)
-            }
+            llegirDades()
+        }
+
+        botonPdf.setOnClickListener {
+            guardarPDF()
         }
     }
 
@@ -70,25 +78,85 @@ class NuevaPublicacion : Fragment() {
         _binding = null
     }
 
-    //Funció que llegeix les dades introduïdes per un usuari i retorna el departament instanciat amb aquestes
-    //dades.
-    private fun llegirDades(): Publicacion {
-        //Guardem les dades introduïdes per l'usuari
-        publi.id = "a"
-        bd.collection("Usuarios").document(user?.email.toString()).get().addOnSuccessListener {
-            var user = User(
-                it.id,
-                it["nombre"].toString(),
-                it["apellidos"].toString(),
-                it["telefono"].toString(),
-                it["insituto"].toString(),
-                it["imgPerfil"].toString()
-            )
-            publi.perfil = user.nombre + " " + user.apellidos
+    private fun guardarPDF(){
+        var pdfDocument = PdfDocument()
+        //var paint = Paint()
+        var title = TextPaint()
+        var descrip = TextPaint()
+        var link = TextPaint()
+        var descripcionText = descripcion.text.toString()
+
+
+        var paginaInfo = PdfDocument.PageInfo.Builder(816,1054,1).create()
+        var pagina1 = pdfDocument.startPage(paginaInfo)
+
+        var canvas = pagina1.canvas
+
+        //var bitmap = BitmapFactory.decodeResource(resources, ..)
+
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
+        title.textSize = 20f
+        canvas.drawText(titulo.text.toString(), 10f, 150f, title)
+
+        link.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        link.textSize = 14f
+        canvas.drawText(enlace.text.toString(), 10f, 150f, link)
+
+        descrip.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        descrip.textSize = 14f
+
+        var arrDescripcion = descripcionText.split("\n")
+
+        var y = 200f
+            for (item in arrDescripcion){
+                canvas.drawText(item, 10f, y, descrip)
+                y += 15
+            }
+            pdfDocument.finishPage(pagina1)
+
+            val file = File(Environment.getExternalStorageDirectory(),"Archivo.pdf")
+            //try{
+                val appContext= context
+                pdfDocument.writeTo(FileOutputStream(file))
+                Toast.makeText(appContext,"PDF creado correctamente", Toast.LENGTH_LONG).show()
+            //} catch (e: Exception) {
+              //  e.printStackTrace()
+
+            //}
+        pdfDocument.close()
+    }
+
+
+    private fun llegirDades() {
+        var publi = Publicacion()
+        var usuario = User()
+        val correo = user?.email.toString()
+        /***
+         * Leemos los datos del usuario actual.
+         * NOTA: Si queremos tratar con datos de dos publicaciones, debe de ser en la misma
+         * snapshot. No podemos tratar con datos que esten fuera de la snapshot, porque kotlin
+         * no puede guardarlos fuera.
+         */
+        bd.collection("Usuarios").document(correo).get().addOnSuccessListener { doc ->
+            //val usuario = doc.toObject(User::class.java)
+            usuario.nombre = doc["nombre"].toString()
+            usuario.email = doc["email"].toString()
+            usuario.telefono = doc["telefono"].toString()
+            usuario.instituto = doc["instituto"].toString()
+            usuario.apellidos = doc["apellidos"].toString()
+            usuario.imgPerfil = doc["imgPerfil"].toString()
+            usuario.esAdmin = doc["esAdmin"] as Boolean
+
+
+            /***
+             * Creamos una publicacion y utilizamos los datos del usuario para generar la publicacion.
+             */
+            publi.id = "a"
+            publi.imgPubli = usuario.email
+            publi.perfil = usuario.nombre + " " + usuario.apellidos
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
-            publi.imgPubli = user.email
-
+            publi.checked = ""
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"
             } else if (binding.optionDaw.isChecked) {
@@ -99,15 +167,27 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
             }
             publi.enlace = enlace.text.toString()
-
+            /***
+             * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
+             */
+            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
+                anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
+            }
         }
-        return publi
-    }
 
+    }
 
     private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
         val appContext = context
-         bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo).collection("UFs").document(idUf).collection("Publicaciones").document().set(publi)
+        /***
+         * En añadir publicacion se define la ruta donde se guardara la publicacion.
+         * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
+         * en los EditText abajo.
+         */
+         bd.collection("Ciclos").document(checked)
+             .collection("Modulos").document(idModulo)
+             .collection("UFs").document(idUf)
+             .collection("Publicaciones").add(publi)
             .addOnSuccessListener { //S'ha afegit el departament...
                 Toast.makeText(appContext,"Documento añadido", Toast.LENGTH_LONG).show()
             }

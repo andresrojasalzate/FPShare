@@ -63,11 +63,16 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
     }
 
     private suspend fun crearMenu(): MutableList<Uf>{
-
         var idCic = args.cicloId
         var idMod = args.moduloId
 
         var cicloList = mutableListOf<Uf>()
+
+        /***
+         * Cargamos la ID del ciclo escogido anteriormente, la ID del Moodulo escogido anteriormente y
+         * la ID de la UF escogida en el adapter para definir la ruta donde Firebase tiene que cargar
+         * los documentos y así, mostrar la lista de UFs que tiene el modulo preseleccionado.
+         */
         var ufs = bd.collection("Ciclos").document(idCic).collection("Modulos").document(idMod).collection("UFs").get().await()
                 for (document in ufs){
                     val idUf = document.id
@@ -75,15 +80,23 @@ class MenuUF : Fragment(), UfAdminAdapter.OnItemClickListener {
                     val uf = Uf(idUf,nombreUf)
                     cicloList.add(uf)
                 }
+                /***
+                 * Cargamos las UFs en el adapter y mostramos por pantalla.
+                 */
                 adapter=UfAdminAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-
         return cicloList
     }
 
+    /***
+     * Interfaz UF adapter.
+     */
     override fun onItemClick(id: String) {
+        /***
+         * Hacemos la navegacion a MenuApuntes y le pasamos la ID del Ciclo, la ID del Modulo y
+         * la ID de la UF escogida en el adapter, que es la id que entra en la funcion.
+         */
         val view = binding.root
         val action = MenuUFDirections.actionListaUFsToMenuApuntes(args.cicloId,args.moduloId,id)
         view.findNavController().navigate(action)

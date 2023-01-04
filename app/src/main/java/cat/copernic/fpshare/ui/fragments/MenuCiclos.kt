@@ -47,7 +47,12 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
-
+        /***
+         * Iniciamos la corrutina con lifecycleScope.launch y llamamos a crearMenu como
+         * una funcion asincrona con la opcion async.
+         * Para realizar esto, tenemos que declarar nuestra variable cicloList como
+         * Deferred<MutableList<Ciclo>>.
+         */
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = async{ crearMenu()}
         }
@@ -59,27 +64,43 @@ class MenuCiclos : Fragment(), MenuAdapter.OnItemClickListener {
         _binding = null
     }
 
+    /***
+     * Declaramos nuestra funcion como suspend fun.
+     */
     private suspend fun crearMenu(): MutableList<Cicle>{
         val cicloList = mutableListOf<Cicle>()
+        /***
+         * En la consulta conseguimos el documento con .get().await(), de lo contrario,
+         * siempre realizara consultas gastando muchos recursos de nuestro sistema.
+         */
         val ciclos = bd.collection("Ciclos")
             .get().await()
                 for (document in ciclos){
+                    /***
+                     * Recogemos los datos del ciclo y lo añadimos al arrayList.
+                     */
                     val idCiclo = document.id
                     val nombreCiclo = document["nombre"].toString()
                     val ciclo = Cicle(idCiclo,nombreCiclo)
                     cicloList.add(ciclo)
                 }
-                adapter=MenuAdapter(cicloList, this)
+        /***
+         * Cargamos la lista en el Adapter y lo mostramos en pantalla.
+         */
+        adapter=MenuAdapter(cicloList, this)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
 
         return cicloList
     }
 
-
-
+    /***
+     * Interfaz creada desde CicloAdapter.
+     */
     override fun onItemClick(id: String) {
+        /***
+         * Realizamos la navegacion con la id del Ciclo seleccionada en el Adapter.
+         */
         val view = binding.root
         val action = MenuCiclosDirections.actionMenuCiclosToMenuModulo(id)
         view.findNavController().navigate(action)

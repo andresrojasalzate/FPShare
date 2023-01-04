@@ -54,8 +54,12 @@ class MenuApuntes : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
-
-
+        /***
+         * Iniciamos la corrutina con lifecycleScope.launch y llamamos a crearMenu como
+         * una funcion asincrona con la opcion async.
+         * Para realizar esto, tenemos que declarar nuestra variable cicloList como
+         * Deferred<MutableList<Publicacion>>.
+         */
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = async{ crearMenu()}
         }
@@ -68,7 +72,12 @@ class MenuApuntes : Fragment() {
 
     private suspend fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
+
+
         var publicaciones = bd.collection("Ciclos").document(args.cicloId).collection("Modulos").document(args.moduloId).collection("UFs").document(args.ufId).collection("Publicaciones").get().await()
+        /***
+         * Añadimos las publicaciones en una MutableList<Publicacion>
+         */
                 for (document in publicaciones){
                     val idPubli = document.id
                     val checked = document["checked"].toString()
@@ -80,6 +89,9 @@ class MenuApuntes : Fragment() {
                     val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink, imgPubli)
                     cicloList.add(publi)
                 }
+                /***
+                 * Cargamos las UFs en el adapter y mostramos por pantalla.
+                 */
                 adapter= PubliAdapter(cicloList)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
