@@ -21,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 
 class Login : AppCompatActivity() {
@@ -71,6 +72,9 @@ class Login : AppCompatActivity() {
         textViewForgotPassword.setOnClickListener {
             startActivity(Intent(this, RecoveryPassword::class.java))
             finish()
+        }
+        binding.button2.setOnClickListener {
+            setAlarm()
         }
     }
 
@@ -136,17 +140,17 @@ class Login : AppCompatActivity() {
         }
 
     }
-    fun setAlarm(context: Context) {
-        alarmMgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
-            PendingIntent.getBroadcast(context, 0, intent, 0)
-        }
+    private fun setAlarm() {
+        val alarmIntent = Intent(this, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
+            PendingIntent.FLAG_IMMUTABLE)
 
-        alarmMgr?.set(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + 60 * 1000,
-            alarmIntent
-        )
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.add(Calendar.SECOND, 20)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
 
 

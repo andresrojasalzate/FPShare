@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.modelo
 
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -16,7 +17,7 @@ class AlarmReceiver: BroadcastReceiver() {
         val i = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, i, 0)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_IMMUTABLE)
 
         //establacemos los atributos de la notificación
         val textTitle = "Notificación de FPShare"
@@ -32,12 +33,10 @@ class AlarmReceiver: BroadcastReceiver() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        //enviamos la notificación
-        with(NotificationManagerCompat.from(context)) {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-            val notificationId = 0
-            notify(notificationId, builder.build())
-        }
+        // Muestra la notificación
+        notificationManager.notify(0, builder.build())
         }
     }
-}
+

@@ -190,4 +190,5 @@
     <string name="save_changes">Save changes</string>
     <string name="delete_publi">Delete Post</string>
     <string name="a_adir_foro">Añadir foro</string>
+    <string name="menu_recordatorio">Recordatorio</string>
 </resources>
