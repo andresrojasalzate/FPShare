@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -37,6 +38,7 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     // Botones
     private lateinit var botonEditUF: Button
+    private lateinit var botonDeleteUF: Button
 
     // ? var publi = ""
 
@@ -75,11 +77,21 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
                 )
             view?.findNavController()?.navigate(action)
         }
+        botonDeleteUF.setOnClickListener {
+            borrarUF()
+            val action =
+                FragmentAdminPostsDirections.actionFragmentAdminPostsToFragmentAdminUFs(
+                    args.idModulo,
+                    args.idCiclo
+                )
+            view?.findNavController()?.navigate(action)
+        }
     }
 
     private fun inicializadores() {
         recyclerView = binding.ViewApuntes
         botonEditUF = binding.btnEditUF
+        botonDeleteUF = binding.btnDeleteUF
     }
 
     /**
@@ -98,7 +110,15 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
             val publiProfile = document["perfil"].toString()
             val publiTitle = document["titulo"].toString()
             val imgPubli = document["imgPubli"].toString()
-            val publi = Publicacion(idPubli,publiProfile,publiTitle,publiDescr,checked,publiLink, imgPubli)
+            val publi = Publicacion(
+                idPubli,
+                publiProfile,
+                publiTitle,
+                publiDescr,
+                checked,
+                publiLink,
+                imgPubli
+            )
             postsList.add(publi)
         }
         adapter = PubliAdminAdapter(postsList, this)
@@ -107,6 +127,18 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
 
         return postsList
+    }
+
+    /**
+     * Función para borrar el modulo en el que nos encontramos
+     */
+    private fun borrarUF() {
+        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
+            .collection("UFs").document(args.idUf).delete().addOnSuccessListener {
+                Toast.makeText(context, "UF eliminado correctamente", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(context, "Error en el borrado de la UF", Toast.LENGTH_LONG).show()
+            }
     }
 
     /**

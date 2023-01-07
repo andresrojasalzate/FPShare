@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminModulosBinding
 import cat.copernic.fpshare.modelo.Modul
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -36,6 +37,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
     // Botones
     private lateinit var botonAddModulo: Button
     private lateinit var botonEditCiclo: Button
+    private lateinit var botonBorrarCiclo: Button
 
     private lateinit var recyclerViewModulos: RecyclerView
 
@@ -71,6 +73,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
         // inicializar botones
         botonAddModulo = binding.buttonAddModule
         botonEditCiclo = binding.btnEditCicle
+        botonBorrarCiclo = binding.btnDelete
     }
 
     private fun inicializadoresRW() {
@@ -88,6 +91,12 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
                 FragmentAdminModulosDirections.actionFragmentAdminModulosToFragmentAdminEditCicle(
                     args.idCiclo
                 )
+            view?.findNavController()?.navigate(action)
+        }
+        botonBorrarCiclo.setOnClickListener {
+            borrarCiclo()
+            val action =
+                FragmentAdminModulosDirections.actionFragmentAdminModulosToListaTagsAdministracion()
             view?.findNavController()?.navigate(action)
         }
 
@@ -117,7 +126,34 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
         return moduloList
     }
 
-    // Navegación hacia UFs
+    /**
+     * Función para borrar el ciclo en el que nos encontramos
+     */
+    private fun borrarCiclo() {
+        bd.collection("Ciclos").document(args.idCiclo).delete()
+            .addOnSuccessListener {
+                view?.let { it1 ->
+                    Snackbar.make(
+                        it1,
+                        "Ciclo borrado correctamente",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+            .addOnFailureListener {
+                view?.let { it1 ->
+                    Snackbar.make(
+                        it1,
+                        "Error al borrar el ciclo",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+    }
+
+    /**
+     * Navegación hacia UFs
+     */
     override fun onItemClick(id: String) {
         val view = binding.root
         val action = FragmentAdminModulosDirections.actionFragmentAdminModulosToFragmentAdminUFs(

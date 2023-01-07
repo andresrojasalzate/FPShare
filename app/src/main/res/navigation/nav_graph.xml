@@ -254,6 +254,9 @@
         <action
             android:id="@+id/action_fragmentAdminModulos_to_fragmentAdminEditCicle"
             app:destination="@id/fragmentAdminEditCicle" />
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAdminUFs"
@@ -279,6 +282,9 @@
         <action
             android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminEditModule"
             app:destination="@id/fragmentAdminEditModule" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminModulos"
+            app:destination="@id/fragmentAdminModulos" />
     </fragment>
     <fragment
         android:id="@+id/mostarInfoUsuario"
@@ -330,6 +336,9 @@
         <action
             android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminEditUF"
             app:destination="@id/fragmentAdminEditUF" />
+        <action
+            android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminUFs"
+            app:destination="@id/fragmentAdminUFs" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAdminEditCicle"
