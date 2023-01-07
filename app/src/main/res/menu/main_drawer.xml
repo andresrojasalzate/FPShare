@@ -22,7 +22,7 @@
             android:title="@string/menu_logout" />
         <item
             android:id="@+id/recordatorio"
-            android:icon="@drawable/ic_menu_logout"
+            android:icon="@drawable/reloj"
             android:title="@string/menu_recordatorio" />
     </group>
 

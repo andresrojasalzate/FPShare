@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -42,6 +44,7 @@ class FPHilo : Fragment() {
     private lateinit var textviewDescripcion : TextView
     private lateinit var textViewTitulo: TextView
     private lateinit var  textViewAutor: TextView
+    private lateinit var borrarForo: ImageView
     private var bd = FirebaseFirestore.getInstance()
     private var user = Firebase.auth.currentUser
 
@@ -69,17 +72,47 @@ class FPHilo : Fragment() {
         inicializadores()
         infoforo()
         llamarecycleviewmensajes()
-        var idNoti = 0
+
 
         botonSend.setOnClickListener() {
             val texto = inputMsg.text.toString()
-            idNoti++
-            crearNotificacion(idNoti)
+
             if (campoVacio(texto)) {
                 addMensaje(texto)
                 llamarecycleviewmensajes()
             }
         }
+
+        borrarForo.setOnClickListener {
+            crearalerta()
+        }
+
+    }
+
+    private fun crearalerta() {
+        val builder = AlertDialog.Builder(requireContext())
+
+// Establecer el título y el mensaje de la alerta
+        builder.setTitle("¿BORRAR ESTE FORO?")
+        builder.setMessage("¿Estas seguro de querer borrar este foro?")
+
+// Establecer el botón positivo y su acción
+        builder.setPositiveButton("Aceptar") { dialog, which ->
+            // Acción para el botón positivo
+            bd.collection("Foros").document(args.idforo).delete()
+
+        }
+
+// Establecer el botón negativo y su acción (opcional)
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // Acción para el botón negativo
+
+
+        }
+
+// Mostrar la alerta
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.show()
 
     }
 
@@ -87,33 +120,19 @@ class FPHilo : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    private  fun crearNotificacion(idNoti: Int){
-        //establacemos los atributos de la notificación
-        val textTitle = "Notificación de FPShare"
-        val textContent = "Contenido de la notificación"
-        val CHANNEL_ID = "1"
 
-        //creamos la notificación y asigamos los atributos
-        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-            .setSmallIcon(R.drawable.logo_fpshare)
-            .setContentTitle(textTitle)
-            .setContentText(textContent)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setAutoCancel(true)
-
-        //enviamos la notificación
-        with(NotificationManagerCompat.from(requireContext())) {
-
-            val notificationId = idNoti
-            notify(notificationId, builder.build())
-        }
-    }
     private fun infoforo(){
         val idForo = args.idforo
+        val email = user?.email.toString()
         bd.collection("Foros").document(idForo).get().addOnSuccessListener { document ->
             textViewTitulo.setText(document["titulo"].toString())
             textViewAutor.setText(document["emailautor"].toString())
             textviewDescripcion.setText(document["descripcion"].toString())
+
+            if (document["emailautor"].toString() != email){
+                borrarForo.visibility = View.INVISIBLE
+                borrarForo.alpha = 0f
+            }
         }
     }
     private fun llamarecycleviewmensajes(){
@@ -138,6 +157,7 @@ class FPHilo : Fragment() {
         textViewAutor = binding.autorForo
         textViewTitulo = binding.tituloForo
         textviewDescripcion = binding.descripcion
+        borrarForo = binding.borrarForo
 
     }
 

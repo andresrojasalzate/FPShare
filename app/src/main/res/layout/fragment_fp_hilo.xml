@@ -106,6 +106,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/respuestas" />
 
+        <ImageView
+            android:id="@+id/borrar_foro"
+            android:layout_width="37dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/borrar_foro_fp_hilo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/basura" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
