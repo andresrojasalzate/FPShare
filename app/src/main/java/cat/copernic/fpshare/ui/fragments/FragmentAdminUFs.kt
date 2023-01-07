@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -36,6 +37,7 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     // Botones
     private lateinit var botonAddUF: Button
     private lateinit var botonEditModulo: Button
+    private lateinit var botonDeleteModulo: Button
 
     private lateinit var recyclerViewUF: RecyclerView
 
@@ -71,6 +73,7 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         // inicializar botones de UF
         botonAddUF = binding.buttonAddUF
         botonEditModulo = binding.btnEditModule
+        botonDeleteModulo = binding.btnDeleteModule
     }
 
     private fun inicializadoresRW() {
@@ -92,6 +95,12 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
                     args.idModulo,
                     args.idCiclo
                 )
+            view?.findNavController()?.navigate(action)
+        }
+        botonDeleteModulo.setOnClickListener {
+            borrarModulo()
+            val action =
+                FragmentAdminUFsDirections.actionFragmentAdminUFsToFragmentAdminModulos(args.idCiclo)
             view?.findNavController()?.navigate(action)
         }
     }
@@ -122,6 +131,18 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         binding.recyclerViewUFs.layoutManager = LinearLayoutManager(requireContext())
 
         return ufList
+    }
+
+    /**
+     * Función para borrar el modulo en el que nos encontramos
+     */
+    private fun borrarModulo() {
+        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
+            .delete().addOnSuccessListener {
+                Toast.makeText(context, "Modulo eliminado correctamente", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(context, "Error en el borrado del modulo", Toast.LENGTH_LONG).show()
+            }
     }
 
     /**

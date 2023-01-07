@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -24,7 +23,6 @@ class FragmentAdminEditModule : Fragment() {
 
     // Botones
     private lateinit var botonGuardarCambios: Button
-    private lateinit var botonBorrarModulo: Button
 
     // EditText
     private lateinit var nombreNuevo: EditText
@@ -50,17 +48,12 @@ class FragmentAdminEditModule : Fragment() {
     }
 
     private fun inicializadores() {
-        botonBorrarModulo = binding.btnDeleteModulo
         botonGuardarCambios = binding.btnSaveEdit
 
         nombreNuevo = binding.inputEditNameModule
     }
 
     private fun listeners() {
-        botonBorrarModulo.setOnClickListener {
-            borrarModulo()
-            ufsBack()
-        }
         botonGuardarCambios.setOnClickListener {
             val nombre = nombreNuevo.text.toString()
 
@@ -79,16 +72,6 @@ class FragmentAdminEditModule : Fragment() {
                 args.idModulo, args.idCiclo
             )
         view.findNavController().navigate(action)
-    }
-
-    // Función para borrar el modulo en el que nos encontramos
-    private fun borrarModulo() {
-        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
-            .delete().addOnSuccessListener {
-                Toast.makeText(context, "Modulo eliminado correctamente", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                Toast.makeText(context, "Error en el borrado del modulo", Toast.LENGTH_LONG).show()
-            }
     }
 
     // Función para modificar el nombre del ciclo
