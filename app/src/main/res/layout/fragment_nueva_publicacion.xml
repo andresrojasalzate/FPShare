@@ -141,7 +141,7 @@
                     android:text="@string/smix__new_post" />
             </RadioGroup>
 
-            <!-- <Spinner
+            <Spinner
                 android:id="@+id/spinner_modules_new_post"
                 style="@style/Widget.FpShare.Spinner"
                 android:layout_marginTop="@dimen/size_16"
@@ -161,54 +161,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post"
-                tools:ignore="RedundantDescriptionCheck" /> -->
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/setModuleAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_8"
-                android:layout_marginEnd="@dimen/size_100"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tags_cicles">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/setModule"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/module" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/setUFAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_100"
-                android:layout_marginTop="@dimen/size_8"
-                android:layout_marginEnd="@dimen/size_100"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/setModuleAdmin">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/setUF"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/uf" />
-            </com.google.android.material.textfield.TextInputLayout>
+                tools:ignore="RedundantDescriptionCheck" />
 
             <Button
                 android:id="@+id/btn_publish"
                 style="@style/Widget.FpShare.Button"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="70dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/size_70"
                 android:text="@string/publish_new_post"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/setUFAdmin" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner_ufs_new_post" />
 
             <Button
                 android:id="@+id/btn_pdf"
