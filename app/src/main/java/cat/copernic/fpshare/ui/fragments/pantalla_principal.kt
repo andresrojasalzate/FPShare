@@ -61,7 +61,6 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
         searchView = binding.searchView
-        listview= binding.listSearch
         searchView.setOnQueryTextListener(this)
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = async{ crearMenu()}
@@ -121,10 +120,6 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
                                 publiLink,
                                 imgPubli
                             )
-                        /***
-                         * Cargamos todos los resultados en el listView para poderlos buscar.
-                         *
-                         */
 
                         /***
                          * Cargamos la lista en el adapter para mostrar todas las publicaciones.
