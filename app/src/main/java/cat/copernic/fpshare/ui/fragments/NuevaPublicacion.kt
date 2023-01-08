@@ -14,6 +14,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
@@ -131,7 +132,7 @@ class NuevaPublicacion : Fragment() {
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
              */
             if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                //anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
+                anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
             }
         }
 
@@ -149,7 +150,9 @@ class NuevaPublicacion : Fragment() {
              .collection("UFs").document(idUf)
              .collection("Publicaciones").add(publi)
             .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(appContext,"Documento añadido", Toast.LENGTH_LONG).show()
+                val view = binding.root
+                val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
+                view.findNavController().navigate(action)
             }
             .addOnFailureListener{ //No s'ha afegit el departament...
                 Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()

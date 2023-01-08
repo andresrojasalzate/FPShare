@@ -32,7 +32,6 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
      */
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PubliAdapter
-    private lateinit var listview: ListView
     private lateinit var arrayList: ArrayList<String>
     private lateinit var cicloList: Deferred<MutableList<Publicacion>>
     private lateinit var searchView: SearchView
@@ -60,6 +59,11 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
+
+        /***
+         * Iniciamos el SearchView y Iniciamos un Listener para detectar el momento en que se hace la query.
+         *
+         */
         searchView = binding.searchView
         searchView.setOnQueryTextListener(this)
         lifecycleScope.launch(Dispatchers.Main){
@@ -139,11 +143,17 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
+        /***
+         * Si hacemos una query i aceptamos, el adapter se filtrará segun lo que hayamos puesto en el buscador.
+         */
         adapter.filter.filter(query)
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        /***
+         * Si modificamos el texto escrito en la query, se actualizaran los valores con el nuevo texto escrito.
+         */
         adapter.filter.filter(newText)
         return false
     }

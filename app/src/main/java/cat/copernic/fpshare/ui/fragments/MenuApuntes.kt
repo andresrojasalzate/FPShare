@@ -23,11 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MenuApuntes.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentMenuApuntesBinding? = null
     private val binding get() = _binding!!

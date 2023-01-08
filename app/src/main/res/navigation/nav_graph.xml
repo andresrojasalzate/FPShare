@@ -48,7 +48,11 @@
         android:id="@+id/nuevaPublicacion"
         android:name="cat.copernic.fpshare.ui.fragments.NuevaPublicacion"
         android:label="@string/new_post"
-        tools:layout="@layout/fragment_nueva_publicacion" />
+        tools:layout="@layout/fragment_nueva_publicacion" >
+        <action
+            android:id="@+id/action_nuevaPublicacion_to_pantalla_principal"
+            app:destination="@id/pantalla_principal" />
+    </fragment>
     <fragment
         android:id="@+id/menuCiclos"
         android:name="cat.copernic.fpshare.ui.fragments.MenuCiclos"
