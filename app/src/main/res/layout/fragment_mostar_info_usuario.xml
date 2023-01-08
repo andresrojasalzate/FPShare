@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="635dp">
 
         <ImageView
             android:id="@+id/image_profile"
@@ -30,12 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_55"
             android:layout_marginTop="8dp"
-            android:textStyle="bold"
             android:text="@string/name_profile"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_profile"
-            tools:ignore="TextContrastCheck"
-          />
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/name_user"
@@ -43,19 +42,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
-            tools:text="@string/name_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_name_user"
             app:layout_constraintTop_toBottomOf="@+id/textView_name_user"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/name_profile" />
 
         <TextView
             android:id="@+id/textView_lasts_name_user"
             style="@style/Widget.FpShare.TextView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/last_names_profile"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/name_user"
             app:layout_constraintTop_toBottomOf="@+id/name_user"
             tools:ignore="TextContrastCheck" />
@@ -66,19 +65,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
-            tools:text="@string/last_names_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_lasts_name_user"
             app:layout_constraintTop_toBottomOf="@+id/textView_lasts_name_user"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/last_names_profile" />
 
         <TextView
             android:id="@+id/textView_email_user"
             style="@style/Widget.FpShare.TextView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/email_profile"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/lasts_name_user"
             app:layout_constraintTop_toBottomOf="@+id/lasts_name_user"
             tools:ignore="TextContrastCheck" />
@@ -89,19 +88,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
-            tools:text="@string/email_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_email_user"
             app:layout_constraintTop_toBottomOf="@+id/textView_email_user"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/email_profile" />
 
         <TextView
             android:id="@+id/textView_telephone_number_user"
             style="@style/Widget.FpShare.TextView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/telephone_number_profile"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/email_user"
             app:layout_constraintTop_toBottomOf="@+id/email_user"
             tools:ignore="TextContrastCheck" />
@@ -112,19 +111,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
-            tools:text="@string/telephone_number_profile"
             app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_user"
             app:layout_constraintTop_toBottomOf="@+id/textView_telephone_number_user"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/telephone_number_profile" />
 
         <TextView
             android:id="@+id/textView_insitute_user"
             style="@style/Widget.FpShare.TextView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/institute_profile"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/telephone_number_user"
             app:layout_constraintTop_toBottomOf="@+id/telephone_number_user"
             tools:ignore="TextContrastCheck" />
@@ -143,11 +142,11 @@
         <TextView
             android:id="@+id/textView_admin_user"
             style="@style/Widget.FpShare.TextView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/administrator_info_usuario"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/institue_user"
             app:layout_constraintTop_toBottomOf="@+id/institue_user"
             tools:ignore="TextContrastCheck" />
@@ -167,7 +166,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/rename_user"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView_admin_user"
             app:layout_constraintTop_toBottomOf="@+id/checkBox_esAdmin" />
 
@@ -177,7 +178,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/delete_user"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_rename_user"
             app:layout_constraintTop_toBottomOf="@+id/checkBox_esAdmin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
