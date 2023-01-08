@@ -1,12 +1,21 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.provider.Contacts
+
+import android.app.ProgressDialog.show
+import android.content.Context
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.*
+import android.widget.*
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.PubliAdapter
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
 import cat.copernic.fpshare.modelo.Publicacion
@@ -14,13 +23,24 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
-class pantalla_principal : Fragment() {
+class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     private var _binding: FragmentPantallaPrincipalBinding? = null
     private val binding get() = _binding!!
+
+    /**
+     * Muestreo Adapter con todos
+     */
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PubliAdapter
+    private lateinit var listview: ListView
+    private lateinit var arrayList: ArrayList<String>
     private lateinit var cicloList: Deferred<MutableList<Publicacion>>
+    private lateinit var searchView: SearchView
+
+
+
     val bd = FirebaseFirestore.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +60,8 @@ class pantalla_principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
-
+        searchView = binding.searchView
+        searchView.setOnQueryTextListener(this)
         lifecycleScope.launch(Dispatchers.Main){
             cicloList = async{ crearMenu()}
         }
@@ -54,7 +75,7 @@ class pantalla_principal : Fragment() {
 
     suspend fun crearMenu(): MutableList<Publicacion>{
         var cicloList = mutableListOf<Publicacion>()
-
+        arrayList = ArrayList()
         /***
          * Guardamos la ruta en una variable
          */
@@ -85,29 +106,47 @@ class pantalla_principal : Fragment() {
                         var publiLink = doc4["enlace"].toString()
                         val publiProfile = doc4["perfil"].toString()
                         val publiTitle = doc4["titulo"].toString()
-                        val imgPubli = doc4["imgPubli"].toString()
-                        val publi = Publicacion(
-                            idPubli,
-                            publiProfile,
-                            publiTitle,
-                            publiDescr,
-                            checked,
-                            publiLink,
-                            imgPubli
-                        )
                         /***
-                         * Cargamos la lista en el adapter.
+                         * Añadimos el titulo de la publicacion para poder encontrarlo en el buscador.
                          */
-                         adapter = PubliAdapter(cicloList)
-                         binding.recyclerView.adapter = adapter
-                         binding.recyclerView.layoutManager =
+                        arrayList.add(publiTitle)
+                        val imgPubli = doc4["imgPubli"].toString()
+                            val publi = Publicacion(
+                                idPubli,
+                                publiProfile,
+                                publiTitle,
+                                publiDescr,
+                                checked,
+                                publiLink,
+                                imgPubli
+                            )
+
+                        /***
+                         * Cargamos la lista en el adapter para mostrar todas las publicaciones.
+                         */
+                        adapter = PubliAdapter(cicloList)
+                        binding.recyclerView.adapter = adapter
+                        binding.recyclerView.layoutManager =
                             LinearLayoutManager(requireContext())
                         cicloList.add(publi)
+
                     }
+
                 }
             }
         }
         return cicloList
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        adapter.filter.filter(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        adapter.filter.filter(newText)
+        return false
+    }
+
 
 }

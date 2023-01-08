@@ -79,62 +79,11 @@ class NuevaPublicacion : Fragment() {
             llegirDades()
         }
 
-        botonPdf.setOnClickListener {
-            guardarPDF()
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun guardarPDF(){
-        var pdfDocument = PdfDocument()
-        //var paint = Paint()
-        var title = TextPaint()
-        var descrip = TextPaint()
-        var link = TextPaint()
-        var descripcionText = descripcion.text.toString()
-
-
-        var paginaInfo = PdfDocument.PageInfo.Builder(816,1054,1).create()
-        var pagina1 = pdfDocument.startPage(paginaInfo)
-
-        var canvas = pagina1.canvas
-
-        //var bitmap = BitmapFactory.decodeResource(resources, ..)
-
-        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-        title.textSize = 20f
-        canvas.drawText(titulo.text.toString(), 10f, 150f, title)
-
-        link.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        link.textSize = 14f
-        canvas.drawText(enlace.text.toString(), 10f, 150f, link)
-
-        descrip.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        descrip.textSize = 14f
-
-        var arrDescripcion = descripcionText.split("\n")
-
-        var y = 200f
-            for (item in arrDescripcion){
-                canvas.drawText(item, 10f, y, descrip)
-                y += 15
-            }
-            pdfDocument.finishPage(pagina1)
-
-            val file = File(Environment.getExternalStorageDirectory(),"Archivo.pdf")
-            //try{
-                val appContext= context
-                pdfDocument.writeTo(FileOutputStream(file))
-                Toast.makeText(appContext,"PDF creado correctamente", Toast.LENGTH_LONG).show()
-            //} catch (e: Exception) {
-              //  e.printStackTrace()
-
-            //}
-        pdfDocument.close()
     }
 
 
