@@ -15,22 +15,22 @@
             android:id="@+id/recyclerViewHilo"
             android:layout_width="0dp"
             android:layout_height="350dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/tim_textHere"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tim_textHere"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_5"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/size_5"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonSend"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewHilo">
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tim_input"
@@ -44,14 +44,14 @@
             android:layout_width="@dimen/size_55"
             android:layout_height="@dimen/size_55"
             android:layout_marginStart="@dimen/size_5"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/bordes_redondos"
             android:contentDescription="@string/btn_send"
             android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tim_textHere"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewHilo"
             tools:ignore="RedundantDescriptionCheck" />
 
         <TextView
@@ -105,6 +105,17 @@
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewHilo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/respuestas" />
+
+        <ImageView
+            android:id="@+id/borrar_foro"
+            android:layout_width="37dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/borrar_foro_fp_hilo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/basura" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

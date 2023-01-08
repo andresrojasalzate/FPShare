@@ -1,5 +1,8 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,11 +14,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityMainBinding
+import cat.copernic.fpshare.modelo.AlarmReceiver
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -56,7 +61,11 @@ class MainActivity : AppCompatActivity() {
             finish()
             true
         }
-
+        val recordatorio = binding.navView.menu.findItem(R.id.recordatorio)
+        recordatorio.setOnMenuItemClickListener {
+            crearAlarma()
+            true
+        }
 
     }
     private fun esAdmin(){
@@ -87,6 +96,19 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(
             findNavController(R.id.nav_host_fragment)
         ) || super.onOptionsItemSelected(item)
+    }
+
+    private fun crearAlarma() {
+        val alarmIntent = Intent(this, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
+            PendingIntent.FLAG_IMMUTABLE)
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.add(Calendar.SECOND, 5)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
         /*
         return item.onNavDestinationSelected(

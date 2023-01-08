@@ -9,7 +9,7 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemHiloBinding
 import cat.copernic.fpshare.modelo.Mensaje
 
-class MsgAdapter(private val mensajes: List<Mensaje>) :
+class MsgAdapter(private val mensajes: ArrayList<Mensaje>) :
     RecyclerView.Adapter<MsgAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
@@ -35,4 +35,5 @@ class MsgAdapter(private val mensajes: List<Mensaje>) :
     override fun getItemCount(): Int {
         return mensajes.size
     }
+
 }

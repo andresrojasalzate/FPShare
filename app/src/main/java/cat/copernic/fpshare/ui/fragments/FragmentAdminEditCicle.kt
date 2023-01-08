@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -24,7 +23,6 @@ class FragmentAdminEditCicle : Fragment() {
 
     // Botones
     private lateinit var botonGuardarCambios: Button
-    private lateinit var botonBorrarCiclo: Button
 
     // EditText
     private lateinit var nombreNuevo: EditText
@@ -50,17 +48,12 @@ class FragmentAdminEditCicle : Fragment() {
     }
 
     private fun inicializadores() {
-        botonBorrarCiclo = binding.btnDeleteCicle
         botonGuardarCambios = binding.btnSaveEdit
 
         nombreNuevo = binding.inputEditCicle
     }
 
     private fun listeners() {
-        botonBorrarCiclo.setOnClickListener {
-            borrarCiclo()
-            modulosBack()
-        }
         botonGuardarCambios.setOnClickListener {
             val nombre = nombreNuevo.text.toString()
 
@@ -71,7 +64,9 @@ class FragmentAdminEditCicle : Fragment() {
         }
     }
 
-    // Función para navegar hacia atrás de nuevo
+    /**
+     * Función para volver hacia atrás
+     */
     private fun modulosBack() {
         val view = binding.root
         val action =
@@ -79,23 +74,16 @@ class FragmentAdminEditCicle : Fragment() {
         view.findNavController().navigate(action)
     }
 
-    // Función para borrar el ciclo en el que nos encontramos
-    private fun borrarCiclo() {
-        bd.collection("Ciclos").document(args.idCiclo).delete()
-            .addOnSuccessListener {
-                Toast.makeText(context, "Ciclo eliminado correctamente", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(context, "Error en el borrado del ciclo", Toast.LENGTH_LONG).show()
-            }
-    }
-
-    // Función para modificar el nombre del ciclo
+    /**
+     * Esta función modifica el ciclo seleccionado
+     */
     private fun modificarCiclo(nombreNuevo: String) {
         bd.collection("Ciclos").document(args.idCiclo).update("nombre", nombreNuevo)
     }
 
-    // Comprobar que los campos no esten en blanco o vacíos
+    /**
+     * Comprobar que los campos no esten en blanco o vacíos
+     */
     private fun campoVacio(nombre: String): Boolean {
         return nombre.isNotEmpty() && nombre.isNotBlank()
     }

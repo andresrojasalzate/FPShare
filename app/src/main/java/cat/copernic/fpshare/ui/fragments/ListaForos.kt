@@ -69,6 +69,7 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
                 val wallitem = document.toObject(Foro::class.java)
                 foroList.add(wallitem)
             }
+            foroList.sortWith(compareBy({ it.id }))
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = ForoAdapter(foroList,this)
 

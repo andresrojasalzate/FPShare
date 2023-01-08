@@ -1,24 +1,28 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
+import cat.copernic.fpshare.modelo.AlarmReceiver
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
+
 
 class Login : AppCompatActivity() {
 
@@ -29,6 +33,8 @@ class Login : AppCompatActivity() {
     private lateinit var textViewForgotPassword: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: LoginBinding
+    private var alarmMgr: AlarmManager? = null
+    private lateinit var alarmIntent: PendingIntent
 
     private var splashScreenMS: Long = 1000
 
@@ -66,6 +72,9 @@ class Login : AppCompatActivity() {
         textViewForgotPassword.setOnClickListener {
             startActivity(Intent(this, RecoveryPassword::class.java))
             finish()
+        }
+        binding.button2.setOnClickListener {
+            setAlarm()
         }
     }
 
@@ -129,8 +138,20 @@ class Login : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
-    }
 
+    }
+    private fun setAlarm() {
+        val alarmIntent = Intent(this, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
+            PendingIntent.FLAG_IMMUTABLE)
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.add(Calendar.SECOND, 20)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+    }
 
 
 }
