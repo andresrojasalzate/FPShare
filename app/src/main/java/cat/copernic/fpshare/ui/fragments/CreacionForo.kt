@@ -73,23 +73,38 @@ class CreacionForo : Fragment() {
 
     private fun crearForo() {
         val email = user?.email.toString()
-        bd.collection("Foros").orderBy("id", Query.Direction.DESCENDING).limit(1).get()
+        bd.collection("Foros").get()
             .addOnSuccessListener { documents ->
-
+                val foros = ArrayList<Foro>()
+                val mensajes = ArrayList<Mensaje>()
                 for (document in documents) {
                     val wallitem = document.toObject(Foro::class.java)
-                    wallitem.id = document.id
-                    var idtxt = wallitem.id
-                    var idint = idtxt.toInt()
+
+                    wallitem.id = document.id.toInt()
+                    wallitem.titulo = document["titulo"].toString()
+                    wallitem.descripcion = document["descripcion"].toString()
+                    wallitem.emailautor = document["emailautor"].toString()
+                    wallitem.mensajes = mensajes
+                    foros.add(wallitem)
+
+                }
+                val idtxt :String
+                var idint :Int
+                if (foros.isNotEmpty()) {
+                    foros.sortWith(compareBy({ it.id }))
+                    idint = foros.get(foros.size - 1).id
                     idint += 1
                     idtxt = idint.toString()
-                    val mensajes = ArrayList<Mensaje>()
-                    val foro = Foro(idtxt, titulo.text.toString(), descripcion.text.toString(), email, mensajes)
-                    val mensajeInicial = Mensaje("0", "shtht", "mensaje de prueba")
-                    bd.collection("Foros").document(idtxt).set(foro)
-                    bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
-                    cambiarPantalla(idtxt)
+                } else {
+
+                    idint = 1
+                    idtxt = "1"
                 }
+                val foro = Foro(idint, titulo.text.toString(), descripcion.text.toString(), email, mensajes)
+                val mensajeInicial = Mensaje("shtht", "mensaje de prueba")
+                bd.collection("Foros").document(idtxt).set(foro)
+                bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
+                cambiarPantalla(idtxt)
 
                 }
             }

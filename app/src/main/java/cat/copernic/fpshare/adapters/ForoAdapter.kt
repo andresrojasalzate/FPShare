@@ -24,7 +24,7 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
             val position: Int = adapterPosition
             val foroID = foros.get(position).id
             if(position != RecyclerView.NO_POSITION)  {
-                listener.onItemClick(foroID)
+                listener.onItemClick(foroID.toString())
             }
         }
     }

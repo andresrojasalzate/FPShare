@@ -45,6 +45,8 @@ class FPHilo : Fragment() {
     private lateinit var textViewTitulo: TextView
     private lateinit var  textViewAutor: TextView
     private lateinit var borrarForo: ImageView
+    private lateinit var mensajesList: ArrayList<Mensaje>
+    private lateinit var adapter: MsgAdapter
     private var bd = FirebaseFirestore.getInstance()
     private var user = Firebase.auth.currentUser
 
@@ -79,7 +81,8 @@ class FPHilo : Fragment() {
 
             if (campoVacio(texto)) {
                 addMensaje(texto)
-                llamarecycleviewmensajes()
+
+                inputMsg.setText("")
             }
         }
 
@@ -92,25 +95,25 @@ class FPHilo : Fragment() {
     private fun crearalerta() {
         val builder = AlertDialog.Builder(requireContext())
 
-// Establecer el título y el mensaje de la alerta
+        // Establecer el título y el mensaje de la alerta
         builder.setTitle("¿BORRAR ESTE FORO?")
         builder.setMessage("¿Estas seguro de querer borrar este foro?")
 
-// Establecer el botón positivo y su acción
+        // Establecer el botón positivo y su acción
         builder.setPositiveButton("Aceptar") { dialog, which ->
             // Acción para el botón positivo
             bd.collection("Foros").document(args.idforo).delete()
 
         }
 
-// Establecer el botón negativo y su acción (opcional)
+        // Establecer el botón negativo y su acción (opcional)
         builder.setNegativeButton("Cancelar") { dialog, which ->
             // Acción para el botón negativo
 
 
         }
 
-// Mostrar la alerta
+        // Mostrar la alerta
         val alertDialog: AlertDialog = builder.create()
         alertDialog.show()
 
@@ -136,12 +139,12 @@ class FPHilo : Fragment() {
         }
     }
     private fun llamarecycleviewmensajes(){
-        val mensajesList = ArrayList<Mensaje>()
+
         val idForo = args.idforo
 
         bd.collection("Foros").document(idForo).collection("Mensajes").get().addOnSuccessListener { documents ->
             for (document in documents){
-                if(document["idMensaje"].toString() != "0") {
+                if(document["emailautor"].toString() != "shtht") {
                     val wallitem = document.toObject(Mensaje::class.java)
                     mensajesList.add(wallitem)
                 }
@@ -158,28 +161,26 @@ class FPHilo : Fragment() {
         textViewTitulo = binding.tituloForo
         textviewDescripcion = binding.descripcion
         borrarForo = binding.borrarForo
+        mensajesList = ArrayList()
+        adapter = MsgAdapter(mensajesList)
 
     }
 
     fun addMensaje(mensaje: String) {
+
         val idForo = args.idforo
         val email = user?.email.toString()
-        bd.collection("Foros").document(idForo).collection("Mensajes").orderBy("idMensaje", Query.Direction.DESCENDING).limit(1).get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val wallitem = document.toObject(Mensaje::class.java)
-                    wallitem.idMensaje = document["idMensaje"].toString()
-                    var idtxt = wallitem.idMensaje
-                    var idint = idtxt.toInt()
-                    idint += 1
-                    idtxt = idint.toString()
-                    val nuevomensaje = Mensaje(idtxt, email, mensaje)
+        val nuevomensaje = Mensaje(email, mensaje)
+        bd.collection("Foros").document(idForo)
+            .collection("Mensajes").add(nuevomensaje)
+        mensajesList.add(0, nuevomensaje)
+        adapter = MsgAdapter(mensajesList)
+        recyclerView.adapter = adapter
+        adapter.notifyItemInserted(0)
 
-                bd.collection("Foros").document(idForo)
-                    .collection("Mensajes").document(idtxt).set(nuevomensaje)
-                }
-            }
+
     }
+
     fun campoVacio(mensaje: String): Boolean {
         return mensaje.isNotEmpty() && mensaje.isNotBlank()
     }
