@@ -4,22 +4,26 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.Contacts
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.set
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.ui.fragments.ENLACE
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.util.*
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
-.PubliViewHolder>() {
+.PubliViewHolder>(), Filterable {
     private lateinit var contexto: Context
     var storage = FirebaseStorage.getInstance()
+    var publiFilter: List<Publicacion> = publicaciones
+
 
     inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val viewB = ItemPubliBinding.bind(view)
@@ -34,7 +38,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
     }
 
     override fun onBindViewHolder(viewHolder: PubliViewHolder, position: Int) {
-        val publicacion = publicaciones.get(position)
+        val publicacion = publiFilter.get(position)
 
         with(viewHolder) {
             /***
@@ -72,7 +76,36 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return publicaciones.size
+        return publiFilter.size
     }
 
-}
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint?.toString() ?: ""
+                if (charString.isEmpty()){
+                    publiFilter = publicaciones
+                }
+                else {
+                    var filteredList = mutableListOf<Publicacion>()
+                    publicaciones
+                        .filter {
+                            (it.titulo.contains(constraint!!))
+                        }
+                        .forEach { filteredList.add(it) }
+                    publiFilter = filteredList
+
+                }
+                return FilterResults().apply { values = publiFilter}
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+
+                publiFilter = if (results?.values == null)
+                    mutableListOf()
+                else
+                    results.values as List<Publicacion>
+                notifyDataSetChanged()
+            }
+        }
+    }}
