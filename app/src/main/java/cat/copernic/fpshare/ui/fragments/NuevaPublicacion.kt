@@ -10,15 +10,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
+import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
+import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.modelo.Uf
 import cat.copernic.fpshare.modelo.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 
@@ -34,8 +46,8 @@ class NuevaPublicacion : Fragment() {
     private var user = Firebase.auth.currentUser
     private lateinit var botonPublicar: Button
     private lateinit var botonPdf: Button
-    private lateinit var idModulo: EditText
-    private lateinit var idUf: EditText
+    private lateinit var idModulo: Spinner
+    private lateinit var idUf: Spinner
     private lateinit var usuario: User
     private var isReadPermissionGranted = false
     private var isWritePermissionGranted = false
@@ -60,17 +72,14 @@ class NuevaPublicacion : Fragment() {
         titulo = binding.textPost
         descripcion = binding.textDescription
         enlace = binding.textLink
-        idModulo = binding.setModule
-        idUf = binding.setUF
+        idModulo = binding.spinnerModulesNewPost
+        idUf = binding.spinnerUfsNewPost
         botonPdf = binding.btnPdf
 
         botonPublicar.setOnClickListener {
             llegirDades()
         }
 
-        botonPdf.setOnClickListener {
-            guardarPDF()
-        }
     }
 
     override fun onDestroyView() {
@@ -78,60 +87,12 @@ class NuevaPublicacion : Fragment() {
         _binding = null
     }
 
-    private fun guardarPDF(){
-        var pdfDocument = PdfDocument()
-        //var paint = Paint()
-        var title = TextPaint()
-        var descrip = TextPaint()
-        var link = TextPaint()
-        var descripcionText = descripcion.text.toString()
-
-
-        var paginaInfo = PdfDocument.PageInfo.Builder(816,1054,1).create()
-        var pagina1 = pdfDocument.startPage(paginaInfo)
-
-        var canvas = pagina1.canvas
-
-        //var bitmap = BitmapFactory.decodeResource(resources, ..)
-
-        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-        title.textSize = 20f
-        canvas.drawText(titulo.text.toString(), 10f, 150f, title)
-
-        link.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        link.textSize = 14f
-        canvas.drawText(enlace.text.toString(), 10f, 150f, link)
-
-        descrip.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        descrip.textSize = 14f
-
-        var arrDescripcion = descripcionText.split("\n")
-
-        var y = 200f
-            for (item in arrDescripcion){
-                canvas.drawText(item, 10f, y, descrip)
-                y += 15
-            }
-            pdfDocument.finishPage(pagina1)
-
-            val file = File(Environment.getExternalStorageDirectory(),"Archivo.pdf")
-            //try{
-                val appContext= context
-                pdfDocument.writeTo(FileOutputStream(file))
-                Toast.makeText(appContext,"PDF creado correctamente", Toast.LENGTH_LONG).show()
-            //} catch (e: Exception) {
-              //  e.printStackTrace()
-
-            //}
-        pdfDocument.close()
-    }
-
 
     private fun llegirDades() {
         var publi = Publicacion()
         var usuario = User()
         val correo = user?.email.toString()
-        /***
+        /**
          * Leemos los datos del usuario actual.
          * NOTA: Si queremos tratar con datos de dos publicaciones, debe de ser en la misma
          * snapshot. No podemos tratar con datos que esten fuera de la snapshot, porque kotlin
@@ -148,7 +109,7 @@ class NuevaPublicacion : Fragment() {
             usuario.esAdmin = doc["esAdmin"] as Boolean
 
 
-            /***
+            /**
              * Creamos una publicacion y utilizamos los datos del usuario para generar la publicacion.
              */
             publi.id = "a"
@@ -167,7 +128,7 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
             }
             publi.enlace = enlace.text.toString()
-            /***
+            /**
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
              */
             if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
@@ -189,7 +150,9 @@ class NuevaPublicacion : Fragment() {
              .collection("UFs").document(idUf)
              .collection("Publicaciones").add(publi)
             .addOnSuccessListener { //S'ha afegit el departament...
-                Toast.makeText(appContext,"Documento añadido", Toast.LENGTH_LONG).show()
+                val view = binding.root
+                val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
+                view.findNavController().navigate(action)
             }
             .addOnFailureListener{ //No s'ha afegit el departament...
                 Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()

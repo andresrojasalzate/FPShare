@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.PubliAdapter
-import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuApuntesBinding
 import cat.copernic.fpshare.databinding.FragmentMenuUfBinding
 import cat.copernic.fpshare.modelo.Modul
@@ -23,18 +23,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MenuApuntes.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MenuApuntes : Fragment() {
+
+class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentMenuApuntesBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView : RecyclerView
     val bd = FirebaseFirestore.getInstance()
     private lateinit var adapter: PubliAdapter
     private lateinit var cicloList: Deferred<MutableList<Publicacion>>
+    private lateinit var searchView: SearchView
 
     val args: MenuApuntesArgs by navArgs()
 
@@ -54,6 +51,8 @@ class MenuApuntes : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
+        searchView = binding.searchView
+        searchView.setOnQueryTextListener(this)
         /***
          * Iniciamos la corrutina con lifecycleScope.launch y llamamos a crearMenu como
          * una funcion asincrona con la opcion async.
@@ -98,6 +97,16 @@ class MenuApuntes : Fragment() {
 
 
         return cicloList
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        adapter.filter.filter(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        adapter.filter.filter(newText)
+        return false
     }
 
 }

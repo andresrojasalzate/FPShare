@@ -4,22 +4,29 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.Contacts
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.set
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.ui.fragments.ENLACE
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.util.*
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
-.PubliViewHolder>() {
+.PubliViewHolder>(), Filterable {
     private lateinit var contexto: Context
     var storage = FirebaseStorage.getInstance()
+    /***
+     * Cargamos en publiFilter la lista de publicaciones que entran por el Adapter.
+     */
+    var publiFilter: List<Publicacion> = publicaciones
+
 
     inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val viewB = ItemPubliBinding.bind(view)
@@ -34,7 +41,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
     }
 
     override fun onBindViewHolder(viewHolder: PubliViewHolder, position: Int) {
-        val publicacion = publicaciones.get(position)
+        val publicacion = publiFilter.get(position)
 
         with(viewHolder) {
             /***
@@ -72,7 +79,58 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return publicaciones.size
+        return publiFilter.size
     }
 
-}
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint?.toString() ?: ""
+                /***
+                 * Si no hay una query, el adapter devolvera todas las publicaciones. Para ello, las cargará en publiFilter, puesto que no hay ningun filtro.
+                 *
+                 */
+                if (charString.isEmpty()){
+                    publiFilter = publicaciones
+                }
+                else {
+                    /***
+                     * Iniciamos una lista que contendrá los resultados filtrados.
+                     */
+                    var filteredList = mutableListOf<Publicacion>()
+                    /***
+                     * Definimos el filtro, donde comprobaremos si el titulo de la publicacion contiene la query escrita en el buscador.
+                     */
+                    publicaciones
+                        .filter {
+                            (it.titulo.contains(constraint!!))
+                        }
+                        /***
+                         * Todos los resultados que contienen la query en el titulo de la publicacion seran añadidos en la lista para, despues, pasarlos a
+                         * publiFilter.
+                          */
+                        .forEach { filteredList.add(it) }
+                    publiFilter = filteredList
+
+                }
+                /***
+                 * Retornamos todos los valores.
+                 */
+                return FilterResults().apply { values = publiFilter}
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                /***
+                 * Si no hay un valor en values, publiFilter será una lista vacia.
+                 */
+                publiFilter = if (results?.values == null)
+                    mutableListOf()
+                /***
+                 * Sino, añadira los valores a una Lista de publicaciones.
+                 */
+                else
+                    results.values as List<Publicacion>
+                notifyDataSetChanged()
+            }
+        }
+    }}
