@@ -96,18 +96,18 @@ class FPHilo : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
 
         // Establecer el título y el mensaje de la alerta
-        builder.setTitle("¿BORRAR ESTE FORO?")
-        builder.setMessage("¿Estas seguro de querer borrar este foro?")
+        builder.setTitle(getString(R.string.titulo_alerta_borrar_foro))
+        builder.setMessage(getString(R.string.contenido_alert_borrar_foro))
 
         // Establecer el botón positivo y su acción
-        builder.setPositiveButton("Aceptar") { dialog, which ->
+        builder.setPositiveButton(getString(R.string.boton_positivo_alerta_borrar_forro)) { dialog, which ->
             // Acción para el botón positivo
             bd.collection("Foros").document(args.idforo).delete()
 
         }
 
         // Establecer el botón negativo y su acción (opcional)
-        builder.setNegativeButton("Cancelar") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.boton_negativo_alerta_borrar_foro)) { dialog, which ->
             // Acción para el botón negativo
 
 

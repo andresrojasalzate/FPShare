@@ -37,11 +37,10 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
-        val numMensajes = foro.mensajes.size
         with(holder){
             ViewB.autor.text = foro.emailautor
             ViewB.titulo.text = foro.titulo
-            ViewB.numComentarios.text = numMensajes.toString()
+
         }
 
     }

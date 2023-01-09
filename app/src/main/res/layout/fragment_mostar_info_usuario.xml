@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image_profile"
+            android:id="@+id/imagen"
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_100"
             android:layout_marginTop="@dimen/size_16"
@@ -33,7 +33,7 @@
             android:textStyle="bold"
             android:text="@string/name_profile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_profile"
+            app:layout_constraintTop_toBottomOf="@+id/imagen"
             tools:ignore="TextContrastCheck"
           />
 

@@ -190,7 +190,12 @@
     <string name="save_changes">Save changes</string>
     <string name="delete_publi">Delete Post</string>
     <string name="pdf">Save as PDF</string>
-    <string name="a_adir_foro">Añadir foro</string>
-    <string name="menu_recordatorio">Recordatorio</string>
-    <string name="borrar_foro_fp_hilo">borrar foro</string>
+    <string name="a_adir_foro">Add forum</string>
+    <string name="menu_recordatorio">Reminder</string>
+    <string name="borrar_foro_fp_hilo">delete forum</string>
+    <string name="titulo_alerta_borrar_foro">DELETE THIS FORUM?</string>
+    <string name="contenido_alert_borrar_foro">Are you sure you want to delete this forum?</string>
+    <string name="boton_positivo_alerta_borrar_forro">Accept</string>
+    <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
+    <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
 </resources>
