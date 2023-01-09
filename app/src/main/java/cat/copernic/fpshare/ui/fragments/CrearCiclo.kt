@@ -51,7 +51,6 @@ class CrearCiclo : Fragment() {
     }
 
     private fun listeners() {
-
         buttonAddCicle.setOnClickListener {
             val id = inputIDCicle.text.toString()
             val nombre = inputNameCicle.text.toString()
