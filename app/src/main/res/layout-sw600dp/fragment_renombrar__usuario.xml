@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintRename"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.Renombrar_Usuario">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleRename"
+            style="@style/Widget.FpShare.TextViewTitle"
+            android:layout_width="350dp"
+            android:layout_height="74dp"
+            android:layout_marginStart="340dp"
+            android:layout_marginTop="@dimen/size_76"
+            android:text="@string/txt_rename_user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txtRename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_80"
+        android:text="@string/txt_new_name"
+        app:layout_constraintStart_toStartOf="@+id/titleRename"
+        app:layout_constraintTop_toBottomOf="@+id/titleRename"
+        />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/introRename"
+            style="@style/Widget.FpShare.TextInputLayout"
+            android:layout_width="350dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="@dimen/size_10"
+            app:layout_constraintStart_toStartOf="@+id/txtRename"
+            app:layout_constraintTop_toBottomOf="@+id/txtRename">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/InputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/txtNombre"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnCambiar"
+            style="@style/Widget.FpShare.Button"
+            android:layout_width="350dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="@dimen/size_80"
+            android:text="@string/txt_change"
+            app:layout_constraintStart_toStartOf="@+id/introRename"
+            app:layout_constraintTop_toBottomOf="@+id/introRename" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
