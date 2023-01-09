@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -73,9 +72,7 @@ class Login : AppCompatActivity() {
             startActivity(Intent(this, RecoveryPassword::class.java))
             finish()
         }
-        binding.button2.setOnClickListener {
-            setAlarm()
-        }
+
     }
 
     private fun inicializacion() {

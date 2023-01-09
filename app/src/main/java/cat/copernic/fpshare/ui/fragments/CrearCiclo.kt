@@ -8,11 +8,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCrearCicloBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CrearCiclo : Fragment() {
     private var _binding: FragmentCrearCicloBinding? = null
@@ -51,44 +56,13 @@ class CrearCiclo : Fragment() {
     }
 
     private fun listeners() {
-
+        /**
+         * Corrutina para la lectura de Ciclos
+         */
         buttonAddCicle.setOnClickListener {
-            val id = inputIDCicle.text.toString()
-            val nombre = inputNameCicle.text.toString()
-
-            val cicloConsulta = bd.collection("Ciclos").whereEqualTo("id", id).get()
-
-            if (cicloConsulta.result.isEmpty) {
-                /**
-                 * Si el ciclo existe se avisa al usuario de que ya existe y no la creará
-                 */
-                Snackbar.make(binding.crearCiclo, "El ciclo ya existe", Snackbar.LENGTH_LONG).show()
-            } else {
-                /**
-                 * Si el ciclo no existe lo crea
-                 */
-                if (campoVacio(id, nombre)) {
-                    val ciclo = Cicle(id, nombre)
-
-                    bd.collection("Ciclos").document(id).set(ciclo)
-                        .addOnSuccessListener {
-                            Toast.makeText(
-                                context,
-                                "Ciclo añadido correctamente",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG)
-                                .show()
-                        }
-                    ciclosBack()
-                } else {
-                    Snackbar.make(
-                        binding.crearCiclo,
-                        "Los campos no pueden estar vacíos",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    consultaCiclos()
                 }
             }
         }
@@ -105,5 +79,44 @@ class CrearCiclo : Fragment() {
         val action =
             CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
         view.findNavController().navigate(action)
+    }
+
+    private suspend fun consultaCiclos() {
+        delay(300)
+        val id = inputIDCicle.text.toString()
+        val nombre = inputNameCicle.text.toString()
+
+        bd.collection("Ciclos").document(id).get().addOnSuccessListener {
+            /**
+             * Si el ciclo existe se avisa al usuario de que ya existe y no la creará
+             */
+            if (it.exists()) {
+                Snackbar.make(binding.crearCiclo, "El ciclo ya existe", Snackbar.LENGTH_LONG).show()
+            } else {
+                /**
+                 * Si el ciclo no existe lo crea
+                 */
+                addCiclo(id, nombre)
+            }
+        }
+    }
+
+    private fun addCiclo(id: String, nombre: String) {
+        if (campoVacio(id, nombre)) {
+            val ciclo = Cicle(id, nombre)
+
+            bd.collection("Ciclos").document(id).set(ciclo)
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Ciclo añadido correctamente", Toast.LENGTH_LONG).show()
+                    ciclosBack()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG).show()
+                }
+        } else {
+            Snackbar.make(
+                binding.crearCiclo, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 }
