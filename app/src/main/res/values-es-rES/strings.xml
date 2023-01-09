@@ -136,4 +136,9 @@
     <string name="menu_recordatorio">Recordatorio</string>
     <string name="borrar_foro_fp_hilo">Borrar foro</string>
     <string name="txtUserEdit">Usuario</string>
+    <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
+    <string name="boton_positivo_alerta_borrar_forro">Aceptar</string>
+    <string name="contenido_alert_borrar_foro">¿Estas seguro que quieres borrar el foro?</string>
+    <string name="titulo_alerta_borrar_foro">¿BORRAR ESTE FORO?</string>
+    <string name="info_no_especificada_mostrar_info_usuario">(No especificado)</string>
 </resources>
