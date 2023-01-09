@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentMostarInfoUsuarioBinding
 import cat.copernic.fpshare.modelo.User
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class MostarInfoUsuario : Fragment() {
@@ -27,6 +32,7 @@ class MostarInfoUsuario : Fragment() {
     private lateinit var borrarUsuario: Button
     private lateinit var renombarUsuario: Button
     private var bd = FirebaseFirestore.getInstance()
+    private var storage = FirebaseStorage.getInstance()
     private val args: MostarInfoUsuarioArgs by navArgs()
 
 
@@ -93,7 +99,19 @@ class MostarInfoUsuario : Fragment() {
             usuario.telefono = document["telefono"].toString()
             usuario.instituto = document["insituto"].toString()
             usuario.esAdmin = document["esAdmin"] as Boolean
+            usuario.imgPerfil = document["imgPerfil"].toString()
             rellenarcampos(usuario)
+
+            val storageRef = storage.reference.child("Imagenes/" +  usuario.email)
+            val localfile = File.createTempFile("tempImage","jpg")
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.imageProfile.setImageBitmap(bitmap)
+
+            }.addOnFailureListener{
+                Toast.makeText(context,"La carga de la imagen ha fallado.", Toast.LENGTH_LONG).show()
+
+            }
         }
 
     }
@@ -111,7 +129,7 @@ class MostarInfoUsuario : Fragment() {
     private fun comprobarcampos(campo: String): String{
         val ret: String
         if (campo.isEmpty()){
-            ret = "(No especificado)"
+            ret = getString(R.string.info_no_especificada_mostrar_info_usuario)
         } else {
             ret = campo
         }
