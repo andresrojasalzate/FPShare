@@ -106,7 +106,7 @@ class MostarInfoUsuario : Fragment() {
             val localfile = File.createTempFile("tempImage","jpg")
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                binding.imagen.setImageBitmap(bitmap)
+                binding.imageProfile.setImageBitmap(bitmap)
 
             }.addOnFailureListener{
                 Toast.makeText(context,"La carga de la imagen ha fallado.", Toast.LENGTH_LONG).show()
