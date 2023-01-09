@@ -11,18 +11,7 @@
     <!-- HINTS -->
     <string name="hint_textHere">Text here…</string>
     <!-- TITULOS -->
-    <string name="ajustes">Settings</string>
-    <string name="language">Language</string>
     <string name="txt_threadTitle">Thread Title</string>
-
-    <!-- SELECTS -->
-    <string name="dark">Dark</string>
-    <string name="light">Light</string>
-    <string name="system">Default</string>
-    <string name="theme">Theme</string>
-    <string name="english">English</string>
-    <string name="catalan">Catalan</string>
-    <string name="spanish">Spanish</string>
 
     <!-- CIEGOS HELP -->
     <string name="btn_send">Button to send the message to the thread</string>

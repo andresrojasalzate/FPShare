@@ -5,16 +5,7 @@
     <string name="btn_yes">SI</string>
     <string name="btn_no">NO</string>
     <string name="hint_textHere">Texto aquí...</string>
-    <string name="ajustes">Ajustes</string>
-    <string name="language">Lenguaje</string>
     <string name="txt_threadTitle">Titulo del hilo</string>
-    <string name="dark">Oscuro</string>
-    <string name="light">Claro</string>
-    <string name="system">Predeterminado</string>
-    <string name="theme">Tema</string>
-    <string name="english">Inglés</string>
-    <string name="catalan">Catalán</string>
-    <string name="spanish">Castellano</string>
     <string name="btn_send">Botón para mandar el mensaje al hilo</string>
     <string name="password_login">Contraseña</string>
     <string name="sign_in_login">Iniciar sesión</string>

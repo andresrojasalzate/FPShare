@@ -56,32 +56,41 @@ class CrearCiclo : Fragment() {
             val id = inputIDCicle.text.toString()
             val nombre = inputNameCicle.text.toString()
 
-            bd.collection("Ciclos").whereEqualTo("id", id).get()
-                .addOnSuccessListener {
-                    /**
-                     * Si el ciclo existe se avisa al usuario de que ya existe y no la creará
-                     */
-                    Snackbar.make(binding.crearCiclo, "El ciclo ya existe", Snackbar.LENGTH_LONG).show()
-                }
-                .addOnFailureListener {
-                    /**
-                     * Si el ciclo no existe lo crea
-                     */
-                    if (campoVacio(id, nombre)) {
-                        val ciclo = Cicle(id, nombre)
+            val cicloConsulta = bd.collection("Ciclos").whereEqualTo("id", id).get()
 
-                        bd.collection("Ciclos").document(id).set(ciclo)
-                            .addOnSuccessListener {
-                                Toast.makeText(context, "Ciclo añadido correctamente", Toast.LENGTH_LONG).show()
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG).show()
-                            }
-                        ciclosBack()
-                    } else {
-                        Snackbar.make(binding.crearCiclo, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG).show()
-                    }
+            if (cicloConsulta.result.isEmpty) {
+                /**
+                 * Si el ciclo existe se avisa al usuario de que ya existe y no la creará
+                 */
+                Snackbar.make(binding.crearCiclo, "El ciclo ya existe", Snackbar.LENGTH_LONG).show()
+            } else {
+                /**
+                 * Si el ciclo no existe lo crea
+                 */
+                if (campoVacio(id, nombre)) {
+                    val ciclo = Cicle(id, nombre)
+
+                    bd.collection("Ciclos").document(id).set(ciclo)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                context,
+                                "Ciclo añadido correctamente",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    ciclosBack()
+                } else {
+                    Snackbar.make(
+                        binding.crearCiclo,
+                        "Los campos no pueden estar vacíos",
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
+            }
         }
     }
 
