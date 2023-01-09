@@ -36,8 +36,6 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     private lateinit var cicloList: Deferred<MutableList<Publicacion>>
     private lateinit var searchView: SearchView
 
-
-
     val bd = FirebaseFirestore.getInstance()
 
 
@@ -84,7 +82,6 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
          * Guardamos la ruta en una variable
          */
         val ciclo = bd.collection("Ciclos").get().await()
-
         /***
          * Recorremos la variable ciclos.
          */
@@ -93,11 +90,14 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
              * Una vez que estamos recorriendo la variable ciclo, podemos consultar la id
              * del documento que estamos recorriendo.
              */
-            val modulo = bd.collection("Ciclos").document(doc1.id).collection("Modulos").get().await()
+            val modulo = bd.collection("Ciclos").document(doc1.id)
+                .collection("Modulos").get().await()
             for(doc2 in modulo){
-                val uf = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id).collection("UFs").get().await()
+                val uf = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id)
+                    .collection("UFs").get().await()
                 for(doc3 in uf){
-                    val publi = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id).collection("UFs").document(doc3.id).collection("Publicaciones").get().await()
+                    val publi = bd.collection("Ciclos").document(doc1.id).collection("Modulos").document(doc2.id)
+                        .collection("UFs").document(doc3.id).collection("Publicaciones").get().await()
                     for(doc4 in publi){
                         /***
                          * Hacemos esto consecutivamente hasta llegar a las publicaciones.

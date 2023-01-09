@@ -1,16 +1,18 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.R
+import android.content.Context
+import android.graphics.Typeface
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
+import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Publicacion
 import cat.copernic.fpshare.modelo.User
 import com.google.android.material.textfield.TextInputEditText
@@ -58,7 +60,6 @@ class NuevaPublicacion : Fragment() {
         enlace = binding.textLink
         idModulo = binding.spinnerModulesNewPost
         idUf = binding.spinnerUfsNewPost
-        botonPdf = binding.btnPdf
 
         botonPublicar.setOnClickListener {
             llegirDades()
@@ -112,9 +113,25 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
             }
 
+            val modulo = bd.collection("Ciclos").document(publi.checked).collection("Modulos").get().addOnSuccessListener { result ->
+                val objects = result.toObjects(Modul::class.java)
+                val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, objects)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                idModulo.adapter = adapter
+
+            }
+            /*
+            val uf = modulo.document(idModulo.prompt.toString()).collection("Ufs").get().addOnSuccessListener { result ->
+                val objects = result.toObjects(Uf::class.java)
+                val adapter2 = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, objects)
+                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                idUf.adapter = adapter2
+            }
+*/
+
             publi.enlace = enlace.text.toString()
 
-            /**
+            /***
              * Leemos los modulos del ciclo que ha seleccionado el usuario en el radiogroup y
              * lo guardamos en el primer spinner
              */
@@ -144,7 +161,7 @@ class NuevaPublicacion : Fragment() {
              .collection("Modulos").document(idModulo)
              .collection("UFs").document(idUf)
              .collection("Publicaciones").add(publi)
-            .addOnSuccessListener { //S'ha afegit el departament...
+             .addOnSuccessListener { //S'ha afegit el departament...
                 val view = binding.root
                 val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
                 view.findNavController().navigate(action)
