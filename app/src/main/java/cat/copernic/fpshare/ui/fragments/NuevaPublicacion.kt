@@ -1,5 +1,6 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.R
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.os.Bundle
@@ -8,10 +9,7 @@ import android.text.TextPaint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -19,10 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
-import cat.copernic.fpshare.modelo.Modul
-import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.modelo.Uf
-import cat.copernic.fpshare.modelo.User
+import cat.copernic.fpshare.modelo.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -48,6 +43,11 @@ class NuevaPublicacion : Fragment() {
     private lateinit var botonPdf: Button
     private lateinit var idModulo: Spinner
     private lateinit var idUf: Spinner
+    private lateinit var ciclo: String
+    private lateinit var modulo: String
+    private lateinit var  uf: String
+    private lateinit var arrayIdModulo: ArrayList<String>
+    private lateinit var arrayIdUf: ArrayList<String>
     private lateinit var usuario: User
     private var isReadPermissionGranted = false
     private var isWritePermissionGranted = false
@@ -75,12 +75,74 @@ class NuevaPublicacion : Fragment() {
         idModulo = binding.spinnerModulesNewPost
         idUf = binding.spinnerUfsNewPost
         botonPdf = binding.btnPdf
+        binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
+            if (binding.optionDam.isChecked) {
+
+                cargarModulos("DAM")
+                ciclo = "DAM"
+            } else if (binding.optionDaw.isChecked) {
+
+                cargarModulos("DAW")
+                ciclo = "DAW"
+            } else if (binding.optionSmix.isChecked) {
+
+                cargarModulos("SMIR")
+                ciclo = "SMIR"
+            } else if (binding.optionAsix.isChecked) {
+
+                cargarModulos("ASIR")
+                ciclo = "ASIR"
+            }
+        }
+
+        idModulo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                // Un item ha sido seleccionado
+                modulo = arrayIdModulo.get(position)
+                // Hacer algo con el item seleccionado
+                cargarUfs(modulo)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No se ha seleccionado ningún item
+            }
+        }
+
+        idUf.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                // Un item ha sido seleccionado
+                 uf = arrayIdUf.get(position)
+                // Hacer algo con el item seleccionado
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No se ha seleccionado ningún item
+            }
+        }
 
         botonPublicar.setOnClickListener {
             llegirDades()
         }
-
     }
+
+    private fun cargarUfs(idModulo: String) {
+        val listaUfs =  ArrayList<String>()
+        arrayIdUf = ArrayList()
+        bd.collection("Ciclos").document(ciclo)
+            .collection("Modulos").document(idModulo).collection("UFs").get().addOnSuccessListener { documents ->
+                for (document in documents){
+                    listaUfs.add(document["nombre"].toString())
+                    arrayIdUf.add(document.id)
+                }
+
+                val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item)
+                adapter.addAll(listaUfs)
+                idUf.adapter = adapter
+
+            }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -118,24 +180,46 @@ class NuevaPublicacion : Fragment() {
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
             publi.checked = ""
+
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"
+
             } else if (binding.optionDaw.isChecked) {
                 publi.checked = "DAW"
+
             } else if (binding.optionSmix.isChecked) {
                 publi.checked = "SMIR"
+
             } else if (binding.optionAsix.isChecked) {
                 publi.checked = "ASIR"
+
             }
             publi.enlace = enlace.text.toString()
             /**
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
              */
             if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                anadirPublicacion(publi.checked, idModulo.text.toString(), idUf.text.toString(), publi)
+                anadirPublicacion(ciclo, modulo, uf, publi)
             }
         }
 
+    }
+
+    private fun cargarModulos(idCiclo: String){
+        val listaModulos =  ArrayList<String>()
+        arrayIdModulo = ArrayList()
+        bd.collection("Ciclos").document(idCiclo)
+            .collection("Modulos").get().addOnSuccessListener { documents ->
+            for (document in documents){
+                arrayIdModulo.add(document.id)
+                listaModulos.add(document["nombre"].toString())
+            }
+
+                val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item)
+                adapter.addAll(listaModulos)
+                idModulo.adapter = adapter
+
+            }
     }
 
     private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
@@ -148,7 +232,7 @@ class NuevaPublicacion : Fragment() {
          bd.collection("Ciclos").document(checked)
              .collection("Modulos").document(idModulo)
              .collection("UFs").document(idUf)
-             .collection("Publicaciones").add(publi)
+             .collection("Publicaciones").document("patata").set(publi)
             .addOnSuccessListener { //S'ha afegit el departament...
                 val view = binding.root
                 val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
