@@ -1,51 +1,38 @@
 <resources>
     <!-- GENERAL -->
-    <string name="app_name">FPShare</string>
-    <string name="EGG">FPShare is approaching</string>
+    <string name="app_name" translatable="false">FPShare</string>
+    <!-- <string name="EGG">FPShare is approaching</string> -->
     <string name="app_logo">App Logo</string>
     <!-- BOTONES -->
     <string name="btn_guardar">Save</string>
     <string name="btn_yes">YES</string>
     <string name="btn_no">NO</string>
-    <!-- TEXTVIEW -->
 
     <!-- HINTS -->
     <string name="hint_textHere">Text here…</string>
     <!-- TITULOS -->
-    <string name="ajustes">Settings</string>
-    <string name="language">Language</string>
     <string name="txt_threadTitle">Thread Title</string>
-
-    <!-- SELECTS -->
-    <string name="dark">Dark</string>
-    <string name="light">Light</string>
-    <string name="system">Default</string>
-    <string name="theme">Theme</string>
-    <string name="albert">ALBERT</string>
-    <string name="english">English</string>
-    <string name="catalan">Catalan</string>
-    <string name="spanish">Spanish</string>
 
     <!-- CIEGOS HELP -->
     <string name="btn_send">Button to send the message to the thread</string>
 
     <!-- pantalla login-->
-    <string name="email_login">Email</string>
+    <string name="email_login" translatable="false">Email</string>
     <string name="password_login">Password</string>
     <string name="sign_in_login">sign in</string>
     <string name="register_login">register</string>
     <string name="forgot_your_password_login">Forgot your password?</string>
-    <string name="sing_in_login">Sing in</string>
+    <string name="sing_in_login">Sign in</string>
 
     <!-- pantalla de recuperar contraseña -->
     <string name="title_activity_recovery_password">recoveryPassword</string>
-    <string name="email_recoverypassword">Email</string>
+    <string name="email_recoverypassword" translatable="false">Email</string>
     <string name="recovery_password">recovery password</string>
 
     <!--pantalla de perfil de usuario -->
     <string name="name_profile">Name</string>
     <string name="last_names_profile">Last names</string>
-    <string name="email_profile">Email</string>
+    <string name="email_profile" translatable="false">Email</string>
     <string name="telephone_number_profile">Telephone Number</string>
     <string name="institute_profile">Institute</string>
     <string name="save_changes_profile">save changes</string>
@@ -60,40 +47,35 @@
     <string name="description_new_post">Description</string>
     <string name="link_new_post">Link</string>
     <string name="tags_new_post">Tags</string>
-    <string name="dam_new_post">DAM</string>
-    <string name="daw_new_post">DAW</string>
+    <string name="dam_new_post" translatable="false">DAM</string>
+    <string name="daw_new_post" translatable="false">DAW</string>
     <string name="asix_new_post">ASIX</string>
     <string name="smix__new_post">SMIX</string>
     <string name="publish_new_post">Publish</string>
     <string name="content_description_spinner_modules_new_post">List of modules of the selected cycle</string>
     <string name="content_description_spinner_ufs_new_post">List of the ufs of the selected module</string>
-    <string name="content_description_foto_de_perfil_de_usuario_profile">foto de perfil de usuario</string>
+    <string name="content_description_foto_de_perfil_de_usuario_profile">User profile picture</string>
 
     <!-- SIN CATEGORIZAR -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="emailHint">Your email address</string>
-    <string name="txtMail">E-Mail</string>
+    <string name="txtMail" translatable="false">E-Mail</string>
     <string name="txtPass">Password</string>
     <string name="txtName">Username</string>
     <string name="txtLogin">Login</string>
     <string name="txtSign">Sign in</string>
-    <string name="txtProfile">Carlos Trujillo</string>
-    <string name="publicDescrip">Diseño de base de datos impartido en el Nicolau Copernic. Nota Final: 8,75</string>
     <string name="textBtnSave">Save Changes</string>
-    <string name="textTitle">Resumen UF1 BBDD</string>
-    <string name="titleEditarPublic">Editar Publicacion</string>
-    <string name="logo_de_la_app_image_login">logo de la app</string>
-    <string name="strUF">UF</string>
+    <string name="titleEditarPublic">Edit Post</string>
+    <string name="logo_de_la_app_image_login">app logo</string>
+    <string name="strUF" translatable="false">UF</string>
     <string name="strModule">Module</string>
     <string name="strCicle">Cicle</string>
     <string name="strLink">Link</string>
     <string name="strTitle">Title</string>
-    <string name="strProfile">Carlos Trujillo</string>
-    <string name="strPubli">Publication</string>
+    <string name="strPubli">Post</string>
     <string name="strDesc">Description</string>
     <string name="txtEdit">Edit Post</string>
-    <string name="txtUserEdit">Carlos Trujillo</string>
     <string name="txtPublicationTitle">Publication Title</string>
     <string name="txtPublicationDescription">Publication Description</string>
     <string name="txtLink">Link</string>
@@ -103,17 +85,17 @@
     <string name="txt_new_name">New name</string>
     <string name="txt_rename_user">Rename User</string>
     <string name="txt_change">Change</string>
-    <string name="logo_de_la_app_recoovery_password">Logo de la app</string>
+    <string name="logo_de_la_app_recoovery_password">App logo</string>
     <string name="threadTitle">Thread title</string>
     <string name="enter_cicle">Enter to Cicle</string>
-    <string name="logoDescription">Logo FPshare</string>
+    <string name="logoDescription" translatable="false">Logo FPshare</string>
     <string name="HintName">Your Username..</string>
     <string name="hintLoginPassword">Your password..</string>
 
     <!-- Menu lateral -->
     <string name="nav_header_desc">Navigation Header</string>
-    <string name="nombre_usuario">Nombre de usuario</string>
-    <string name="correo_usuario">Correo de usuario</string>
+    <string name="nombre_usuario">Nombre email</string>
+    <string name="correo_usuario">User email</string>
     <string name="menu_perfil">Profile</string>
     <string name="menu_publicaciones">Posts</string>
     <string name="menu_ajustes">Settings</string>
@@ -124,22 +106,16 @@
     <string name="bottom_search">search</string>
     <string name="bottom_forum">forum</string>
     <string name="bottom_new_post">new post</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rename_tag">Rename Tag</string>
     <string name="new_tag">New Tag</string>
     <string name="administration">Administration</string>
     <string name="rename_user">Rename user</string>
     <string name="delete_user">Delete user</string>
-    <!-- Datos Ficticios Publicacion -->
-    <string name="profile_name">Albert Montero</string>
-    <string name="title_post">Resumen BBDD</string>
-    <string name="content_description">Dejo aqui el enlace a los apuntes de Base de datos donde explica todo lo relacionado al modelo relacional y tres ejercicios para practicar.</string>
     <string name="delete_tag">Delete Tag</string>
     <string name="add_tag">Add Tag</string>
-    <string name="name">Name..</string>
+    <string name="name">Name…</string>
     <string name="tag_name">Tag Name</string>
-    <string name="id_of_tag">ID of tag..</string>
+    <string name="id_of_tag">ID of tag…</string>
     <string name="create_new_tag">Create New Tag</string>
     <string name="delete_uf">Delete UF</string>
     <string name="add_uf">Add UF</string>
@@ -159,8 +135,8 @@
     <string name="id_of_cicle">ID of Cicle</string>
     <string name="cicle">Cicle</string>
     <string name="module">Module</string>
-    <string name="uf">UF</string>
-    <string name="comentarios">Comentarios:</string>
+    <string name="uf" translatable="false">UF</string>
+    <string name="comentarios">Comments:</string>
     <string name="cicles_admin">Cicles Administration</string>
     <string name="new_forum">New Forum</string>
     <string name="new_cicle">New Cicle</string>
@@ -168,7 +144,7 @@
     <string name="new_uf">New UF</string>
     <string name="posts">Posts</string>
     <string name="modules">Modules</string>
-    <string name="ufs">UFs</string>
+    <string name="ufs" translatable="false">UFs</string>
     <string name="post_admin">Posts Administration</string>
     <string name="user_admin">Users Administration</string>
     <string name="admin">Administration</string>
@@ -192,10 +168,11 @@
     <string name="pdf">Save as PDF</string>
     <string name="a_adir_foro">Add forum</string>
     <string name="menu_recordatorio">Reminder</string>
-    <string name="borrar_foro_fp_hilo">delete forum</string>
+    <string name="borrar_foro_fp_hilo">Delete Forum</string>
     <string name="titulo_alerta_borrar_foro">DELETE THIS FORUM?</string>
     <string name="contenido_alert_borrar_foro">Are you sure you want to delete this forum?</string>
     <string name="boton_positivo_alerta_borrar_forro">Accept</string>
-    <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
+    <string name="boton_negativo_alerta_borrar_foro">Cancel</string>
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
+    <string name="txtUserEdit">User</string>
 </resources>
