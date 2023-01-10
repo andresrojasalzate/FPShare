@@ -64,11 +64,14 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
          *
          */
         searchView = binding.searchView
-        searchView.setOnQueryTextListener(this)
-        lifecycleScope.launch(Dispatchers.Main){
-                cicloList = async { crearMenu() }
+        try {
+            searchView.setOnQueryTextListener(this)
+            lifecycleScope.launch(Dispatchers.Main){
+                    cicloList = async { crearMenu() }
         }
+        }catch (e: Exception){
 
+        }
     }
 
     override fun onDestroyView() {
@@ -151,7 +154,11 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         /***
          * Si hacemos una query i aceptamos, el adapter se filtrará segun lo que hayamos puesto en el buscador.
          */
-        adapter.filter.filter(query)
+        try {
+            adapter.filter.filter(query)
+        }catch (e: UninitializedPropertyAccessException){
+            println("error")
+        }
         return false
     }
 
@@ -159,7 +166,12 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         /***
          * Si modificamos el texto escrito en la query, se actualizaran los valores con el nuevo texto escrito.
          */
-        adapter.filter.filter(newText)
+        try {
+            adapter.filter.filter(newText)
+        }catch (e: UninitializedPropertyAccessException){
+            println("error")
+        }
+
         return false
     }
 

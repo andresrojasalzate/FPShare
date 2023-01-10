@@ -100,12 +100,21 @@ class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        adapter.filter.filter(query)
+        try {
+            adapter.filter.filter(query)
+        }catch (e: UninitializedPropertyAccessException){
+            println("error")
+        }
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        adapter.filter.filter(newText)
+        try {
+            adapter.filter.filter(newText)
+        }catch (e: UninitializedPropertyAccessException){
+            println("error")
+        }
+
         return false
     }
 

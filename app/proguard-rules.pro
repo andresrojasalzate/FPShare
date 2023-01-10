@@ -21,13 +21,13 @@
 #-renamesourcefileattribute SourceFile
 
 #reglas para firestore
--keep class com.google.firebase.firestore.** { *; }
--keep class com.google.firebase.firestore.FirebaseFirestore { *; }
--keep class com.google.firebase.firestore.util.** { *; }
--keep class com.google.firebase.** { *; }
--dontwarn com.google.firebase.**
+#-keep class com.google.firebase.firestore.** { *; }
+#-keep class com.google.firebase.firestore.FirebaseFirestore { *; }
+#-keep class com.google.firebase.firestore.util.** { *; }
+#-keep class com.google.firebase.** { *; }
+#-dontwarn com.google.firebase.**
 
 #reglas para storage
--keep class com.google.cloud.storage.** { *; }
--keep class com.google.cloud.** { *; }
--dontwarn com.google.cloud.**
+#-keep class com.google.cloud.storage.** { *; }
+#-keep class com.google.cloud.** { *; }
+#-dontwarn com.google.cloud.**
