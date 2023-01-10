@@ -12,6 +12,7 @@
         tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_nueva_publicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context=".NuevaPublicacion">
@@ -175,15 +176,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_ufs_new_post" />
-
-            <Button
-                android:id="@+id/btn_pdf"
-                style="@style/Widget.FpShare.Button"
-                android:layout_marginBottom="10dp"
-                android:text="@string/pdf"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/btn_publish"
-                app:layout_constraintTop_toBottomOf="@+id/btn_publish" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
