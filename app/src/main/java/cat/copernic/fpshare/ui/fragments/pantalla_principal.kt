@@ -22,6 +22,7 @@ import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import java.io.IOException
 
 class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     private var _binding: FragmentPantallaPrincipalBinding? = null
@@ -65,7 +66,7 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         searchView = binding.searchView
         searchView.setOnQueryTextListener(this)
         lifecycleScope.launch(Dispatchers.Main){
-            cicloList = async{ crearMenu()}
+                cicloList = async { crearMenu() }
         }
 
     }
@@ -129,10 +130,14 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
                          * Cargamos la lista en el adapter para mostrar todas las publicaciones.
                          */
                         adapter = PubliAdapter(cicloList)
-                        binding.recyclerView.adapter = adapter
-                        binding.recyclerView.layoutManager =
-                            LinearLayoutManager(requireContext())
-                        cicloList.add(publi)
+                        try {
+                            binding.recyclerView.adapter = adapter
+                            binding.recyclerView.layoutManager =
+                                LinearLayoutManager(requireContext())
+                            cicloList.add(publi)
+                        }catch (e: NullPointerException){
+                            println("error")
+                        }
 
                     }
 
