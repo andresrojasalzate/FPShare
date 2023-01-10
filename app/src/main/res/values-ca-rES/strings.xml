@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FPShare</string>
-    <string name="app_name">FPShare</string>
+    <!---<string name="app_name">FPShare</string>-->
     <string name="EGG">"FPShare "</string>
     <string name="btn_guardar">Guardar</string>
     <string name="btn_yes">Si</string>

@@ -232,7 +232,7 @@ class NuevaPublicacion : Fragment() {
          bd.collection("Ciclos").document(checked)
              .collection("Modulos").document(idModulo)
              .collection("UFs").document(idUf)
-             .collection("Publicaciones").document("patata").set(publi)
+             .collection("Publicaciones").add(publi)
             .addOnSuccessListener { //S'ha afegit el departament...
                 val view = binding.root
                 val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
