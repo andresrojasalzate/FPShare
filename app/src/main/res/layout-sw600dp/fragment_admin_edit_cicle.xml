@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.FragmentAdminEditModule">
+    tools:context=".ui.fragments.FragmentAdminEditCicle">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputMainEditNameModule"
+            android:id="@+id/inputMainEditNameCicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -22,21 +22,28 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputEditNameModule"
+                android:id="@+id/inputEditCicle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/name_module" />
+                android:layout_height="102dp"
+                android:hint="@string/name_of_cicle" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSaveEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="253dp"
+            android:layout_height="96dp"
             android:layout_marginTop="50dp"
             android:text="@string/save_changes"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/inputMainEditNameModule"
-            app:layout_constraintTop_toBottomOf="@+id/inputMainEditNameModule" />
+            app:layout_constraintStart_toStartOf="@+id/inputMainEditNameCicle"
+            app:layout_constraintTop_toBottomOf="@+id/inputMainEditNameCicle" />
 
+        <Button
+            android:id="@+id/btnDeleteCicle"
+            android:layout_width="253dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/delete_cicle"
+            app:layout_constraintEnd_toEndOf="@+id/inputMainEditNameCicle"
+            app:layout_constraintTop_toBottomOf="@+id/inputMainEditNameCicle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

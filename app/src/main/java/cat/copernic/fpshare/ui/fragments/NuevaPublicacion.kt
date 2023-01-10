@@ -1,33 +1,20 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.R
-import android.graphics.Typeface
-import android.graphics.pdf.PdfDocument
 import android.os.Bundle
-import android.os.Environment
-import android.text.TextPaint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.fpshare.adapters.ModulAdminAdapter
-import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
-import cat.copernic.fpshare.modelo.*
+import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.modelo.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileOutputStream
 
 
 class NuevaPublicacion : Fragment() {
@@ -74,7 +61,7 @@ class NuevaPublicacion : Fragment() {
         enlace = binding.textLink
         idModulo = binding.spinnerModulesNewPost
         idUf = binding.spinnerUfsNewPost
-        botonPdf = binding.btnPdf
+
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
 
