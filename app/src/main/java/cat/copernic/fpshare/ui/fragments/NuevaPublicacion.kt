@@ -2,30 +2,20 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.R
 import android.os.Bundle
-import android.os.Environment
-import android.text.TextPaint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.fpshare.adapters.ModulAdminAdapter
-import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
 import cat.copernic.fpshare.modelo.*
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileOutputStream
 
 
 class NuevaPublicacion : Fragment() {
@@ -38,7 +28,6 @@ class NuevaPublicacion : Fragment() {
     private lateinit var enlace: TextInputEditText
     private var user = Firebase.auth.currentUser
     private lateinit var botonPublicar: Button
-    private lateinit var botonPdf: Button
     private lateinit var idModulo: Spinner
     private lateinit var idUf: Spinner
     private lateinit var ciclo: String
@@ -46,20 +35,12 @@ class NuevaPublicacion : Fragment() {
     private lateinit var  uf: String
     private lateinit var arrayIdModulo: ArrayList<String>
     private lateinit var arrayIdUf: ArrayList<String>
-    private lateinit var usuario: User
-    private lateinit var matcher: Matcher
-    private lateinit var pattern: Pattern
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -71,7 +52,7 @@ class NuevaPublicacion : Fragment() {
         enlace = binding.textLink
         idModulo = binding.spinnerModulesNewPost
         idUf = binding.spinnerUfsNewPost
-        botonPdf = binding.btnPdf
+
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
 
@@ -95,7 +76,7 @@ class NuevaPublicacion : Fragment() {
         idModulo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 // Un item ha sido seleccionado
-                modulo = arrayIdModulo.get(position)
+                modulo = arrayIdModulo[position]
                 // Hacer algo con el item seleccionado
                 cargarUfs(modulo)
             }
@@ -108,7 +89,7 @@ class NuevaPublicacion : Fragment() {
         idUf.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 // Un item ha sido seleccionado
-                 uf = arrayIdUf.get(position)
+                uf = arrayIdUf[position]
                 // Hacer algo con el item seleccionado
 
             }
@@ -148,8 +129,8 @@ class NuevaPublicacion : Fragment() {
 
 
     private fun llegirDades() {
-        var publi = Publicacion()
-        var usuario = User()
+        val publi = Publicacion()
+        val usuario = User()
         val correo = user?.email.toString()
         /**
          * Leemos los datos del usuario actual.
