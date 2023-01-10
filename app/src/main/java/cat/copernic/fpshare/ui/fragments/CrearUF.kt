@@ -6,11 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentCrearUBinding
 import cat.copernic.fpshare.modelo.Uf
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CrearUF : Fragment() {
@@ -60,12 +68,15 @@ class CrearUF : Fragment() {
     private fun listeners() {
 
         buttonAddUf.setOnClickListener {
-            val id = inputIDUf.text.toString()
-            val nombre = inputNameUf.text.toString()
-
-            if (campoVacio(id, nombre)) {
-                val uf = Uf(id, nombre)
-                addUF(uf, id)
+            /**
+             * Corrutina para la lectura de UFs
+             */
+            buttonAddUf.setOnClickListener {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        consultaUF()
+                    }
+                }
             }
         }
     }
@@ -73,15 +84,64 @@ class CrearUF : Fragment() {
     /**
      * Función para añadir UFs dentro de un ciclo y de un modulo especificado por el usuario
      */
-    private fun addUF(uf: Uf, id: String) {
-        bd.collection("Ciclos").document(args.idCiclo)
-            .collection("Modulos").document(args.idModulo)
-            .collection("UFs").document(id).set(uf)
+    private fun addUF(id: String, nombre: String) {
+
+
+        if (campoVacio(id, nombre)) {
+            val uf = Uf(id, nombre)
+
+            bd.collection("Ciclos").document(args.idCiclo)
+                .collection("Modulos").document(args.idModulo)
+                .collection("UFs").document(id).set(uf)
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Modulo añadido correctamente", Toast.LENGTH_LONG)
+                        .show()
+                    ufBack()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Error al añadir el modulo", Toast.LENGTH_LONG).show()
+                }
+        } else {
+            Snackbar.make(
+                binding.crearUF, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private suspend fun consultaUF() {
+        delay(300)
+        val id = inputIDUf.text.toString()
+        val nombre = inputNameUf.text.toString()
+
+        bd.collection("Ciclos").document(args.idCiclo).collection("Modulos")
+            .document(args.idModulo).collection("UFs").document(id).get()
+            .addOnSuccessListener {
+                /**
+                 * Si el modulo dentro del ciclo seleccionado existe se avisa al usuario de que ya existe
+                 * y no la creará
+                 */
+                if (it.exists()) {
+                    Snackbar.make(binding.crearUF, "El modulo ya existe", Snackbar.LENGTH_LONG)
+                        .show()
+                } else {
+                    /**
+                     * Si el modulo no existe lo crea
+                     */
+                    addUF(id, nombre)
+                }
+            }
     }
 
     // Función para comprobar que no está vacio o en blanco los campos introducidos
     private fun campoVacio(ID: String, nombre: String): Boolean {
         return ID.isNotEmpty() && nombre.isNotEmpty()
                 && ID.isNotBlank() && nombre.isNotBlank()
+    }
+
+    // Volver a la pantalla de modulos
+    private fun ufBack() {
+        val view = binding.root
+        val action = CrearUFDirections.actionCrearUFToFragmentAdminUFs(args.idModulo, args.idCiclo)
+        view.findNavController().navigate(action)
     }
 }

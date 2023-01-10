@@ -68,19 +68,6 @@ class CrearCiclo : Fragment() {
         }
     }
 
-    // Comprobar que no tenga campos vacios o en blanco
-    private fun campoVacio(ID: String, nombre: String): Boolean {
-        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
-    }
-
-    // Función para volver hacia atrás después de crear el nuevo ciclo
-    private fun ciclosBack() {
-        val view = binding.root
-        val action =
-            CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
-        view.findNavController().navigate(action)
-    }
-
     private suspend fun consultaCiclos() {
         delay(300)
         val id = inputIDCicle.text.toString()
@@ -118,5 +105,18 @@ class CrearCiclo : Fragment() {
                 binding.crearCiclo, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
             ).show()
         }
+    }
+
+    // Comprobar que no tenga campos vacios o en blanco
+    private fun campoVacio(ID: String, nombre: String): Boolean {
+        return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
+    }
+
+    // Función para volver hacia atrás después de crear el nuevo ciclo
+    private fun ciclosBack() {
+        val view = binding.root
+        val action =
+            CrearCicloDirections.actionCrearCicloToListaTagsAdministracion()
+        view.findNavController().navigate(action)
     }
 }
