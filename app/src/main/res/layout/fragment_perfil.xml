@@ -54,7 +54,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_name"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +82,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_apellidos"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +109,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editextEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="match_parent"
                     tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,7 +136,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_numero"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -163,7 +163,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_institute"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="match_parent"
                     tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
