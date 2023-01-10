@@ -2,19 +2,30 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.R
 import android.os.Bundle
+import android.os.Environment
+import android.text.TextPaint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.fpshare.adapters.ModulAdminAdapter
+import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
-import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.modelo.User
+import cat.copernic.fpshare.modelo.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
 
 
 class NuevaPublicacion : Fragment() {
@@ -36,9 +47,8 @@ class NuevaPublicacion : Fragment() {
     private lateinit var arrayIdModulo: ArrayList<String>
     private lateinit var arrayIdUf: ArrayList<String>
     private lateinit var usuario: User
-    private var isReadPermissionGranted = false
-    private var isWritePermissionGranted = false
-    private var CODIGO_PERMISOS_WR = 2108
+    private lateinit var matcher: Matcher
+    private lateinit var pattern: Pattern
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +71,7 @@ class NuevaPublicacion : Fragment() {
         enlace = binding.textLink
         idModulo = binding.spinnerModulesNewPost
         idUf = binding.spinnerUfsNewPost
-
+        botonPdf = binding.btnPdf
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
 
@@ -216,17 +226,24 @@ class NuevaPublicacion : Fragment() {
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
-         bd.collection("Ciclos").document(checked)
-             .collection("Modulos").document(idModulo)
-             .collection("UFs").document(idUf)
-             .collection("Publicaciones").add(publi)
-            .addOnSuccessListener { //S'ha afegit el departament...
-                val view = binding.root
-                val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
-                view.findNavController().navigate(action)
-            }
-            .addOnFailureListener{ //No s'ha afegit el departament...
-                Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()
-            }
+         if(URLUtil.isValidUrl(publi.enlace)){
+             bd.collection("Ciclos").document(checked)
+                 .collection("Modulos").document(idModulo)
+                 .collection("UFs").document(idUf)
+                 .collection("Publicaciones").add(publi)
+                 .addOnSuccessListener { //S'ha afegit el departament...
+                     val view = binding.root
+                     val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
+                     view.findNavController().navigate(action)
+                 }
+                 .addOnFailureListener{ //No s'ha afegit el departament...
+                     Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()
+                 }
+         }else{
+             Snackbar.make(
+                 binding.constraintNuevaPublicacion!!, "Introduce un enlace valido.", Snackbar.LENGTH_LONG
+             ).show()
+
+         }
     }
 }
