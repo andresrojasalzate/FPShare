@@ -97,7 +97,7 @@ class MostarInfoUsuario : Fragment() {
             usuario.nombre = document["nombre"].toString()
             usuario.apellidos = document["apellidos"].toString()
             usuario.telefono = document["telefono"].toString()
-            usuario.instituto = document["insituto"].toString()
+            usuario.instituto = document["instituto"].toString()
             usuario.esAdmin = document["esAdmin"] as Boolean
             usuario.imgPerfil = document["imgPerfil"].toString()
             rellenarcampos(usuario)
@@ -128,7 +128,7 @@ class MostarInfoUsuario : Fragment() {
 
     private fun comprobarcampos(campo: String): String{
         val ret: String
-        if (campo.isEmpty()){
+        if (campo.isEmpty() ){
             ret = getString(R.string.info_no_especificada_mostrar_info_usuario)
         } else {
             ret = campo
