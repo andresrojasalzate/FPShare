@@ -141,4 +141,5 @@
     <string name="contenido_alert_borrar_foro">¿Estas seguro que quieres borrar el foro?</string>
     <string name="titulo_alerta_borrar_foro">¿BORRAR ESTE FORO?</string>
     <string name="info_no_especificada_mostrar_info_usuario">(No especificado)</string>
+    <string name="title">Título</string>
 </resources>
