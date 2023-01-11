@@ -35,10 +35,9 @@
                 style="@style/Widget.FpShare.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_55"
                 android:layout_marginTop="@dimen/size_8"
                 android:text="@string/name_profile"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imput_name_profile"
                 app:layout_constraintTop_toBottomOf="@+id/image_profile"
                 tools:ignore="TextContrastCheck" />
 

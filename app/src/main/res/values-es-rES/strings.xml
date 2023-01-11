@@ -37,7 +37,7 @@
     <string name="txtPass">Contraseña</string>
     <string name="txtName">Nombre de usuario</string>
     <string name="txtLogin">Iniciar sesión</string>
-    <string name="txtSign">Registrarse</string>
+    <string name="txtSign">Inicia Sesión</string>
     <string name="publish_new_post">Publicar</string>
     <string name="textBtnSave">Guardar cambios</string>
     <string name="titleEditarPublic">Editar publicación</string>

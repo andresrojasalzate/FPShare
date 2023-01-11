@@ -20,7 +20,7 @@
     <string name="sign_in_login">Loguejar</string>
     <string name="register_login">Registrarse</string>
     <string name="forgot_your_password_login">Has olvidat la teva Contrasenya?</string>
-    <string name="sing_in_login">Registrarse</string>
+    <string name="sing_in_login">Iniciar Sessió</string>
     <string name="title_activity_recovery_password">Recuperar Contrasenya</string>
     <string name="recovery_password">Recuperar Contrasenya</string>
     <string name="name_profile">Nom</string>
@@ -48,7 +48,7 @@
     <string name="txtName">Nom d\'usuari</string>
     <string name="txtLogin">Loguejar</string>
     <string name="txtProfile">Carlos Trujillo</string>
-    <string name="txtSign">Registrarse</string>
+    <string name="txtSign">Inicia Sessió</string>
     <string name="publicDescrip">Diseny de base de dades impartit en el Nicolau Copernic. Nota Final: 8,75</string>
     <string name="textBtnSave">Guardar Canvis</string>
     <string name="textTitle">Resum UF1 BBDD</string>
