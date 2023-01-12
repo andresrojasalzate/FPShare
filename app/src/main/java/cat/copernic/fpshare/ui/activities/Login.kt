@@ -32,8 +32,6 @@ class Login : AppCompatActivity() {
     private lateinit var textViewForgotPassword: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: LoginBinding
-    private var alarmMgr: AlarmManager? = null
-    private lateinit var alarmIntent: PendingIntent
 
     private var splashScreenMS: Long = 1000
 
