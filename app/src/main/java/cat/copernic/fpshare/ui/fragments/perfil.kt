@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
 import cat.copernic.fpshare.modelo.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -29,47 +30,41 @@ class perfil : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
     private lateinit var nombreEditText: EditText
-    private lateinit var  apellidosEditText: EditText
-    private lateinit var numero : EditText
-    private lateinit var insituto : EditText
-    private lateinit var  botonGuardarCambios : Button
-    private lateinit var emailEdittext : EditText
+    private lateinit var apellidosEditText: EditText
+    private lateinit var numero: EditText
+    private lateinit var insituto: EditText
+    private lateinit var botonGuardarCambios: Button
+    private lateinit var emailEdittext: EditText
     private var storage = FirebaseStorage.getInstance()
-    private var user =  Firebase.auth.currentUser
-    private var storageRef = storage.reference.child("Imagenes/" + user?.email.toString()) // TODO hay que corregir esto
+    private var user = Firebase.auth.currentUser
+    private var storageRef = storage.reference.child("Imagenes/" + user?.email.toString())
     private lateinit var imagen: ImageView
 
-    private var photoSelectedUri: Uri?=null
+    private var photoSelectedUri: Uri? = null
 
-    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        if (it.resultCode == Activity.RESULT_OK){
-            photoSelectedUri = it.data?.data //Assignem l'URI de la imatge
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                photoSelectedUri = it.data?.data //Assignem l'URI de la imatge
+            }
         }
-    }
-
 
     private var bd = FirebaseFirestore.getInstance()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val email = user?.email.toString()
         inicizalizar()
 
-        imagen.setOnClickListener{
+        imagen.setOnClickListener {
             subirArchivos()
         }
 
@@ -78,38 +73,55 @@ class perfil : Fragment() {
              * Primero comprobamos si en la coleccion Usuarios existe un documento con el email como
              * id del usuario.
              */
-            bd.collection("Usuarios").document(email).get().addOnSuccessListener{
+            bd.collection("Usuarios").document(email).get().addOnSuccessListener {
                 /***
                  * Si el documento existe, actualizara los datos del documento con los datos nuevos
-                 * introducidos.
+                 * introducidos, pero antes comprobamos que los campos como el nombre y el telefono
+                 * son validos.
                  */
-                bd.collection("Usuarios").document(email)
-                    .update("email",emailEdittext.text.toString(),
-                    "nombre",nombreEditText.text.toString(),
-                    "apellidos",apellidosEditText.text.toString(),
-                    "telefono",numero.text.toString(),
-                    "instituto",insituto.text.toString(),
-                    "imgPerfil",photoSelectedUri.toString())
-                    .addOnSuccessListener {
-                        Toast.makeText(requireActivity(),"Se ha realizado la modificacion con exito", Toast.LENGTH_LONG).show()
-                    }
+                if (camposVacios(numero.text.toString(), emailEdittext.text.toString())
+                    && comprobarTelefono(numero.text.toString()) && !nombreLargo(nombreEditText.text.toString())
+                ) {
+                    bd.collection("Usuarios").document(email)
+                        .update(
+                            "email", emailEdittext.text.toString(),
+                            "nombre", nombreEditText.text.toString(),
+                            "apellidos", apellidosEditText.text.toString(),
+                            "telefono", numero.text.toString(),
+                            "instituto", insituto.text.toString(),
+                            "imgPerfil", photoSelectedUri.toString()
+                        )
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Se ha realizado la modificacion con exito",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                } else {
+                    Snackbar.make(
+                        binding.fragmentPerfil,
+                        "Algún dato no es valido",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
             }
                 /***
                  * Si el documento no existe, generara un documento nuevo con los datos introducidos
                  * en los campos de texto.
                  */
-            .addOnFailureListener {
-                val user = User(
-                    emailEdittext.text.toString(),
-                    nombreEditText.text.toString(),
-                    apellidosEditText.text.toString(),
-                    numero.text.toString(),
-                    insituto.text.toString(),
-                    photoSelectedUri.toString(),
-                    false
-                )
-                bd.collection("Usuarios").document(email).set(user)
-            }
+                .addOnFailureListener {
+                    val user = User(
+                        emailEdittext.text.toString(),
+                        nombreEditText.text.toString(),
+                        apellidosEditText.text.toString(),
+                        numero.text.toString(),
+                        insituto.text.toString(),
+                        photoSelectedUri.toString(),
+                        false
+                    )
+                    bd.collection("Usuarios").document(email).set(user)
+                }
         }
     }
 
@@ -118,7 +130,7 @@ class perfil : Fragment() {
         _binding = null
     }
 
-    fun  inicizalizar(){
+    private fun inicizalizar() {
         val email = user?.email.toString()
         nombreEditText = binding.edittextName
         apellidosEditText = binding.edittextApellidos
@@ -140,12 +152,14 @@ class perfil : Fragment() {
                  * informacion de nuestro usuario actual. De lo contrario, mostrara los datos
                  * introducidos en el registro, como el nombre y el email.
                  */
-                var user = User(it.id,
+                val user = User(
+                    it.id,
                     it["nombre"].toString(),
                     it["apellidos"].toString(),
                     it["telefono"].toString(),
                     it["instituto"].toString(),
-                    it["imgPerfil"].toString())
+                    it["imgPerfil"].toString()
+                )
                 /***
                  * Aqui insertara los datos del usuario en los camps de texto.
                  */
@@ -158,34 +172,59 @@ class perfil : Fragment() {
                  * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
                  * del usuario, puesto que nada mas puede tener un email.
                  */
-                val localfile = File.createTempFile("tempImage","jpg")
+                val localfile = File.createTempFile("tempImage", "jpg")
                 storageRef.getFile(localfile).addOnSuccessListener {
                     val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                     binding.imageProfile.setImageBitmap(bitmap)
-                }.addOnFailureListener{
-                    Toast.makeText(appContext,"La carga de la imagen ha fallado.", Toast.LENGTH_LONG).show()
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        appContext,
+                        "La carga de la imagen ha fallado.",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                 }
             }
     }
 
-    private fun subirArchivos(){
+    private fun subirArchivos() {
         val appContext = context
-        resultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
+        resultLauncher.launch(
+            Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            )
+        )
         /***
          * Añadimos la imagen en Firestore
          */
-        photoSelectedUri?.let{uri->
+        photoSelectedUri?.let { uri ->
             /***
              * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
              * parametro la URI de la imagen.
              */
             storageRef.putFile(uri)
                 .addOnSuccessListener {
-                    Toast.makeText(appContext,"La imagen se ha subido con exito.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        appContext,
+                        "La imagen se ha subido con exito.",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
         }
     }
 
+    private fun camposVacios(nombre: String, correo: String): Boolean {
+        return nombre.isNotEmpty() && nombre.isNotBlank()
+                && correo.isNotEmpty() && correo.isNotBlank()
+    }
 
+    private fun comprobarTelefono(telefono: String): Boolean {
+        val comprobante = "(\\+34|0034|34)?[ -]*([67])[ -]*([0-9][ -]*){8}".toRegex()
+        return comprobante.containsMatchIn(telefono)
+    }
+
+    private fun nombreLargo(nombre: String): Boolean {
+        return nombre.length >= 30
+    }
 }
