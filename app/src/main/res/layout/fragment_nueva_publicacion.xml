@@ -156,7 +156,7 @@
                 android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tags_cicles"
+                app:layout_constraintTop_toBottomOf="@+id/tagModul"
                 tools:ignore="RedundantDescriptionCheck" />
 
             <Spinner
@@ -169,7 +169,7 @@
                 android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post"
+                app:layout_constraintTop_toBottomOf="@+id/tagUF"
                 tools:ignore="RedundantDescriptionCheck" />
 
             <Button
@@ -182,6 +182,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_ufs_new_post" />
+
+            <TextView
+                android:id="@+id/tagModul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/modules"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/tags_cicles"
+                app:layout_constraintTop_toBottomOf="@+id/tags_cicles" />
+
+            <TextView
+                android:id="@+id/tagUF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/ufs"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/spinner_ufs_new_post"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
