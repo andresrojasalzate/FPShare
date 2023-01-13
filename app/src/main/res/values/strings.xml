@@ -91,21 +91,6 @@
     <string name="logoDescription" translatable="false">Logo FPshare</string>
     <string name="HintName">Your Username..</string>
     <string name="hintLoginPassword">Your password..</string>
-
-    <!-- Menu lateral -->
-    <string name="nav_header_desc">Navigation Header</string>
-    <string name="nombre_usuario">Nombre email</string>
-    <string name="correo_usuario">User email</string>
-    <string name="menu_perfil">Profile</string>
-    <string name="menu_publicaciones">Posts</string>
-    <string name="menu_ajustes">Settings</string>
-    <string name="menu_logout">Log out</string>
-
-    <!-- Menu inferior -->
-    <string name="bottom_home">home</string>
-    <string name="bottom_search">search</string>
-    <string name="bottom_forum">forum</string>
-    <string name="bottom_new_post">new post</string>
     <string name="rename_tag">Rename Tag</string>
     <string name="new_tag">New Tag</string>
     <string name="administration">Administration</string>
@@ -176,6 +161,25 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
+    
+    <!-- Menu lateral -->
+    <string name="nav_header_desc">Navigation Header</string>
+    <string name="nombre_usuario">Nombre email</string>
+    <string name="correo_usuario">User email</string>
+    <string name="menu_perfil">Profile</string>
+    <string name="menu_publicaciones">Posts</string>
+    <string name="menu_ajustes">Settings</string>
+    <string name="menu_logout">Log out</string>
+
+    <!-- Menu inferior -->
+    <string name="bottom_home">home</string>
+    <string name="bottom_search">search</string>
+    <string name="bottom_forum">forum</string>
+    <string name="bottom_new_post">new post</string>
+
+
+    <!-- Control de errores -->
+
     <string name="errorUFNoEspecificada">You have not selected any cycle, module or uf</string>
     <string name="invalidURL">Invalid URL</string>
     <string name="errorCamposVacios">You have to fill in all the fields</string>
@@ -204,4 +208,5 @@
     <string name="moduloBorradoCorrecto">Module deleted correctly</string>
     <string name="moduloBorradoError">Error deleting the module</string>
     <string name="imageLoadError">Image load has failed</string>
+    <string name="perfilUpdateCorrecto">Profile update made successfully</string>
 </resources>

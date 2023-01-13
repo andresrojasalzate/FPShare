@@ -90,7 +90,7 @@ class perfil : Fragment() {
                         getString(R.string.telefonoInvalido),
                         Snackbar.LENGTH_LONG
                     ).show()
-                } else if (!nombreLargo(nombreEditText.text.toString())) {
+                } else if (nombreLargo(nombreEditText.text.toString())) {
                     Snackbar.make(
                         binding.fragmentPerfil,
                         getString(R.string.nombreInvalido),
@@ -112,10 +112,10 @@ class perfil : Fragment() {
                         "imgPerfil",
                         photoSelectedUri.toString()
                     ).addOnSuccessListener {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Profile update made successfully",
-                            Toast.LENGTH_LONG
+                        Snackbar.make(
+                            binding.fragmentPerfil,
+                            getString(R.string.perfilUpdateCorrecto),
+                            Snackbar.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -227,7 +227,12 @@ class perfil : Fragment() {
 
     private fun comprobarTelefono(telefono: String): Boolean {
         val comprobante = "(\\+34|0034|34)?[ -]*([67])[ -]*([0-9][ -]*){8}".toRegex()
-        return comprobante.containsMatchIn(telefono)
+
+        return if (telefono.isEmpty()) {
+            false
+        } else {
+            comprobante.containsMatchIn(telefono)
+        }
     }
 
     private fun nombreLargo(nombre: String): Boolean {
