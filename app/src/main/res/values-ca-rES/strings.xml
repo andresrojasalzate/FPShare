@@ -157,4 +157,15 @@
     <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
     <string name="info_no_especificada_mostrar_info_usuario">No especificat</string>
     <string name="title">Títol</string>
+    <string name="errorUFNoEspecificada">No has seleccionat cap cicle, módul o UF</string>
+    <string name="invalidURL">URL no valida</string>
+    <string name="errorCamposVacios">Tens que omplir tots els camps</string>
+    <string name="errorTituloLargo">El títol es massa llarg</string>
+    <string name="errorDescripcionLarga">La descripció es massa llarg</string>
+    <string name="telefonoInvalido">Número de telèfon no vàlid</string>
+    <string name="nombreInvalido">El nom es massa llarg</string>
+    <string name="errorUserEquivocado">Usuari o constrasenya no vàlida</string>
+    <string name="errorEmail">Correu no vàlid</string>
+    <string name="errorContraseña">La contrasenya no pot ser de menys de 6 caràcters</string>
+    <string name="errorNombreEmailVacio">El nom i el correu no pot estar buit</string>
 </resources>

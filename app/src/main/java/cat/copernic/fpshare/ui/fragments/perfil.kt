@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
 import cat.copernic.fpshare.modelo.User
 import com.google.android.material.snackbar.Snackbar
@@ -52,9 +53,7 @@ class perfil : Fragment() {
     private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
         return binding.root
@@ -79,31 +78,46 @@ class perfil : Fragment() {
                  * introducidos, pero antes comprobamos que los campos como el nombre y el telefono
                  * son validos.
                  */
-                if (camposVacios(numero.text.toString(), emailEdittext.text.toString())
-                    && comprobarTelefono(numero.text.toString()) && !nombreLargo(nombreEditText.text.toString())
-                ) {
-                    bd.collection("Usuarios").document(email)
-                        .update(
-                            "email", emailEdittext.text.toString(),
-                            "nombre", nombreEditText.text.toString(),
-                            "apellidos", apellidosEditText.text.toString(),
-                            "telefono", numero.text.toString(),
-                            "instituto", insituto.text.toString(),
-                            "imgPerfil", photoSelectedUri.toString()
-                        )
-                        .addOnSuccessListener {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Se ha realizado la modificacion con exito",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                } else {
+                if (!camposVacios(nombreEditText.text.toString(), emailEdittext.text.toString())) {
                     Snackbar.make(
                         binding.fragmentPerfil,
-                        "Algún dato no es valido",
+                        getString(R.string.errorNombreEmailVacio),
                         Snackbar.LENGTH_LONG
                     ).show()
+                } else if (comprobarTelefono(numero.text.toString())) {
+                    Snackbar.make(
+                        binding.fragmentPerfil,
+                        getString(R.string.telefonoInvalido),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                } else if (!nombreLargo(nombreEditText.text.toString())) {
+                    Snackbar.make(
+                        binding.fragmentPerfil,
+                        getString(R.string.nombreInvalido),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                } else {
+
+                    bd.collection("Usuarios").document(email).update(
+                        "email",
+                        emailEdittext.text.toString(),
+                        "nombre",
+                        nombreEditText.text.toString(),
+                        "apellidos",
+                        apellidosEditText.text.toString(),
+                        "telefono",
+                        numero.text.toString(),
+                        "instituto",
+                        insituto.text.toString(),
+                        "imgPerfil",
+                        photoSelectedUri.toString()
+                    ).addOnSuccessListener {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Profile update made successfully",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
                 /***
@@ -145,54 +159,50 @@ class perfil : Fragment() {
          * Para cargar los datos en el fragment perfil, comprobamos si el usuario existe en
          * la coleccion Usuarios.
          */
-        bd.collection("Usuarios").document(email).get()
-            .addOnSuccessListener {
-                /***
-                 * Si el usuario existe, creara un objeto de clase User donde guardara toda la
-                 * informacion de nuestro usuario actual. De lo contrario, mostrara los datos
-                 * introducidos en el registro, como el nombre y el email.
-                 */
-                val user = User(
-                    it.id,
-                    it["nombre"].toString(),
-                    it["apellidos"].toString(),
-                    it["telefono"].toString(),
-                    it["instituto"].toString(),
-                    it["imgPerfil"].toString()
-                )
-                /***
-                 * Aqui insertara los datos del usuario en los camps de texto.
-                 */
-                nombreEditText.setText(user.nombre)
-                apellidosEditText.setText(user.apellidos)
-                numero.setText(user.telefono)
-                insituto.setText(user.instituto)
-                emailEdittext.setText(user.email)
-                /***
-                 * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
-                 * del usuario, puesto que nada mas puede tener un email.
-                 */
-                val localfile = File.createTempFile("tempImage", "jpg")
-                storageRef.getFile(localfile).addOnSuccessListener {
-                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                    binding.imageProfile.setImageBitmap(bitmap)
-                }.addOnFailureListener {
-                    Toast.makeText(
-                        appContext,
-                        "La carga de la imagen ha fallado.",
-                        Toast.LENGTH_LONG
-                    ).show()
+        bd.collection("Usuarios").document(email).get().addOnSuccessListener {
+            /***
+             * Si el usuario existe, creara un objeto de clase User donde guardara toda la
+             * informacion de nuestro usuario actual. De lo contrario, mostrara los datos
+             * introducidos en el registro, como el nombre y el email.
+             */
+            val user = User(
+                it.id,
+                it["nombre"].toString(),
+                it["apellidos"].toString(),
+                it["telefono"].toString(),
+                it["instituto"].toString(),
+                it["imgPerfil"].toString()
+            )
+            /***
+             * Aqui insertara los datos del usuario en los camps de texto.
+             */
+            nombreEditText.setText(user.nombre)
+            apellidosEditText.setText(user.apellidos)
+            numero.setText(user.telefono)
+            insituto.setText(user.instituto)
+            emailEdittext.setText(user.email)
+            /***
+             * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
+             * del usuario, puesto que nada mas puede tener un email.
+             */
+            val localfile = File.createTempFile("tempImage", "jpg")
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.imageProfile.setImageBitmap(bitmap)
+            }.addOnFailureListener {
+                Toast.makeText(
+                    appContext, "La carga de la imagen ha fallado.", Toast.LENGTH_LONG
+                ).show()
 
-                }
             }
+        }
     }
 
     private fun subirArchivos() {
         val appContext = context
         resultLauncher.launch(
             Intent(
-                Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             )
         )
         /***
@@ -203,20 +213,16 @@ class perfil : Fragment() {
              * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
              * parametro la URI de la imagen.
              */
-            storageRef.putFile(uri)
-                .addOnSuccessListener {
-                    Toast.makeText(
-                        appContext,
-                        "La imagen se ha subido con exito.",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+            storageRef.putFile(uri).addOnSuccessListener {
+                Toast.makeText(
+                    appContext, "La imagen se ha subido con exito.", Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
     private fun camposVacios(nombre: String, correo: String): Boolean {
-        return nombre.isNotEmpty() && nombre.isNotBlank()
-                && correo.isNotEmpty() && correo.isNotBlank()
+        return nombre.isNotEmpty() && nombre.isNotBlank() && correo.isNotEmpty() && correo.isNotBlank()
     }
 
     private fun comprobarTelefono(telefono: String): Boolean {

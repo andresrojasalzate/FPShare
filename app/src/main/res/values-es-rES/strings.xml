@@ -142,4 +142,15 @@
     <string name="titulo_alerta_borrar_foro">¿BORRAR ESTE FORO?</string>
     <string name="info_no_especificada_mostrar_info_usuario">(No especificado)</string>
     <string name="title">Título</string>
+    <string name="errorUFNoEspecificada">No has seleccionado ningún ciclo, módulo o UF</string>
+    <string name="invalidURL">URL no valida</string>
+    <string name="errorCamposVacios">Tienes que rellenar todos los campos</string>
+    <string name="errorTituloLargo">El título es demasiado largo</string>
+    <string name="errorDescripcionLarga">La descripción es demasiado larga</string>
+    <string name="telefonoInvalido">Número de teléfono no válido</string>
+    <string name="nombreInvalido">El nombre es demasiado largo</string>
+    <string name="errorUserEquivocado">Usuario o contraseña no valida</string>
+    <string name="errorEmail">Correo no valido</string>
+    <string name="errorContraseña">La contraseña no puede tener menos de 6 caracteres</string>
+    <string name="errorNombreEmailVacio">El nombre y el correo no puede estar vacío</string>
 </resources>

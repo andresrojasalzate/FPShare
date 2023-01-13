@@ -38,9 +38,7 @@ class NuevaPublicacion : Fragment() {
     private lateinit var arrayIdUf: ArrayList<String>
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
         return binding.root
@@ -76,10 +74,7 @@ class NuevaPublicacion : Fragment() {
 
         idModuloSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>, view: View, position: Int, id: Long
             ) {
                 // Un item ha sido seleccionado
                 modulo = arrayIdModulo[position]
@@ -94,10 +89,7 @@ class NuevaPublicacion : Fragment() {
 
         idUfSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>, view: View, position: Int, id: Long
             ) {
                 // Un item ha sido seleccionado
                 uf = arrayIdUf[position]
@@ -117,9 +109,8 @@ class NuevaPublicacion : Fragment() {
     private fun cargarUfs(idModulo: String) {
         val listaUfs = ArrayList<String>()
         arrayIdUf = ArrayList()
-        bd.collection("Ciclos").document(ciclo)
-            .collection("Modulos").document(idModulo).collection("UFs").get()
-            .addOnSuccessListener { documents ->
+        bd.collection("Ciclos").document(ciclo).collection("Modulos").document(idModulo)
+            .collection("UFs").get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     listaUfs.add(document["nombre"].toString())
                     arrayIdUf.add(document.id)
@@ -193,7 +184,7 @@ class NuevaPublicacion : Fragment() {
                 } catch (e: UninitializedPropertyAccessException) {
                     Snackbar.make(
                         binding.root,
-                        "No has seleccionado ningún ciclo, módulo o UF",
+                        getString(cat.copernic.fpshare.R.string.errorUFNoEspecificada),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
@@ -204,8 +195,8 @@ class NuevaPublicacion : Fragment() {
     private fun cargarModulos(idCiclo: String) {
         val listaModulos = ArrayList<String>()
         arrayIdModulo = ArrayList()
-        bd.collection("Ciclos").document(idCiclo)
-            .collection("Modulos").get().addOnSuccessListener { documents ->
+        bd.collection("Ciclos").document(idCiclo).collection("Modulos").get()
+            .addOnSuccessListener { documents ->
                 for (document in documents) {
                     arrayIdModulo.add(document.id)
                     listaModulos.add(document["nombre"].toString())
@@ -219,10 +210,7 @@ class NuevaPublicacion : Fragment() {
     }
 
     private fun anadirPublicacion(
-        checked: String,
-        idModulo: String,
-        idUf: String,
-        publi: Publicacion
+        checked: String, idModulo: String, idUf: String, publi: Publicacion
     ) {
         val appContext = context
         /***
@@ -230,53 +218,57 @@ class NuevaPublicacion : Fragment() {
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
-        if (URLUtil.isValidUrl(publi.enlace)
-            && algoVacio(
-                publi.titulo,
-                publi.descripcion,
-                publi.enlace,
-                idModuloSpinner,
-                idUfSpinner
-            )
-            && !limiteCaracteres(publi.titulo, publi.descripcion, publi.enlace)
-        ) {
-            bd.collection("Ciclos").document(checked)
-                .collection("Modulos").document(idModulo)
-                .collection("UFs").document(idUf)
-                .collection("Publicaciones").add(publi)
+        if (!URLUtil.isValidUrl(publi.enlace)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.invalidURL),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (!algoVacio(publi.titulo, publi.descripcion, publi.enlace)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorCamposVacios),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (limiteCaracteresTitulo(publi.titulo)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorTituloLargo),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (limiteCaracteresDescripcion(publi.descripcion)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorDescripcionLarga),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else {
+            bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo)
+                .collection("UFs").document(idUf).collection("Publicaciones").add(publi)
                 .addOnSuccessListener { //S'ha afegit el departament...
                     val view = binding.root
                     val action =
                         NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
                     view.findNavController().navigate(action)
-                }
-                .addOnFailureListener { //No s'ha afegit el departament...
+                }.addOnFailureListener { //No s'ha afegit el departament...
                     Toast.makeText(appContext, "Documento no añadido", Toast.LENGTH_LONG).show()
                 }
-        } else {
-            Snackbar.make(
-                binding.constraintNuevaPublicacion!!,
-                "Algún dato está vacío, es demasiado grande o la URL no es valida",
-                Snackbar.LENGTH_LONG
-            ).show()
-
         }
     }
 
     private fun algoVacio(
-        titulo: String,
-        descripcion: String,
-        enlace: String,
-        modulo: Spinner,
-        uf: Spinner
+        titulo: String, descripcion: String, enlace: String
     ): Boolean {
         return titulo.isNotEmpty() && titulo.isNotBlank()
                 && descripcion.isNotEmpty() && descripcion.isNotBlank()
                 && enlace.isNotEmpty() && enlace.isNotBlank()
-                && modulo.isNotEmpty() && uf.isNotEmpty()
     }
 
-    private fun limiteCaracteres(titulo: String, descripcion: String, enlace: String): Boolean {
-        return titulo.length >= 20 && descripcion.length >= 248 && enlace.length >= 30
+    private fun limiteCaracteresTitulo(titulo: String): Boolean {
+        return titulo.length > 20
+    }
+
+    private fun limiteCaracteresDescripcion(descripcion: String): Boolean {
+        return descripcion.length > 248
     }
 }

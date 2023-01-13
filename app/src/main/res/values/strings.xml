@@ -176,4 +176,15 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
+    <string name="errorUFNoEspecificada">You have not selected any cycle, module or uf</string>
+    <string name="invalidURL">Invalid URL</string>
+    <string name="errorCamposVacios">You have to fill in all the fields</string>
+    <string name="errorTituloLargo">The title is too long</string>
+    <string name="errorDescripcionLarga">The description is too long</string>
+    <string name="telefonoInvalido">Invalid Phone number</string>
+    <string name="nombreInvalido">The name is too long</string>
+    <string name="errorUserEquivocado">Wrong user or password</string>
+    <string name="errorEmail">Not valid email</string>
+    <string name="errorContraseña">The password can\'t be less than 6 characters</string>
+    <string name="errorNombreEmailVacio">The name and the email can\'t be empty</string>
 </resources>

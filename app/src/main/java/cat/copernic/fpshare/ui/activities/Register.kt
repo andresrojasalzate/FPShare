@@ -50,26 +50,30 @@ class Register : AppCompatActivity() {
             val password = InputPassword.text.toString()
             val mail = InputMail.text.toString()
 
-            if (campoVacio(nombre, password, mail) && limiteCaracteres(password) && !nombreLargo(
-                    nombre
-                )
-            ) {
+            if (campoVacio(nombre, password, mail)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.errorCamposVacios),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else if (nombreLargo(nombre)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.nombreInvalido),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else if (limiteCaracteres(password)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.errorContraseña),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else {
+
                 registrar(password, mail)
 
                 val usuario = User(mail, nombre)
                 anadirUsuario(usuario)
-            } else if (nombreLargo(nombre)) {
-                Snackbar.make(
-                    findViewById(R.id.registroLayout),
-                    "El nombre es demasiado largo",
-                    Snackbar.LENGTH_LONG
-                ).show()
-            } else {
-                Snackbar.make(
-                    findViewById(R.id.registroLayout),
-                    "Error, los campos están vacios o la contraseña es demasiado corta",
-                    Snackbar.LENGTH_LONG
-                ).show()
             }
         }
 
@@ -90,11 +94,11 @@ class Register : AppCompatActivity() {
     }
 
     private fun limiteCaracteres(cadena: String): Boolean {
-        return cadena.length >= 6
+        return cadena.length > 6
     }
 
     private fun nombreLargo(cadena: String): Boolean {
-        return cadena.length >= 30
+        return cadena.length > 30
     }
 
     private fun registrar(password: String, mail: String) {
@@ -112,7 +116,7 @@ class Register : AppCompatActivity() {
     private fun error() {
         Snackbar.make(
             findViewById(R.id.registroLayout),
-            "Error en el registro, comprueba la validez del email",
+            getString(R.string.errorEmail),
             BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
