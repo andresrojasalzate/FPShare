@@ -153,4 +153,21 @@
     <string name="errorEmail">Correo no valido</string>
     <string name="errorContraseña">La contraseña no puede tener menos de 6 caracteres</string>
     <string name="errorNombreEmailVacio">El nombre y el correo no puede estar vacío</string>
+    <string name="emailEnviadoRecu">Email enviado correctamente</string>
+    <string name="cicloAñadidoCorrecto">Ciclo añadido correctamente</string>
+    <string name="cicloAñadidoError">Error al añadir ciclo</string>
+    <string name="moduloExiste">El módulo ya existe</string>
+    <string name="cicloExiste">El ciclo ya existe</string>
+    <string name="moduloAñadirError">Error añadiendo módulo</string>
+    <string name="moduloAñadirCorrecto">Módulo añadido correctamente</string>
+    <string name="ufAñadirError">Error añadiendo UF</string>
+    <string name="ufExists">La UF ya existe</string>
+    <string name="ufAñadirCorrecto">UF añadida correctamente</string>
+    <string name="cicloBorradoCorrecto">Ciclo añadido correctamente</string>
+    <string name="cicloBorrarError">Error borrando el ciclo</string>
+    <string name="ufBorradoCorrecto">UF borrada correctamente</string>
+    <string name="ufBorradoError">Error borrando la UF</string>
+    <string name="moduloBorradoCorrecto">Módulo borrado correctamente</string>
+    <string name="moduloBorradoError">Error borrando el módulo</string>
+    <string name="imageLoadError">La carga de la imagen ha fallado</string>
 </resources>

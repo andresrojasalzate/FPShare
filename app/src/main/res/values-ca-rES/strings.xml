@@ -168,4 +168,21 @@
     <string name="errorEmail">Correu no vàlid</string>
     <string name="errorContraseña">La contrasenya no pot ser de menys de 6 caràcters</string>
     <string name="errorNombreEmailVacio">El nom i el correu no pot estar buit</string>
+    <string name="emailEnviadoRecu">Email enviat correctament</string>
+    <string name="cicloAñadidoCorrecto">Cicle afegit correctament</string>
+    <string name="cicloAñadidoError">Error al afegir cicle</string>
+    <string name="moduloExiste">El mòdul ja existeix</string>
+    <string name="cicloExiste">El cicle ja existeix</string>
+    <string name="moduloAñadirError">Error al afegir mòdul</string>
+    <string name="moduloAñadirCorrecto">Mòdul afegit correctament</string>
+    <string name="ufAñadirError">Error afegint UF</string>
+    <string name="ufExists">La UF ja existeix</string>
+    <string name="ufAñadirCorrecto">UF afegida correctament</string>
+    <string name="cicloBorradoCorrecto">Cicle afegit correctament</string>
+    <string name="cicloBorrarError">Error borrant cicle</string>
+    <string name="ufBorradoCorrecto">UF borrada correctament</string>
+    <string name="ufBorradoError">Error borrant UF</string>
+    <string name="moduloBorradoCorrecto">Mòdul borrat correcament</string>
+    <string name="moduloBorradoError">Error borrant mòdul</string>
+    <string name="imageLoadError">La cárrega de l\'imatge ha fallat</string>
 </resources>

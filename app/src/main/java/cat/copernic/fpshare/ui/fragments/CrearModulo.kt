@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentCrearModuloBinding
 import cat.copernic.fpshare.modelo.Modul
 import com.google.android.material.snackbar.Snackbar
@@ -90,16 +91,24 @@ class CrearModulo : Fragment() {
             bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(id)
                 .set(modulo)
                 .addOnSuccessListener {
-                    Toast.makeText(context, "Modulo añadido correctamente", Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        context,
+                        getString(R.string.moduloAñadirCorrecto),
+                        Toast.LENGTH_LONG
+                    )
                         .show()
                     modulosBack()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(context, "Error al añadir el modulo", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.moduloAñadirError),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
         } else {
             Snackbar.make(
-                binding.crearModulo, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
+                binding.crearModulo, getString(R.string.errorCamposVacios), Snackbar.LENGTH_LONG
             ).show()
         }
     }
@@ -117,7 +126,11 @@ class CrearModulo : Fragment() {
                  * y no la creará
                  */
                 if (it.exists()) {
-                    Snackbar.make(binding.crearModulo, "El modulo ya existe", Snackbar.LENGTH_LONG)
+                    Snackbar.make(
+                        binding.crearModulo,
+                        getString(R.string.moduloExiste),
+                        Snackbar.LENGTH_LONG
+                    )
                         .show()
                 } else {
                     /**

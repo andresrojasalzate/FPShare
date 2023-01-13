@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.PubliAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminPostsBinding
 import cat.copernic.fpshare.modelo.Publicacion
@@ -135,9 +136,11 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
     private fun borrarUF() {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
             .collection("UFs").document(args.idUf).delete().addOnSuccessListener {
-                Toast.makeText(context, "UF eliminado correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.ufBorradoCorrecto), Toast.LENGTH_LONG)
+                    .show()
             }.addOnFailureListener {
-                Toast.makeText(context, "Error en el borrado de la UF", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.ufBorradoError), Toast.LENGTH_LONG)
+                    .show()
             }
     }
 

@@ -187,4 +187,21 @@
     <string name="errorEmail">Not valid email</string>
     <string name="errorContraseña">The password can\'t be less than 6 characters</string>
     <string name="errorNombreEmailVacio">The name and the email can\'t be empty</string>
+    <string name="emailEnviadoRecu">Email sent correctly</string>
+    <string name="cicloAñadidoCorrecto">Cycle added correctly</string>
+    <string name="cicloAñadidoError">Error adding cycle</string>
+    <string name="moduloExiste">The module already exists</string>
+    <string name="cicloExiste">The cycle already exists</string>
+    <string name="moduloAñadirError">Error adding module</string>
+    <string name="moduloAñadirCorrecto">Module added correctly</string>
+    <string name="ufAñadirError">Error adding UF</string>
+    <string name="ufExists">The UF already exists</string>
+    <string name="ufAñadirCorrecto">UF added correctly</string>
+    <string name="cicloBorradoCorrecto">Cycle deleted correctly</string>
+    <string name="cicloBorrarError">Error deleting the cycle</string>
+    <string name="ufBorradoCorrecto">UF deleted correctly</string>
+    <string name="ufBorradoError">Error deleting the UF</string>
+    <string name="moduloBorradoCorrecto">Module deleted correctly</string>
+    <string name="moduloBorradoError">Error deleting the module</string>
+    <string name="imageLoadError">Image load has failed</string>
 </resources>
