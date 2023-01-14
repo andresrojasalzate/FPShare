@@ -204,7 +204,7 @@ class NuevaPublicacion : Fragment() {
 
                 val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item)
                 adapter.addAll(listaModulos)
-                idModulo.adapter = adapter
+                idModuloSpinner.adapter = adapter
 
             }
     }
@@ -218,27 +218,6 @@ class NuevaPublicacion : Fragment() {
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
-         if(URLUtil.isValidUrl(publi.enlace)){
-             bd.collection("Ciclos").document(checked)
-                 .collection("Modulos").document(idModulo)
-                 .collection("UFs").document(idUf)
-                 .collection("Publicaciones").add(publi)
-                 .addOnSuccessListener { //S'ha afegit el departament...
-                     val view = binding.root
-                     val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
-                     view.findNavController().navigate(action)
-                 }
-                 .addOnFailureListener{ //No s'ha afegit el departament...
-                     Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()
-                 }
-         }else{
-             Snackbar.make(
-                 binding.constraintNuevaPublicacion!!, "Introduce un enlace valido.", Snackbar.LENGTH_LONG
-             ).show()
-
-         }
-
-
         if (!URLUtil.isValidUrl(publi.enlace)) {
             Snackbar.make(
                 binding.constraintNuevaPublicacion,

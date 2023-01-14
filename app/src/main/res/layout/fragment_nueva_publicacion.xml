@@ -30,6 +30,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_title_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="65dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/title_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +49,8 @@
             <TextView
                 android:id="@+id/textView_description_new_post"
                 style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/description_new_post"
                 app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
@@ -55,6 +59,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_description_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_height="@dimen/size_80"
                 android:layout_marginTop="@dimen/size_8"
                 android:hint="@string/description_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +77,8 @@
             <TextView
                 android:id="@+id/textView_link_new_post"
                 style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/link_new_post"
                 app:layout_constraintStart_toStartOf="@+id/input_description_new_post"
@@ -80,6 +87,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_link_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_height="65dp"
                 android:layout_marginTop="@dimen/size_8"
                 android:hint="@string/link_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,6 +149,8 @@
             <Spinner
                 android:id="@+id/spinner_modules_new_post"
                 style="@style/Widget.FpShare.Spinner"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_70"
                 android:layout_marginTop="@dimen/size_16"
                 android:contentDescription="@string/content_description_spinner_modules_new_post"
                 android:spinnerMode="dropdown"
@@ -152,6 +162,8 @@
             <Spinner
                 android:id="@+id/spinner_ufs_new_post"
                 style="@style/Widget.FpShare.Spinner"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_70"
                 android:layout_marginTop="@dimen/size_16"
                 android:contentDescription="@string/content_description_spinner_ufs_new_post"
                 android:spinnerMode="dropdown"
