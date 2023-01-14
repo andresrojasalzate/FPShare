@@ -142,4 +142,9 @@
     <string name="titulo_alerta_borrar_foro">¿BORRAR ESTE FORO?</string>
     <string name="info_no_especificada_mostrar_info_usuario">(No especificado)</string>
     <string name="title">Título</string>
+    <string name="respuestas">Respuestas</string>
+    <string name="your_forums">Tus foros</string>
+    <string name="nuevo_titulo_foro">Escribe el nuevo título</string>
+    <string name="nueva_descripcion">Escribe la nueva descripción</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

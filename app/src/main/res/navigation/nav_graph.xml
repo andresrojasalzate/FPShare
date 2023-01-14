@@ -389,4 +389,16 @@
             android:name="idUF"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/tusForos"
+        android:name="cat.copernic.fpshare.listaForosDeUnUsuario"
+        android:label="fragment_lista_foros_de_un_usuario"
+        tools:layout="@layout/fragment_lista_foros_de_un_usuario" >
+        <action
+            android:id="@+id/action_tusForos_to_FPHilo"
+            app:destination="@id/FPHilo" />
+        <action
+            android:id="@+id/action_tusForos_to_creacionForo"
+            app:destination="@id/creacionForo" />
+    </fragment>
 </navigation>

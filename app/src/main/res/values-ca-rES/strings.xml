@@ -157,4 +157,9 @@
     <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
     <string name="info_no_especificada_mostrar_info_usuario">No especificat</string>
     <string name="title">Títol</string>
+    <string name="respuestas">Respostes</string>
+    <string name="your_forums">Els teus fòrums</string>
+    <string name="nuevo_titulo_foro">Escriu el nou títol</string>
+    <string name="nueva_descripcion">Escriu la nova descripció</string>
+    <string name="cancelar">Cancel·la</string>
 </resources>

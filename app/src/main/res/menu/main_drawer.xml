@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_menu_admin"
             android:title="@string/administration" />
         <item
+            android:id="@+id/tusForos"
+            android:icon="@drawable/ic_menu_admin"
+            android:title="@string/your_forums" />
+        <item
             android:id="@+id/recordatorio"
             android:icon="@drawable/reloj"
             android:title="@string/menu_recordatorio" />

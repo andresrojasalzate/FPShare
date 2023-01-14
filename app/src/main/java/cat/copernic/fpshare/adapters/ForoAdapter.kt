@@ -24,7 +24,7 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
             val position: Int = adapterPosition
             val foroID = foros.get(position).id
             if(position != RecyclerView.NO_POSITION)  {
-                listener.onItemClick(foroID.toString())
+                 listener.onItemClick(foroID.toString())
             }
         }
     }
@@ -38,7 +38,7 @@ class ForoAdapter (private val foros: List<Foro>, private val listener: ForoAdap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
         with(holder){
-            ViewB.autor.text = foro.emailautor
+            ViewB.autor.text = foro.nombreApellido
             ViewB.titulo.text = foro.titulo
 
         }

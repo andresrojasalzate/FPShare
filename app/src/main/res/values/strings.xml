@@ -176,4 +176,10 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
+    <string name="respuestas">Answers</string>
+    <string name="your_forums">Your Forums</string>
+    <string name="nuevo_titulo_foro">Type the new title</string>
+    <string name="nueva_descripcion">Type the new description</string>
+    <string name="cancelar">Cancel</string>
+
 </resources>

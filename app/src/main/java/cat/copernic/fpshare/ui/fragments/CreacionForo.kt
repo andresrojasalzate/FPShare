@@ -1,6 +1,7 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
 import cat.copernic.fpshare.modelo.Foro
 import cat.copernic.fpshare.modelo.Mensaje
+import cat.copernic.fpshare.modelo.Utils
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -27,6 +29,7 @@ class CreacionForo : Fragment() {
     private lateinit var titulo: EditText
     private lateinit var descripcion: EditText
     private lateinit var boton: Button
+    private lateinit var utils: Utils
     private var bd = FirebaseFirestore.getInstance()
     private var user = Firebase.auth.currentUser
 
@@ -47,6 +50,8 @@ class CreacionForo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializar()
+        titulo.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(utils.maxlengthTitulo))
+        descripcion.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(utils.maxlengthDescripcion))
         boton.setOnClickListener {
 
             if (titulo.text.isNotEmpty() || descripcion.text.isNotEmpty()) {
@@ -69,6 +74,8 @@ class CreacionForo : Fragment() {
         titulo = binding.txtThreadInput
         descripcion = binding.txtDescriptionInput
         boton = binding.btnSave
+        utils = Utils()
+
     }
 
     private fun crearForo() {
@@ -76,7 +83,6 @@ class CreacionForo : Fragment() {
         bd.collection("Foros").get()
             .addOnSuccessListener { documents ->
                 val foros = ArrayList<Foro>()
-                val mensajes = ArrayList<Mensaje>()
                 for (document in documents) {
                     val wallitem = document.toObject(Foro::class.java)
 
@@ -84,7 +90,6 @@ class CreacionForo : Fragment() {
                     wallitem.titulo = document["titulo"].toString()
                     wallitem.descripcion = document["descripcion"].toString()
                     wallitem.emailautor = document["emailautor"].toString()
-                    wallitem.mensajes = mensajes
                     foros.add(wallitem)
 
                 }
@@ -96,15 +101,20 @@ class CreacionForo : Fragment() {
                     idint += 1
                     idtxt = idint.toString()
                 } else {
-
                     idint = 1
                     idtxt = "1"
                 }
-                val foro = Foro(idint, titulo.text.toString(), descripcion.text.toString(), email, mensajes)
-                val mensajeInicial = Mensaje("shtht", "mensaje de prueba")
-                bd.collection("Foros").document(idtxt).set(foro)
-                bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
-                cambiarPantalla(idtxt)
+
+                bd.collection("Usuarios").document(user?.email.toString()).get().addOnSuccessListener { it ->
+                    val usuario = it["nombre"].toString() + " " + it["apellidos"]
+
+                    val foro = Foro(idint, titulo.text.toString(), descripcion.text.toString(), email, usuario)
+                    val mensajeInicial = Mensaje("shtht", "mensaje de prueba", "fff")
+                    bd.collection("Foros").document(idtxt).set(foro)
+                    bd.collection("Foros").document(idtxt).collection("Mensajes").add(mensajeInicial)
+                    cambiarPantalla(idtxt)
+                }
+
 
                 }
             }
