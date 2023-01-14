@@ -191,4 +191,6 @@
     <string name="moduloBorradoError">Error borrant mòdul</string>
     <string name="imageLoadError">La cárrega de l\'imatge ha fallat</string>
     <string name="perfilUpdateCorrecto">Perfil actualitzat correctament</string>
+    <string name="uploadResult">Imatge actualitzada correctament</string>
+    <string name="myPosts">Publicacions meves</string>
 </resources>

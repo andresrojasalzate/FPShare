@@ -171,4 +171,6 @@
     <string name="moduloBorradoError">Error borrando el módulo</string>
     <string name="imageLoadError">La carga de la imagen ha fallado</string>
     <string name="perfilUpdateCorrecto">Perfil actualizado correctamente</string>
+    <string name="myPosts">Mis publicaciones</string>
+    <string name="uploadResult">Imagen actualizada correctamente</string>
 </resources>
