@@ -389,4 +389,13 @@
             android:name="idUF"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentPublicacionesPropias"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentPublicacionesPropias"
+        android:label="fragment_publicaciones_propias"
+        tools:layout="@layout/fragment_publicaciones_propias" >
+        <action
+            android:id="@+id/action_fragmentPublicacionesPropias_to_fragmentAdminModPost"
+            app:destination="@id/fragmentAdminModPost" />
+    </fragment>
 </navigation>

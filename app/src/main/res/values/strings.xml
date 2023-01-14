@@ -161,7 +161,7 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
-    
+
     <!-- Menu lateral -->
     <string name="nav_header_desc">Navigation Header</string>
     <string name="nombre_usuario">Nombre email</string>
@@ -209,4 +209,7 @@
     <string name="moduloBorradoError">Error deleting the module</string>
     <string name="imageLoadError">Image load has failed</string>
     <string name="perfilUpdateCorrecto">Profile update made successfully</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="postsOwn">Posts</string>
 </resources>
