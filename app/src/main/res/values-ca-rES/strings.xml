@@ -20,11 +20,13 @@
     <string name="sign_in_login">Loguejar</string>
     <string name="register_login">Registrarse</string>
     <string name="forgot_your_password_login">Has olvidat la teva Contrasenya?</string>
-    <string name="sing_in_login">Iniciar Sessió</string>
+    <string name="sing_in_login">Registrarse</string>
     <string name="title_activity_recovery_password">Recuperar Contrasenya</string>
+    <string name="email_recoverypassword">Email</string>
     <string name="recovery_password">Recuperar Contrasenya</string>
     <string name="name_profile">Nom</string>
     <string name="last_names_profile">Cognoms</string>
+    <string name="email_profile">Email</string>
     <string name="app_logo">Logo de la App</string>
     <string name="telephone_number_profile">Número de Telèfon</string>
     <string name="institute_profile">Institut</string>
@@ -36,6 +38,8 @@
     <string name="description_new_post">Descripció</string>
     <string name="link_new_post">Enllaç</string>
     <string name="tags_new_post">Etiquetes</string>
+    <string name="dam_new_post" translatable="false">DAM</string>
+    <string name="daw_new_post" translatable="false">DAW</string>
     <string name="asix_new_post">ASIX</string>
     <string name="smix__new_post">SMIX</string>
     <string name="publish_new_post">Publicar</string>
@@ -44,11 +48,12 @@
     <string name="next">Seguent</string>
     <string name="previous">Anterior</string>
     <string name="emailHint">La teva direcció Email</string>
+    <string name="txtMail" translatable="false">Email</string>
     <string name="txtPass">Contrasenya</string>
     <string name="txtName">Nom d\'usuari</string>
     <string name="txtLogin">Loguejar</string>
     <string name="txtProfile">Carlos Trujillo</string>
-    <string name="txtSign">Inicia Sessió</string>
+    <string name="txtSign">Registrarse</string>
     <string name="publicDescrip">Diseny de base de dades impartit en el Nicolau Copernic. Nota Final: 8,75</string>
     <string name="textBtnSave">Guardar Canvis</string>
     <string name="textTitle">Resum UF1 BBDD</string>
