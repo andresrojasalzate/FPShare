@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.UfAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminUFsBinding
 import cat.copernic.fpshare.modelo.Uf
@@ -139,9 +140,14 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     private fun borrarModulo() {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
             .delete().addOnSuccessListener {
-                Toast.makeText(context, "Modulo eliminado correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    getString(R.string.moduloBorradoCorrecto),
+                    Toast.LENGTH_LONG
+                ).show()
             }.addOnFailureListener {
-                Toast.makeText(context, "Error en el borrado del modulo", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.moduloBorradoError), Toast.LENGTH_LONG)
+                    .show()
             }
     }
 

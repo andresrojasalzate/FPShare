@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.*
+import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
@@ -28,18 +29,16 @@ class NuevaPublicacion : Fragment() {
     private lateinit var enlace: TextInputEditText
     private var user = Firebase.auth.currentUser
     private lateinit var botonPublicar: Button
-    private lateinit var idModulo: Spinner
-    private lateinit var idUf: Spinner
+    private lateinit var idModuloSpinner: Spinner
+    private lateinit var idUfSpinner: Spinner
     private lateinit var ciclo: String
     private lateinit var modulo: String
-    private lateinit var  uf: String
+    private lateinit var uf: String
     private lateinit var arrayIdModulo: ArrayList<String>
     private lateinit var arrayIdUf: ArrayList<String>
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
         return binding.root
@@ -50,8 +49,8 @@ class NuevaPublicacion : Fragment() {
         titulo = binding.textPost
         descripcion = binding.textDescription
         enlace = binding.textLink
-        idModulo = binding.spinnerModulesNewPost
-        idUf = binding.spinnerUfsNewPost
+        idModuloSpinner = binding.spinnerModulesNewPost
+        idUfSpinner = binding.spinnerUfsNewPost
 
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
@@ -73,8 +72,10 @@ class NuevaPublicacion : Fragment() {
             }
         }
 
-        idModulo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        idModuloSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View, position: Int, id: Long
+            ) {
                 // Un item ha sido seleccionado
                 modulo = arrayIdModulo[position]
                 // Hacer algo con el item seleccionado
@@ -86,8 +87,10 @@ class NuevaPublicacion : Fragment() {
             }
         }
 
-        idUf.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        idUfSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View, position: Int, id: Long
+            ) {
                 // Un item ha sido seleccionado
                 uf = arrayIdUf[position]
                 // Hacer algo con el item seleccionado
@@ -98,25 +101,24 @@ class NuevaPublicacion : Fragment() {
                 // No se ha seleccionado ningún item
             }
         }
-
         botonPublicar.setOnClickListener {
             llegirDades()
         }
     }
 
     private fun cargarUfs(idModulo: String) {
-        val listaUfs =  ArrayList<String>()
+        val listaUfs = ArrayList<String>()
         arrayIdUf = ArrayList()
-        bd.collection("Ciclos").document(ciclo)
-            .collection("Modulos").document(idModulo).collection("UFs").get().addOnSuccessListener { documents ->
-                for (document in documents){
+        bd.collection("Ciclos").document(ciclo).collection("Modulos").document(idModulo)
+            .collection("UFs").get().addOnSuccessListener { documents ->
+                for (document in documents) {
                     listaUfs.add(document["nombre"].toString())
                     arrayIdUf.add(document.id)
                 }
 
                 val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item)
                 adapter.addAll(listaUfs)
-                idUf.adapter = adapter
+                idUfSpinner.adapter = adapter
 
             }
     }
@@ -177,54 +179,96 @@ class NuevaPublicacion : Fragment() {
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
              */
             if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                anadirPublicacion(ciclo, modulo, uf, publi)
+                try {
+                    anadirPublicacion(ciclo, modulo, uf, publi)
+                } catch (e: UninitializedPropertyAccessException) {
+                    Snackbar.make(
+                        binding.root,
+                        getString(cat.copernic.fpshare.R.string.errorUFNoEspecificada),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
             }
         }
-
     }
 
-    private fun cargarModulos(idCiclo: String){
-        val listaModulos =  ArrayList<String>()
+    private fun cargarModulos(idCiclo: String) {
+        val listaModulos = ArrayList<String>()
         arrayIdModulo = ArrayList()
-        bd.collection("Ciclos").document(idCiclo)
-            .collection("Modulos").get().addOnSuccessListener { documents ->
-            for (document in documents){
-                arrayIdModulo.add(document.id)
-                listaModulos.add(document["nombre"].toString())
-            }
+        bd.collection("Ciclos").document(idCiclo).collection("Modulos").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    arrayIdModulo.add(document.id)
+                    listaModulos.add(document["nombre"].toString())
+                }
 
                 val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item)
                 adapter.addAll(listaModulos)
-                idModulo.adapter = adapter
+                idModuloSpinner.adapter = adapter
 
             }
     }
 
-    private fun anadirPublicacion(checked: String, idModulo: String, idUf: String, publi: Publicacion) {
+    private fun anadirPublicacion(
+        checked: String, idModulo: String, idUf: String, publi: Publicacion
+    ) {
         val appContext = context
         /***
          * En añadir publicacion se define la ruta donde se guardara la publicacion.
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
-         if(URLUtil.isValidUrl(publi.enlace)){
-             bd.collection("Ciclos").document(checked)
-                 .collection("Modulos").document(idModulo)
-                 .collection("UFs").document(idUf)
-                 .collection("Publicaciones").add(publi)
-                 .addOnSuccessListener { //S'ha afegit el departament...
-                     val view = binding.root
-                     val action = NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
-                     view.findNavController().navigate(action)
-                 }
-                 .addOnFailureListener{ //No s'ha afegit el departament...
-                     Toast.makeText(appContext,"Documento no añadido", Toast.LENGTH_LONG).show()
-                 }
-         }else{
-             Snackbar.make(
-                 binding.constraintNuevaPublicacion!!, "Introduce un enlace valido.", Snackbar.LENGTH_LONG
-             ).show()
+        if (!URLUtil.isValidUrl(publi.enlace)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.invalidURL),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (!algoVacio(publi.titulo, publi.descripcion, publi.enlace)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorCamposVacios),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (limiteCaracteresTitulo(publi.titulo)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorTituloLargo),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else if (limiteCaracteresDescripcion(publi.descripcion)) {
+            Snackbar.make(
+                binding.constraintNuevaPublicacion,
+                getString(cat.copernic.fpshare.R.string.errorDescripcionLarga),
+                Snackbar.LENGTH_LONG
+            ).show()
+        } else {
+            bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo)
+                .collection("UFs").document(idUf).collection("Publicaciones").add(publi)
+                .addOnSuccessListener { //S'ha afegit el departament...
+                    val view = binding.root
+                    val action =
+                        NuevaPublicacionDirections.actionNuevaPublicacionToPantallaPrincipal()
+                    view.findNavController().navigate(action)
+                }.addOnFailureListener { //No s'ha afegit el departament...
+                    Toast.makeText(appContext, "Documento no añadido", Toast.LENGTH_LONG).show()
+                }
+        }
+    }
 
-         }
+    private fun algoVacio(
+        titulo: String, descripcion: String, enlace: String
+    ): Boolean {
+        return titulo.isNotEmpty() && titulo.isNotBlank()
+                && descripcion.isNotEmpty() && descripcion.isNotBlank()
+                && enlace.isNotEmpty() && enlace.isNotBlank()
+    }
+
+    private fun limiteCaracteresTitulo(titulo: String): Boolean {
+        return titulo.length > 20
+    }
+
+    private fun limiteCaracteresDescripcion(descripcion: String): Boolean {
+        return descripcion.length > 248
     }
 }

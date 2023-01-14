@@ -68,14 +68,14 @@ class RecoveryPassword : AppCompatActivity() {
     private fun error() {
         Snackbar.make(
             findViewById(R.id.passwordLayout),
-            "Wrong email", BaseTransientBottomBar.LENGTH_SHORT
+            getString(R.string.errorEmail), BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
 
     private fun success() {
         Snackbar.make(
             findViewById(R.id.passwordLayout),
-            "Email sent correctly", BaseTransientBottomBar.LENGTH_SHORT
+            getString(R.string.emailEnviadoRecu), BaseTransientBottomBar.LENGTH_SHORT
         ).show()
         startActivity(Intent(this, Login::class.java))
         finish()

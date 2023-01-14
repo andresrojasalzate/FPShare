@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
@@ -34,10 +35,6 @@ class Login : AppCompatActivity() {
     private lateinit var binding: LoginBinding
 
     private var splashScreenMS: Long = 1000
-
-    companion object {
-        val IDCanal = "FPShare"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(splashScreenMS)
@@ -105,7 +102,7 @@ class Login : AppCompatActivity() {
     private fun error() {
         Snackbar.make(
             findViewById(R.id.loginLayout),
-            "Wrong user or password", BaseTransientBottomBar.LENGTH_SHORT
+            getString(R.string.errorUserEquivocado), BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
 
@@ -135,6 +132,8 @@ class Login : AppCompatActivity() {
         }
 
     }
+
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun setAlarm() {
         val alarmIntent = Intent(this, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,

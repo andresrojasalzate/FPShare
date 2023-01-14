@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
+import cat.copernic.fpshare.databinding.ItemMenuBinding
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Modul
 
@@ -16,6 +17,7 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
     inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
         var viewB = ItemTagBinding.bind(view)
+        //var viewB = ItemMenuBinding.bind(view)
 
         init {
             view.setOnClickListener(this)

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentCrearCicloBinding
 import cat.copernic.fpshare.modelo.Cicle
 import com.google.android.material.snackbar.Snackbar
@@ -78,7 +79,11 @@ class CrearCiclo : Fragment() {
              * Si el ciclo existe se avisa al usuario de que ya existe y no la creará
              */
             if (it.exists()) {
-                Snackbar.make(binding.crearCiclo, "El ciclo ya existe", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.crearCiclo,
+                    getString(R.string.cicloExiste),
+                    Snackbar.LENGTH_LONG
+                ).show()
             } else {
                 /**
                  * Si el ciclo no existe lo crea
@@ -94,15 +99,23 @@ class CrearCiclo : Fragment() {
 
             bd.collection("Ciclos").document(id).set(ciclo)
                 .addOnSuccessListener {
-                    Toast.makeText(context, "Ciclo añadido correctamente", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.cicloAñadidoCorrecto),
+                        Toast.LENGTH_LONG
+                    ).show()
                     ciclosBack()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(context, "Error al añadir el ciclo", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.cicloAñadidoError),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
         } else {
             Snackbar.make(
-                binding.crearCiclo, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
+                binding.crearCiclo, getString(R.string.errorCamposVacios), Snackbar.LENGTH_LONG
             ).show()
         }
     }

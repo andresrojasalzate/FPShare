@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentCrearUBinding
 import cat.copernic.fpshare.modelo.Uf
 import com.google.android.material.snackbar.Snackbar
@@ -94,16 +95,17 @@ class CrearUF : Fragment() {
                 .collection("Modulos").document(args.idModulo)
                 .collection("UFs").document(id).set(uf)
                 .addOnSuccessListener {
-                    Toast.makeText(context, "Modulo añadido correctamente", Toast.LENGTH_LONG)
+                    Toast.makeText(context, getString(R.string.ufAñadirCorrecto), Toast.LENGTH_LONG)
                         .show()
                     ufBack()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(context, "Error al añadir el modulo", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, getString(R.string.ufAñadirError), Toast.LENGTH_LONG)
+                        .show()
                 }
         } else {
             Snackbar.make(
-                binding.crearUF, "Los campos no pueden estar vacíos", Snackbar.LENGTH_LONG
+                binding.crearUF, getString(R.string.errorCamposVacios), Snackbar.LENGTH_LONG
             ).show()
         }
     }
@@ -121,7 +123,11 @@ class CrearUF : Fragment() {
                  * y no la creará
                  */
                 if (it.exists()) {
-                    Snackbar.make(binding.crearUF, "El modulo ya existe", Snackbar.LENGTH_LONG)
+                    Snackbar.make(
+                        binding.crearUF,
+                        getString(R.string.ufExists),
+                        Snackbar.LENGTH_LONG
+                    )
                         .show()
                 } else {
                     /**

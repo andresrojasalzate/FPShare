@@ -12,18 +12,10 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_pantalla_principal">
         <action
-            android:id="@+id/action_pantalla_principal_to_vista_previa_publicacion"
-            app:destination="@id/vista_previa_publicacion" />
-        <action
             android:id="@+id/action_pantalla_principal_to_login"
             app:destination="@id/login" />
     </fragment>
 
-    <fragment
-        android:id="@+id/vista_previa_publicacion"
-        android:name="cat.copernic.fpshare.ui.fragments.vista_previa_publicacion"
-        android:label="@string/post"
-        tools:layout="@layout/fragment_vista_previa_publicacion" />
     <fragment
         android:id="@+id/listaForos"
         android:name="cat.copernic.fpshare.ui.fragments.ListaForos"
@@ -80,15 +72,6 @@
         android:name="cat.copernic.fpshare.ui.fragments.perfil"
         android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_perfil" />
-    <fragment
-        android:id="@+id/fp_ajustes"
-        android:name="cat.copernic.fpshare.ui.fragments.FPAjustes"
-        android:label="@string/menu_ajustes"
-        tools:layout="@layout/fragment_fp_ajustes">
-        <action
-            android:id="@+id/action_fp_ajustes_to_pantalla_principal"
-            app:destination="@id/pantalla_principal" />
-    </fragment>
     <fragment
         android:id="@+id/menuModulo"
         android:name="cat.copernic.fpshare.ui.fragments.MenuModulo"
@@ -388,6 +371,15 @@
         <argument
             android:name="idUF"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPublicacionesPropias"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentPublicacionesPropias"
+        android:label="@string/myPosts"
+        tools:layout="@layout/fragment_publicaciones_propias" >
+        <action
+            android:id="@+id/action_fragmentPublicacionesPropias_to_fragmentAdminModPost"
+            app:destination="@id/fragmentAdminModPost" />
     </fragment>
     <fragment
         android:id="@+id/tusForos"

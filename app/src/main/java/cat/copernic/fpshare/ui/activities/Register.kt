@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
@@ -23,6 +24,7 @@ class Register : AppCompatActivity() {
     private lateinit var InputMail: EditText
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegistroBinding
+    private lateinit var volverIniciarSesion: TextView
     private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,36 +39,69 @@ class Register : AppCompatActivity() {
         InputPassword = findViewById(R.id.InputPassword)
         InputMail = findViewById(R.id.InputMail)
         btnRegistrarse = findViewById(R.id.btnRegistrarse)
+        volverIniciarSesion = findViewById(R.id.txtSign)
 
 
         //Inicializacion Firebase
         auth = Firebase.auth
 
-        btnRegistrarse.setOnClickListener() {
+        btnRegistrarse.setOnClickListener {
             val nombre = InputNombre.text.toString()
             val password = InputPassword.text.toString()
             val mail = InputMail.text.toString()
 
             if (campoVacio(nombre, password, mail)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.errorCamposVacios),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else if (nombreLargo(nombre)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.nombreInvalido),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else if (limiteCaracteres(password)) {
+                Snackbar.make(
+                    findViewById(R.id.registroLayout),
+                    getString(R.string.errorContraseña),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else {
+
                 registrar(password, mail)
 
                 val usuario = User(mail, nombre)
                 anadirUsuario(usuario)
             }
         }
+
+        volverIniciarSesion.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
+            finish()
+        }
     }
 
-    fun  anadirUsuario(usuario : User) {
+    private fun anadirUsuario(usuario: User) {
 
         bd.collection("Usuarios").document(usuario.email).set(usuario)
     }
 
-    fun campoVacio(nombre: String, password: String, mail: String): Boolean {
+    private fun campoVacio(nombre: String, password: String, mail: String): Boolean {
         return nombre.isNotEmpty() && password.isNotEmpty() && mail.isNotEmpty()
                 && nombre.isNotBlank() && password.isNotBlank() && mail.isNotBlank()
     }
 
-    fun registrar(password: String, mail: String) {
+    private fun limiteCaracteres(cadena: String): Boolean {
+        return cadena.length > 6
+    }
+
+    private fun nombreLargo(cadena: String): Boolean {
+        return cadena.length > 30
+    }
+
+    private fun registrar(password: String, mail: String) {
         auth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -78,10 +113,10 @@ class Register : AppCompatActivity() {
             }
     }
 
-    fun error() {
+    private fun error() {
         Snackbar.make(
             findViewById(R.id.registroLayout),
-            "Register failed",
+            getString(R.string.errorEmail),
             BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }

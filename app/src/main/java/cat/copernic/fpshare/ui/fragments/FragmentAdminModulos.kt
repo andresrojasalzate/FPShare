@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentAdminModulosBinding
 import cat.copernic.fpshare.modelo.Modul
@@ -135,7 +136,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
                 view?.let { it1 ->
                     Snackbar.make(
                         it1,
-                        "Ciclo borrado correctamente",
+                        getString(R.string.cicloBorradoCorrecto),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
@@ -144,7 +145,7 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
                 view?.let { it1 ->
                     Snackbar.make(
                         it1,
-                        "Error al borrar el ciclo",
+                        getString(R.string.cicloBorrarError),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }

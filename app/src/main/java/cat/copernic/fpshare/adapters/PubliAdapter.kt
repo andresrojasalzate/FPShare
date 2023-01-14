@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.provider.Contacts
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,13 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.io.File
 import java.util.*
+import androidx.lifecycle.lifecycleScope
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>(), Filterable {
@@ -52,19 +56,33 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
 
+
+
             /***
              * Carga de la ruta del enlace a la imagen de la publicacion
              */
-            val storageRef = storage.reference.child("Imagenes/" + publicacion.imgPubli)
 
             /***
              * Colocamos la imagen en el ImageView del Item Publi.
              */
-            val localfile = File.createTempFile("tempImage", "jpg")
+
+                val storageRef = storage.reference.child("Imagenes/" + publicacion.imgPubli)
+                val localfile = File.createTempFile("tempImage", "jpg")
+                storageRef.getFile(localfile).addOnSuccessListener {
+                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    viewB.imgIcon.setImageBitmap(bitmap)
+                }
+
+
+
+            /*
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 viewB.imgIcon.setImageBitmap(bitmap)
-            }
+            }*/
+
+
+
             /***
              * Inicializacion del enlace
              */
@@ -103,7 +121,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                      */
                     publicaciones
                         .filter {
-                            (it.titulo.contains(constraint!!))
+                            (it.titulo.toLowerCase().contains(constraint!!.toString().toLowerCase()))
                         }
                         /***
                          * Todos los resultados que contienen la query en el titulo de la publicacion seran añadidos en la lista para, despues, pasarlos a
@@ -133,4 +151,5 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 notifyDataSetChanged()
             }
         }
-    }}
+    }
+}

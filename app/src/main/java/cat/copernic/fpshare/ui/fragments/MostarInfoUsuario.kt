@@ -109,7 +109,8 @@ class MostarInfoUsuario : Fragment() {
                 binding.imageProfile.setImageBitmap(bitmap)
 
             }.addOnFailureListener{
-                Toast.makeText(context,"La carga de la imagen ha fallado.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.imageLoadError), Toast.LENGTH_LONG)
+                    .show()
 
             }
         }

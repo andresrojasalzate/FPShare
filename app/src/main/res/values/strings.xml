@@ -91,21 +91,6 @@
     <string name="logoDescription" translatable="false">Logo FPshare</string>
     <string name="HintName">Your Username..</string>
     <string name="hintLoginPassword">Your password..</string>
-
-    <!-- Menu lateral -->
-    <string name="nav_header_desc">Navigation Header</string>
-    <string name="nombre_usuario">Nombre email</string>
-    <string name="correo_usuario">User email</string>
-    <string name="menu_perfil">Profile</string>
-    <string name="menu_publicaciones">Posts</string>
-    <string name="menu_ajustes">Settings</string>
-    <string name="menu_logout">Log out</string>
-
-    <!-- Menu inferior -->
-    <string name="bottom_home">home</string>
-    <string name="bottom_search">search</string>
-    <string name="bottom_forum">forum</string>
-    <string name="bottom_new_post">new post</string>
     <string name="rename_tag">Rename Tag</string>
     <string name="new_tag">New Tag</string>
     <string name="administration">Administration</string>
@@ -176,6 +161,56 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
+
+    <!-- Menu lateral -->
+    <string name="nav_header_desc">Navigation Header</string>
+    <string name="nombre_usuario">Nombre email</string>
+    <string name="correo_usuario">User email</string>
+    <string name="menu_perfil">Profile</string>
+    <string name="menu_publicaciones">Posts</string>
+    <string name="menu_ajustes">Settings</string>
+    <string name="menu_logout">Log out</string>
+
+    <!-- Menu inferior -->
+    <string name="bottom_home">home</string>
+    <string name="bottom_search">search</string>
+    <string name="bottom_forum">forum</string>
+    <string name="bottom_new_post">new post</string>
+
+
+    <!-- Control de errores -->
+
+    <string name="errorUFNoEspecificada">You have not selected any cycle, module or uf</string>
+    <string name="invalidURL">Invalid URL</string>
+    <string name="errorCamposVacios">You have to fill in all the fields</string>
+    <string name="errorTituloLargo">The title is too long</string>
+    <string name="errorDescripcionLarga">The description is too long</string>
+    <string name="telefonoInvalido">Invalid Phone number</string>
+    <string name="nombreInvalido">The name is too long</string>
+    <string name="errorUserEquivocado">Wrong user or password</string>
+    <string name="errorEmail">Not valid email</string>
+    <string name="errorContraseña">The password can\'t be less than 6 characters</string>
+    <string name="errorNombreEmailVacio">The name and the email can\'t be empty</string>
+    <string name="emailEnviadoRecu">Email sent correctly</string>
+    <string name="cicloAñadidoCorrecto">Cycle added correctly</string>
+    <string name="cicloAñadidoError">Error adding cycle</string>
+    <string name="moduloExiste">The module already exists</string>
+    <string name="cicloExiste">The cycle already exists</string>
+    <string name="moduloAñadirError">Error adding module</string>
+    <string name="moduloAñadirCorrecto">Module added correctly</string>
+    <string name="ufAñadirError">Error adding UF</string>
+    <string name="ufExists">The UF already exists</string>
+    <string name="ufAñadirCorrecto">UF added correctly</string>
+    <string name="cicloBorradoCorrecto">Cycle deleted correctly</string>
+    <string name="cicloBorrarError">Error deleting the cycle</string>
+    <string name="ufBorradoCorrecto">UF deleted correctly</string>
+    <string name="ufBorradoError">Error deleting the UF</string>
+    <string name="moduloBorradoCorrecto">Module deleted correctly</string>
+    <string name="moduloBorradoError">Error deleting the module</string>
+    <string name="imageLoadError">Image load has failed</string>
+    <string name="perfilUpdateCorrecto">Profile update made successfully</string>
+    <string name="uploadResult">Image uploaded successfully.</string>
+    <string name="myPosts">My Posts</string>
     <string name="respuestas">Answers</string>
     <string name="your_forums">Your Forums</string>
     <string name="nuevo_titulo_foro">Type the new title</string>
