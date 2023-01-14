@@ -1,20 +1,27 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_PICK
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentPerfilBinding
 import cat.copernic.fpshare.modelo.User
@@ -23,6 +30,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.io.File
 
 
@@ -40,15 +51,19 @@ class perfil : Fragment() {
     private var user = Firebase.auth.currentUser
     private var storageRef = storage.reference.child("Imagenes/" + user?.email.toString())
     private lateinit var imagen: ImageView
+    private lateinit var progressBar: ProgressBar
+    private var REQUEST_CODE = 123
+    private lateinit var appContext: Context
 
     private var photoSelectedUri: Uri? = null
 
-    private val resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) {
-                photoSelectedUri = it.data?.data //Assignem l'URI de la imatge
-            }
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            photoSelectedUri = it.data?.data //Assignem l'URI de la imatge
+            uploadImage().execute()
         }
+    }
+
 
     private var bd = FirebaseFirestore.getInstance()
 
@@ -64,7 +79,9 @@ class perfil : Fragment() {
         inicizalizar()
 
         imagen.setOnClickListener {
-            subirArchivos()
+            lifecycleScope.launch(Dispatchers.Main){
+                async{ subirArchivos() }
+            }
         }
 
         botonGuardarCambios.setOnClickListener {
@@ -84,13 +101,13 @@ class perfil : Fragment() {
                         getString(R.string.errorNombreEmailVacio),
                         Snackbar.LENGTH_LONG
                     ).show()
-                } else if (comprobarTelefono(numero.text.toString())) {
+                } /*else if (comprobarTelefono(numero.text.toString())) {
                     Snackbar.make(
                         binding.fragmentPerfil,
                         getString(R.string.telefonoInvalido),
                         Snackbar.LENGTH_LONG
                     ).show()
-                } else if (nombreLargo(nombreEditText.text.toString())) {
+                }*/ else if (nombreLargo(nombreEditText.text.toString())) {
                     Snackbar.make(
                         binding.fragmentPerfil,
                         getString(R.string.nombreInvalido),
@@ -139,6 +156,48 @@ class perfil : Fragment() {
         }
     }
 
+
+    private inner class uploadImage : AsyncTask<Void, Int, String>() {
+        override fun onPreExecute() {
+            super.onPreExecute()
+            progressBar.visibility = View.VISIBLE
+        }
+
+        override fun doInBackground(vararg params: Void?): String {
+            // código para subir la imagen al servidor
+            var progress = 0
+            while (progress < 100) {
+                progress += 10
+                publishProgress(progress)
+                Thread.sleep(1000)
+            }
+            photoSelectedUri?.let { uri ->
+                /***
+                 * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
+                 * parametro la URI de la imagen.
+                 */
+                storageRef.putFile(uri).addOnSuccessListener {
+                    lifecycleScope.launch(Dispatchers.Main){
+                        async{ cargarImagen() }
+                    }
+                }
+
+            }
+            return getString(R.string.uploadResult)
+        }
+
+        override fun onProgressUpdate(vararg values: Int?) {
+            super.onProgressUpdate(*values)
+            progressBar.progress = values[0]!!
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            progressBar.visibility = View.GONE
+            Toast.makeText(requireContext(), result, Toast.LENGTH_LONG).show()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -153,6 +212,8 @@ class perfil : Fragment() {
         botonGuardarCambios = binding.buttonSaveChangesProfile
         emailEdittext = binding.editextEmail
         imagen = binding.imageProfile
+        progressBar = binding.progressBar!!
+        progressBar.visibility = View.INVISIBLE
 
         val appContext = context
         /***
@@ -181,42 +242,77 @@ class perfil : Fragment() {
             numero.setText(user.telefono)
             insituto.setText(user.instituto)
             emailEdittext.setText(user.email)
-            /***
-             * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
-             * del usuario, puesto que nada mas puede tener un email.
-             */
-            val localfile = File.createTempFile("tempImage", "jpg")
-            storageRef.getFile(localfile).addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                binding.imageProfile.setImageBitmap(bitmap)
-            }.addOnFailureListener {
-                Toast.makeText(
-                    appContext, "La carga de la imagen ha fallado.", Toast.LENGTH_LONG
-                ).show()
-
+                lifecycleScope.launch(Dispatchers.Main){
+                    async{ cargarImagen() }
+                }
             }
-        }
     }
 
-    private fun subirArchivos() {
+    suspend fun cargarImagen(){
+        /***
+         * I aqui cargara la imagen del usuario cuyo nombre sera el mismo que el del email
+         * del usuario, puesto que nada mas puede tener un email.
+         */
+        val localfile = File.createTempFile("tempImage", "jpg")
+
+        storageRef.getFile(localfile).await()
+        val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+        binding.imageProfile.setImageBitmap(bitmap)
+    }
+
+    suspend fun subirArchivos() {
         val appContext = context
+        val intent = Intent(ACTION_PICK, EXTERNAL_CONTENT_URI)
+        //startActivityForResult(intent, REQUEST_CODE)
+        resultLauncher.launch(intent)
+        /*
+
+
         resultLauncher.launch(
             Intent(
                 Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             )
         )
+        if (action == Activity.RESULT_OK) {
+            // El intent se ha realizado correctamente
+        }
         /***
          * Añadimos la imagen en Firestore
          */
+        uploadImage().execute()
         photoSelectedUri?.let { uri ->
             /***
              * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
              * parametro la URI de la imagen.
              */
+
             storageRef.putFile(uri).addOnSuccessListener {
                 Toast.makeText(
                     appContext, "La imagen se ha subido con exito.", Toast.LENGTH_LONG
                 ).show()
+            }.await()
+        }
+        lifecycleScope.launch(Dispatchers.Main){
+            async{ cargarImagen() }
+        }
+
+         */
+
+    }
+
+    //En tu actividad
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                // El intent se ha realizado correctamente
+                /***
+                 * Añadimos la imagen en Firestore
+                 */
+                uploadImage().execute()
+
+            } else {
+                // El intent no se ha realizado correctamente
             }
         }
     }
@@ -224,7 +320,7 @@ class perfil : Fragment() {
     private fun camposVacios(nombre: String, correo: String): Boolean {
         return nombre.isNotEmpty() && nombre.isNotBlank() && correo.isNotEmpty() && correo.isNotBlank()
     }
-
+/*
     private fun comprobarTelefono(telefono: String): Boolean {
         val comprobante = "(\\+34|0034|34)?[ -]*([67])[ -]*([0-9][ -]*){8}".toRegex()
 
@@ -234,8 +330,12 @@ class perfil : Fragment() {
             comprobante.containsMatchIn(telefono)
         }
     }
-
+*/
     private fun nombreLargo(nombre: String): Boolean {
         return nombre.length >= 30
     }
+}
+
+private fun <I> ActivityResultLauncher<I>.launch(intent: String, externalContentUri: Uri?) {
+
 }

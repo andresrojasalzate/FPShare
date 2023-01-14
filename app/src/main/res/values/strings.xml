@@ -209,4 +209,5 @@
     <string name="moduloBorradoError">Error deleting the module</string>
     <string name="imageLoadError">Image load has failed</string>
     <string name="perfilUpdateCorrecto">Profile update made successfully</string>
+    <string name="uploadResult">Image uploaded Succesfully.</string>
 </resources>
