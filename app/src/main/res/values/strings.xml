@@ -209,7 +209,5 @@
     <string name="moduloBorradoError">Error deleting the module</string>
     <string name="imageLoadError">Image load has failed</string>
     <string name="perfilUpdateCorrecto">Profile update made successfully</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="postsOwn">Posts</string>
+    <string name="uploadResult">Image uploaded Succesfully.</string>
 </resources>
