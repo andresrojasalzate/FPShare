@@ -4,11 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.RatingBar
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
@@ -21,6 +26,11 @@ import kotlinx.coroutines.tasks.await
 import java.io.File
 import java.util.*
 import androidx.lifecycle.lifecycleScope
+import cat.copernic.fpshare.modelo.Cicle
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import kotlin.math.absoluteValue
+import kotlin.math.roundToInt
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>(), Filterable {
@@ -55,8 +65,63 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
+            //viewB.progressBar1.setProgress(publicacion.rating1)
+            /***
+             * Inicializacion de barras de progreso
+             *
+             */
+            val maxRating: Int = publicacion.rating1 + publicacion.rating2 + publicacion.rating3 + publicacion.rating4 + publicacion.rating5
+            if(maxRating>0){
+                viewB.progressBar1.setProgress(publicacion.rating1 / maxRating*100)
+                viewB.progressBar2.setProgress(publicacion.rating2 / maxRating*100)
+                viewB.progressBar3.setProgress(publicacion.rating3 / maxRating*100)
+                viewB.progressBar4.setProgress(publicacion.rating4 / maxRating*100)
+                viewB.progressBar5.setProgress(publicacion.rating5 / maxRating*100)
+                val media =  (((publicacion.rating5*5) + (publicacion.rating4*4) +(publicacion.rating3*3) +(publicacion.rating2*2) +(publicacion.rating1*1))/maxRating).toDouble()
+                viewB.textMedia.text = media.toString()
+            }
+
+            val db = FirebaseFirestore.getInstance()
+            val query = db.collection("Ciclos").document(publicacion.idCiclo)
+                .collection("Modulos").document(publicacion.idModulo)
+                .collection("UFs").document(publicacion.idUf)
+                .collection("Publicaciones").document(publicacion.id)
+            db.collection("Ciclos").document(publicacion.idCiclo).collection("Modulos").document(publicacion.idModulo).get().addOnSuccessListener { document ->
+                val nombreModulo = document["nombre"].toString()
+                viewB.textModulo.setText(nombreModulo)
+            }
 
 
+                viewB.ratingBar.onRatingBarChangeListener =
+                RatingBar.OnRatingBarChangeListener { _, rating, _ ->
+                    // Acción a realizar cuando la calificación cambia
+                    if (rating.roundToInt() == 1){
+                        publicacion.rating1++
+                        query.update("rating1", publicacion.rating1)
+                        val progress = 1/maxRating*100
+                        viewB.progressBar1.incrementProgressBy(progress)
+                    }else if (rating.roundToInt() == 2) {
+                        publicacion.rating2++
+                        query.update("rating2", publicacion.rating2)
+                        val progress = 1/maxRating*100
+                        viewB.progressBar2.incrementProgressBy(progress)
+                    }else if (rating.roundToInt() == 3) {
+                        publicacion.rating3++
+                        query.update("rating3", publicacion.rating3)
+                        val progress = 1/maxRating*100
+                        viewB.progressBar3.incrementProgressBy(progress)
+                    }else if (rating.roundToInt() == 4) {
+                        publicacion.rating4++
+                        query.update("rating4", publicacion.rating4)
+                        val progress = 1/maxRating*100
+                        viewB.progressBar4.incrementProgressBy(progress)
+                    }else if (rating.roundToInt() == 5){
+                        publicacion.rating5++
+                        query.update("rating5", publicacion.rating5)
+                        val progress = 1/maxRating*100
+                        viewB.progressBar5.incrementProgressBy(progress)
+                    }
+                }
 
             /***
              * Carga de la ruta del enlace a la imagen de la publicacion
@@ -75,12 +140,12 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
 
 
 
-            /*
-            storageRef.getFile(localfile).addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                viewB.imgIcon.setImageBitmap(bitmap)
-            }*/
-
+            val path = publicacion.pathFile.toUri()
+            val pdfRef = storageRef.child("pdfs/${path.lastPathSegment}")
+            pdfRef.putFile(path).addOnSuccessListener { taskSnapshot ->
+                val pdfName = taskSnapshot.metadata?.name
+                viewB.textLink.text = pdfName
+            }
 
 
             /***
@@ -153,3 +218,4 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
         }
     }
 }
+
