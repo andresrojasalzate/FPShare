@@ -17,12 +17,22 @@
             android:layout_height="wrap_content"
             tools:context=".NuevaPublicacion">
 
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:text="Add"
+                app:layout_constraintBottom_toTopOf="@+id/input_link_new_post"
+                app:layout_constraintStart_toEndOf="@+id/textView_link_new_post"
+                app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
+
             <TextView
                 android:id="@+id/textView_title_new_post"
                 style="@style/Widget.FpShare.TextViewTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/title"
                 app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
                 app:layout_constraintTop_toTopOf="parent" />
