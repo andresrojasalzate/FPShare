@@ -46,8 +46,11 @@ class PubliAdminAdapter(private val publicaciones: List<Publicacion>, private va
             override fun onClick(v: View?) {
                 val position: Int = adapterPosition
                 val id = publicaciones.get(position).id
-                if(position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(id)
+                val idCiclo = publicaciones.get(position).idCiclo
+                val idModulo = publicaciones.get(position).idModulo
+                val idUF = publicaciones.get(position).idUf
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(id, idCiclo, idModulo, idUF)
                 }
             }
 
@@ -58,7 +61,8 @@ class PubliAdminAdapter(private val publicaciones: List<Publicacion>, private va
     }
 
     interface OnItemClickListener {
-        fun onItemClick(id: String)
+        //fun onItemClick(id: String)
+        fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String)
     }
 
 }

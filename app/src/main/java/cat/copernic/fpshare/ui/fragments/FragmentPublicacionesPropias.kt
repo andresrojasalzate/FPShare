@@ -54,7 +54,7 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
 
         /***
          * Cargamos las publicaciones del usuario tal y como hacemos en otras pantallas
-         * con una corrutina
+         *
          */
         try {
             lifecycleScope.launch(Dispatchers.Main) {
@@ -72,15 +72,13 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
          * Guardamos la ruta en una variable
          */
         val ciclo = bd.collection("Ciclos").get().await()
-        /**
+        /***
          * Recorremos la variable ciclos.
          */
         for (doc1 in ciclo) {
-            /**
+            /***
              * Una vez que estamos recorriendo la variable ciclo, podemos consultar la id
-             * del documento que estamos recorriendo, pero antes filtramos los documentos
-             * para que solamente nos aparezcan las que esten vinculadas al usuario que
-             * actualmente tiene iniciada la sesión.
+             * del documento que estamos recorriendo.
              */
             val modulo = bd.collection("Ciclos").document(doc1.id)
                 .collection("Modulos").get().await()
@@ -98,7 +96,7 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
                         /***
                          * Hacemos esto consecutivamente hasta llegar a las publicaciones.
                          * Una vez que llegamos aqui, recogemos todos los valores y guardamos las
-                         * publicaciones filtradas en una MutableList<Publicacion>.
+                         * publicaciones en una MutableList<Publicacion>.
                          */
                         val idPubli = doc4.id
                         val checked = doc4["checked"].toString()
@@ -145,35 +143,16 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
     /**
      * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
      */
-    override fun onItemClick(id: String) {
-        val idCiclo = bd.collection("Ciclos").document().collection("Modulos").document()
-            .collection("UFs").document().collection("Publicaciones").document(id).get()
-            .addOnSuccessListener {
-                it["idCiclo"].toString()
-
-            }
-        val idModulo = bd.collection("Ciclos").document().collection("Modulos").document()
-            .collection("UFs").document().collection("Publicaciones").document(id).get()
-            .addOnSuccessListener {
-
-                it["idModulo"].toString()
-
-            }
-        val idUF = bd.collection("Ciclos").document().collection("Modulos").document()
-            .collection("UFs").document().collection("Publicaciones").document(id).get()
-            .addOnSuccessListener {
-                it["idUf"].toString()
-            }
-
+    override fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String) {
         bd.collection("Ciclos").document().collection("Modulos").document()
             .collection("UFs").document().collection("Publicaciones").document(id)
             .get().addOnSuccessListener {
                 val view = binding.root
                 val action =
                     FragmentPublicacionesPropiasDirections.actionFragmentPublicacionesPropiasToFragmentAdminModPost(
-                        idCiclo.toString(),
-                        idModulo.toString(),
-                        idUF.toString(),
+                        idCiclo,
+                        idModulo,
+                        idUF,
                         id
                     )
                 view.findNavController().navigate(action)

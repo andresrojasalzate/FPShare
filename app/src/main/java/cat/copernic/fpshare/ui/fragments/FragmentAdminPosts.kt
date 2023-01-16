@@ -147,7 +147,7 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
     /**
      * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
      */
-    override fun onItemClick(id: String) {
+    override fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String) {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
             .collection("UFs").document(args.idUf).collection("Publicaciones").document(id)
             .get().addOnSuccessListener {

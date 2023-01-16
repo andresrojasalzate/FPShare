@@ -262,7 +262,7 @@ class NuevaPublicacion : Fragment() {
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
-        /*
+
         if (!URLUtil.isValidUrl(publi.enlace)) {
             Snackbar.make(
                 binding.constraintNuevaPublicacion,
@@ -287,7 +287,7 @@ class NuevaPublicacion : Fragment() {
                 getString(cat.copernic.fpshare.R.string.errorDescripcionLarga),
                 Snackbar.LENGTH_LONG
             ).show()
-        } else {*/
+        } else {
             publi.idCiclo = checked
             publi.idModulo = idModulo
             publi.idUf = idUf
@@ -302,7 +302,7 @@ class NuevaPublicacion : Fragment() {
                 }.addOnFailureListener { //No s'ha afegit el departament...
                     Toast.makeText(appContext, "Documento no añadido", Toast.LENGTH_LONG).show()
                 }
-       // }
+        }
     }
 
     private fun algoVacio(
