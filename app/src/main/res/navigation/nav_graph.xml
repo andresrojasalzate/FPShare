@@ -383,7 +383,7 @@
     </fragment>
     <fragment
         android:id="@+id/tusForos"
-        android:name="cat.copernic.fpshare.listaForosDeUnUsuario"
+        android:name="cat.copernic.fpshare.ui.fragments.listaForosDeUnUsuario"
         android:label="fragment_lista_foros_de_un_usuario"
         tools:layout="@layout/fragment_lista_foros_de_un_usuario" >
         <action

@@ -1,4 +1,4 @@
-package cat.copernic.fpshare
+package cat.copernic.fpshare.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.ForoAdapter
 import cat.copernic.fpshare.databinding.FragmentListaForosDeUnUsuarioBinding
 import cat.copernic.fpshare.modelo.Foro
-import cat.copernic.fpshare.ui.fragments.ListaForosDirections
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase

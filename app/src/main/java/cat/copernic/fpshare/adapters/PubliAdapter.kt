@@ -65,69 +65,21 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
-            //viewB.progressBar1.setProgress(publicacion.rating1)
-            /***
-             * Inicializacion de barras de progreso
-             *
-             */
-            val maxRating: Int = publicacion.rating1 + publicacion.rating2 + publicacion.rating3 + publicacion.rating4 + publicacion.rating5
-            if(maxRating>0){
-                viewB.progressBar1.setProgress(publicacion.rating1 / maxRating*100)
-                viewB.progressBar2.setProgress(publicacion.rating2 / maxRating*100)
-                viewB.progressBar3.setProgress(publicacion.rating3 / maxRating*100)
-                viewB.progressBar4.setProgress(publicacion.rating4 / maxRating*100)
-                viewB.progressBar5.setProgress(publicacion.rating5 / maxRating*100)
-                val media =  (((publicacion.rating5*5) + (publicacion.rating4*4) +(publicacion.rating3*3) +(publicacion.rating2*2) +(publicacion.rating1*1))/maxRating).toDouble()
-                viewB.textMedia.text = media.toString()
-            }
 
-            val db = FirebaseFirestore.getInstance()
-            val query = db.collection("Ciclos").document(publicacion.idCiclo)
+            /*val db = FirebaseFirestore.getInstance()
+
+            db.collection("Ciclos").document(publicacion.checked)
                 .collection("Modulos").document(publicacion.idModulo)
-                .collection("UFs").document(publicacion.idUf)
-                .collection("Publicaciones").document(publicacion.id)
-            db.collection("Ciclos").document(publicacion.idCiclo).collection("Modulos").document(publicacion.idModulo).get().addOnSuccessListener { document ->
+                .get().addOnSuccessListener { document ->
                 val nombreModulo = document["nombre"].toString()
                 viewB.textModulo.setText(nombreModulo)
-            }
+            }*/
 
-
-                viewB.ratingBar.onRatingBarChangeListener =
-                RatingBar.OnRatingBarChangeListener { _, rating, _ ->
-                    // Acción a realizar cuando la calificación cambia
-                    if (rating.roundToInt() == 1){
-                        publicacion.rating1++
-                        query.update("rating1", publicacion.rating1)
-                        val progress = 1/maxRating*100
-                        viewB.progressBar1.incrementProgressBy(progress)
-                    }else if (rating.roundToInt() == 2) {
-                        publicacion.rating2++
-                        query.update("rating2", publicacion.rating2)
-                        val progress = 1/maxRating*100
-                        viewB.progressBar2.incrementProgressBy(progress)
-                    }else if (rating.roundToInt() == 3) {
-                        publicacion.rating3++
-                        query.update("rating3", publicacion.rating3)
-                        val progress = 1/maxRating*100
-                        viewB.progressBar3.incrementProgressBy(progress)
-                    }else if (rating.roundToInt() == 4) {
-                        publicacion.rating4++
-                        query.update("rating4", publicacion.rating4)
-                        val progress = 1/maxRating*100
-                        viewB.progressBar4.incrementProgressBy(progress)
-                    }else if (rating.roundToInt() == 5){
-                        publicacion.rating5++
-                        query.update("rating5", publicacion.rating5)
-                        val progress = 1/maxRating*100
-                        viewB.progressBar5.incrementProgressBy(progress)
-                    }
-                }
-
-            /***
+            /**
              * Carga de la ruta del enlace a la imagen de la publicacion
              */
 
-            /***
+            /**
              * Colocamos la imagen en el ImageView del Item Publi.
              */
 
@@ -139,7 +91,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 }
 
 
-
             val path = publicacion.pathFile.toUri()
             val pdfRef = storageRef.child("pdfs/${path.lastPathSegment}")
             pdfRef.putFile(path).addOnSuccessListener { taskSnapshot ->
@@ -147,14 +98,19 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 viewB.textLink.text = pdfName
             }
 
+            viewB.txtDescarga.setOnClickListener {
+                val queryUrl: Uri = Uri.parse(publicacion.pathFile)
+                val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+                contexto.startActivity(intent)
 
+            }
             /***
              * Inicializacion del enlace
              */
-            viewB.textLink.setOnClickListener{
+            viewB.textLink.setOnClickListener {
                 val queryUrl: Uri = Uri.parse(publicacion.enlace)
                 val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-                contexto?.startActivity(intent)
+                contexto.startActivity(intent)
 
             }
         }

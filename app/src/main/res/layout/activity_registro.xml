@@ -120,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtSign"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/btnRegistrarse"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
@@ -130,6 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtAsk"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/btnRegistrarse"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 

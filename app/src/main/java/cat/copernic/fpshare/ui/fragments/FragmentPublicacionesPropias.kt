@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 // import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.adapters.PubliAdapter
+import cat.copernic.fpshare.adapters.PubliAdminAdapter
 // import cat.copernic.fpshare.adapters.PubliAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentPublicacionesPropiasBinding
 import cat.copernic.fpshare.modelo.Publicacion
@@ -21,13 +23,13 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClickListener*/ /*TODO Esto habra que descomentarlo cuando ya tengamos para obtener las IDs*/ {
+class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     private var _binding: FragmentPublicacionesPropiasBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: PubliAdapter // TODO Esto habrá que cambiarlo a PubliAdminAdapter cuando sepamos hacer lo de obtener las IDs
+    private lateinit var adapter: PubliAdminAdapter
     private lateinit var arrayList: ArrayList<String>
     private lateinit var publiList: Deferred<MutableList<Publicacion>>
 
@@ -52,7 +54,7 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
 
         /***
          * Cargamos las publicaciones del usuario tal y como hacemos en otras pantallas
-         *
+         * con una corrutina
          */
         try {
             lifecycleScope.launch(Dispatchers.Main) {
@@ -70,13 +72,15 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
          * Guardamos la ruta en una variable
          */
         val ciclo = bd.collection("Ciclos").get().await()
-        /***
+        /**
          * Recorremos la variable ciclos.
          */
         for (doc1 in ciclo) {
-            /***
+            /**
              * Una vez que estamos recorriendo la variable ciclo, podemos consultar la id
-             * del documento que estamos recorriendo.
+             * del documento que estamos recorriendo, pero antes filtramos los documentos
+             * para que solamente nos aparezcan las que esten vinculadas al usuario que
+             * actualmente tiene iniciada la sesión.
              */
             val modulo = bd.collection("Ciclos").document(doc1.id)
                 .collection("Modulos").get().await()
@@ -88,12 +92,13 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                     val publi = bd.collection("Ciclos").document(doc1.id).collection("Modulos")
                         .document(doc2.id)
                         .collection("UFs").document(doc3.id).collection("Publicaciones")
-                        .whereEqualTo("imgPubli", FirebaseAuth.getInstance().currentUser?.email).get().await()
+                        .whereEqualTo("imgPubli", FirebaseAuth.getInstance().currentUser?.email)
+                        .get().await()
                     for (doc4 in publi) {
                         /***
                          * Hacemos esto consecutivamente hasta llegar a las publicaciones.
                          * Una vez que llegamos aqui, recogemos todos los valores y guardamos las
-                         * publicaciones en una MutableList<Publicacion>.
+                         * publicaciones filtradas en una MutableList<Publicacion>.
                          */
                         val idPubli = doc4.id
                         val checked = doc4["checked"].toString()
@@ -119,7 +124,7 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                         /***
                          * Cargamos la lista en el adapter para mostrar todas las publicaciones.
                          */
-                        adapter = PubliAdapter(publiList) // TODO Esto habrá que cambiarlo a PubliAdminAdapter cuando sepamos hacer lo de obtener las IDs
+                        adapter = PubliAdminAdapter(publiList, this)
                         try {
                             binding.publicacionesPropiasView.adapter = adapter
                             binding.publicacionesPropiasView.layoutManager =
@@ -139,19 +144,39 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
 
     /**
      * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
-     * TODO Esto habra que descomentarlo cuando ya tengamos para obtener las IDs
      */
-    /*override fun onItemClick(id: String) {
+    override fun onItemClick(id: String) {
+        val idCiclo = bd.collection("Ciclos").document().collection("Modulos").document()
+            .collection("UFs").document().collection("Publicaciones").document(id).get()
+            .addOnSuccessListener {
+                it["idCiclo"].toString()
+
+            }
+        val idModulo = bd.collection("Ciclos").document().collection("Modulos").document()
+            .collection("UFs").document().collection("Publicaciones").document(id).get()
+            .addOnSuccessListener {
+
+                it["idModulo"].toString()
+
+            }
+        val idUF = bd.collection("Ciclos").document().collection("Modulos").document()
+            .collection("UFs").document().collection("Publicaciones").document(id).get()
+            .addOnSuccessListener {
+                it["idUf"].toString()
+            }
+
         bd.collection("Ciclos").document().collection("Modulos").document()
             .collection("UFs").document().collection("Publicaciones").document(id)
             .get().addOnSuccessListener {
                 val view = binding.root
                 val action =
                     FragmentPublicacionesPropiasDirections.actionFragmentPublicacionesPropiasToFragmentAdminModPost(
-
+                        idCiclo.toString(),
+                        idModulo.toString(),
+                        idUF.toString(),
                         id
                     )
                 view.findNavController().navigate(action)
             }
-    } */
+    }
 }
