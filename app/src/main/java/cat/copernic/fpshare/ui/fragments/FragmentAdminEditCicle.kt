@@ -58,9 +58,9 @@ class FragmentAdminEditCicle : Fragment() {
             val nombre = nombreNuevo.text.toString()
 
             if (campoVacio(nombre)) {
-                modificarCiclo(nombre)
+                modificarCiclo(nombre) // Modificación del ciclo
             }
-            modulosBack()
+            modulosBack() // Navegación hacia atrás al menú modulos
         }
     }
 

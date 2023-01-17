@@ -60,11 +60,13 @@ class FragmentAdminEditModule : Fragment() {
             if (campoVacio(nombre)) {
                 modificarModulo(nombre)
             }
-            ufsBack()
+            ufsBack() // Navegación para volver al menú UFs
         }
     }
 
-    // Función para navegar hacia atrás de nuevo
+    /**
+     * Esta función realiza la navegación para volver al menú despues de modificar el modulo
+     */
     private fun ufsBack() {
         val view = binding.root
         val action =
@@ -74,13 +76,18 @@ class FragmentAdminEditModule : Fragment() {
         view.findNavController().navigate(action)
     }
 
-    // Función para modificar el nombre del ciclo
+    /**
+     * Función para modificar el nombre del ciclo
+     */
+
     private fun modificarModulo(nombreNuevo: String) {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
             .update("nombre", nombreNuevo)
     }
 
-    // Comprobar que los campos no esten en blanco o vacíos
+    /**
+     * Comprobar que los campos no esten en blanco o vacíos
+     */
     private fun campoVacio(nombre: String): Boolean {
         return nombre.isNotEmpty() && nombre.isNotBlank()
     }

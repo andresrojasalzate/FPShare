@@ -60,11 +60,13 @@ class FragmentAdminEditUF : Fragment() {
             if (campoVacio(nombre)) {
                 modificarUF(nombre)
             }
-            postsBack()
+            postsBack() // Navegación hacia la pantalla de publicaciones
         }
     }
 
-    // Función para navegar hacia atrás de nuevo
+    /**
+     * Función para navegar hacia atrás de nuevo
+     */
     private fun postsBack() {
         val view = binding.root
         val action =
@@ -74,13 +76,17 @@ class FragmentAdminEditUF : Fragment() {
         view.findNavController().navigate(action)
     }
 
-    // Función para modificar el nombre del ciclo
+    /**
+     * Función para modificar el nombre de la UF
+     */
     private fun modificarUF(nombreNuevo: String) {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)
             .collection("UFs").document(args.idUF).update("nombre", nombreNuevo)
     }
 
-    // Comprobar que los campos no esten en blanco o vacíos
+    /**
+     * Comprobar que los campos no esten en blanco o vacíos
+     */
     private fun campoVacio(nombre: String): Boolean {
         return nombre.isNotEmpty() && nombre.isNotBlank()
     }
