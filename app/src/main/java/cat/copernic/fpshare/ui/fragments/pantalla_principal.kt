@@ -133,7 +133,7 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         try {
             startActivity(goToMarket)
         } catch (e: ActivityNotFoundException) {
-            //si mo lo conseguimos abriremos una pagina en el navegador
+            //si no lo conseguimos abriremos una pagina en el navegador
             startActivity(Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://play.google.com/store/apps/details?id=" + contexto?.packageName)))
         }
