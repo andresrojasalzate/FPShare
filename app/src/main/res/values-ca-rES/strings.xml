@@ -194,8 +194,24 @@
     <string name="uploadResult">Imatge actualitzada correctament</string>
     <string name="myPosts">Publicacions meves</string>
     <string name="respuestas">Respostes</string>
-    <string name="your_forums">Els teus fòrums</string>
+    <string name="your_forums">Els meus fòrums</string>
     <string name="nuevo_titulo_foro">Escriu el nou títol</string>
     <string name="nueva_descripcion">Escriu la nova descripció</string>
     <string name="cancelar">Cancel·la</string>
+    <string name="reminder">Recordatori</string>
+    <string name="decripcion_alerta_no_permisos">Aquesta opció crea un recordatori amb què se us enviarà una notificació. Per utilitzar-la, activeu l\'opció \"Notificacions\" de l\'aplicació als paràmetres del dispositiu.</string>
+    <string name="aceptat">Acceptar</string>
+    <string name="activar_recordatorio">Vols activar un recordatori que t\'enviï una notificació en 5 minuts?</string>
+    <string name="desactivar_recordatorio">Ja hi ha un recordatori activat, voleu desactivar-lo?</string>
+    <string name="forum_thread_title">títol del fil del fòrum</string>
+    <string name="delete_forum">esborrar fòrum</string>
+    <string name="edit_title">editar títol</string>
+    <string name="enter_the_title_of_the_new_forum">introduïu el títol del nou fòrum</string>
+    <string name="edit_description">editar descripció</string>
+    <string name="campos_vacios">editar descripció</string>
+    <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
+    <string name="valorar_app">Valora l\'aplicació</string>
+    <string name="descripcion_valorar_app">Voleu valorar l\'aplicació a Google Play Store?</string>
+    <string name="fpshare_noti">Notificació FPShare</string>
+    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
 </resources>

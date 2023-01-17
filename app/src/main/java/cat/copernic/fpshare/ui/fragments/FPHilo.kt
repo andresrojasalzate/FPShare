@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,8 +36,15 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-
+/**
+* Esta clase es de la pantalla de hilo del foro
+* @author Andrés Rojas
+*/
 class FPHilo : Fragment() {
     private var _binding: FragmentFpHiloBinding? = null
     private val binding get() = _binding!!
@@ -60,6 +68,10 @@ class FPHilo : Fragment() {
 
     private val args: FPHiloArgs by navArgs()
 
+    /**
+     * Con esta función permitimos al sistema  realizar cualquier inicialización necesaria antes de continuar con
+     * el código personalizado.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -67,6 +79,9 @@ class FPHilo : Fragment() {
 
     }
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,15 +92,27 @@ class FPHilo : Fragment() {
         return view
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //lamamos a la función inicializadores
         inicializadores()
 
         //lamamos a la función infoforo
-        infoforo()
+        lifecycleScope.launch(Dispatchers.Main) {
+           val x = async {
+               infoforo()
+           }
+        }
 
         //lamamos a la función llamarecycleviewmensajes
-        llamarecycleviewmensajes()
+        lifecycleScope.launch(Dispatchers.Main) {
+            val x = async {
+                llamarecycleviewmensajes()
+            }
+        }
 
         //aqui hacemos que el contendedor que tiene el edittext y el boton para enviar un nuevo mensaje este por enciama
         // de los demas items del layout para no e mezclen dañando la correcta visualización de la pantalla
@@ -114,7 +141,11 @@ class FPHilo : Fragment() {
             if (campoVacio(texto)) {
 
                 //si la funcion nos deuelve true llamas a esta funcion
-                addMensaje(texto)
+                lifecycleScope.launch(Dispatchers.Main) {
+                  val x = async {
+                       addMensaje(texto)
+                   }
+                }
                 //y despues vaciamos el contenido del editText
                 inputMsg.setText("")
             }
@@ -126,6 +157,11 @@ class FPHilo : Fragment() {
 
     }
 
+    /**
+     * Esta función crea una alerta con un EditText en el
+     * @param titulo el titulo de la alerta
+     * @param num un numero que utlizamos para establecer el limite de caracteres que se podrá poner en el EditText
+     */
     private fun crearAlertaConEditText(titulo: String, num: Int) {
         //asignamos el valor de idForos que ha llegado a la pantalla a la variable
         val idForo = args.idforo
@@ -185,6 +221,10 @@ class FPHilo : Fragment() {
 
     }
 
+    /**
+     * Esta función crea otra alerta pero sin un editText, se utliza para borrar el foro
+     */
+
     private fun crearalerta() {
         val builder = AlertDialog.Builder(requireContext())
 
@@ -201,8 +241,10 @@ class FPHilo : Fragment() {
                    document.reference.delete()
                }
            }
-            //Y una vez birrados los mensajes borramos el foro
-            bd.collection("Foros").document(args.idforo).delete()
+            //Y una vez borrados los mensajes borramos el foro
+            bd.collection("Foros").document(args.idforo).delete().addOnSuccessListener {
+                val action = FPHiloDirections.actionFPHiloToTusForos()
+            }
 
         }
 
@@ -217,12 +259,20 @@ class FPHilo : Fragment() {
 
     }
 
+    /**
+     * Con est función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    private fun infoforo(){
+    /**
+     * Esta función la utlizamos para establecer la información del foro, ademas de hacer invisibles a los iconos de borrar,
+     * editar el titulo y la descripcin del foro si el usuario que accede al foro no es el autor del mismo
+     */
+
+    private suspend fun infoforo(){
         //asignamos el valor de idForos que ha llegado a la pantalla a la variable
         val idForo = args.idforo
 
@@ -230,11 +280,11 @@ class FPHilo : Fragment() {
         val email = user?.email.toString()
 
         // hacemos una consulta a la base de datos para recuperar la información del foro que hemos seleccionado
-        bd.collection("Foros").document(idForo).get().addOnSuccessListener { document ->
-            //establecemos los datos en la vista
-            textViewTitulo.setText(document["titulo"].toString())
-            textViewAutor.setText(document["nombreApellido"].toString())
-            textviewDescripcion.setText(document["descripcion"].toString())
+        val document = bd.collection("Foros").document(idForo).get().await()
+        //establecemos los datos en la vista
+        textViewTitulo.setText(document["titulo"].toString())
+        textViewAutor.setText(document["nombreApellido"].toString())
+        textviewDescripcion.setText(document["descripcion"].toString())
 
             //compobamos que el email del creador del foro sea diferente al email del usuario actual
             if (document["emailautor"].toString() != email){
@@ -250,15 +300,19 @@ class FPHilo : Fragment() {
                 editarDescripcion.visibility = View.INVISIBLE
                 editarDescripcion.alpha = 0f
             }
-        }
+
     }
-    private fun llamarecycleviewmensajes(){
+
+    /**
+     * Con esta función recogemos los mensajes del foro de la base de datos y los mostramos mediante un recycleview
+     */
+    private suspend fun llamarecycleviewmensajes(){
         //asignamos el valor de idForos que ha llegado a la pantalla a la variable
         val idForo = args.idforo
 
         //hacemos una consulta para recuperar todos los mensajes del foro
-        bd.collection("Foros").document(idForo).collection("Mensajes").get().addOnSuccessListener { documents ->
-            for (document in documents){
+       val mensajes = bd.collection("Foros").document(idForo).collection("Mensajes").get().await()
+            for (document in mensajes){
                 //hacemos una comprtobación para excluimos el mensaje que crea al crear un foro
                 if(document["emailautor"].toString() != "shtht") {
                     val wallitem = document.toObject(Mensaje::class.java)
@@ -268,10 +322,16 @@ class FPHilo : Fragment() {
             //asigamos los mensajes recuperados al recycleview para mostrarlos
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = MsgAdapter(mensajesList)
-        }
+
     }
+
+    /**
+     * En esta función iniciamos todos los items que se muestran en la pantalla
+     */
     private fun inicializadores() {
-        //inicializamos todos lños items necesarios
+        /**
+         * inicializamos todos los items necesarios
+         */
         botonSend = binding.buttonSend
         inputMsg = binding.timInput
         recyclerView = binding.recyclerViewHilo
@@ -290,7 +350,12 @@ class FPHilo : Fragment() {
 
     }
 
-    fun addMensaje(mensaje: String) {
+    /**
+     * Con esta funcion  creamos un mensaje, lo añadimos a la base de datos y luego lo mostramos en pantalla añadiendolo
+     * al recycleview
+     * @param mensaje un string que es el mensaje que el usuario ha introducido mediante un EditText
+     */
+    private suspend fun addMensaje(mensaje: String) {
         //asignamos el valor de idForos que ha llegado a la pantalla a la variable
         val idForo = args.idforo
 
@@ -298,7 +363,7 @@ class FPHilo : Fragment() {
         val email = user?.email.toString()
 
         //recuperamos la información del usuario
-        bd.collection("Usuarios").document(user?.email.toString()).get().addOnSuccessListener {
+       val it = bd.collection("Usuarios").document(user?.email.toString()).get().await()
             val usuario = it["nombre"].toString() + " " + it["apellidos"]
 
             //creamos el objeto que contendrá el nuevo mensaje
@@ -315,11 +380,13 @@ class FPHilo : Fragment() {
                     adapter.notifyItemInserted(0)
                 }
 
-
-        }
-
     }
 
+    /**
+     * Con esta función combrobamos si el string pasado como argumento no esta vacio
+     * @param mensaje un String que representa el mensaje que el usuario quiere enviar
+     * @return devuelve un boolean que indica si el string recibido esta vacio o no
+     */
     fun campoVacio(mensaje: String): Boolean {
         //comprobamos quer el mensaje no este vacion y que no solo contega espacios en blanco
         return mensaje.isNotEmpty() && mensaje.isNotBlank()

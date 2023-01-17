@@ -1,9 +1,13 @@
 package cat.copernic.fpshare.ui.fragments
 
+import android.app.AlertDialog
 import android.provider.Contacts
 
 import android.app.ProgressDialog.show
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
@@ -19,6 +23,7 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.adapters.PubliAdapter
 import cat.copernic.fpshare.databinding.FragmentPantallaPrincipalBinding
 import cat.copernic.fpshare.modelo.Publicacion
+import cat.copernic.fpshare.ui.activities.Login
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
@@ -57,6 +62,13 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        //si el usuario se ha logueado dos veces
+        if (Login.vecesIniciado == 2){
+            crearAlert()
+
+        }
+
         recyclerView = binding.recyclerView
 
         /***
@@ -64,14 +76,67 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
          *
          */
         searchView = binding.searchView
-        try {
-            searchView.setOnQueryTextListener(this)
+
+        searchView.setOnQueryTextListener(this)
             lifecycleScope.launch(Dispatchers.Main){
                     cicloList = async { crearMenu() }
         }
-        }catch (e: Exception){
+    }
 
+    /**
+     * Con esta función creamos una alerta que pedira al usuario valorar la app
+     */
+    private fun crearAlert() {
+        //creamos la alerta
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(getString(R.string.valorar_app))
+        builder.setMessage(getString(R.string.descripcion_valorar_app))
+
+        builder.setPositiveButton(getString(R.string.aceptat)) { dialog, which ->
+            // Acción a realizar al presionar el botón "Aceptar"
+
+            //llamamos  a la función
+            abrirPlayStore()
         }
+
+        builder.setNegativeButton(getString(R.string.cancelar)) { dialog, which ->
+            // Acción a realizar al presionar el botón "Cancelar"
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+
+    }
+
+    /**
+     * Con esta función abntiremos el  Play Store
+     * @throws ActivityNotFoundException si no se ecuentra la aplicación Play Store se abrirá el navegador con
+     * la pagina web de play store en la pagina de la app
+     */
+    private fun abrirPlayStore() {
+        //obtenemos una refencia del contexto actual
+        val contexto = context
+
+        //creamos la uri con la dirección de la pagina de detalles de la aplición en Plaay Store
+        val uri = Uri.parse("market://details?id=" + contexto?.packageName)
+
+        //creamos un intent para abir la pagina web con la uri que hemos creado
+        val goToMarket = Intent(Intent.ACTION_VIEW, uri)
+
+        //agremos unas flags al intent para evitar quwe se guarde en el historial y se abra en una nueva tarea
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+
+        //intentamoas abrir la aplicación Play Store
+        try {
+            startActivity(goToMarket)
+        } catch (e: ActivityNotFoundException) {
+            //si mo lo conseguimos abriremos una pagina en el navegador
+            startActivity(Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://play.google.com/store/apps/details?id=" + contexto?.packageName)))
+        }
+
     }
 
     override fun onDestroyView() {

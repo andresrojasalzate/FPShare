@@ -212,9 +212,25 @@
     <string name="uploadResult">Image uploaded successfully.</string>
     <string name="myPosts">My Posts</string>
     <string name="respuestas">Answers</string>
-    <string name="your_forums">Your Forums</string>
+    <string name="your_forums">My Forums</string>
     <string name="nuevo_titulo_foro">Type the new title</string>
     <string name="nueva_descripcion">Type the new description</string>
     <string name="cancelar">Cancel</string>
+    <string name="reminder">Reminder</string>
+    <string name="decripcion_alerta_no_permisos">This option creates a reminder with which a notification will be sent to you. To use it, activate the \'Notifications\' option of the application in your device\'s settings.</string>
+    <string name="aceptat">Accept</string>
+    <string name="activar_recordatorio">Do you want to activate a reminder that will send you a notification in 5 minutes?</string>
+    <string name="desactivar_recordatorio">There is already an activated reminder do you want to deactivate it?</string>
+    <string name="forum_thread_title">forum thread title</string>
+    <string name="delete_forum">delete forum</string>
+    <string name="edit_title">edit title</string>
+    <string name="edit_description">edit description</string>
+    <string name="enter_the_title_of_the_new_forum">enter the title of the new forum</string>
+    <string name="campos_vacios">Empty fields</string>
+    <string name="aviso_campos_vacios">Some of the fields required to create a forum (title, description) are empty. Fill them in to create the forum</string>
+    <string name="valorar_app">Rate the app</string>
+    <string name="descripcion_valorar_app">Would you like to rate the app in the Google Play Store?</string>
+    <string name="fpshare_noti">FPShare Notification</string>
+    <string name="contenido_notificación">The 5 minutes of the reminder that you have activated have already elapsed.</string>
 
 </resources>

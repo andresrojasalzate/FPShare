@@ -86,9 +86,11 @@
             android:layout_marginEnd="20dp"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:contentDescription="@string/forum_thread_title"
             app:layout_constraintEnd_toStartOf="@+id/editar_titulo"
             app:layout_constraintStart_toStartOf="@+id/autor_foro"
             app:layout_constraintTop_toBottomOf="@+id/autor_foro"
+
             tools:text="titulo" />
 
         <TextView
@@ -125,33 +127,31 @@
 
         <ImageView
             android:id="@+id/borrar_foro"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:contentDescription="@string/borrar_foro_fp_hilo"
+            android:contentDescription="@string/delete_forum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/basura" />
 
         <ImageView
             android:id="@+id/editar_titulo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="8dp"
-
-            android:contentDescription="@string/borrar_foro_fp_hilo"
+            android:contentDescription="@string/edit_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/titulo_foro"
             app:srcCompat="@drawable/lapiz" />
 
         <ImageView
             android:id="@+id/editar_descripcion"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="8dp"
-
-            android:contentDescription="@string/borrar_foro_fp_hilo"
+            android:contentDescription="@string/edit_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/descripcion"
             app:srcCompat="@drawable/lapiz" />

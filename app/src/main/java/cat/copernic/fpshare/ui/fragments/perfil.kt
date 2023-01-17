@@ -30,6 +30,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -165,6 +166,7 @@ class perfil : Fragment() {
 
         override fun doInBackground(vararg params: Void?): String {
             // código para subir la imagen al servidor
+
             var progress = 0
             while (progress < 100) {
                 progress += 10
@@ -254,10 +256,14 @@ class perfil : Fragment() {
          * del usuario, puesto que nada mas puede tener un email.
          */
         val localfile = File.createTempFile("tempImage", "jpg")
+        try {
+            storageRef.getFile(localfile).await()
+            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+            binding.imageProfile.setImageBitmap(bitmap)
+        }catch (e: StorageException){
+            println("Error")
+        }
 
-        storageRef.getFile(localfile).await()
-        val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-        binding.imageProfile.setImageBitmap(bitmap)
     }
 
     suspend fun subirArchivos() {

@@ -174,8 +174,24 @@
     <string name="myPosts">Mis publicaciones</string>
     <string name="uploadResult">Imagen actualizada correctamente</string>
     <string name="respuestas">Respuestas</string>
-    <string name="your_forums">Tus foros</string>
+    <string name="your_forums">Mis foros</string>
     <string name="nuevo_titulo_foro">Escribe el nuevo título</string>
     <string name="nueva_descripcion">Escribe la nueva descripción</string>
     <string name="cancelar">Cancelar</string>
+    <string name="reminder">Recordatorio</string>
+    <string name="decripcion_alerta_no_permisos">Esta opción crea un recordatorio con el que se le enviará una notificación. Para utilizarla, activa la opción \"Notificaciones\" de la aplicación en los ajustes de tu dispositivo.</string>
+    <string name="aceptat">Aceptar</string>
+    <string name="activar_recordatorio">¿Quieres activar un recordatorio que te envíe una notificación en 5 minutos?</string>
+    <string name="desactivar_recordatorio">Ya hay un recordatorio activado, ¿desea desactivarlo?</string>
+    <string name="forum_thread_title">título del hilo del foro</string>
+    <string name="delete_forum">borrar foro</string>
+    <string name="edit_title">editar título</string>
+    <string name="enter_the_title_of_the_new_forum">introduzca el título del nuevo foro</string>
+    <string name="edit_description">editar descripción</string>
+    <string name="campos_vacios">editar descripción</string>
+    <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
+    <string name="valorar_app">Valora la aplicación</string>
+    <string name="descripcion_valorar_app">¿Quieres valorar la aplicación en Google Play Store?</string>
+    <string name="fpshare_noti">Notificación FPShare</string>
+    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
 </resources>

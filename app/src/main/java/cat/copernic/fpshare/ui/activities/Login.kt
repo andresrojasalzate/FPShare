@@ -1,21 +1,24 @@
 package cat.copernic.fpshare.ui.activities
 
-import android.app.AlarmManager
+
+
+import android.Manifest.permission.ACCESS_NOTIFICATION_POLICY
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
-import cat.copernic.fpshare.modelo.AlarmReceiver
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +38,10 @@ class Login : AppCompatActivity() {
     private lateinit var binding: LoginBinding
 
     private var splashScreenMS: Long = 1000
+    companion object {
+         var vecesIniciado = 0
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(splashScreenMS)
@@ -109,11 +116,16 @@ class Login : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         createNotificationChannel()
+        contadorIniciosApp()
         if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
+
+    /**
+     * Creamos un cnal de notificacion si el sistema operativo es mayor a Android Oreo paa poder enviar notificaciones
+     */
     private fun createNotificationChannel() {
         //Creamos el Canal de notificacion pero solo apartir de android 8.0
         // porque en versiones anteriores no existe
@@ -133,19 +145,25 @@ class Login : AppCompatActivity() {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun setAlarm() {
-        val alarmIntent = Intent(this, AlarmReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
-            PendingIntent.FLAG_IMMUTABLE)
+    /**
+     * Esta función la utilizamos para saber cuantas veces se ha abierto la app
+     */
+    private fun contadorIniciosApp(){
+        //obtenemos las preferencias compartidas "app_data" en modo privado
+        val prefs = getSharedPreferences("app_data", Context.MODE_PRIVATE)
 
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = System.currentTimeMillis()
-        calendar.add(Calendar.SECOND, 20)
+        // obtenemos el contador de inicios de la aplicación desde las preferencias compartidas si no existe lo creamos
+        val startCount = prefs.getInt("start_count", 0) + 1
+        //creamos un editor para editar las prefencias compartidas
+        val editor = prefs.edit()
+        //esblecemos el nuevo valor del contador
+        editor.putInt("start_count", startCount)
+        //aplicamos lo cambios
+        editor.apply()
+        // y asignamos la veces que se ha iniciado a una variable que se comprte con un copion object
+        vecesIniciado = startCount
+        }
 
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
 
 
-}

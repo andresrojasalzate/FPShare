@@ -1,11 +1,17 @@
 package cat.copernic.fpshare.ui.activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
 import cat.copernic.fpshare.modelo.User
@@ -27,6 +33,7 @@ class Register : AppCompatActivity() {
     private lateinit var volverIniciarSesion: TextView
     private var bd = FirebaseFirestore.getInstance()
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
@@ -50,7 +57,7 @@ class Register : AppCompatActivity() {
             val password = InputPassword.text.toString()
             val mail = InputMail.text.toString()
 
-            if (campoVacio(nombre, password, mail)) {
+            if (!campoVacio(nombre, password, mail)) {
                 Snackbar.make(
                     findViewById(R.id.registroLayout),
                     getString(R.string.errorCamposVacios),
@@ -62,7 +69,7 @@ class Register : AppCompatActivity() {
                     getString(R.string.nombreInvalido),
                     Snackbar.LENGTH_LONG
                 ).show()
-            } else if (limiteCaracteres(password)) {
+            } else if (!limiteCaracteres(password)) {
                 Snackbar.make(
                     findViewById(R.id.registroLayout),
                     getString(R.string.errorContraseña),
