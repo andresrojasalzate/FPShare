@@ -4,43 +4,29 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.RatingBar
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import java.io.File
-import java.util.*
-import androidx.lifecycle.lifecycleScope
-import cat.copernic.fpshare.modelo.Cicle
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import kotlin.math.absoluteValue
-import kotlin.math.roundToInt
 
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>(), Filterable {
+
     private lateinit var contexto: Context
     var storage = FirebaseStorage.getInstance()
-    /***
+
+    /**
      * Cargamos en publiFilter la lista de publicaciones que entran por el Adapter.
      */
     var publiFilter: List<Publicacion> = publicaciones
-
 
     inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val viewB = ItemPubliBinding.bind(view)
@@ -58,7 +44,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
         val publicacion = publiFilter.get(position)
 
         with(viewHolder) {
-            /***
+            /**
              * Ponemos los textos en cada recuadro del Item Publi.
              */
             viewB.txtProf.text = publicacion.perfil
@@ -77,9 +63,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
 
             /**
              * Carga de la ruta del enlace a la imagen de la publicacion
-             */
-
-            /**
+             *
              * Colocamos la imagen en el ImageView del Item Publi.
              */
 
@@ -105,7 +89,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 contexto.startActivity(intent)
 
             }
-            /***
+            /**
              * Inicializacion del enlace
              */
             viewB.textLink.setOnClickListener {
@@ -126,46 +110,47 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charString = constraint?.toString() ?: ""
-                /***
-                 * Si no hay una query, el adapter devolvera todas las publicaciones. Para ello, las cargará en publiFilter, puesto que no hay ningun filtro.
-                 *
+                /**
+                 * Si no hay una query, el adapter devolvera todas las publicaciones. Para ello,
+                 * las cargará en publiFilter, puesto que no hay ningun filtro.
                  */
-                if (charString.isEmpty()){
+                if (charString.isEmpty()) {
                     publiFilter = publicaciones
-                }
-                else {
-                    /***
+                } else {
+                    /**
                      * Iniciamos una lista que contendrá los resultados filtrados.
                      */
-                    var filteredList = mutableListOf<Publicacion>()
-                    /***
+                    val filteredList = mutableListOf<Publicacion>()
+                    /**
                      * Definimos el filtro, donde comprobaremos si el titulo de la publicacion contiene la query escrita en el buscador.
                      */
                     publicaciones
                         .filter {
-                            (it.titulo.toLowerCase().contains(constraint!!.toString().toLowerCase()))
+                            (it.titulo.toLowerCase()
+                                .contains(constraint!!.toString().toLowerCase()))
                         }
-                        /***
-                         * Todos los resultados que contienen la query en el titulo de la publicacion seran añadidos en la lista para, despues, pasarlos a
+                        /**
+                         * Todos los resultados que contienen la query en el titulo de la
+                         * publicacion seran añadidos en la lista para, despues, pasarlos a
                          * publiFilter.
-                          */
+                         */
                         .forEach { filteredList.add(it) }
                     publiFilter = filteredList
 
                 }
-                /***
+                /**
                  * Retornamos todos los valores.
                  */
                 return FilterResults().apply { values = publiFilter}
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                /***
+                /**
                  * Si no hay un valor en values, publiFilter será una lista vacia.
                  */
                 publiFilter = if (results?.values == null)
                     mutableListOf()
-                /***
+                /**
                  * Sino, añadira los valores a una Lista de publicaciones.
                  */
                 else

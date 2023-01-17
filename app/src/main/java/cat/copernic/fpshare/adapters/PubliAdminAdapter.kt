@@ -11,7 +11,10 @@ import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.squareup.picasso.Picasso
 
-class PubliAdminAdapter(private val publicaciones: List<Publicacion>, private val listener: PubliAdminAdapter.OnItemClickListener) : RecyclerView.Adapter<PubliAdminAdapter.PubliViewHolder>() {
+class PubliAdminAdapter(
+    private val publicaciones: List<Publicacion>, private val listener:
+    OnItemClickListener
+) : RecyclerView.Adapter<PubliAdminAdapter.PubliViewHolder>() {
     private lateinit var contexto: Context
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PubliViewHolder {
@@ -61,7 +64,6 @@ class PubliAdminAdapter(private val publicaciones: List<Publicacion>, private va
     }
 
     interface OnItemClickListener {
-        //fun onItemClick(id: String)
         fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String)
     }
 

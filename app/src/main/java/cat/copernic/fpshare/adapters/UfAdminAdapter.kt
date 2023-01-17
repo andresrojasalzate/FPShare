@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
-import cat.copernic.fpshare.databinding.ItemMenuBinding
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Uf
 

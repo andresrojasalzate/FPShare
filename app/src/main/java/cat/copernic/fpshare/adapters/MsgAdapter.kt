@@ -14,20 +14,26 @@ class MsgAdapter(private val mensajes: ArrayList<Mensaje>) :
     private lateinit var contexto: Context
 
     inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-        val ViewB = ItemHiloBinding.bind(view)
+        val viewB = ItemHiloBinding.bind(view)
     }
 
+    /**
+     * Creación de los mensajes del foro para la visualización de los mensajes
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgAdapter.ViewHolder {
         contexto = parent.context
         val vista = LayoutInflater.from(contexto).inflate(R.layout.item_hilo, parent, false)
         return ViewHolder(vista)
     }
 
+    /**
+     * Lectura de los mensajes del foro
+     */
     override fun onBindViewHolder(holder: MsgAdapter.ViewHolder, position: Int) {
         val mensajes = mensajes.get(position)
         with(holder) {
-            ViewB.nomUser.text = mensajes.nombreApellido
-            ViewB.txtMensaje.text = mensajes.mensaje
+            viewB.nomUser.text = mensajes.nombreApellido
+            viewB.txtMensaje.text = mensajes.mensaje
         }
 
     }
