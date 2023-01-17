@@ -17,6 +17,7 @@ class RecoveryPassword : AppCompatActivity() {
 
     private lateinit var emailRecovery: EditText
     private lateinit var buttonRecovery: Button
+    private lateinit var buttonBack: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRecoveryPasswordBinding
 
@@ -34,6 +35,7 @@ class RecoveryPassword : AppCompatActivity() {
 
     private fun init() {
         emailRecovery = findViewById(R.id.editText_recovery)
+        buttonBack = findViewById(R.id.btnBack)
         buttonRecovery = findViewById(R.id.btn_recovery)
         auth = Firebase.auth
     }
@@ -52,6 +54,13 @@ class RecoveryPassword : AppCompatActivity() {
             } else {
                 error()
             }
+        }
+
+        /**
+         * Botón para volver al login
+         */
+        buttonBack.setOnClickListener {
+            back()
         }
     }
 
@@ -95,6 +104,14 @@ class RecoveryPassword : AppCompatActivity() {
             findViewById(R.id.passwordLayout),
             getString(R.string.emailEnviadoRecu), BaseTransientBottomBar.LENGTH_SHORT
         ).show()
+        startActivity(Intent(this, Login::class.java))
+        finish()
+    }
+
+    /**
+     * Función para volver atrás al login desde el botón de Volver
+     */
+    private fun back() {
         startActivity(Intent(this, Login::class.java))
         finish()
     }

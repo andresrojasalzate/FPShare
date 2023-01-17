@@ -7,7 +7,7 @@
         <item name="android:layout_width">@dimen/size_300</item>
         <item name="android:layout_height">@dimen/size_60</item>
         <item name="android:onClick">makeSound</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
