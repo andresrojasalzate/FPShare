@@ -101,8 +101,6 @@
         <Button
             android:id="@+id/btn_publish"
             style="@style/Widget.FpShare.Button"
-            android:layout_width="518dp"
-            android:layout_height="140dp"
             android:layout_marginTop="100dp"
             android:text="@string/save_changes_profile"
             app:layout_constraintStart_toStartOf="@+id/input_link_new_post"
@@ -111,13 +109,9 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/Widget.FpShare.Button"
-            android:layout_width="518dp"
-            android:layout_height="166dp"
             android:layout_marginTop="100dp"
             android:text="@string/delete_publi"
             app:layout_constraintStart_toStartOf="@+id/btn_publish"
             app:layout_constraintTop_toBottomOf="@+id/btn_publish" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -70,8 +70,6 @@
         <Button
             android:id="@+id/btn_save"
             style="@style/Widget.FpShare.Button"
-            android:layout_width="500dp"
-            android:layout_height="80dp"
             android:layout_marginTop="96dp"
             android:text="@string/btn_guardar"
             app:layout_constraintEnd_toEndOf="@+id/descriptionLayout"

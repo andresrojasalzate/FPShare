@@ -30,8 +30,7 @@
 
         <Button
             android:id="@+id/btnSaveEdit"
-            android:layout_width="253dp"
-            android:layout_height="96dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="50dp"
             android:text="@string/save_changes"
             app:layout_constraintStart_toStartOf="@+id/inputMainEditNameCicle"
