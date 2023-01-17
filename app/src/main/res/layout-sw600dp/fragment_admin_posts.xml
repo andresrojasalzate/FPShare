@@ -12,36 +12,34 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ViewApuntes"
-            android:layout_width="765dp"
-            android:layout_height="708dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="400dp"
+            android:layout_height="@dimen/size_450"
+            android:layout_marginTop="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnEditUF"
-            style="@style/Widget.FpShare.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_50"
             android:text="@string/edit_uf"
-            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ViewApuntes" />
 
         <Button
             android:id="@+id/btnDeleteUF"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_20"
             android:layout_marginBottom="120dp"
             android:text="@string/delete_uf"
-            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEditUF"
-            app:layout_constraintVertical_bias="0.129" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEditUF" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -13,8 +13,9 @@
 
         <Button
             android:id="@+id/button_users_admin_menu"
-            style="@style/Widget.FpShare.Button"
-            android:layout_marginTop="284dp"
+            android:layout_width="@dimen/size_300"
+            android:layout_height="@dimen/size_60"
+            android:layout_marginTop="@dimen/size_184"
             android:text="@string/users_admin_menu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,8 @@
 
         <Button
             android:id="@+id/button_tags_admin_menu"
-            style="@style/Widget.FpShare.Button"
+            android:layout_width="@dimen/size_300"
+            android:layout_height="@dimen/size_60"
             android:layout_marginBottom="@dimen/size_184"
             android:text="@string/cicles_menu_admin"
             app:layout_constraintBottom_toBottomOf="parent"
