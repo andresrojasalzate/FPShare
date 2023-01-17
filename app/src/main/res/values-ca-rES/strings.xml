@@ -179,4 +179,5 @@
     <string name="nuevo_titulo_foro">Escriu el nou títol</string>
     <string name="nueva_descripcion">Escriu la nova descripció</string>
     <string name="cancelar">Cancel·la</string>
+    <string name="buscar">Cercar</string>
 </resources>
