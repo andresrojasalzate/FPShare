@@ -23,13 +23,13 @@ class RecoveryPassword : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
-        val binding = ActivityRecoveryPasswordBinding.inflate(layoutInflater)
+        binding = ActivityRecoveryPasswordBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        init()
+        init() // Inicia los elementos en pantalla
 
-        listeners()
+        listeners() // Escucha de los botones
     }
 
     private fun init() {
@@ -39,6 +39,11 @@ class RecoveryPassword : AppCompatActivity() {
     }
 
     private fun listeners() {
+        /**
+         * Si pulsamos el botón, nos enviará un correo de recuperación a través del
+         * correo escrito por el usuario en el campo emailRecovery, si el correo proporcionado
+         * no coincide con uno registrado saltará a la función error
+         */
         buttonRecovery.setOnClickListener {
             val correoRecovery = emailRecovery.text.toString()
 
@@ -50,6 +55,9 @@ class RecoveryPassword : AppCompatActivity() {
         }
     }
 
+    /**
+     * Función para enviar el correo de recuperación de la contraseña de la cuenta del usuario
+     */
     private fun recuperarPassword(email: String) {
         auth.setLanguageCode("es")
         auth.sendPasswordResetEmail(email).addOnCompleteListener(this) { task ->
@@ -61,10 +69,16 @@ class RecoveryPassword : AppCompatActivity() {
         }
     }
 
+    /**
+     * Comprobación de que el campo de correo no esta vacío o en blanco
+     */
     private fun camposVacios(correo: String): Boolean {
         return correo.isNotEmpty() && correo.isNotBlank()
     }
 
+    /**
+     * Función con un SnackBar avisando de que el correo no es valido
+     */
     private fun error() {
         Snackbar.make(
             findViewById(R.id.passwordLayout),
@@ -72,6 +86,10 @@ class RecoveryPassword : AppCompatActivity() {
         ).show()
     }
 
+    /**
+     * Función para si hemos completado correctamente el envío del correo, nos envíe de nuevo
+     * a la pantalla de inicio de sesión
+     */
     private fun success() {
         Snackbar.make(
             findViewById(R.id.passwordLayout),

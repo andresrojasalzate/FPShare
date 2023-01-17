@@ -1,9 +1,9 @@
 package cat.copernic.fpshare.ui.activities
 
-import android.app.AlarmManager
+// import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
+// import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -11,18 +11,18 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+// import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
-import cat.copernic.fpshare.modelo.AlarmReceiver
+// import cat.copernic.fpshare.modelo.AlarmReceiver
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
+// import java.util.*
 
 class Login : AppCompatActivity() {
 
@@ -114,9 +114,12 @@ class Login : AppCompatActivity() {
             finish()
         }
     }
+
+    /**
+     * Creamos el Canal de notificacion pero solo apartir de android 8.0
+     * porque en versiones anteriores no existe
+     */
     private fun createNotificationChannel() {
-        //Creamos el Canal de notificacion pero solo apartir de android 8.0
-        // porque en versiones anteriores no existe
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Canal de notificaciones de FPShare"
             val descriptionText = "Aqui se puede gestionar las notificaciones de FPShare"
@@ -133,11 +136,13 @@ class Login : AppCompatActivity() {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    /*@RequiresApi(Build.VERSION_CODES.M)
     private fun setAlarm() {
         val alarmIntent = Intent(this, AlarmReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
-            PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, 0, alarmIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val calendar = Calendar.getInstance()
@@ -145,7 +150,7 @@ class Login : AppCompatActivity() {
         calendar.add(Calendar.SECOND, 20)
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-    }
+    }*/
 
 
 }
