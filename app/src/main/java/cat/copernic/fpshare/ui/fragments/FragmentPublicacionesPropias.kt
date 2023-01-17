@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-// import androidx.navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.adapters.PubliAdapter
-// import cat.copernic.fpshare.adapters.PubliAdminAdapter
+import cat.copernic.fpshare.adapters.PubliAdminAdapter
 import cat.copernic.fpshare.databinding.FragmentPublicacionesPropiasBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.auth.FirebaseAuth
@@ -21,15 +20,15 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClickListener*/ /*TODO Esto habra que descomentarlo cuando ya tengamos para obtener las IDs*/ {
+class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     private var _binding: FragmentPublicacionesPropiasBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: PubliAdapter // TODO Esto habrá que cambiarlo a PubliAdminAdapter cuando sepamos hacer lo de obtener las IDs
+    private lateinit var recyclerView: RecyclerView // RecyclerView para mostrar publicaciones propias
+    private lateinit var adapter: PubliAdminAdapter
     private lateinit var arrayList: ArrayList<String>
-    private lateinit var publiList: Deferred<MutableList<Publicacion>>
+    private lateinit var publiList: Deferred<MutableList<Publicacion>> // Lista de publicaciones
 
     val bd = FirebaseFirestore.getInstance()
 
@@ -50,9 +49,9 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.publicacionesPropiasView
 
-        /***
+        /**
          * Cargamos las publicaciones del usuario tal y como hacemos en otras pantallas
-         *
+         * con una corrutina
          */
         try {
             lifecycleScope.launch(Dispatchers.Main) {
@@ -66,15 +65,15 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
     private suspend fun crearPublicaciones(): MutableList<Publicacion> {
         val publiList = mutableListOf<Publicacion>()
         arrayList = ArrayList()
-        /***
+        /**
          * Guardamos la ruta en una variable
          */
         val ciclo = bd.collection("Ciclos").get().await()
-        /***
+        /**
          * Recorremos la variable ciclos.
          */
         for (doc1 in ciclo) {
-            /***
+            /**
              * Una vez que estamos recorriendo la variable ciclo, podemos consultar la id
              * del documento que estamos recorriendo.
              */
@@ -88,9 +87,10 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                     val publi = bd.collection("Ciclos").document(doc1.id).collection("Modulos")
                         .document(doc2.id)
                         .collection("UFs").document(doc3.id).collection("Publicaciones")
-                        .whereEqualTo("imgPubli", FirebaseAuth.getInstance().currentUser?.email).get().await()
+                        .whereEqualTo("imgPubli", FirebaseAuth.getInstance().currentUser?.email)
+                        .get().await()
                     for (doc4 in publi) {
-                        /***
+                        /**
                          * Hacemos esto consecutivamente hasta llegar a las publicaciones.
                          * Una vez que llegamos aqui, recogemos todos los valores y guardamos las
                          * publicaciones en una MutableList<Publicacion>.
@@ -101,6 +101,9 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                         val publiLink = doc4["enlace"].toString()
                         val publiProfile = doc4["perfil"].toString()
                         val publiTitle = doc4["titulo"].toString()
+                        val publiCiclo = doc4["idCiclo"].toString()
+                        val publiModulo = doc4["idModulo"].toString()
+                        val publiUf = doc4["idUf"].toString()
                         /***
                          * Añadimos el titulo de la publicacion para poder encontrarlo en el buscador.
                          */
@@ -113,13 +116,16 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                             publiDescr,
                             checked,
                             publiLink,
-                            imgPubli
+                            imgPubli,
+                            publiCiclo,
+                            publiModulo,
+                            publiUf
                         )
 
-                        /***
+                        /**
                          * Cargamos la lista en el adapter para mostrar todas las publicaciones.
                          */
-                        adapter = PubliAdapter(publiList) // TODO Esto habrá que cambiarlo a PubliAdminAdapter cuando sepamos hacer lo de obtener las IDs
+                        adapter = PubliAdminAdapter(publiList, this)
                         try {
                             binding.publicacionesPropiasView.adapter = adapter
                             binding.publicacionesPropiasView.layoutManager =
@@ -128,9 +134,7 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
                         } catch (e: NullPointerException) {
                             println("error")
                         }
-
                     }
-
                 }
             }
         }
@@ -138,20 +142,27 @@ class FragmentPublicacionesPropias : Fragment()/*, PubliAdminAdapter.OnItemClick
     }
 
     /**
-     * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
-     * TODO Esto habra que descomentarlo cuando ya tengamos para obtener las IDs
+     * Función para la navegación que hacemos al seleccionar una publicación, la enviamos
+     * junto a las IDs de ciclo, modulo y uf, y mandamos la publicación a la pantalla de
+     * editar publicación para que el usuario pueda modificar su propia publicación
      */
-    /*override fun onItemClick(id: String) {
-        bd.collection("Ciclos").document().collection("Modulos").document()
-            .collection("UFs").document().collection("Publicaciones").document(id)
+    override fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String) {
+        /**
+         * Si la consulta se hace correctamente enviará por el action todas las variables
+         * hacia la pantalla de editar publicación para que el usuario pueda editarla
+         */
+        bd.collection("Ciclos").document(idCiclo).collection("Modulos").document(idModulo)
+            .collection("UFs").document(idUF).collection("Publicaciones").document(id)
             .get().addOnSuccessListener {
                 val view = binding.root
                 val action =
                     FragmentPublicacionesPropiasDirections.actionFragmentPublicacionesPropiasToFragmentAdminModPost(
-
-                        id
+                        idCiclo, // ID del ciclo
+                        idModulo, // ID del módulo
+                        idUF, // ID de la UF
+                        id // ID de la publicación
                     )
                 view.findNavController().navigate(action)
             }
-    } */
+    }
 }

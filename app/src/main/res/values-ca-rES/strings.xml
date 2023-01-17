@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!---<string name="app_name">FPShare</string>-->
-    <string name="EGG">"FPShare "</string>
     <string name="btn_guardar">Guardar</string>
     <string name="btn_yes">Si</string>
     <string name="btn_no">No</string>
     <string name="hint_textHere">Text Aqui..</string>
-    <string name="ajustes">Configuració</string>
-    <string name="language">Llenguatge</string>
-    <string name="system">Per Defecte</string>
-    <string name="theme">Tema</string>
-    <string name="albert">ALBERT</string>
-    <string name="english">Angles</string>
-    <string name="catalan">Catalá</string>
-    <string name="spanish">Espanyol</string>
     <string name="btn_send">Botó per enviar un missatge al fil</string>
     <string name="txt_threadTitle">Titol del Fil</string>
     <string name="password_login">Contrasenya</string>
@@ -22,11 +13,9 @@
     <string name="forgot_your_password_login">Has olvidat la teva Contrasenya?</string>
     <string name="sing_in_login">Registrarse</string>
     <string name="title_activity_recovery_password">Recuperar Contrasenya</string>
-    <string name="email_recoverypassword">Email</string>
     <string name="recovery_password">Recuperar Contrasenya</string>
     <string name="name_profile">Nom</string>
     <string name="last_names_profile">Cognoms</string>
-    <string name="email_profile">Email</string>
     <string name="app_logo">Logo de la App</string>
     <string name="telephone_number_profile">Número de Telèfon</string>
     <string name="institute_profile">Institut</string>
@@ -38,8 +27,6 @@
     <string name="description_new_post">Descripció</string>
     <string name="link_new_post">Enllaç</string>
     <string name="tags_new_post">Etiquetes</string>
-    <string name="dam_new_post" translatable="false">DAM</string>
-    <string name="daw_new_post" translatable="false">DAW</string>
     <string name="asix_new_post">ASIX</string>
     <string name="smix__new_post">SMIX</string>
     <string name="publish_new_post">Publicar</string>
@@ -48,21 +35,16 @@
     <string name="next">Seguent</string>
     <string name="previous">Anterior</string>
     <string name="emailHint">La teva direcció Email</string>
-    <string name="txtMail" translatable="false">Email</string>
     <string name="txtPass">Contrasenya</string>
     <string name="txtName">Nom d\'usuari</string>
     <string name="txtLogin">Loguejar</string>
-    <string name="txtProfile">Carlos Trujillo</string>
     <string name="txtSign">Registrarse</string>
-    <string name="publicDescrip">Diseny de base de dades impartit en el Nicolau Copernic. Nota Final: 8,75</string>
     <string name="textBtnSave">Guardar Canvis</string>
-    <string name="textTitle">Resum UF1 BBDD</string>
     <string name="titleEditarPublic">Editar Publicació</string>
     <string name="strModule">Modul</string>
     <string name="strCicle">Cicle</string>
     <string name="strLink">Enllaç</string>
     <string name="strTitle">Titol</string>
-    <string name="strProfile">Carles Trujillo</string>
     <string name="strPubli">Publicació</string>
     <string name="strDesc">Descripció</string>
     <string name="txtEdit">Editar Publicació</string>
@@ -96,7 +78,6 @@
     <string name="administration">Administració</string>
     <string name="rename_user">Renombrar Usuari</string>
     <string name="delete_user">Borrar Usuari</string>
-    <string name="profile_name">Albert Montero</string>
     <string name="delete_tag">Borrar Etiqueta</string>
     <string name="add_tag">Afegir Etiqueta</string>
     <string name="name">Nom..</string>
@@ -214,4 +195,5 @@
     <string name="descripcion_valorar_app">Voleu valorar l\'aplicació a Google Play Store?</string>
     <string name="fpshare_noti">Notificació FPShare</string>
     <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
+    <string name="buscar">Cercar</string>
 </resources>

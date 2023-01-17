@@ -42,8 +42,8 @@ class CrearUF : Fragment() {
     private val args: CrearUFArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        inicializadores()
-        listeners()
+        inicializadores() // Inicialización de elementos en pantalla
+        listeners() // Escuchadores de pulsaciones
     }
 
     override fun onDestroyView() {
@@ -67,8 +67,6 @@ class CrearUF : Fragment() {
     }
 
     private fun listeners() {
-
-        buttonAddUf.setOnClickListener {
             /**
              * Corrutina para la lectura de UFs
              */
@@ -79,7 +77,6 @@ class CrearUF : Fragment() {
                     }
                 }
             }
-        }
     }
 
     /**
@@ -110,6 +107,9 @@ class CrearUF : Fragment() {
         }
     }
 
+    /**
+     * Función para obtener las UFs en la base de datos ya registrados
+     */
     private suspend fun consultaUF() {
         delay(300)
         val id = inputIDUf.text.toString()

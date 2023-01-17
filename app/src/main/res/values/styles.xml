@@ -7,21 +7,23 @@
         <item name="android:layout_width">@dimen/size_300</item>
         <item name="android:layout_height">@dimen/size_60</item>
         <item name="android:onClick">makeSound</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <!-- Style para texto normal -->
     <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/size_18</item>
+        <item name="android:textSize">18sp</item>
     </style>
     <!-- Style para titulo -->
     <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/blue_500</item>
-        <item name="android:textSize">@dimen/size_26</item>
+        <item name="android:textSize">26sp</item>
     </style>
     <!-- Style para el InputText -->
     <style name="Widget.FpShare.TextImputLayaout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/lavada</item>
         <item name="boxStrokeColor">@color/blue_500</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
         <item name="background">@color/lavada</item>
@@ -30,12 +32,12 @@
     </style>
     <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/size_16</item>
+        <item name="android:textSize">16sp</item>
     </style>
     <!-- Style para los enlaces -->
     <style name="Widget.FpShare.TextViewLink" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/blue_500</item>
-        <item name="android:textSize">@dimen/size_16</item>
+        <item name="android:textColor">@color/blue_900</item>
+        <item name="android:textSize">16sp</item>
     </style>
     <!-- Style para TextInputLayouts -->
     <style name="Widget.FpShare.TextInputLayout" parent="Widget.AppCompat.TextView">
@@ -52,7 +54,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">@dimen/size_300</item>
         <item name="android:layout_height">@dimen/size_40</item>
-        <item name="android:textSize">@dimen/size_30</item>
+        <item name="android:textSize">30sp</item>
     </style>
     <!-- Style para RadioButtons -->
     <style name="Widget.FpShare.RadioButton" parent="Widget.AppCompat.TextView">

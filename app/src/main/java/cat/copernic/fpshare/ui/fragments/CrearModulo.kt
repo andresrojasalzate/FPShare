@@ -42,8 +42,8 @@ class CrearModulo : Fragment() {
     private val args: CrearModuloArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        inicializadores()
-        listeners()
+        inicializadores() // Inicialización de elementos en pantalla
+        listeners() // Escuchadores de pulsaciones
     }
 
     override fun onDestroyView() {
@@ -66,7 +66,6 @@ class CrearModulo : Fragment() {
     }
 
     private fun listeners() {
-        buttonAddModulo.setOnClickListener {
             /**
              * Corrutina para la lectura de Modulos
              */
@@ -77,7 +76,6 @@ class CrearModulo : Fragment() {
                     }
                 }
             }
-        }
     }
 
     /**
@@ -113,6 +111,10 @@ class CrearModulo : Fragment() {
         }
     }
 
+    /**
+     * Función para la consulta de modulos para obtener los que ya están registrados en la base
+     * de datos
+     */
     private suspend fun consultaModulos() {
         delay(300)
         val id = inputIDModulo.text.toString()

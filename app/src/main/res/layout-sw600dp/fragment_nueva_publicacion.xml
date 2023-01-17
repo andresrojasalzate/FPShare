@@ -17,22 +17,31 @@
             android:layout_height="wrap_content"
             tools:context=".NuevaPublicacion">
 
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:text="Add"
+                app:layout_constraintBottom_toTopOf="@+id/input_link_new_post"
+                app:layout_constraintStart_toEndOf="@+id/textView_link_new_post"
+                app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
+
             <TextView
                 android:id="@+id/textView_title_new_post"
                 style="@style/Widget.FpShare.TextViewTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/title"
-                android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_title_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="65dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/title_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +52,6 @@
                     android:id="@+id/text_post"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="34sp"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -55,15 +63,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/description_new_post"
-                android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
                 app:layout_constraintTop_toBottomOf="@+id/input_title_new_post" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_description_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/size_80"
                 android:layout_marginTop="@dimen/size_8"
                 android:hint="@string/description_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +80,6 @@
                     android:id="@+id/text_description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="34sp"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -86,15 +91,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/link_new_post"
-                android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="@+id/input_description_new_post"
                 app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_link_new_post"
                 style="@style/Widget.FpShare.TextInputLayout"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="@dimen/size_8"
                 android:hint="@string/link_new_post"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +108,6 @@
                     android:id="@+id/text_link"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="34sp"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -122,8 +124,8 @@
 
             <RadioGroup
                 android:id="@+id/tags_cicles"
-                android:layout_width="650dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_8"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,35 +136,31 @@
                     android:id="@+id/option_dam"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
-                    android:text="@string/dam_new_post"
-                    android:textSize="48sp" />
+                    android:text="@string/dam_new_post" />
 
                 <RadioButton
                     android:id="@+id/option_daw"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
-                    android:text="@string/daw_new_post"
-                    android:textSize="48sp" />
+                    android:text="@string/daw_new_post" />
 
                 <RadioButton
                     android:id="@+id/option_asix"
                     style="@style/Widget.FpShare.RadioButton"
                     android:layout_marginEnd="@dimen/size_16"
-                    android:text="@string/asix_new_post"
-                    android:textSize="48sp" />
+                    android:text="@string/asix_new_post" />
 
                 <RadioButton
                     android:id="@+id/option_smix"
                     style="@style/Widget.FpShare.RadioButton"
-                    android:text="@string/smix__new_post"
-                    android:textSize="48sp" />
+                    android:text="@string/smix__new_post" />
             </RadioGroup>
 
             <Spinner
                 android:id="@+id/spinner_modules_new_post"
                 style="@style/Widget.FpShare.Spinner"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_70"
                 android:layout_marginTop="@dimen/size_16"
                 android:contentDescription="@string/content_description_spinner_modules_new_post"
                 android:spinnerMode="dropdown"
@@ -174,8 +172,8 @@
             <Spinner
                 android:id="@+id/spinner_ufs_new_post"
                 style="@style/Widget.FpShare.Spinner"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/size_300"
+                android:layout_height="@dimen/size_70"
                 android:layout_marginTop="@dimen/size_16"
                 android:contentDescription="@string/content_description_spinner_ufs_new_post"
                 android:spinnerMode="dropdown"
@@ -187,8 +185,6 @@
             <Button
                 android:id="@+id/btn_publish"
                 style="@style/Widget.FpShare.Button"
-                android:layout_width="600dp"
-                android:layout_height="100dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/publish_new_post"
@@ -203,8 +199,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/modules"
-                android:textSize="34sp"
-                app:layout_constraintStart_toStartOf="@+id/spinner_modules_new_post"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/tags_cicles"
                 app:layout_constraintTop_toBottomOf="@+id/tags_cicles" />
 
             <TextView
@@ -213,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/ufs"
-                android:textSize="34sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/spinner_ufs_new_post"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_modules_new_post" />
 

@@ -97,6 +97,10 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
     }
 
     private fun listeners() {
+        /**
+         * Botón para enviar al usuario a la pantalla CrearCiclo para que pueda crear un
+         * nuevo ciclo en la base de datos
+         */
         botonAddCiclo.setOnClickListener {
             val action =
                 FragmentAdminCiclosDirections.actionListaTagsAdministracionToCrearCiclo()

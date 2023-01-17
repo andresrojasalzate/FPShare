@@ -33,7 +33,6 @@ class Register : AppCompatActivity() {
     private lateinit var volverIniciarSesion: TextView
     private var bd = FirebaseFirestore.getInstance()
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar!!.hide()
         super.onCreate(savedInstanceState)
@@ -53,9 +52,11 @@ class Register : AppCompatActivity() {
         auth = Firebase.auth
 
         btnRegistrarse.setOnClickListener {
-            val nombre = InputNombre.text.toString()
-            val password = InputPassword.text.toString()
-            val mail = InputMail.text.toString()
+            val nombre = InputNombre.text.toString() // Nombre de usuario
+            val password = InputPassword.text.toString() // Contraseña
+            val mail = InputMail.text.toString() // Correo electronico
+
+            // Comprobación de que los campos no estan vacíos
 
             if (!campoVacio(nombre, password, mail)) {
                 Snackbar.make(
@@ -63,7 +64,7 @@ class Register : AppCompatActivity() {
                     getString(R.string.errorCamposVacios),
                     Snackbar.LENGTH_LONG
                 ).show()
-            } else if (nombreLargo(nombre)) {
+            } else if (nombreLargo(nombre)) { // Comprobación de nombre demasiado largo
                 Snackbar.make(
                     findViewById(R.id.registroLayout),
                     getString(R.string.nombreInvalido),
@@ -75,7 +76,7 @@ class Register : AppCompatActivity() {
                     getString(R.string.errorContraseña),
                     Snackbar.LENGTH_LONG
                 ).show()
-            } else {
+            } else { // Si es correcto, se registra en la app
 
                 registrar(password, mail)
 
@@ -83,31 +84,40 @@ class Register : AppCompatActivity() {
                 anadirUsuario(usuario)
             }
         }
-
+        /**
+         * Si damos a volver a iniciar sesión nos mandará de nuevo a la pantalla de login
+         */
         volverIniciarSesion.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
             finish()
         }
     }
 
+    // Adición del usuario a la base de datos
     private fun anadirUsuario(usuario: User) {
 
         bd.collection("Usuarios").document(usuario.email).set(usuario)
     }
 
+    // Comprobante de error
     private fun campoVacio(nombre: String, password: String, mail: String): Boolean {
         return nombre.isNotEmpty() && password.isNotEmpty() && mail.isNotEmpty()
                 && nombre.isNotBlank() && password.isNotBlank() && mail.isNotBlank()
     }
 
+    // Comprobante de error
     private fun limiteCaracteres(cadena: String): Boolean {
         return cadena.length > 6
     }
 
+    // Comprobante de error
     private fun nombreLargo(cadena: String): Boolean {
         return cadena.length > 30
     }
 
+    /**
+     * Función para registrar al usuario
+     */
     private fun registrar(password: String, mail: String) {
         auth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
@@ -120,6 +130,9 @@ class Register : AppCompatActivity() {
             }
     }
 
+    /**
+     * Error de usuario no valido
+     */
     private fun error() {
         Snackbar.make(
             findViewById(R.id.registroLayout),

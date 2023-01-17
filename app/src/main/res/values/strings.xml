@@ -1,8 +1,9 @@
 <resources>
     <!-- GENERAL -->
     <string name="app_name" translatable="false">FPShare</string>
-    <!-- <string name="EGG">FPShare is approaching</string> -->
+    <!-- <string name="EGG">FPShare is approaching</string> Esto es un pequeño easter egg que puse al principio :D -->
     <string name="app_logo">App Logo</string>
+
     <!-- BOTONES -->
     <string name="btn_guardar">Save</string>
     <string name="btn_yes">YES</string>
@@ -161,6 +162,12 @@
     <string name="info_no_especificada_mostrar_info_usuario">(Not specified)</string>
     <string name="txtUserEdit">User</string>
     <string name="title">Title</string>
+    <string name="cancelar">Cancel</string>
+    <string name="myPosts">My Posts</string>
+    <string name="respuestas">Answers</string>
+    <string name="your_forums">Your Forums</string>
+    <string name="nuevo_titulo_foro">Type the new title</string>
+    <string name="nueva_descripcion">Type the new description</string>
 
     <!-- Menu lateral -->
     <string name="nav_header_desc">Navigation Header</string>
@@ -176,7 +183,7 @@
     <string name="bottom_search">search</string>
     <string name="bottom_forum">forum</string>
     <string name="bottom_new_post">new post</string>
-
+    <string name="buscar">Search</string>
 
     <!-- Control de errores -->
 

@@ -82,11 +82,19 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
     }
 
     private fun listeners() {
+        /**
+         * Botón para enviar al usuario a la pantalla CrearModulo para que pueda crear un
+         * nuevo modulo en la base de datos
+         */
         botonAddModulo.setOnClickListener {
             val action =
                 FragmentAdminModulosDirections.actionFragmentAdminModulosToCrearModulo(args.idCiclo)
             view?.findNavController()?.navigate(action)
         }
+        /**
+         * Al estar dentro del ciclo, este botón permite la edición del ciclo, nos manda hacia
+         * la pantalla de Editar Ciclo para que el usuario pueda modificar
+         */
         botonEditCiclo.setOnClickListener {
             val action =
                 FragmentAdminModulosDirections.actionFragmentAdminModulosToFragmentAdminEditCicle(
@@ -94,6 +102,9 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
                 )
             view?.findNavController()?.navigate(action)
         }
+        /**
+         * Al estar dentro del ciclo, este botón permite el borrado del ciclo.
+         */
         botonBorrarCiclo.setOnClickListener {
             borrarCiclo()
             val action =

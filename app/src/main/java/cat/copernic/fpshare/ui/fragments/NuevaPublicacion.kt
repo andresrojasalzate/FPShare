@@ -1,7 +1,10 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.R
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 
 class NuevaPublicacion : Fragment() {
@@ -36,6 +40,10 @@ class NuevaPublicacion : Fragment() {
     private lateinit var uf: String
     private lateinit var arrayIdModulo: ArrayList<String>
     private lateinit var arrayIdUf: ArrayList<String>
+    private lateinit var btnAdd: Button
+    private val READ_REQUEST_CODE = 42
+    private var storage = FirebaseStorage.getInstance()
+    private lateinit var path: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -51,6 +59,8 @@ class NuevaPublicacion : Fragment() {
         enlace = binding.textLink
         idModuloSpinner = binding.spinnerModulesNewPost
         idUfSpinner = binding.spinnerUfsNewPost
+        btnAdd = binding.btnAdd!!
+
 
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
@@ -101,10 +111,43 @@ class NuevaPublicacion : Fragment() {
                 // No se ha seleccionado ningún item
             }
         }
+
+
         botonPublicar.setOnClickListener {
             llegirDades()
         }
+
+        btnAdd.setOnClickListener {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "application/pdf"
+            }
+            startActivityForResult(intent, READ_REQUEST_CODE)
+        }
+
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            resultData?.data?.let { uri ->
+                //upload the pdf to firebase storage
+                val pdfRef = storage.reference.child("pdfs/${uri.lastPathSegment}")
+                pdfRef.putFile(uri).addOnSuccessListener {
+                    path = uri.toString()
+                    Toast.makeText(context, "PDF Uploaded", Toast.LENGTH_LONG)
+                        .show()
+                }
+                    .addOnFailureListener {
+                        Toast.makeText(context, "error uploading pdf", Toast.LENGTH_LONG)
+                            .show()
+                    }
+            }
+        }
+    }
+
+
+
 
     private fun cargarUfs(idModulo: String) {
         val listaUfs = ArrayList<String>()
@@ -174,6 +217,7 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
 
             }
+
             publi.enlace = enlace.text.toString()
             /**
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
@@ -218,6 +262,7 @@ class NuevaPublicacion : Fragment() {
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
          * en los EditText abajo.
          */
+
         if (!URLUtil.isValidUrl(publi.enlace)) {
             Snackbar.make(
                 binding.constraintNuevaPublicacion,
@@ -243,6 +288,10 @@ class NuevaPublicacion : Fragment() {
                 Snackbar.LENGTH_LONG
             ).show()
         } else {
+            publi.idCiclo = checked
+            publi.idModulo = idModulo
+            publi.idUf = idUf
+            publi.pathFile = path
             bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo)
                 .collection("UFs").document(idUf).collection("Publicaciones").add(publi)
                 .addOnSuccessListener { //S'ha afegit el departament...

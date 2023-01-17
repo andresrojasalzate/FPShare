@@ -63,12 +63,16 @@ class CrearCiclo : Fragment() {
         buttonAddCicle.setOnClickListener {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
-                    consultaCiclos()
+                    consultaCiclos() // Consulta de ciclos
                 }
             }
         }
     }
 
+    /**
+     * Función para consultar la lista de ciclos que hay en la base de datos para conocer
+     * las existentes
+     */
     private suspend fun consultaCiclos() {
         delay(300)
         val id = inputIDCicle.text.toString()
@@ -93,6 +97,9 @@ class CrearCiclo : Fragment() {
         }
     }
 
+    /**
+     * Función para agregar el ciclo que ha introducido el usuario en la base de datos
+     */
     private fun addCiclo(id: String, nombre: String) {
         if (campoVacio(id, nombre)) {
             val ciclo = Cicle(id, nombre)
@@ -113,7 +120,7 @@ class CrearCiclo : Fragment() {
                         Toast.LENGTH_LONG
                     ).show()
                 }
-        } else {
+        } else { // Si no introduce todos los campos...
             Snackbar.make(
                 binding.crearCiclo, getString(R.string.errorCamposVacios), Snackbar.LENGTH_LONG
             ).show()

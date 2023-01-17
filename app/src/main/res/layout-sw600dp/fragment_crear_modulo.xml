@@ -13,8 +13,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputIDModulMain"
-            android:layout_width="800dp"
-            android:layout_height="@dimen/size_100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_20"
             android:layout_marginTop="@dimen/size_50"
             android:layout_marginEnd="@dimen/size_20"
@@ -25,15 +25,15 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputIDModul"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/enter_id_module"
                 android:inputType="textCapCharacters" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputNombreModulMain"
-            android:layout_width="800dp"
-            android:layout_height="@dimen/size_100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_20"
             android:layout_marginTop="@dimen/size_50"
             android:layout_marginEnd="@dimen/size_20"
@@ -44,18 +44,17 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputNombreModul"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/name_module"
                 android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnAddModul"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_50"
             android:text="@string/add_module"
-            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputNombreModulMain" />

@@ -12,8 +12,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_modulos"
-            android:layout_width="423dp"
-            android:layout_height="680dp"
+            android:layout_width="@dimen/size_300"
+            android:layout_height="@dimen/size_300"
             android:layout_marginStart="@dimen/size_10"
             android:layout_marginTop="@dimen/size_50"
             android:layout_marginEnd="@dimen/size_10"
@@ -24,8 +24,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewModulos"
-                android:layout_width="297dp"
-                android:layout_height="297dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

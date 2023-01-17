@@ -12,8 +12,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_UFs"
-            android:layout_width="800dp"
-            android:layout_height="800dp"
+            android:layout_width="@dimen/size_300"
+            android:layout_height="@dimen/size_300"
             android:layout_marginStart="@dimen/size_10"
             android:layout_marginTop="@dimen/size_50"
             android:layout_marginEnd="@dimen/size_10"
@@ -31,31 +31,28 @@
 
         <Button
             android:id="@+id/button_add_UF"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_100"
             android:text="@string/add_uf"
-            android:textSize="34sp"
             app:layout_constraintStart_toStartOf="@+id/layout_UFs"
             app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
 
         <Button
             android:id="@+id/btnEditModule"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_100"
             android:text="@string/edit_module"
-            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="@+id/layout_UFs"
             app:layout_constraintTop_toBottomOf="@+id/layout_UFs" />
 
         <Button
             android:id="@+id/btnDeleteModule"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_20"
             android:text="@string/delete_module"
-            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="@+id/btnEditModule"
             app:layout_constraintStart_toStartOf="@+id/button_add_UF"
             app:layout_constraintTop_toBottomOf="@+id/button_add_UF" />

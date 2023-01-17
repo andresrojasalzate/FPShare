@@ -4,7 +4,7 @@
     <string name="btn_guardar">Guardar</string>
     <string name="btn_yes">SI</string>
     <string name="btn_no">NO</string>
-    <string name="hint_textHere">Texto aquí...</string>
+    <string name="hint_textHere">Texto aquí…</string>
     <string name="txt_threadTitle">Titulo del hilo</string>
     <string name="btn_send">Botón para mandar el mensaje al hilo</string>
     <string name="password_login">Contraseña</string>
@@ -81,9 +81,9 @@
     <string name="delete_user">Borrar usuario</string>
     <string name="delete_tag">Borrar etiqueta</string>
     <string name="add_tag">Añadir etiqueta</string>
-    <string name="name">Nombre...</string>
-    <string name="tag_name">Nombre de etiqueta...</string>
-    <string name="id_of_tag">ID de la etiqueta...</string>
+    <string name="name">Nombre…</string>
+    <string name="tag_name">Nombre de etiqueta…</string>
+    <string name="id_of_tag">ID de la etiqueta…</string>
     <string name="create_new_tag">Crear nueva etiqueta</string>
     <string name="delete_uf">Borrar UF</string>
     <string name="add_uf">Añadir UF</string>
@@ -104,7 +104,7 @@
     <string name="cicle">Ciclo</string>
     <string name="module">Módulo</string>
     <string name="comentarios">Comentarios:</string>
-    <string name="cicles_admin">Administracion de Ciclos</string>
+    <string name="cicles_admin">Administración de Ciclos</string>
     <string name="new_forum">Nuevo Foro</string>
     <string name="new_cicle">Nuevo Ciclo</string>
     <string name="new_module">Nuevo Módulo</string>
@@ -194,4 +194,5 @@
     <string name="descripcion_valorar_app">¿Quieres valorar la aplicación en Google Play Store?</string>
     <string name="fpshare_noti">Notificación FPShare</string>
     <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
+    <string name="buscar">Buscar</string>
 </resources>
