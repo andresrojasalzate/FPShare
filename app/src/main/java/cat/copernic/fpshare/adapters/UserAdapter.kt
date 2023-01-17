@@ -12,6 +12,8 @@ import cat.copernic.fpshare.databinding.ItemUserBinding
 /**
  * Clase adaptador para mostrar una lista de usuarios en un recyclerview
  *
+ * @author FPShare
+ *
  * @param usuarios: lista de objetos User que se mostrarán en el recyclerview
  * @param listener: objeto OnItemClickListener para manejar los eventos de clic en los elementos del recyclerview
  */
@@ -20,6 +22,8 @@ class UserAdapter(private val usuarios: List<User>, private val listener: OnItem
 
     /**
      * Clase interna para almacenar y enlazar los elementos de la vista
+     *
+     * @param view
      */
     inner class ViewHolder( var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
         val ViewB = ItemUserBinding.bind(view)
@@ -30,6 +34,8 @@ class UserAdapter(private val usuarios: List<User>, private val listener: OnItem
 
         /**
          * funcion para manejar los eventos de clic en los elementos del recyclerview
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -42,6 +48,11 @@ class UserAdapter(private val usuarios: List<User>, private val listener: OnItem
 
     /**
      * función para crear una nueva instancia de viewholder y configura la vista
+     *
+     * @param parent
+     * @param viewType
+     *
+     * @return ViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         contexto = parent.context
@@ -50,6 +61,9 @@ class UserAdapter(private val usuarios: List<User>, private val listener: OnItem
     }
     /**
      * con es función actualizamos la vista con los datos del usuario en la posición especificada
+     *
+     * @param holder
+     * @param position
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val usuario = usuarios.get(position)
@@ -62,6 +76,8 @@ class UserAdapter(private val usuarios: List<User>, private val listener: OnItem
 
     /**
      * función que devuelve el número de elementos en la lista de usuarios
+     *
+     * @return usuarios.size
      */
     override fun getItemCount(): Int {
         return usuarios.size

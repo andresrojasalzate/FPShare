@@ -12,6 +12,11 @@ import cat.copernic.fpshare.databinding.FragmentAdminModPostBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment de pantalla de edición de Publicaciones
+ *
+ * @author FPShare
+ */
 class FragmentAdminModPost : Fragment() {
     private var _binding: FragmentAdminModPostBinding? = null
     private val binding get() = _binding!!
@@ -24,6 +29,13 @@ class FragmentAdminModPost : Fragment() {
 
     private val args: FragmentAdminModPostArgs by navArgs()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +44,13 @@ class FragmentAdminModPost : Fragment() {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializar() // Lectura de publicación
         botonGuardar.setOnClickListener {

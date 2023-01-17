@@ -9,6 +9,15 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Uf
 
+/**
+ * Adaptador para la visualización de UFs en el recyclerView de Administración de UFs, con un
+ * listener para seleccionar uno y movernos entre los menús
+ *
+ * @author FPShare
+ *
+ * @param uf
+ * @param listener
+ */
 class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<UfAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
@@ -24,6 +33,8 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
         /**
          * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
          * del click recoge la ID y la envia hacia la función onItemClick
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -37,6 +48,11 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
     /**
      * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
      * del archivo item (por ejemplo, item_tag)
+     *
+     * @param parent
+     * @param viewType
+     *
+     * @return ViewHolder
      */
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -48,7 +64,10 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
     }
 
     /**
-     * Función que recoge las IDs de ciclos y las muestra en el recyclerView
+     * Función que recoge las IDs de ufs y las muestra en el recyclerView
+     *
+     * @param holder
+     * @param position
      */
     override fun onBindViewHolder(holder: UfAdminAdapter.ViewHolder, position: Int) {
         val uf = uf[position]
@@ -62,6 +81,9 @@ class UfAdminAdapter(private val uf: MutableList<Uf>, private val listener: OnIt
         return uf.size
     }
 
+    /**
+     * Interfaz onItemClickListener para el click de selección en el recyclerView
+     */
     interface OnItemClickListener {
         fun onItemClick(id: String)
     }

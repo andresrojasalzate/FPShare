@@ -43,7 +43,8 @@ import kotlinx.coroutines.tasks.await
 
 /**
 * Esta clase es de la pantalla de hilo del foro
-* @author Andrés Rojas
+ *
+* @author FPShare
 */
 class FPHilo : Fragment() {
     private var _binding: FragmentFpHiloBinding? = null
@@ -69,24 +70,17 @@ class FPHilo : Fragment() {
     private val args: FPHiloArgs by navArgs()
 
     /**
-     * Con esta función permitimos al sistema  realizar cualquier inicialización necesaria antes de continuar con
-     * el código personalizado.
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-
-
-    }
-
-    /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
      */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFpHiloBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -102,14 +96,14 @@ class FPHilo : Fragment() {
 
         //lamamos a la función infoforo
         lifecycleScope.launch(Dispatchers.Main) {
-           val x = async {
+           async {
                infoforo()
            }
         }
 
         //lamamos a la función llamarecycleviewmensajes
         lifecycleScope.launch(Dispatchers.Main) {
-            val x = async {
+            async {
                 llamarecycleviewmensajes()
             }
         }

@@ -1,17 +1,11 @@
 package cat.copernic.fpshare.ui.activities
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ActivityRegistroBinding
 import cat.copernic.fpshare.modelo.User
@@ -22,6 +16,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Activity de pantalla de registro de usuario
+ *
+ * @author FPShare
+ */
 class Register : AppCompatActivity() {
 
     private lateinit var btnRegistrarse: Button
@@ -93,30 +92,57 @@ class Register : AppCompatActivity() {
         }
     }
 
-    // Adición del usuario a la base de datos
+    /**
+     * Adición del usuario a la base de datos
+     *
+     * @param usuario
+     */
     private fun anadirUsuario(usuario: User) {
 
         bd.collection("Usuarios").document(usuario.email).set(usuario)
     }
 
-    // Comprobante de error
+    /**
+     * Comprobante de error
+     *
+     * @param nombre
+     * @param password
+     * @param mail
+     *
+     * @return boolean
+     */
     private fun campoVacio(nombre: String, password: String, mail: String): Boolean {
         return nombre.isNotEmpty() && password.isNotEmpty() && mail.isNotEmpty()
                 && nombre.isNotBlank() && password.isNotBlank() && mail.isNotBlank()
     }
 
-    // Comprobante de error
+    /**
+     * Comprobante de error
+     *
+     * @param cadena
+     *
+     * @return boolean
+     */
     private fun limiteCaracteres(cadena: String): Boolean {
         return cadena.length > 6
     }
 
-    // Comprobante de error
+    /**
+     * Comprobante de error
+     *
+     * @param cadena
+     *
+     * @return boolean
+     */
     private fun nombreLargo(cadena: String): Boolean {
         return cadena.length > 30
     }
 
     /**
      * Función para registrar al usuario
+     *
+     * @param password
+     * @param mail
      */
     private fun registrar(password: String, mail: String) {
         auth.createUserWithEmailAndPassword(mail, password)

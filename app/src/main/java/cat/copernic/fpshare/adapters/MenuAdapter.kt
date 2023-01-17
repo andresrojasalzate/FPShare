@@ -9,6 +9,15 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemMenuBinding
 import cat.copernic.fpshare.modelo.Cicle
 
+/**
+ * Adaptador para visualizar el menú de ciclos en el apartado principal, con un listener
+ * para moverse a través del menú
+ *
+ * @author FPShare
+ *
+ * @param ciclos
+ * @param listener
+ */
 class MenuAdapter(
     private val ciclos: MutableList<Cicle>,
     private val listener: OnItemClickListener
@@ -50,7 +59,9 @@ class MenuAdapter(
          * Dentro de la funcion onClick, recogemos el valor que queremos devolver por la interfaz.
          * A traves de la posicion podemos encontrar el objeto seleccionado en el Adapter, recogemos
          * la id del objeto, ya que no puede repetirse y pasamos la id a la interficie para que pueda
-         * ser devuelta al fragment inicial.
+         * ser devuelta al fragment inicial
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -62,14 +73,14 @@ class MenuAdapter(
     }
 
     /**
-     * Declaramos la cantidad de objetos que vamos a mostrar.
+     * Declaramos la cantidad de objetos que vamos a mostrar
      */
     override fun getItemCount(): Int {
         return ciclos.size
     }
 
     /**
-     * Declaramos la interfaz y le indicamos el dato que vamos a pasar.
+     * Declaramos la interfaz y le indicamos el dato que vamos a pasar
      */
     interface OnItemClickListener {
         fun onItemClick(id: String)

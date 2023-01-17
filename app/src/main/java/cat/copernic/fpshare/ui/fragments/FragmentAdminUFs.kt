@@ -23,6 +23,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Fragment de pantalla de Administración de UFs
+ *
+ * @author FPShare
+ */
 class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
 
     // Binding
@@ -45,6 +50,13 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     // Args
     private val args: FragmentAdminUFsArgs by navArgs()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,6 +66,13 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadoresButton()
         inicializadoresRW()
@@ -65,6 +84,10 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
         }
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el
+     * sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -113,6 +136,8 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     /**
      * Función para la lectura de UFs dentro de un ciclo y un modulo especificado en anteriores
      * fragments
+     *
+     * @return ufList
      */
     private suspend fun crearUF(): MutableList<Uf> {
         val ufList = mutableListOf<Uf>()
@@ -158,6 +183,8 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     /**
      * OnItemClick que lleva las IDs de idCiclo, idModulo y idUF hacia la pantalla de Publicaciones
      * para mostrar las publicaciones que se encuentran dentro de la UF especificada
+     *
+     * @param id
      */
     override fun onItemClick(id: String) {
         val view = binding.root

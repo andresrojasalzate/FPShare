@@ -29,6 +29,11 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
+/**
+ * Clase de la pantalla pantalla principal
+ *
+ * @author FPShare
+ */
 class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
     private var _binding: FragmentPantallaPrincipalBinding? = null
     private val binding get() = _binding!!
@@ -44,13 +49,13 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
 
     val bd = FirebaseFirestore.getInstance()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,6 +66,13 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         return view
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         //si el usuario se ha logueado dos veces
@@ -140,6 +152,9 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
 
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

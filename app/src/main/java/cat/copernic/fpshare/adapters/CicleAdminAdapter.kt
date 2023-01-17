@@ -9,14 +9,21 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Cicle
 
+/**
+ * Adaptador para la visualización de Ciclos en el fragment de Administración de Ciclos, incluye
+ * un listener para seleccionar el ciclo en la lista
+ *
+ * @author FPShare
+ *
+ * @param ciclos
+ * @param listener
+ */
 class CicleAdminAdapter(
     private val ciclos: MutableList<Cicle>, private val listener: OnItemClickListener
-) :
-    RecyclerView.Adapter<CicleAdminAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CicleAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
 
-    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view),
-        View.OnClickListener {
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var viewB = ItemTagBinding.bind(view)
 
         init {
@@ -26,6 +33,8 @@ class CicleAdminAdapter(
         /**
          * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
          * del click recoge la ID y la envia hacia la función onItemClick
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -39,10 +48,13 @@ class CicleAdminAdapter(
     /**
      * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
      * del archivo item (por ejemplo, item_tag)
+     *
+     * @param parent
+     * @param viewType
+     * @return ViewHolder
      */
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): CicleAdminAdapter.ViewHolder {
         contexto = parent.context
         val vista = LayoutInflater.from(contexto).inflate(R.layout.item_tag, parent, false)
@@ -51,6 +63,9 @@ class CicleAdminAdapter(
 
     /**
      * Función que recoge las IDs de ciclos y las muestra en el recyclerView
+     *
+     * @param holder
+     * @param position
      */
     override fun onBindViewHolder(holder: CicleAdminAdapter.ViewHolder, position: Int) {
         val ciclos = ciclos.get(position)
@@ -64,6 +79,9 @@ class CicleAdminAdapter(
         return ciclos.size
     }
 
+    /**
+     * Interfaz onItemClickListener para el click de selección en el recyclerView
+     */
     interface OnItemClickListener {
         fun onItemClick(id: String)
     }

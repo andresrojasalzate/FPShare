@@ -12,6 +12,11 @@ import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentAdminEditUBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment de pantalla de edición de UFs
+ *
+ * @author FPShare
+ */
 class FragmentAdminEditUF : Fragment() {
 
     // Binding
@@ -30,16 +35,33 @@ class FragmentAdminEditUF : Fragment() {
     // Args
     private val args: FragmentAdminEditUFArgs by navArgs()
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

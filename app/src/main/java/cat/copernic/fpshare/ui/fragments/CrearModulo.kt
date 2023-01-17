@@ -21,7 +21,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * Fragment de pantalla Creación modulos
+ *
+ * @author FPShare
+ */
 class CrearModulo : Fragment() {
 
     // Binding
@@ -46,6 +50,9 @@ class CrearModulo : Fragment() {
         listeners() // Escuchadores de pulsaciones
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -66,21 +73,24 @@ class CrearModulo : Fragment() {
     }
 
     private fun listeners() {
-            /**
-             * Corrutina para la lectura de Modulos
-             */
-            buttonAddModulo.setOnClickListener {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        consultaModulos()
-                    }
+        /**
+         * Corrutina para la lectura de Modulos
+         */
+        buttonAddModulo.setOnClickListener {
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    consultaModulos()
                 }
             }
+        }
     }
 
     /**
      * Escritura de nuevo modulo, añadido dentro del ciclo que hemos seleccionado anteriormente
      * en la pantalla de ciclos
+     *
+     * @param id
+     * @param nombre
      */
     private fun addModulo(id: String, nombre: String) {
         if (campoVacio(id, nombre)) {
@@ -143,7 +153,14 @@ class CrearModulo : Fragment() {
             }
     }
 
-    // Comprobar que los campos no esten en blanco o vacíos
+    /**
+     * Comprobar que los campos no esten en blanco o vacíos
+     *
+     * @param ID
+     * @param nombre
+     *
+     * @return boolean
+     */
     private fun campoVacio(ID: String, nombre: String): Boolean {
         return ID.isNotEmpty() && nombre.isNotEmpty() && ID.isNotBlank() && nombre.isNotBlank()
     }

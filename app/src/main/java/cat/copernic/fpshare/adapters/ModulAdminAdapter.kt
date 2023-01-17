@@ -9,6 +9,15 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemTagBinding
 import cat.copernic.fpshare.modelo.Modul
 
+/**
+ * Adaptador para visualizar la lista de modulos en el fragment de Administración de modulos
+ * con un listener para navegar entre menús
+ *
+ * @author FPShare
+ *
+ * @param modulos
+ * @param listener
+ */
 class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<ModulAdminAdapter.ViewHolder>() {
     private lateinit var contexto: Context
@@ -25,6 +34,8 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
         /**
          * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
          * del click recoge la ID y la envia hacia la función onItemClick
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -38,6 +49,11 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
     /**
      * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
      * del archivo item (por ejemplo, item_tag)
+     *
+     * @param parent
+     * @param viewType
+     *
+     * @return ViewHolder
      */
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -50,6 +66,9 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
 
     /**
      * Función que recoge las IDs de ciclos y las muestra en el recyclerView
+     *
+     * @param holder
+     * @param position
      */
     override fun onBindViewHolder(holder: ModulAdminAdapter.ViewHolder, position: Int) {
         val modulos = modulos.get(position)
@@ -63,6 +82,9 @@ class ModulAdminAdapter(private val modulos: MutableList<Modul>, private val lis
         return modulos.size
     }
 
+    /**
+     * Interfaz onItemClickListener para el click de selección en el recyclerView
+     */
     interface OnItemClickListener {
         fun onItemClick(id: String)
     }

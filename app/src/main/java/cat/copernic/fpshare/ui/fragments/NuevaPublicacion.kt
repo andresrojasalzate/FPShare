@@ -4,13 +4,11 @@ import android.R
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.*
-import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
@@ -22,7 +20,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
-
+/**
+ * Fragment de la pantalla de nueva publicación
+ *
+ * @author FPShare
+ */
 class NuevaPublicacion : Fragment() {
 
     private var _binding: FragmentNuevaPublicacionBinding? = null
@@ -45,6 +47,13 @@ class NuevaPublicacion : Fragment() {
     private var storage = FirebaseStorage.getInstance()
     private lateinit var path: String
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -52,6 +61,13 @@ class NuevaPublicacion : Fragment() {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         botonPublicar = binding.btnPublish
         titulo = binding.textPost
@@ -146,9 +162,11 @@ class NuevaPublicacion : Fragment() {
         }
     }
 
-
-
-
+    /**
+     * Función para cargar las UFs a través de una consulta de la base de datos
+     *
+     * @param idModulo
+     */
     private fun cargarUfs(idModulo: String) {
         val listaUfs = ArrayList<String>()
         arrayIdUf = ArrayList()
@@ -166,7 +184,9 @@ class NuevaPublicacion : Fragment() {
             }
     }
 
-
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -236,6 +256,11 @@ class NuevaPublicacion : Fragment() {
         }
     }
 
+    /**
+     * Función para cargar los modulos a través de una consulta a la base de datos
+     *
+     * @param idCiclo
+     */
     private fun cargarModulos(idCiclo: String) {
         val listaModulos = ArrayList<String>()
         arrayIdModulo = ArrayList()
@@ -253,6 +278,13 @@ class NuevaPublicacion : Fragment() {
             }
     }
 
+    /**
+     * Función para añadir publicación
+     *
+     * @param checked
+     * @param idModulo
+     * @param idUf
+     */
     private fun anadirPublicacion(
         checked: String, idModulo: String, idUf: String, publi: Publicacion
     ) {
@@ -305,6 +337,15 @@ class NuevaPublicacion : Fragment() {
         }
     }
 
+    /**
+     * Función para comprobar errores
+     *
+     * @param titulo
+     * @param descripcion
+     * @param enlace
+     *
+     * @return boolean
+     */
     private fun algoVacio(
         titulo: String, descripcion: String, enlace: String
     ): Boolean {
@@ -313,10 +354,24 @@ class NuevaPublicacion : Fragment() {
                 && enlace.isNotEmpty() && enlace.isNotBlank()
     }
 
+    /**
+     * Función para comprobar errores
+     *
+     * @param titulo
+     *
+     * @return boolean
+     */
     private fun limiteCaracteresTitulo(titulo: String): Boolean {
         return titulo.length > 20
     }
 
+    /**
+     * Función para comprobar errores
+     *
+     * @param descripcion
+     *
+     * @return boolean
+     */
     private fun limiteCaracteresDescripcion(descripcion: String): Boolean {
         return descripcion.length > 248
     }

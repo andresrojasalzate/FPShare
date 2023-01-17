@@ -21,7 +21,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * Fragment de la pantalla crear UF
+ *
+ * @author FPShare
+ */
 class CrearUF : Fragment() {
 
     // Binding
@@ -41,16 +45,33 @@ class CrearUF : Fragment() {
     // Args
     private val args: CrearUFArgs by navArgs()
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores() // Inicialización de elementos en pantalla
         listeners() // Escuchadores de pulsaciones
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +80,9 @@ class CrearUF : Fragment() {
         return binding.root
     }
 
+    /**
+     * Con esta función inicilizamos los items de la pantalla
+     */
     private fun inicializadores() {
         buttonAddUf = binding.btnAddUf
 
@@ -67,20 +91,23 @@ class CrearUF : Fragment() {
     }
 
     private fun listeners() {
-            /**
-             * Corrutina para la lectura de UFs
-             */
-            buttonAddUf.setOnClickListener {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        consultaUF()
-                    }
+        /**
+         * Corrutina para la lectura de UFs
+         */
+        buttonAddUf.setOnClickListener {
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    consultaUF()
                 }
             }
+        }
     }
 
     /**
      * Función para añadir UFs dentro de un ciclo y de un modulo especificado por el usuario
+     *
+     * @param id
+     * @param nombre
      */
     private fun addUF(id: String, nombre: String) {
 
@@ -138,7 +165,12 @@ class CrearUF : Fragment() {
             }
     }
 
-    // Función para comprobar que no está vacio o en blanco los campos introducidos
+    /**
+     * Función para comprobar que no está vacio o en blanco los campos introducidos
+     *
+     * @param ID
+     * @param nombre
+     */
     private fun campoVacio(ID: String, nombre: String): Boolean {
         return ID.isNotEmpty() && nombre.isNotEmpty()
                 && ID.isNotBlank() && nombre.isNotBlank()

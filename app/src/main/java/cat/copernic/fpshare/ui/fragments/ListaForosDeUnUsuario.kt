@@ -20,6 +20,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Clase de la pantalla ListaForosPropios
+ *
+ * @author FPShare
+ */
 class listaForosDeUnUsuario : Fragment(), ForoAdapter.OnItemClickListener {
     private var _binding: FragmentListaForosDeUnUsuarioBinding? = null
     private val binding get() = _binding!!
@@ -28,22 +33,17 @@ class listaForosDeUnUsuario : Fragment(), ForoAdapter.OnItemClickListener {
     private var user = Firebase.auth.currentUser
 
     /**
-     * Con esta función permitimos al sistema  realizar cualquier inicialización necesaria antes de continuar con
-     * el código personalizado.
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
      */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListaForosDeUnUsuarioBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -52,6 +52,9 @@ class listaForosDeUnUsuario : Fragment(), ForoAdapter.OnItemClickListener {
     /**
      * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
      * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -59,7 +62,7 @@ class listaForosDeUnUsuario : Fragment(), ForoAdapter.OnItemClickListener {
         recyclerView = binding.recyclerView
 
         lifecycleScope.launch(Dispatchers.Main) {
-            val algo = async{
+            async{
                 //llamamos a la función
                 llamarecycleview()
             }
@@ -109,6 +112,8 @@ class listaForosDeUnUsuario : Fragment(), ForoAdapter.OnItemClickListener {
 
     /**
      * Con esta función si un item de recycleview es clickado cambia de pantalla
+     *
+     * @param id
      */
     override fun onItemClick(id: String) {
         //al pulsar un item del recycleview cambiaremos de pantalla a la pantalla FPHilo

@@ -28,7 +28,8 @@ import kotlinx.coroutines.withContext
 
 /**
  * Clase de la pantalla de Creación de Foro
- * @author Andrés Rojas
+ *
+ * @author FPShare
  */
 class CreacionForo : Fragment() {
     private var _binding: FragmentCreacionForoBinding? = null
@@ -41,22 +42,17 @@ class CreacionForo : Fragment() {
     private var user = Firebase.auth.currentUser
 
     /**
-     * Con esta función permitimos al sistema  realizar cualquier inicialización necesaria antes de continuar con
-     * el código personalizado.
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
      */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCreacionForoBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -65,6 +61,9 @@ class CreacionForo : Fragment() {
     /**
      * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
      * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -85,10 +84,10 @@ class CreacionForo : Fragment() {
             if ((titulo.text.toString().isNotEmpty() && titulo.text.toString().isNotBlank())&&
                 (descripcion.text.toString().isNotEmpty() && descripcion.text.toString().isNotBlank())) {
                 lifecycleScope.launch(Dispatchers.Main) {
-                   val x = async{
-                        //llamamos a la función
-                        crearForo()
-                    }
+                    async{
+                         //llamamos a la función
+                         crearForo()
+                     }
                 }
 
 
@@ -116,7 +115,7 @@ class CreacionForo : Fragment() {
         }
 
     /**
-     * Con est función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
      */
     override fun onDestroyView() {
         super.onDestroyView()
@@ -197,6 +196,8 @@ class CreacionForo : Fragment() {
 
     /**
      * Con esta función cambiamos de pantalla  una vez creado el foro
+     *
+     * @param id
      */
     private fun cambiarPantalla(id: String){
         //cambiamos dde pantalla a la FPHilo
