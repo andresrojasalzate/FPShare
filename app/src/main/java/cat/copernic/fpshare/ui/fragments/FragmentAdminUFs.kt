@@ -82,6 +82,10 @@ class FragmentAdminUFs : Fragment(), UfAdminAdapter.OnItemClickListener {
     }
 
     private fun listeners() {
+        /**
+         * Botón para enviar al usuario a la pantalla CrearUF para que pueda crear una
+         * nueva UF en la base de datos
+         */
         botonAddUF.setOnClickListener {
             val action =
                 FragmentAdminUFsDirections.actionFragmentAdminUFsToCrearUF(
