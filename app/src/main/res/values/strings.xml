@@ -217,12 +217,7 @@
     <string name="imageLoadError">Image load has failed</string>
     <string name="perfilUpdateCorrecto">Profile update made successfully</string>
     <string name="uploadResult">Image uploaded successfully.</string>
-    <string name="myPosts">My Posts</string>
-    <string name="respuestas">Answers</string>
-    <string name="your_forums">My Forums</string>
-    <string name="nuevo_titulo_foro">Type the new title</string>
-    <string name="nueva_descripcion">Type the new description</string>
-    <string name="cancelar">Cancel</string>
+
     <string name="reminder">Reminder</string>
     <string name="decripcion_alerta_no_permisos">This option creates a reminder with which a notification will be sent to you. To use it, activate the \'Notifications\' option of the application in your device\'s settings.</string>
     <string name="aceptat">Accept</string>

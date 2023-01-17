@@ -66,6 +66,7 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
         //si el usuario se ha logueado dos veces
         if (Login.vecesIniciado == 2){
             crearAlert()
+            Login.vecesIniciado++
 
         }
 

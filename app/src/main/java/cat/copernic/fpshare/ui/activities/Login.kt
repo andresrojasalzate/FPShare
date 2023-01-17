@@ -160,7 +160,7 @@ class Login : AppCompatActivity() {
         editor.putInt("start_count", startCount)
         //aplicamos lo cambios
         editor.apply()
-        // y asignamos la veces que se ha iniciado a una variable que se comprte con un copion object
+        // y asignamos la veces que se ha iniciado a una variable que se comprte con un compaion object
         vecesIniciado = startCount
         }
 
