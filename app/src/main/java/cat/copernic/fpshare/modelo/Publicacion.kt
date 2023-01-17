@@ -2,6 +2,9 @@ package cat.copernic.fpshare.modelo
 
 import com.google.firebase.firestore.Exclude
 
+/**
+ * Clase para crear objetos de tipo Publicación
+ */
 data class Publicacion(
     @get:Exclude var id: String = "",
     var perfil: String = "",

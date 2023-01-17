@@ -1,5 +1,8 @@
 package cat.copernic.fpshare.modelo
 
+/**
+ * Clase Usuario para crear objetos de tipo usuario
+ */
 data class User(
     var email: String = "",
     var nombre: String = "",
