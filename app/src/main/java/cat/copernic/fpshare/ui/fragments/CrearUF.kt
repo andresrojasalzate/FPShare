@@ -67,8 +67,6 @@ class CrearUF : Fragment() {
     }
 
     private fun listeners() {
-
-        buttonAddUf.setOnClickListener {
             /**
              * Corrutina para la lectura de UFs
              */
@@ -79,7 +77,6 @@ class CrearUF : Fragment() {
                     }
                 }
             }
-        }
     }
 
     /**

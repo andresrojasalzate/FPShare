@@ -66,7 +66,6 @@ class CrearModulo : Fragment() {
     }
 
     private fun listeners() {
-        buttonAddModulo.setOnClickListener {
             /**
              * Corrutina para la lectura de Modulos
              */
@@ -77,7 +76,7 @@ class CrearModulo : Fragment() {
                     }
                 }
             }
-        }
+
     }
 
     /**
