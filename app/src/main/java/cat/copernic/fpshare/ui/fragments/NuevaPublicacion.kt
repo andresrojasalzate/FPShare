@@ -133,8 +133,8 @@ class NuevaPublicacion : Fragment() {
             resultData?.data?.let { uri ->
                 //upload the pdf to firebase storage
                 val pdfRef = storage.reference.child("pdfs/${uri.lastPathSegment}")
-                path = uri.toString()
                 pdfRef.putFile(uri).addOnSuccessListener {
+                    path = uri.toString()
                     Toast.makeText(context, "PDF Uploaded", Toast.LENGTH_LONG)
                         .show()
                 }

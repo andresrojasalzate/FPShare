@@ -26,8 +26,6 @@
         <TextView
             android:id="@+id/textView_name_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
             android:layout_marginTop="60dp"
             android:text="@string/name_profile"
@@ -40,8 +38,6 @@
         <TextView
             android:id="@+id/name_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/textView_name_user"
@@ -52,8 +48,6 @@
         <TextView
             android:id="@+id/textView_lasts_name_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/last_names_profile"
             android:textSize="30sp"
@@ -65,8 +59,6 @@
         <TextView
             android:id="@+id/lasts_name_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/textView_lasts_name_user"
@@ -77,8 +69,6 @@
         <TextView
             android:id="@+id/textView_email_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/email_profile"
             android:textSize="30sp"
@@ -90,8 +80,6 @@
         <TextView
             android:id="@+id/email_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/textView_email_user"
@@ -115,8 +103,6 @@
         <TextView
             android:id="@+id/telephone_number_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_user"
@@ -127,8 +113,6 @@
         <TextView
             android:id="@+id/textView_insitute_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/institute_profile"
             android:textSize="30sp"
@@ -140,8 +124,6 @@
         <TextView
             android:id="@+id/institue_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/textView_insitute_user"
@@ -152,8 +134,6 @@
         <TextView
             android:id="@+id/textView_admin_user"
             style="@style/Widget.FpShare.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_16"
             android:text="@string/administrator_info_usuario"
             android:textSize="30sp"
@@ -174,8 +154,7 @@
 
         <Button
             android:id="@+id/button_rename_user"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginStart="60dp"
             android:layout_marginTop="40dp"
             android:text="@string/rename_user"
@@ -184,8 +163,7 @@
 
         <Button
             android:id="@+id/button_delete_user"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="60dp"
             android:text="@string/delete_user"

@@ -92,12 +92,13 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
 
 
             val path = publicacion.pathFile.toUri()
+            /*
             val pdfRef = storageRef.child("pdfs/${path.lastPathSegment}")
             pdfRef.putFile(path).addOnSuccessListener { taskSnapshot ->
                 val pdfName = taskSnapshot.metadata?.name
                 viewB.textLink.text = pdfName
             }
-
+*/
             viewB.txtDescarga.setOnClickListener {
                 val queryUrl: Uri = Uri.parse(publicacion.pathFile)
                 val intent = Intent(Intent.ACTION_VIEW, queryUrl)

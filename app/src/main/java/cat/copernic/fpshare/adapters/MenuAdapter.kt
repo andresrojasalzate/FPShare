@@ -55,7 +55,6 @@ class MenuAdapter (private val ciclos: MutableList<Cicle>, private val listener:
                 listener.onItemClick(id)
             }
         }
-
     }
 
     /***
@@ -71,5 +70,4 @@ class MenuAdapter (private val ciclos: MutableList<Cicle>, private val listener:
     interface OnItemClickListener {
         fun onItemClick(id: String)
     }
-
 }

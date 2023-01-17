@@ -1,23 +1,20 @@
 package cat.copernic.fpshare.ui.fragments
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_PICK
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
+import kotlinx.coroutines.*
 import android.provider.MediaStore
+import android.provider.MediaStore.Images
 import android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -42,18 +39,17 @@ class perfil : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
     private lateinit var nombreEditText: EditText
-    private lateinit var apellidosEditText: EditText
-    private lateinit var numero: EditText
-    private lateinit var insituto: EditText
-    private lateinit var botonGuardarCambios: Button
-    private lateinit var emailEdittext: EditText
+    private lateinit var  apellidosEditText: EditText
+    private lateinit var numero : EditText
+    private lateinit var insituto : EditText
+    private lateinit var  botonGuardarCambios : Button
+    private lateinit var emailEdittext : EditText
     private var storage = FirebaseStorage.getInstance()
     private var user = Firebase.auth.currentUser
     private var storageRef = storage.reference.child("Imagenes/" + user?.email.toString())
     private lateinit var imagen: ImageView
     private lateinit var progressBar: ProgressBar
     private var REQUEST_CODE = 123
-    private lateinit var appContext: Context
 
     private var photoSelectedUri: Uri? = null
 

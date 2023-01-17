@@ -31,8 +31,7 @@
 
         <Button
             android:id="@+id/button_add_UF"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="@dimen/size_100"
             android:text="@string/add_uf"
             android:textSize="34sp"
@@ -41,8 +40,7 @@
 
         <Button
             android:id="@+id/btnEditModule"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="@dimen/size_100"
             android:text="@string/edit_module"
             android:textSize="34sp"
@@ -51,8 +49,7 @@
 
         <Button
             android:id="@+id/btnDeleteModule"
-            android:layout_width="330dp"
-            android:layout_height="110dp"
+            style="@style/Widget.FpShare.Button"
             android:layout_marginTop="@dimen/size_20"
             android:text="@string/delete_module"
             android:textSize="34sp"
