@@ -2,4 +2,4 @@ package cat.copernic.fpshare.modelo
 
 import com.google.firebase.firestore.Exclude
 
-data class Modul(@get:Exclude var idModul: String,var nombre: String)
+data class Modul(@get:Exclude var idModul: String, var nombre: String)
