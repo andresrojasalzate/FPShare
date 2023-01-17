@@ -32,6 +32,13 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
 
     val bd = FirebaseFirestore.getInstance()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,11 +48,21 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
         return binding.root
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.publicacionesPropiasView
 
@@ -145,6 +162,11 @@ class FragmentPublicacionesPropias : Fragment(), PubliAdminAdapter.OnItemClickLi
      * Función para la navegación que hacemos al seleccionar una publicación, la enviamos
      * junto a las IDs de ciclo, modulo y uf, y mandamos la publicación a la pantalla de
      * editar publicación para que el usuario pueda modificar su propia publicación
+     *
+     * @param id
+     * @param idCiclo
+     * @param idModulo
+     * @param idUF
      */
     override fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String) {
         /**

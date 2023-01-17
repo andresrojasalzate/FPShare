@@ -7,23 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.fpshare.R
-import cat.copernic.fpshare.adapters.ModulAdminAdapter
 import cat.copernic.fpshare.adapters.PubliAdapter
 import cat.copernic.fpshare.databinding.FragmentMenuApuntesBinding
-import cat.copernic.fpshare.databinding.FragmentMenuUfBinding
-import cat.copernic.fpshare.modelo.Modul
 import cat.copernic.fpshare.modelo.Publicacion
-import cat.copernic.fpshare.modelo.Uf
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
-
+/**
+ * Clase de la pantalla MenuApuntes
+ *
+ * @author FPShare
+ */
 class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentMenuApuntesBinding? = null
     private val binding get() = _binding!!
@@ -35,20 +33,28 @@ class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
 
     val args: MenuApuntesArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMenuApuntesBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
         searchView = binding.searchView
@@ -64,6 +70,9 @@ class MenuApuntes : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

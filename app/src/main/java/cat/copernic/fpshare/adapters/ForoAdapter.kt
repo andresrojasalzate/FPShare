@@ -9,7 +9,15 @@ import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemForoBinding
 import cat.copernic.fpshare.modelo.Foro
 
-
+/**
+ * Adaptador para visualizar los foros, con un listener para seleccionar uno de la lista
+ * y poder ver los mensajes en su interior
+ *
+ * @author FPShare
+ *
+ * @param foros
+ * @param listener
+ */
 class ForoAdapter(private val foros: List<Foro>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<ForoAdapter.ViewHolder>() {
     private lateinit var contexto: Context
@@ -24,6 +32,8 @@ class ForoAdapter(private val foros: List<Foro>, private val listener: OnItemCli
         /**
          * Esta función recoge el click que ha dado el usuario, y dependiendo de la posición
          * del click recoge la ID y la envia hacia la función onItemClick
+         *
+         * @param v
          */
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
@@ -37,6 +47,11 @@ class ForoAdapter(private val foros: List<Foro>, private val listener: OnItemCli
     /**
      * Esta función es la que construye el aspecto de los items dentro del recyclerView a través
      * del archivo item (por ejemplo, item_tag)
+     *
+     * @param parent
+     * @param viewType
+     *
+     * @return ViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         contexto = parent.context
@@ -46,6 +61,9 @@ class ForoAdapter(private val foros: List<Foro>, private val listener: OnItemCli
 
     /**
      * Función que recoge las IDs del foro y las muestra en el recyclerView
+     *
+     * @param holder
+     * @param position
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foro = foros.get(position)
@@ -61,6 +79,9 @@ class ForoAdapter(private val foros: List<Foro>, private val listener: OnItemCli
         return foros.size
     }
 
+    /**
+     * Interfaz onItemClickListener para el click de selección en el recyclerView
+     */
     interface OnItemClickListener {
         fun onItemClick(id: String)
     }

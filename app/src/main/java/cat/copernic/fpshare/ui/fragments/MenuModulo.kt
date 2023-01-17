@@ -17,6 +17,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Clase de la pantalla MenuModulos
+ *
+ * @author FPShare
+ */
 class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     private var _binding: FragmentMenuModuloBinding? = null
@@ -30,6 +35,13 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     private val args: MenuModuloArgs by navArgs()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,6 +51,13 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
 
@@ -53,6 +72,9 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
         }
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -60,6 +82,8 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     /***
      * Declaramos nuestra funcion como suspend fun.
+     *
+     * @return cicloList
      */
     private suspend fun crearMenu(): MutableList<Modul> {
         val idCic = args.cicloid
@@ -91,6 +115,8 @@ class MenuModulo : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     /***
      * Interfaz creada desde modulAdapter.
+     *
+     * @param id
      */
     override fun onItemClick(id: String) {
         /***

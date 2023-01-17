@@ -23,6 +23,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Fragment de pantalla de Administración de Modulos
+ *
+ * @author FPShare
+ */
 class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     // Binding
@@ -45,6 +50,13 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
     // Args
     private val args: FragmentAdminModulosArgs by navArgs()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -52,6 +64,13 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadoresButton()
         inicializadoresRW()
@@ -117,6 +136,8 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
     /**
      * Función para la lectura de la subcolección de Modulos, utilizando la ID que nos ha dado
      * el onClickListener de Ciclos
+     *
+     * @return moduloList
      */
     private suspend fun crearModulos(): MutableList<Modul> {
         val moduloList = mutableListOf<Modul>()
@@ -165,6 +186,8 @@ class FragmentAdminModulos : Fragment(), ModulAdminAdapter.OnItemClickListener {
 
     /**
      * Navegación hacia UFs
+     *
+     * @param id
      */
     override fun onItemClick(id: String) {
         val view = binding.root

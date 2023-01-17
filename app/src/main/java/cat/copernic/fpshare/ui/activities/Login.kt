@@ -1,22 +1,15 @@
 package cat.copernic.fpshare.ui.activities
 
-
-
-import android.Manifest.permission.ACCESS_NOTIFICATION_POLICY
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.LoginBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -24,9 +17,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
-
+/**
+ * Activity de pantalla de login de usuario
+ *
+ * @author FPShare
+ */
 class Login : AppCompatActivity() {
 
     private lateinit var correoLogin: EditText

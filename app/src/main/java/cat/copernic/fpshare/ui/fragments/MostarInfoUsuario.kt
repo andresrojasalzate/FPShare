@@ -26,7 +26,8 @@ import java.io.File
 
 /**
  * Clase de la pantalla MostrarInfoUsuario
- * @author Andrés Rojas
+ *
+ * @author FPShare
  */
 class MostarInfoUsuario : Fragment() {
     private var _binding: FragmentMostarInfoUsuarioBinding? = null
@@ -43,18 +44,12 @@ class MostarInfoUsuario : Fragment() {
     private var storage = FirebaseStorage.getInstance()
     private val args: MostarInfoUsuarioArgs by navArgs()
 
-
-    /**
-     * Con esta función permitimos al sistema  realizar cualquier inicialización necesaria antes de continuar con
-     * el código personalizado.
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
      */
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,6 +63,9 @@ class MostarInfoUsuario : Fragment() {
     /**
      * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
      * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //llamanos a la función

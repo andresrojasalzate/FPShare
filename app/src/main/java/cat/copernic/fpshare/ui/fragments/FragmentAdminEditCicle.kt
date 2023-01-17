@@ -12,6 +12,11 @@ import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentAdminEditCicleBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment de la pantalla de Adminstración de edición de ciclos
+ *
+ * @author FPShare
+ */
 class FragmentAdminEditCicle : Fragment() {
 
     // Binding
@@ -30,6 +35,13 @@ class FragmentAdminEditCicle : Fragment() {
     // Args
     private val args: FragmentAdminEditCicleArgs by navArgs()
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
@@ -40,6 +52,13 @@ class FragmentAdminEditCicle : Fragment() {
         _binding = null
     }
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

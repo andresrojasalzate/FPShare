@@ -11,7 +11,11 @@ import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.databinding.FragmentRenombrarUsuarioBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-
+/**
+ * Clase de la pantalla renombrar usuario
+ *
+ * @author FPShare
+ */
 class Renombrar_Usuario : Fragment() {
 
     private var _binding: FragmentRenombrarUsuarioBinding? = null
@@ -21,22 +25,29 @@ class Renombrar_Usuario : Fragment() {
     private var bd = FirebaseFirestore.getInstance()
     private val args: Renombrar_UsuarioArgs by navArgs()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRenombrarUsuarioBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializar()
         botonRename.setOnClickListener {
@@ -46,6 +57,9 @@ class Renombrar_Usuario : Fragment() {
 
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

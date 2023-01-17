@@ -17,6 +17,13 @@ import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
+/**
+ * Adaptador para la visualización de publicaciones en un recyclerView
+ *
+ * @author FPShare
+ *
+ * @param publicaciones
+ */
 class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>(), Filterable {
 

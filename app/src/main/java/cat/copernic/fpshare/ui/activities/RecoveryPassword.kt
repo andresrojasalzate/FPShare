@@ -13,6 +13,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Activity de pantalla de registro de usuario
+ *
+ * @author FPShare
+ */
 class RecoveryPassword : AppCompatActivity() {
 
     private lateinit var emailRecovery: EditText
@@ -66,6 +71,8 @@ class RecoveryPassword : AppCompatActivity() {
 
     /**
      * Función para enviar el correo de recuperación de la contraseña de la cuenta del usuario
+     *
+     * @param email
      */
     private fun recuperarPassword(email: String) {
         auth.setLanguageCode("es")
@@ -80,6 +87,10 @@ class RecoveryPassword : AppCompatActivity() {
 
     /**
      * Comprobación de que el campo de correo no esta vacío o en blanco
+     *
+     * @param correo
+     *
+     * @return boolean
      */
     private fun camposVacios(correo: String): Boolean {
         return correo.isNotEmpty() && correo.isNotBlank()

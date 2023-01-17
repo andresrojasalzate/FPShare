@@ -23,6 +23,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Fragment de pantalla de Administración de Publicaciones
+ *
+ * @author FPShare
+ */
 class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     // Binding
@@ -46,6 +51,13 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
     // Args
     private val args: FragmentAdminPostsArgs by navArgs()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +66,13 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()
@@ -65,6 +84,9 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -97,6 +119,8 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     /**
      * Función para mostrar las publicaciones de un ciclo, modulo y UF en especifico
+     *
+     * @return postsList
      */
     private suspend fun crearMenu(): MutableList<Publicacion> {
         val postsList = mutableListOf<Publicacion>()
@@ -146,6 +170,11 @@ class FragmentAdminPosts : Fragment(), PubliAdminAdapter.OnItemClickListener {
 
     /**
      * Navegación para ir hacia la modificación de la publicación seleccionada por el usuario
+     *
+     * @param id
+     * @param idCiclo
+     * @param idModulo
+     * @param idUF
      */
     override fun onItemClick(id: String, idCiclo: String, idModulo: String, idUF: String) {
         bd.collection("Ciclos").document(args.idCiclo).collection("Modulos").document(args.idModulo)

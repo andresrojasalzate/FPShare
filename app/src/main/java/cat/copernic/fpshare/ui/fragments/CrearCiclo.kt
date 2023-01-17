@@ -20,6 +20,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Fragment de pantalla de Creación de Ciclos
+ *
+ * @author FPShare
+ */
 class CrearCiclo : Fragment() {
     private var _binding: FragmentCrearCicloBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +37,13 @@ class CrearCiclo : Fragment() {
     private lateinit var inputIDCicle: EditText
     private lateinit var inputNameCicle: EditText
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadores()
         listeners()

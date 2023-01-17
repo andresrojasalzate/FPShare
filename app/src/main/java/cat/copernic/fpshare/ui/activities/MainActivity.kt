@@ -1,20 +1,14 @@
 package cat.copernic.fpshare.ui.activities
 
-import android.Manifest
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_NO_CREATE
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -29,6 +23,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
+/**
+ * Main Activity
+ *
+ * @author FPShare
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -210,6 +209,8 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Función para la creación del menú en el appBar
+     *
+     * @return boolean
      */
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
@@ -217,6 +218,8 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Función de la creación del menú inferior
+     *
+     * @param navController
      */
     private fun setupBottomNavMenu(navController: NavController) {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_view)

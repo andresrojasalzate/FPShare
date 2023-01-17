@@ -20,6 +20,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Fragment de la pantalla de Adminstración de ciclos
+ *
+ * @author FPShare
+ */
 class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
 
     // Binding
@@ -41,6 +46,13 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
     // RecyclerViews
     private lateinit var recyclerViewCiclos: RecyclerView
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,6 +62,13 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         inicializadoresButton()
         inicializadoresRW()
@@ -62,6 +81,9 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
         }
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -79,6 +101,8 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
 
     /**
      * Lectura de la colección de Ciclos de la base de datos
+     *
+     * @return cicloList
      */
     private suspend fun crearCiclos(): MutableList<Cicle> {
         val cicloList = mutableListOf<Cicle>()
@@ -108,7 +132,11 @@ class FragmentAdminCiclos : Fragment(), CicleAdminAdapter.OnItemClickListener {
         }
     }
 
-    // Navegabilidad hacia Modulos
+    /**
+     * Navegación hacia adminModulos con el que es la ID del modulo seleccionado
+     *
+     * @param id
+     */
     override fun onItemClick(id: String) {
         val view = binding.root
         val action =

@@ -34,7 +34,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.io.File
 
-
+/**
+ * Clase de la pantalla perfil
+ *
+ * @author FPShare
+ */
 class perfil : Fragment() {
 
     private var _binding: FragmentPerfilBinding? = null
@@ -64,6 +68,13 @@ class perfil : Fragment() {
 
     private var bd = FirebaseFirestore.getInstance()
 
+    /**
+     * Con esta función mostraremos el diseño de la pantalla ,mediante un View
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -71,6 +82,13 @@ class perfil : Fragment() {
         return binding.root
     }
 
+    /**
+     * En esta función iniciamos  los diferentes elementos de la pantalla y creamos los listener de los eventos de los
+     * elementos  de la vista
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val email = user?.email.toString()
         inicizalizar()
@@ -196,6 +214,9 @@ class perfil : Fragment() {
         }
     }
 
+    /**
+     * Con esta función destruimos la vista del fragemnt y limpiamos recursos para que el sistema funcione correctamente
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
