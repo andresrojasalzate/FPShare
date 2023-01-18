@@ -3,8 +3,23 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
 
-    //Safeargs
+    // Dokka
+    id 'org.jetbrains.dokka'
+
+    // Safeargs
     id("androidx.navigation.safeargs.kotlin")
+}
+
+dokkaHtml {
+    dokkaSourceSets {
+        named("main") {
+            includeNonPublic.set(false)
+            skipEmptyPackages.set(true)
+            skipDeprecated.set(true)
+            reportUndocumented.set(true)
+            jdkVersion.set(8)
+        }
+    }
 }
 
 android {
