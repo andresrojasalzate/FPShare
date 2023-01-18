@@ -1,20 +1,30 @@
 package cat.copernic.fpshare.adapters
 
-import android.content.Context
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.RatingBar
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.getCodeCacheDir
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageException
+import kotlinx.coroutines.tasks.await
 import java.io.File
 
 /**
@@ -49,7 +59,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
 
     override fun onBindViewHolder(viewHolder: PubliViewHolder, position: Int) {
         val publicacion = publiFilter.get(position)
-
         with(viewHolder) {
             /**
              * Ponemos los textos en cada recuadro del Item Publi.
@@ -81,20 +90,53 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                     viewB.imgIcon.setImageBitmap(bitmap)
                 }
 
-
-            val path = publicacion.pathFile.toUri()
             /*
             val pdfRef = storageRef.child("pdfs/${path.lastPathSegment}")
             pdfRef.putFile(path).addOnSuccessListener { taskSnapshot ->
                 val pdfName = taskSnapshot.metadata?.name
                 viewB.textLink.text = pdfName
-            }
-*/
+            }*/
             viewB.txtDescarga.setOnClickListener {
                 val queryUrl: Uri = Uri.parse(publicacion.pathFile)
                 val intent = Intent(Intent.ACTION_VIEW, queryUrl)
                 contexto.startActivity(intent)
 
+                /*
+                val localfile = File.createTempFile("tempFile", "pdf")
+                var storageRef = storage.reference.child("pdfs/" + publicacion.pathFile)
+                try {
+
+                    storageRef.getFile(publicacion.pathFile.toUri()).addOnSuccessListener {
+                        // Abrir el archivo pdf descargado
+                        val pdfUri = FileProvider.getUriForFile(
+                            contexto,
+                            "com.your_package_name.fileprovider",
+                            localfile
+                        )
+                        val pdfIntent = Intent(Intent.ACTION_VIEW)
+                        pdfIntent.setDataAndType(pdfUri, "application/pdf")
+                    }
+                }catch (e: StorageException){
+                    println("Error")
+                }
+
+
+                var pdfRef = storage.reference.child("pdfs/" + publicacion.pathFile)
+                val localFile = File.createTempFile("apuntes", "pdf", contexto.cacheDir)
+                pdfRef.getFile(localFile)
+                    .addOnSuccessListener {
+                        // Abrir el archivo pdf descargado
+                        val pdfUri = FileProvider.getUriForFile(contexto, "com.fpshare.fileprovider", localFile)
+                        val pdfIntent = Intent(Intent.ACTION_VIEW)
+                        pdfIntent.setDataAndType(pdfUri, "application/pdf")
+                        pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        contexto.startActivity(pdfIntent)
+                    }
+                    .addOnFailureListener {
+                        Log.e(TAG, "Error downloading PDF")
+                    }
+
+                 */
             }
             /**
              * Inicializacion del enlace

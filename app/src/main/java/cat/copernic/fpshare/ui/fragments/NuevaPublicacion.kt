@@ -2,8 +2,11 @@ package cat.copernic.fpshare.ui.fragments
 
 import android.R
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +48,13 @@ class NuevaPublicacion : Fragment() {
     private lateinit var btnAdd: Button
     private val READ_REQUEST_CODE = 42
     private var storage = FirebaseStorage.getInstance()
-    private lateinit var path: String
+    public lateinit var path: String
+    private var pdfUri: Uri? = null
+    private lateinit var publi: Publicacion
+    private var storageRef = storage.reference.child("pdfs/" + user?.email.toString())
+
+    private var docSelectedUri: Uri? = null
+
 
     /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
@@ -147,18 +156,21 @@ class NuevaPublicacion : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             resultData?.data?.let { uri ->
-                //upload the pdf to firebase storage
-                val pdfRef = storage.reference.child("pdfs/${uri.lastPathSegment}")
-                pdfRef.putFile(uri).addOnSuccessListener {
-                    path = uri.toString()
-                    Toast.makeText(context, "PDF Uploaded", Toast.LENGTH_LONG)
-                        .show()
-                }
-                    .addOnFailureListener {
-                        Toast.makeText(context, "error uploading pdf", Toast.LENGTH_LONG)
-                            .show()
+                pdfUri = uri
+                val pdfRef = storageRef.child("pdfs/${uri.lastPathSegment}")
+                pdfRef.putFile(uri)
+                    .addOnSuccessListener { taskSnapshot ->
+                        val pdfUrl = taskSnapshot.storage.downloadUrl.toString()
+                        Log.d(TAG, "PDF URL: $pdfUrl")
+                        // Guardar la url en una variable
+                        path = uri.lastPathSegment.toString()
                     }
+                    .addOnFailureListener {
+                        Log.e(TAG, "Error uploading PDF")
+                    }
+
             }
+
         }
     }
 
@@ -223,6 +235,7 @@ class NuevaPublicacion : Fragment() {
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
             publi.checked = ""
+            publi.pathFile =pdfUri.toString()
 
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"
@@ -237,7 +250,6 @@ class NuevaPublicacion : Fragment() {
                 publi.checked = "ASIR"
 
             }
-
             publi.enlace = enlace.text.toString()
             /**
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
@@ -337,15 +349,6 @@ class NuevaPublicacion : Fragment() {
         }
     }
 
-    /**
-     * Función para comprobar errores
-     *
-     * @param titulo
-     * @param descripcion
-     * @param enlace
-     *
-     * @return boolean
-     */
     private fun algoVacio(
         titulo: String, descripcion: String, enlace: String
     ): Boolean {
