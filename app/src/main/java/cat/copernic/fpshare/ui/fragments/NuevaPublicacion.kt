@@ -6,12 +6,14 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.fpshare.databinding.FragmentNuevaPublicacionBinding
@@ -22,6 +24,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.nio.file.FileStore
 
 /**
  * Fragment de la pantalla de nueva publicación
@@ -51,9 +54,15 @@ class NuevaPublicacion : Fragment() {
     public lateinit var path: String
     private var pdfUri: Uri? = null
     private lateinit var publi: Publicacion
-    private var storageRef = storage.reference.child("pdfs/" + user?.email.toString())
+    private var storageRef = storage.reference.child("pdfs")
 
-    private var docSelectedUri: Uri? = null
+
+    private val resultat = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            pdfUri = it.data?.data //Assignem l'URI de la imatge
+
+        }
+    }
 
 
     /**
@@ -143,11 +152,24 @@ class NuevaPublicacion : Fragment() {
         }
 
         btnAdd.setOnClickListener {
+            //resultat.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "application/pdf"
             }
-            startActivityForResult(intent, READ_REQUEST_CODE)
+            resultat.launch(intent)
+            var adrecaFitxer = storageRef.child((pdfUri?.lastPathSegment).toString());
+
+            //Afegim la imatge seleccionada a storage
+            pdfUri?.let{uri-> //Hem seleccionat una imatge. A la variable uri guardem l'URI de la imatge
+                //Afegim (pujem) la imatge que hem seleccionat mitjançant el mètode putFile de la classe FirebasStorage, passant-li com a
+                //paràmetre l'URI de la imatge. Aquest mètode carrega la imatge de manera asíncrona.
+                adrecaFitxer.putFile(uri).addOnSuccessListener {
+                    Toast.makeText(requireContext(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
+                }
+            }
+
+
         }
 
 
@@ -157,13 +179,20 @@ class NuevaPublicacion : Fragment() {
         if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             resultData?.data?.let { uri ->
                 pdfUri = uri
-                val pdfRef = storageRef.child("pdfs/${uri.lastPathSegment}")
+                path = uri.toString()
+                val pdfRef = storageRef.child("pdfs/" + {uri.lastPathSegment})
+
                 pdfRef.putFile(uri)
                     .addOnSuccessListener { taskSnapshot ->
                         val pdfUrl = taskSnapshot.storage.downloadUrl.toString()
+                        path = taskSnapshot.metadata!!.path
                         Log.d(TAG, "PDF URL: $pdfUrl")
                         // Guardar la url en una variable
-                        path = uri.lastPathSegment.toString()
+                        Snackbar.make(
+                            binding.root,
+                            "documento añadido",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                     .addOnFailureListener {
                         Log.e(TAG, "Error uploading PDF")
