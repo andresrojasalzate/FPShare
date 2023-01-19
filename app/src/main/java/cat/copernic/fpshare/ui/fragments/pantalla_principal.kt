@@ -213,7 +213,7 @@ class pantalla_principal() : Fragment(), SearchView.OnQueryTextListener{
                         /***
                          * Cargamos la lista en el adapter para mostrar todas las publicaciones.
                          */
-                        adapter = PubliAdapter(cicloList)
+                        adapter = PubliAdapter(cicloList, this)
                         try {
                             binding.recyclerView.adapter = adapter
                             binding.recyclerView.layoutManager =

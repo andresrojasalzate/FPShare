@@ -24,7 +24,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.nio.file.FileStore
 
 /**
  * Fragment de la pantalla de nueva publicación
@@ -54,8 +53,9 @@ class NuevaPublicacion : Fragment() {
     public lateinit var path: String
     private var pdfUri: Uri? = null
     private lateinit var publi: Publicacion
-    private var storageRef = storage.reference.child("pdfs")
+    val i: Int = 0
 
+    private var storageRef = storage.reference.child("pdfs/" + pdfUri?.lastPathSegment.toString())
 
     private val resultat = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
@@ -63,7 +63,6 @@ class NuevaPublicacion : Fragment() {
 
         }
     }
-
 
     /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
@@ -94,7 +93,6 @@ class NuevaPublicacion : Fragment() {
         idModuloSpinner = binding.spinnerModulesNewPost
         idUfSpinner = binding.spinnerUfsNewPost
         btnAdd = binding.btnAdd!!
-
 
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
@@ -157,16 +155,34 @@ class NuevaPublicacion : Fragment() {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "application/pdf"
             }
+            //val sref = FirebaseStorage.getInstance().reference.child("pdfs/" + pdfUri!!.lastPathSegment)
             resultat.launch(intent)
-            var adrecaFitxer = storageRef.child((pdfUri?.lastPathSegment).toString());
-
+            var pdfRef = storageRef.child("pdfs/" + user?.email.toString())
             //Afegim la imatge seleccionada a storage
             pdfUri?.let{uri-> //Hem seleccionat una imatge. A la variable uri guardem l'URI de la imatge
                 //Afegim (pujem) la imatge que hem seleccionat mitjançant el mètode putFile de la classe FirebasStorage, passant-li com a
                 //paràmetre l'URI de la imatge. Aquest mètode carrega la imatge de manera asíncrona.
-                adrecaFitxer.putFile(uri).addOnSuccessListener {
+                val uploadTask = pdfRef.putFile(uri)
+                uploadTask.continueWithTask{ task ->
+                    if(!task.isSuccessful){
+                        task.exception?.let {
+                            //throw.it
+
+                        }
+                    }
+                    pdfRef.downloadUrl
+
+                }.addOnCompleteListener { task ->
+                    val downloadUrl = task.result
+                    path = downloadUrl.toString()
                     Toast.makeText(requireContext(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
                 }
+
+
+                /*putFile(uri).addOnSuccessListener {
+                    path = adrecaFitxer.downloadUrl.toString()
+                    Toast.makeText(requireContext(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
+                }*/
             }
 
 
