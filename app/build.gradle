@@ -17,7 +17,7 @@ dokkaHtml {
             skipEmptyPackages.set(true)
             skipDeprecated.set(true)
             reportUndocumented.set(true)
-            jdkVersion.set(8)
+            jdkVersion.set(11)
         }
     }
 }

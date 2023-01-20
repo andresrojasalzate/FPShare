@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CrearCiclo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/crearCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputIDcicloMain"
+            android:layout_width="800dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_50"
+            android:layout_marginEnd="@dimen/size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputIDCiclo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/input_id_cicle"
+                android:inputType="textCapCharacters" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNombreCicleMain"
+            android:layout_width="800dp"
+            android:layout_height="@dimen/size_100"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_50"
+            android:layout_marginEnd="@dimen/size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputIDcicloMain">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputNombreCiclo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/name_of_cicle"
+                android:inputType="textCapSentences" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAddCicle"
+            style="@style/Widget.FpShare.Button"
+            android:layout_marginTop="@dimen/size_50"
+            android:text="@string/add_cicle"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNombreCicleMain" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

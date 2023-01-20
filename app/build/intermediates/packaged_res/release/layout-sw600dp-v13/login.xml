@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/size_24"
+    tools:context="cat.copernic.fpshare.ui.activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/logo_login"
+        style="@style/Widget.FpShare.ImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="@dimen/size_136"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="@dimen/size_144"
+        android:contentDescription="@string/logo_de_la_app_image_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_fpshare" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imput_email_login"
+        style="@style/Widget.FpShare.TextInputLayout"
+        android:layout_width="700dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/size_68"
+        android:hint="@string/email_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_login">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/email_textview_login"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/email_login"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/imput_email_login"
+        app:layout_constraintStart_toStartOf="@+id/imput_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/logo_login"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/password_texview_login"
+        style="@style/Widget.FpShare.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24"
+        android:textSize="30sp"
+        android:text="@string/password_login"
+        app:layout_constraintStart_toStartOf="@+id/imput_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/imput_email_login"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imput_password_login"
+        style="@style/Widget.FpShare.TextInputLayout"
+        android:layout_width="700dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/size_8"
+        android:hint="@string/password_login"
+        app:layout_constraintStart_toStartOf="@+id/password_texview_login"
+        app:layout_constraintTop_toBottomOf="@+id/password_texview_login">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:inputType="textPassword"
+            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_singin_login"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="500dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/size_30"
+        android:text="@string/sign_in_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imput_password_login" />
+
+    <Button
+        android:id="@+id/button_register_login"
+        style="@style/Widget.FpShare.Button"
+        android:layout_width="500dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/size_16"
+        android:text="@string/register_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_singin_login" />
+
+    <TextView
+        android:id="@+id/textView_forgotten_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_36"
+        android:textSize="30sp"
+        android:text="@string/forgot_your_password_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_register_login"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
