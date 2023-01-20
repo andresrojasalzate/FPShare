@@ -14,6 +14,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.RatingBar
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.getCodeCacheDir
 import androidx.core.content.ContextCompat.startActivity
@@ -23,8 +24,10 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 import java.io.File
 
@@ -35,7 +38,7 @@ import java.io.File
  *
  * @param publicaciones
  */
-class PubliAdapter(private val publicaciones: List<Publicacion>, private val listener: MenuAdapter.OnItemClickListener) : RecyclerView.Adapter<PubliAdapter
+class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.Adapter<PubliAdapter
 .PubliViewHolder>(), Filterable {
 
     private lateinit var contexto: Context
@@ -48,7 +51,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>, private val lis
 
     inner class PubliViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val viewB = ItemPubliBinding.bind(view)
-
     }
 
 
@@ -84,17 +86,16 @@ class PubliAdapter(private val publicaciones: List<Publicacion>, private val lis
             }
 
             viewB.txtDescarga.setOnClickListener{
-                override fun onClick(v: View?) {
-                    val position: Int = adapterPosition
-                    val id = publicacion.get(position).pathFile
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(id)
-                    }
+                //val fileId = "your_file_id"
+                val storageRef = storage.getReference("pdfs/${publicacion.pathFile}")
+                val urlTask = storageRef.downloadUrl
+                urlTask.addOnSuccessListener { uri ->
+                    val url = uri.toString()
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    contexto.startActivity(intent)
                 }
             }
-
-
-
                 /**
                  * Inicializacion del enlace
                  */
@@ -104,8 +105,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>, private val lis
                     contexto.startActivity(intent)
 
                 }
-
-
             }
         }
 
@@ -143,7 +142,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>, private val lis
                          */
                         .forEach { filteredList.add(it) }
                     publiFilter = filteredList
-
                 }
                 /**
                  * Retornamos todos los valores.

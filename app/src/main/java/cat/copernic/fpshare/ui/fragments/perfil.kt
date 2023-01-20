@@ -286,41 +286,7 @@ class perfil : Fragment() {
     suspend fun subirArchivos() {
         val appContext = context
         val intent = Intent(ACTION_PICK, EXTERNAL_CONTENT_URI)
-        //startActivityForResult(intent, REQUEST_CODE)
         resultLauncher.launch(intent)
-        /*
-
-
-        resultLauncher.launch(
-            Intent(
-                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            )
-        )
-        if (action == Activity.RESULT_OK) {
-            // El intent se ha realizado correctamente
-        }
-        /***
-         * Añadimos la imagen en Firestore
-         */
-        uploadImage().execute()
-        photoSelectedUri?.let { uri ->
-            /***
-             * Subimos la imagen seleccionada a Firestore con el metodo putFile y le pasamos como
-             * parametro la URI de la imagen.
-             */
-
-            storageRef.putFile(uri).addOnSuccessListener {
-                Toast.makeText(
-                    appContext, "La imagen se ha subido con exito.", Toast.LENGTH_LONG
-                ).show()
-            }.await()
-        }
-        lifecycleScope.launch(Dispatchers.Main){
-            async{ cargarImagen() }
-        }
-
-         */
-
     }
 
     //En tu actividad
