@@ -66,9 +66,6 @@
         <argument
             android:name="idforo"
             app:argType="string" />
-        <action
-            android:id="@+id/action_FPHilo_to_tusForos"
-            app:destination="@id/tusForos" />
     </fragment>
     <fragment
         android:id="@+id/fragment_perfil"
@@ -387,7 +384,7 @@
     <fragment
         android:id="@+id/tusForos"
         android:name="cat.copernic.fpshare.ui.fragments.listaForosDeUnUsuario"
-        android:label="@string/your_forums"
+        android:label="fragment_lista_foros_de_un_usuario"
         tools:layout="@layout/fragment_lista_foros_de_un_usuario" >
         <action
             android:id="@+id/action_tusForos_to_FPHilo"

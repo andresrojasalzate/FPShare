@@ -1,1 +1,7 @@
-
+/build/generated
+/build/snapshot
+/build/tmp
+/build/kotlin
+/build/kotlinToolingMetadata
+/build/intermediates
+/build/outputs

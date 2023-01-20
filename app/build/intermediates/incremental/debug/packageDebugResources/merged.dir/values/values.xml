@@ -142,6 +142,7 @@
     <string name="google_app_id" translatable="false">1:340176083789:android:87072298856d2cb6227504</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCnQ-59az4lhss6ddmMygLeK9RLZdK7Aq0</string>
     <string name="google_storage_bucket" translatable="false">fpshare-x.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hintLoginPassword">Your password..</string>
     <string name="hint_textHere">Text here…</string>
     <string name="home">Home</string>
@@ -260,8 +261,6 @@
     <string name="user_admin">Users Administration</string>
     <string name="users_admin_menu">users</string>
     <string name="valorar_app">Rate the app</string>
-    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
-    <string name="write_the_title_of_the_thread">Write the title of the thread</string>
     <string name="your_forums">Your Forums</string>
     <style name="SplashTheme" parent="Theme.Fpshare">
         <item name="android:windowBackground">@drawable/splash_screen</item>

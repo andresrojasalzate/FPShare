@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="EGG">"FPShare "</string>
     <string name="HintName">El teu nom d\'Usuari</string>
     <string name="a_adir_foro">Afegir Forum</string>
-    <string name="aceptat">Acceptar</string>
-    <string name="activar_recordatorio">Vols activar un recordatori que t\'enviï una notificació en 5 minuts?</string>
     <string name="add_cicle">Afegir Cicle</string>
     <string name="add_module">Afegir Modul</string>
     <string name="add_tag">Afegir Etiqueta</string>
@@ -11,9 +10,10 @@
     <string name="admin">Administració</string>
     <string name="administration">Administració</string>
     <string name="administrator_info_usuario">Administrador</string>
+    <string name="ajustes">Configuració</string>
+    <string name="albert">ALBERT</string>
     <string name="app_logo">Logo de la App</string>
     <string name="asix_new_post">ASIX</string>
-    <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
     <string name="back">Enrere</string>
     <string name="borrar_foro_fp_hilo">Esborrar Forum</string>
     <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
@@ -26,9 +26,8 @@
     <string name="btn_no">No</string>
     <string name="btn_send">Botó per enviar un missatge al fil</string>
     <string name="btn_yes">Si</string>
-    <string name="buscar">Cercar</string>
-    <string name="campos_vacios">Camps buits</string>
     <string name="cancelar">Cancel·la</string>
+    <string name="catalan">Catalá</string>
     <string name="cicle">Cicle</string>
     <string name="cicles">Cicles</string>
     <string name="cicles_admin">Administració de Cicles</string>
@@ -40,36 +39,33 @@
     <string name="cicloExiste">El cicle ja existeix</string>
     <string name="comentarios">Comentaris:</string>
     <string name="contenido_alert_borrar_foro">¿Estas segur que vols borrar aquest forum?</string>
-    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
     <string name="content_description_foto_de_perfil_de_usuario_profile">Imatge de perfil de l\'usuari</string>
     <string name="content_description_spinner_modules_new_post">Llista de Moduls del Cicle seleccionat</string>
     <string name="content_description_spinner_ufs_new_post">Llista de UFs del Cicle seleccionat</string>
     <string name="correo_usuario">Email de l\'usuari</string>
     <string name="create_new_tag">Crear Nova Etiqueta</string>
-    <string name="decripcion_alerta_no_permisos">Aquesta opció crea un recordatori amb què se us enviarà una notificació. Per utilitzar-la, activeu l\'opció \"Notificacions\" de l\'aplicació als paràmetres del dispositiu.</string>
+    <string name="dam_new_post" translatable="false">DAM</string>
+    <string name="daw_new_post" translatable="false">DAW</string>
     <string name="delete">Esborrar</string>
     <string name="delete_cicle">Borrar Cicle</string>
-    <string name="delete_forum">esborrar fòrum</string>
     <string name="delete_module">Borrar Modul</string>
     <string name="delete_publi">Esborrar Publicacions</string>
     <string name="delete_tag">Borrar Etiqueta</string>
     <string name="delete_uf">Borrar UF</string>
     <string name="delete_user">Borrar Usuari</string>
-    <string name="desactivar_recordatorio">Ja hi ha un recordatori activat, voleu desactivar-lo?</string>
-    <string name="descripcion_valorar_app">Voleu valorar l\'aplicació a Google Play Store?</string>
     <string name="description_new_post">Descripció</string>
     <string name="edit">Modificar</string>
     <string name="edit_cicle">Modificar Cicle</string>
-    <string name="edit_description">editar descripció</string>
     <string name="edit_module">Modificar Modul</string>
-    <string name="edit_title">editar títol</string>
     <string name="edit_uf">Modificar UF</string>
     <string name="emailEnviadoRecu">Email enviat correctament</string>
     <string name="emailHint">La teva direcció Email</string>
+    <string name="email_profile">Email</string>
+    <string name="email_recoverypassword">Email</string>
+    <string name="english">Angles</string>
     <string name="enter_cicle">Entrar al Cicle</string>
     <string name="enter_id_module">Entrar la ID del Modul</string>
     <string name="enter_id_uf">Entrar la ID de la UF</string>
-    <string name="enter_the_title_of_the_new_forum">introduïu el títol del nou fòrum</string>
     <string name="errorCamposVacios">Tens que omplir tots els camps</string>
     <string name="errorContraseña">La contrasenya no pot ser de menys de 6 caràcters</string>
     <string name="errorDescripcionLarga">La descripció es massa llarg</string>
@@ -79,9 +75,7 @@
     <string name="errorUFNoEspecificada">No has seleccionat cap cicle, módul o UF</string>
     <string name="errorUserEquivocado">Usuari o constrasenya no vàlida</string>
     <string name="forgot_your_password_login">Has olvidat la teva Contrasenya?</string>
-    <string name="forum_thread_title">títol del fil del fòrum</string>
     <string name="forums">Forum</string>
-    <string name="fpshare_noti">Notificació FPShare</string>
     <string name="hintLoginPassword">La teva Contrasenya</string>
     <string name="hint_textHere">Text Aqui..</string>
     <string name="home">Principal</string>
@@ -92,6 +86,7 @@
     <string name="input_id_cicle">Entrar la ID del Cicle</string>
     <string name="institute_profile">Institut</string>
     <string name="invalidURL">URL no valida</string>
+    <string name="language">Llenguatge</string>
     <string name="last_names_profile">Cognoms</string>
     <string name="link_new_post">Enllaç</string>
     <string name="logo_de_la_app_image_login">Logo de la App</string>
@@ -134,10 +129,11 @@
     <string name="posts">Publicacions</string>
     <string name="posts_admin_menu">Publicacions</string>
     <string name="previous">Anterior</string>
+    <string name="profile_name">Albert Montero</string>
+    <string name="publicDescrip">Diseny de base de dades impartit en el Nicolau Copernic. Nota Final: 8,75</string>
     <string name="publish_new_post">Publicar</string>
     <string name="recovery_password">Recuperar Contrasenya</string>
     <string name="register_login">Registrarse</string>
-    <string name="reminder">Recordatori</string>
     <string name="rename_tag">Renombrar Etiqueta</string>
     <string name="rename_user">Renombrar Usuari</string>
     <string name="respuestas">Respostes</string>
@@ -150,18 +146,23 @@
     <string name="sign_in_login">Loguejar</string>
     <string name="sing_in_login">Registrarse</string>
     <string name="smix__new_post">SMIX</string>
+    <string name="spanish">Espanyol</string>
     <string name="strCicle">Cicle</string>
     <string name="strDesc">Descripció</string>
     <string name="strLink">Enllaç</string>
     <string name="strModule">Modul</string>
+    <string name="strProfile">Carles Trujillo</string>
     <string name="strPubli">Publicació</string>
     <string name="strTitle">Titol</string>
+    <string name="system">Per Defecte</string>
     <string name="tag_name">Nom de l\'Etiqueta</string>
     <string name="tags_admin_menu">Etiquetes</string>
     <string name="tags_new_post">Etiquetes</string>
     <string name="telefonoInvalido">Número de telèfon no vàlid</string>
     <string name="telephone_number_profile">Número de Telèfon</string>
     <string name="textBtnSave">Guardar Canvis</string>
+    <string name="textTitle">Resum UF1 BBDD</string>
+    <string name="theme">Tema</string>
     <string name="thread">Fils</string>
     <string name="threadTitle">Titol del Fil</string>
     <string name="title">Títol</string>
@@ -173,8 +174,10 @@
     <string name="txtEdit">Editar Publicació</string>
     <string name="txtLink">Enllaç</string>
     <string name="txtLogin">Loguejar</string>
+    <string name="txtMail" translatable="false">Email</string>
     <string name="txtName">Nom d\'usuari</string>
     <string name="txtPass">Contrasenya</string>
+    <string name="txtProfile">Carlos Trujillo</string>
     <string name="txtPublicationDescription">Descripció de la Publicació</string>
     <string name="txtPublicationTitle">Titol de la Publicació</string>
     <string name="txtRegister">Registrarse</string>
@@ -193,8 +196,5 @@
     <string name="uploadResult">Imatge actualitzada correctament</string>
     <string name="user_admin">Administració d\'Usuaris</string>
     <string name="users_admin_menu">Usuaris</string>
-    <string name="valorar_app">Valora l\'aplicació</string>
-    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
-    <string name="write_the_title_of_the_thread">Escriviu el títol del fil</string>
-    <string name="your_forums">Els meus fòrums</string>
+    <string name="your_forums">Els teus fòrums</string>
 </resources>

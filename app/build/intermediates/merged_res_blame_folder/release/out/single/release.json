@@ -216,10 +216,6 @@
         "source": "cat.copernic.fpshare.app-main-71:/layout-sw600dp/fragment_admin_edit_module.xml"
     },
     {
-        "merged": "cat.copernic.fpshare.app-merged_res-70:/drawable_icono_foro.xml.flat",
-        "source": "cat.copernic.fpshare.app-main-71:/drawable/icono_foro.xml"
-    },
-    {
         "merged": "cat.copernic.fpshare.app-merged_res-70:/layout_fragment_admin_mod_post.xml.flat",
         "source": "cat.copernic.fpshare.app-main-71:/layout/fragment_admin_mod_post.xml"
     },

@@ -26,7 +26,20 @@ public final class FragmentNuevaPublicacionBinding implements ViewBinding {
   @NonNull
   private final FrameLayout rootView;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final Button btnAdd;
 
   @NonNull
@@ -92,7 +105,7 @@ public final class FragmentNuevaPublicacionBinding implements ViewBinding {
   @NonNull
   public final TextView textViewTitleNewPost;
 
-  private FragmentNuevaPublicacionBinding(@NonNull FrameLayout rootView, @NonNull Button btnAdd,
+  private FragmentNuevaPublicacionBinding(@NonNull FrameLayout rootView, @Nullable Button btnAdd,
       @NonNull Button btnPublish, @NonNull ConstraintLayout constraintNuevaPublicacion,
       @NonNull TextInputLayout inputDescriptionNewPost, @NonNull TextInputLayout inputLinkNewPost,
       @NonNull TextInputLayout inputTitleNewPost, @NonNull RadioButton optionAsix,
@@ -157,9 +170,6 @@ public final class FragmentNuevaPublicacionBinding implements ViewBinding {
     missingId: {
       id = R.id.btnAdd;
       Button btnAdd = ViewBindings.findChildViewById(rootView, id);
-      if (btnAdd == null) {
-        break missingId;
-      }
 
       id = R.id.btn_publish;
       Button btnPublish = ViewBindings.findChildViewById(rootView, id);

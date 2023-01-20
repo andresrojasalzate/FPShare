@@ -4,7 +4,17 @@
             "outputFile": "cat.copernic.fpshare.app-mergeReleaseResources-68:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/andresrojasalzate/.gradle/caches/transforms-3/a034e56a0f0a4b7f8ae421dc6667e690/transformed/material-1.7.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\Sergi\\.gradle\\caches\\transforms-3\\6a77b6482b0b9700e992b169d4d4fbcf\\transformed\\appcompat-1.5.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Sergi\\.gradle\\caches\\transforms-3\\8076990b9fae34abd4f3a66f30156148\\transformed\\material-1.7.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -20,16 +30,6 @@
                         "endLines": "4,5,6,7,10,13,16,19",
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
-                    }
-                },
-                {
-                    "source": "/Users/andresrojasalzate/.gradle/caches/transforms-3/2d5f9e1380e5649f3249d7d0f4302351/transformed/appcompat-1.5.1/res/values-v24/values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
                     }
                 }
             ]

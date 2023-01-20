@@ -2,8 +2,6 @@
 <resources>
     <string name="HintName">Tu nombre de usuario..</string>
     <string name="a_adir_foro">Añadir foro</string>
-    <string name="aceptat">Aceptar</string>
-    <string name="activar_recordatorio">¿Quieres activar un recordatorio que te envíe una notificación en 5 minutos?</string>
     <string name="add_cicle">Añadir ciclo</string>
     <string name="add_module">Añadir módulo</string>
     <string name="add_tag">Añadir etiqueta</string>
@@ -13,7 +11,6 @@
     <string name="administrator_info_usuario">Administrador</string>
     <string name="app_logo">Logo de la App</string>
     <string name="asix_new_post">ASIR</string>
-    <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
     <string name="back">Atrás</string>
     <string name="borrar_foro_fp_hilo">Borrar foro</string>
     <string name="boton_negativo_alerta_borrar_foro">Cancelar</string>
@@ -26,12 +23,10 @@
     <string name="btn_no">NO</string>
     <string name="btn_send">Botón para mandar el mensaje al hilo</string>
     <string name="btn_yes">SI</string>
-    <string name="buscar">Buscar</string>
-    <string name="campos_vacios">Campos vacíos</string>
     <string name="cancelar">Cancelar</string>
     <string name="cicle">Ciclo</string>
     <string name="cicles">Ciclos</string>
-    <string name="cicles_admin">Administración de Ciclos</string>
+    <string name="cicles_admin">Administracion de Ciclos</string>
     <string name="cicles_menu_admin">Ciclos</string>
     <string name="cicloAñadidoCorrecto">Ciclo añadido correctamente</string>
     <string name="cicloAñadidoError">Error al añadir ciclo</string>
@@ -40,37 +35,28 @@
     <string name="cicloExiste">El ciclo ya existe</string>
     <string name="comentarios">Comentarios:</string>
     <string name="contenido_alert_borrar_foro">¿Estas seguro que quieres borrar el foro?</string>
-    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya
-        han transcurrido.</string>
     <string name="content_description_foto_de_perfil_de_usuario_profile">Foto del perfil de usuario</string>
     <string name="content_description_spinner_modules_new_post">Lista de módulos del ciclo seleccionado</string>
     <string name="content_description_spinner_ufs_new_post">Lista de UFs del módulo seleccionado</string>
     <string name="correo_usuario">Email de usuario</string>
     <string name="create_new_tag">Crear nueva etiqueta</string>
-    <string name="decripcion_alerta_no_permisos">Esta opción crea un recordatorio con el que se le enviará una notificación. Para utilizarla, activa la opción \"Notificaciones\" de la aplicación en los ajustes de tu dispositivo.</string>
     <string name="delete">Borrar</string>
     <string name="delete_cicle">Borrar ciclo</string>
-    <string name="delete_forum">borrar foro</string>
     <string name="delete_module">Borrar módulo</string>
     <string name="delete_publi">Borrar publicación</string>
     <string name="delete_tag">Borrar etiqueta</string>
     <string name="delete_uf">Borrar UF</string>
     <string name="delete_user">Borrar usuario</string>
-    <string name="desactivar_recordatorio">Ya hay un recordatorio activado, ¿desea desactivarlo?</string>
-    <string name="descripcion_valorar_app">¿Quieres valorar la aplicación en Google Play Store?</string>
     <string name="description_new_post">Descripción</string>
     <string name="edit">Editar</string>
     <string name="edit_cicle">Editar Ciclo</string>
-    <string name="edit_description">editar descripción</string>
     <string name="edit_module">Editar Módulo</string>
-    <string name="edit_title">editar título</string>
     <string name="edit_uf">Editar UF</string>
     <string name="emailEnviadoRecu">Email enviado correctamente</string>
     <string name="emailHint">Tu correo electrónico</string>
     <string name="enter_cicle">Entrar al ciclo</string>
     <string name="enter_id_module">Introducir la ID del módulo</string>
     <string name="enter_id_uf">Introducir la ID de la UF</string>
-    <string name="enter_the_title_of_the_new_forum">introduzca el título del nuevo foro</string>
     <string name="errorCamposVacios">Tienes que rellenar todos los campos</string>
     <string name="errorContraseña">La contraseña no puede tener menos de 6 caracteres</string>
     <string name="errorDescripcionLarga">La descripción es demasiado larga</string>
@@ -80,14 +66,12 @@
     <string name="errorUFNoEspecificada">No has seleccionado ningún ciclo, módulo o UF</string>
     <string name="errorUserEquivocado">Usuario o contraseña no valida</string>
     <string name="forgot_your_password_login">¿Has olvidado la contraseña?</string>
-    <string name="forum_thread_title">título del hilo del foro</string>
     <string name="forums">Foro</string>
-    <string name="fpshare_noti">Notificación FPShare</string>
     <string name="hintLoginPassword">Tu contraseña..</string>
-    <string name="hint_textHere">Texto aquí…</string>
+    <string name="hint_textHere">Texto aquí...</string>
     <string name="home">Principal</string>
     <string name="id_of_cicle">ID del ciclo</string>
-    <string name="id_of_tag">ID de la etiqueta…</string>
+    <string name="id_of_tag">ID de la etiqueta...</string>
     <string name="imageLoadError">La carga de la imagen ha fallado</string>
     <string name="info_no_especificada_mostrar_info_usuario">(No especificado)</string>
     <string name="input_id_cicle">Introducir la ID del ciclo</string>
@@ -110,7 +94,7 @@
     <string name="moduloBorradoError">Error borrando el módulo</string>
     <string name="moduloExiste">El módulo ya existe</string>
     <string name="myPosts">Mis publicaciones</string>
-    <string name="name">Nombre…</string>
+    <string name="name">Nombre...</string>
     <string name="name_module">Nombre del módulo</string>
     <string name="name_of_cicle">Nombre del ciclo</string>
     <string name="name_of_uf">Nombre de la UF</string>
@@ -138,7 +122,6 @@
     <string name="publish_new_post">Publicar</string>
     <string name="recovery_password">Recuperar contraseña</string>
     <string name="register_login">Registro</string>
-    <string name="reminder">Recordatorio</string>
     <string name="rename_tag">Renombrar etiqueta</string>
     <string name="rename_user">Renombrar usuario</string>
     <string name="respuestas">Respuestas</string>
@@ -157,7 +140,7 @@
     <string name="strModule">Módulo</string>
     <string name="strPubli">Publicación</string>
     <string name="strTitle">Titulo</string>
-    <string name="tag_name">Nombre de etiqueta…</string>
+    <string name="tag_name">Nombre de etiqueta...</string>
     <string name="tags_admin_menu">Etiquetas</string>
     <string name="tags_new_post">Etiquetas</string>
     <string name="telefonoInvalido">Número de teléfono no válido</string>
@@ -194,8 +177,5 @@
     <string name="uploadResult">Imagen actualizada correctamente</string>
     <string name="user_admin">Administración de usuarios</string>
     <string name="users_admin_menu">Usuarios</string>
-    <string name="valorar_app">Valora la aplicación</string>
-    <string name="write_the_description_of_the_thread">Escribe la descripción del hilo</string>
-    <string name="write_the_title_of_the_thread">Escriba el título del hilo</string>
-    <string name="your_forums">Mis foros</string>
+    <string name="your_forums">Tus foros</string>
 </resources>

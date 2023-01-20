@@ -86,11 +86,9 @@
             android:layout_marginEnd="20dp"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:contentDescription="@string/forum_thread_title"
             app:layout_constraintEnd_toStartOf="@+id/editar_titulo"
             app:layout_constraintStart_toStartOf="@+id/autor_foro"
             app:layout_constraintTop_toBottomOf="@+id/autor_foro"
-
             tools:text="titulo" />
 
         <TextView
@@ -106,8 +104,8 @@
 
         <TextView
             android:id="@+id/respuestas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="62dp"
+            android:layout_height="0dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="25dp"
             android:text="@string/respuestas"
@@ -127,31 +125,33 @@
 
         <ImageView
             android:id="@+id/borrar_foro"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:contentDescription="@string/delete_forum"
+            android:contentDescription="@string/borrar_foro_fp_hilo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/basura" />
 
         <ImageView
             android:id="@+id/editar_titulo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="8dp"
-            android:contentDescription="@string/edit_title"
+
+            android:contentDescription="@string/borrar_foro_fp_hilo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/titulo_foro"
             app:srcCompat="@drawable/lapiz" />
 
         <ImageView
             android:id="@+id/editar_descripcion"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="8dp"
-            android:contentDescription="@string/edit_description"
+
+            android:contentDescription="@string/borrar_foro_fp_hilo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/descripcion"
             app:srcCompat="@drawable/lapiz" />

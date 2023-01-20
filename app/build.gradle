@@ -64,9 +64,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'androidx.fragment:fragment:1.5.5'
+    //implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation "com.dmitryborodin:pdfview-android:1.1.0"
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.junit.jupiter:junit-jupiter'

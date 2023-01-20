@@ -24,9 +24,6 @@ public final class ActivityRecoveryPasswordBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnBack;
-
-  @NonNull
   public final Button btnRecovery;
 
   @NonNull
@@ -45,12 +42,10 @@ public final class ActivityRecoveryPasswordBinding implements ViewBinding {
   public final ConstraintLayout passwordLayout;
 
   private ActivityRecoveryPasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnBack, @NonNull Button btnRecovery,
-      @NonNull TextInputEditText editTextRecovery, @NonNull TextView emailTextviewRecoverypassword,
-      @NonNull TextInputLayout inputEmailRecovery, @NonNull ImageView logoRecoveryPassword,
-      @NonNull ConstraintLayout passwordLayout) {
+      @NonNull Button btnRecovery, @NonNull TextInputEditText editTextRecovery,
+      @NonNull TextView emailTextviewRecoverypassword, @NonNull TextInputLayout inputEmailRecovery,
+      @NonNull ImageView logoRecoveryPassword, @NonNull ConstraintLayout passwordLayout) {
     this.rootView = rootView;
-    this.btnBack = btnBack;
     this.btnRecovery = btnRecovery;
     this.editTextRecovery = editTextRecovery;
     this.emailTextviewRecoverypassword = emailTextviewRecoverypassword;
@@ -86,12 +81,6 @@ public final class ActivityRecoveryPasswordBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnBack;
-      Button btnBack = ViewBindings.findChildViewById(rootView, id);
-      if (btnBack == null) {
-        break missingId;
-      }
-
       id = R.id.btn_recovery;
       Button btnRecovery = ViewBindings.findChildViewById(rootView, id);
       if (btnRecovery == null) {
@@ -124,7 +113,7 @@ public final class ActivityRecoveryPasswordBinding implements ViewBinding {
 
       ConstraintLayout passwordLayout = (ConstraintLayout) rootView;
 
-      return new ActivityRecoveryPasswordBinding((ConstraintLayout) rootView, btnBack, btnRecovery,
+      return new ActivityRecoveryPasswordBinding((ConstraintLayout) rootView, btnRecovery,
           editTextRecovery, emailTextviewRecoverypassword, inputEmailRecovery, logoRecoveryPassword,
           passwordLayout);
     }

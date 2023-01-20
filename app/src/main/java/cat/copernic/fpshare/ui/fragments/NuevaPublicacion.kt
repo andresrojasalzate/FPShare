@@ -24,7 +24,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.nio.file.FileStore
 
 /**
  * Fragment de la pantalla de nueva publicación
@@ -53,17 +52,25 @@ class NuevaPublicacion : Fragment() {
     private var storage = FirebaseStorage.getInstance()
     public lateinit var path: String
     private var pdfUri: Uri? = null
+    private var nombreArchivo: String? = null
+    private var pdfRef = storage.reference.child("pdfs/$nombreArchivo.pdf")
     private lateinit var publi: Publicacion
-    private var storageRef = storage.reference.child("pdfs")
-
+    val i: Int = 0
 
     private val resultat = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
             pdfUri = it.data?.data //Assignem l'URI de la imatge
-
+            nombreArchivo = System.currentTimeMillis().toString()
+            pdfUri?.let{uri->
+                Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
+                pdfRef.putFile(uri).addOnSuccessListener {
+                    //Toast.makeText(requireContext(),"Doc added", Toast.LENGTH_LONG).show()
+                }.addOnFailureListener(){
+                    //Toast.makeText(requireContext(),"Doc no added", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
-
 
     /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
@@ -94,29 +101,24 @@ class NuevaPublicacion : Fragment() {
         idModuloSpinner = binding.spinnerModulesNewPost
         idUfSpinner = binding.spinnerUfsNewPost
         btnAdd = binding.btnAdd!!
-
-
-
+        ciclo = "0"
+        modulo = "0"
+        uf =  "0"
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
-
                 cargarModulos("DAM")
                 ciclo = "DAM"
             } else if (binding.optionDaw.isChecked) {
-
                 cargarModulos("DAW")
                 ciclo = "DAW"
             } else if (binding.optionSmix.isChecked) {
-
                 cargarModulos("SMIR")
                 ciclo = "SMIR"
             } else if (binding.optionAsix.isChecked) {
-
                 cargarModulos("ASIR")
                 ciclo = "ASIR"
             }
         }
-
         idModuloSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>, view: View, position: Int, id: Long
@@ -126,12 +128,10 @@ class NuevaPublicacion : Fragment() {
                 // Hacer algo con el item seleccionado
                 cargarUfs(modulo)
             }
-
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // No se ha seleccionado ningún item
             }
         }
-
         idUfSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>, view: View, position: Int, id: Long
@@ -139,70 +139,27 @@ class NuevaPublicacion : Fragment() {
                 // Un item ha sido seleccionado
                 uf = arrayIdUf[position]
                 // Hacer algo con el item seleccionado
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // No se ha seleccionado ningún item
             }
         }
-
-
         botonPublicar.setOnClickListener {
             llegirDades()
         }
-
         btnAdd.setOnClickListener {
-            //resultat.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "application/pdf"
             }
             resultat.launch(intent)
-            var adrecaFitxer = storageRef.child((pdfUri?.lastPathSegment).toString());
-
-            //Afegim la imatge seleccionada a storage
-            pdfUri?.let{uri-> //Hem seleccionat una imatge. A la variable uri guardem l'URI de la imatge
-                //Afegim (pujem) la imatge que hem seleccionat mitjançant el mètode putFile de la classe FirebasStorage, passant-li com a
-                //paràmetre l'URI de la imatge. Aquest mètode carrega la imatge de manera asíncrona.
-                adrecaFitxer.putFile(uri).addOnSuccessListener {
-                    Toast.makeText(requireContext(),"La imatge s'ha pujat amb èxit", Toast.LENGTH_LONG).show()
-                }
-            }
-
-
-        }
-
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            resultData?.data?.let { uri ->
-                pdfUri = uri
-                path = uri.toString()
-                val pdfRef = storageRef.child("pdfs/" + {uri.lastPathSegment})
-
-                pdfRef.putFile(uri)
-                    .addOnSuccessListener { taskSnapshot ->
-                        val pdfUrl = taskSnapshot.storage.downloadUrl.toString()
-                        path = taskSnapshot.metadata!!.path
-                        Log.d(TAG, "PDF URL: $pdfUrl")
-                        // Guardar la url en una variable
-                        Snackbar.make(
-                            binding.root,
-                            "documento añadido",
-                            Snackbar.LENGTH_LONG
-                        ).show()
-                    }
-                    .addOnFailureListener {
-                        Log.e(TAG, "Error uploading PDF")
-                    }
-
-            }
-
         }
     }
+
+
+
+
 
     /**
      * Función para cargar las UFs a través de una consulta de la base de datos
@@ -234,7 +191,6 @@ class NuevaPublicacion : Fragment() {
         _binding = null
     }
 
-
     private fun llegirDades() {
         val publi = Publicacion()
         val usuario = User()
@@ -265,8 +221,7 @@ class NuevaPublicacion : Fragment() {
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
             publi.checked = ""
-            publi.pathFile =pdfUri.toString()
-
+            publi.pathFile = nombreArchivo.toString()
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"
 

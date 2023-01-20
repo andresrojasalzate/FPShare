@@ -3,19 +3,19 @@
     <item
         android:id="@+id/pantalla_principal"
         android:icon="@drawable/home"
-        android:title="@string/home"
+        android:title="home"
         />
     <item
         android:id="@+id/menuCiclos"
         android:icon="@drawable/brujula"
-        android:title="@string/buscar" />
+        android:title="search" />
     <item
         android:id="@+id/listaForos"
         android:icon="@drawable/internet"
-        android:title="@string/forums" />
+        android:title="forum" />
 
     <item
         android:id="@+id/nuevaPublicacion"
         android:icon="@drawable/mas"
-        android:title="@string/new_post" />
+        android:title="new post" />
 </menu>

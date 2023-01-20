@@ -21,6 +21,22 @@ public final class FragmentAdminEditCicleBinding implements ViewBinding {
   @NonNull
   private final FrameLayout rootView;
 
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   */
+  @Nullable
+  public final Button btnDeleteCicle;
+
   @NonNull
   public final Button btnSaveEdit;
 
@@ -30,9 +46,11 @@ public final class FragmentAdminEditCicleBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout inputMainEditNameCicle;
 
-  private FragmentAdminEditCicleBinding(@NonNull FrameLayout rootView, @NonNull Button btnSaveEdit,
+  private FragmentAdminEditCicleBinding(@NonNull FrameLayout rootView,
+      @Nullable Button btnDeleteCicle, @NonNull Button btnSaveEdit,
       @NonNull TextInputEditText inputEditCicle, @NonNull TextInputLayout inputMainEditNameCicle) {
     this.rootView = rootView;
+    this.btnDeleteCicle = btnDeleteCicle;
     this.btnSaveEdit = btnSaveEdit;
     this.inputEditCicle = inputEditCicle;
     this.inputMainEditNameCicle = inputMainEditNameCicle;
@@ -65,6 +83,9 @@ public final class FragmentAdminEditCicleBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnDeleteCicle;
+      Button btnDeleteCicle = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.btnSaveEdit;
       Button btnSaveEdit = ViewBindings.findChildViewById(rootView, id);
       if (btnSaveEdit == null) {
@@ -83,8 +104,8 @@ public final class FragmentAdminEditCicleBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAdminEditCicleBinding((FrameLayout) rootView, btnSaveEdit, inputEditCicle,
-          inputMainEditNameCicle);
+      return new FragmentAdminEditCicleBinding((FrameLayout) rootView, btnDeleteCicle, btnSaveEdit,
+          inputEditCicle, inputMainEditNameCicle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

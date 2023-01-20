@@ -1903,6 +1903,7 @@
     <string name="google_app_id" translatable="false">1:340176083789:android:87072298856d2cb6227504</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCnQ-59az4lhss6ddmMygLeK9RLZdK7Aq0</string>
     <string name="google_storage_bucket" translatable="false">fpshare-x.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="hintLoginPassword">Your password..</string>
     <string name="hint_textHere">Text here…</string>
@@ -2141,8 +2142,6 @@
     <string name="user_admin">Users Administration</string>
     <string name="users_admin_menu">users</string>
     <string name="valorar_app">Rate the app</string>
-    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
-    <string name="write_the_title_of_the_thread">Write the title of the thread</string>
     <string name="your_forums">Your Forums</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -12472,6 +12471,14 @@
     </declare-styleable>
     <declare-styleable name="StateSet">
         <attr format="reference" name="defaultState"/>
+    </declare-styleable>
+    <declare-styleable name="SubsamplingScaleImageView">
+        <attr format="reference" name="src"/>
+        <attr format="string" name="assetName"/>
+        <attr format="boolean" name="panEnabled"/>
+        <attr format="boolean" name="zoomEnabled"/>
+        <attr format="boolean" name="quickScaleEnabled"/>
+        <attr format="color" name="tileBackgroundColor"/>
     </declare-styleable>
     <declare-styleable name="SwitchCompat">
         

@@ -13,17 +13,19 @@
         <TextView
             android:id="@+id/textView_title_new_post"
             style="@style/Widget.FpShare.TextViewTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/title"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="125dp"
+            android:text="Title"
+            android:textSize="48dp"
+            app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_title_new_post"
             style="@style/Widget.FpShare.TextInputLayout"
+            android:layout_width="518dp"
+            android:layout_height="89dp"
             android:layout_marginTop="8dp"
             android:hint="@string/title_new_post"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +45,9 @@
             style="@style/Widget.FpShare.TextViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_16"
+            android:layout_marginTop="46dp"
             android:text="@string/description_new_post"
+            android:textSize="48dp"
             app:layout_constraintStart_toStartOf="@+id/input_title_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_title_new_post" />
 
@@ -52,17 +55,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_description_new_post"
             style="@style/Widget.FpShare.TextInputLayout"
-            android:layout_marginTop="@dimen/size_8"
+            android:layout_width="518dp"
+            android:layout_height="88dp"
             android:hint="@string/description_new_post"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_description_new_post"
             app:layout_constraintTop_toBottomOf="@+id/textView_description_new_post">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textMultiLine"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -72,25 +74,26 @@
             style="@style/Widget.FpShare.TextViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_16"
+            android:layout_marginTop="46dp"
             android:text="@string/link_new_post"
+            android:textSize="48dp"
             app:layout_constraintStart_toStartOf="@+id/input_description_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_description_new_post" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_link_new_post"
             style="@style/Widget.FpShare.TextInputLayout"
+            android:layout_width="518dp"
+            android:layout_height="81dp"
             android:layout_marginTop="@dimen/size_8"
             android:hint="@string/link_new_post"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_link_new_post"
             app:layout_constraintTop_toBottomOf="@+id/textView_link_new_post">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_link"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textMultiLine"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +101,7 @@
         <Button
             android:id="@+id/btn_publish"
             style="@style/Widget.FpShare.Button"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:text="@string/save_changes_profile"
             app:layout_constraintStart_toStartOf="@+id/input_link_new_post"
             app:layout_constraintTop_toBottomOf="@+id/input_link_new_post" />
@@ -106,11 +109,9 @@
         <Button
             android:id="@+id/btn_delete"
             style="@style/Widget.FpShare.Button"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:text="@string/delete_publi"
             app:layout_constraintStart_toStartOf="@+id/btn_publish"
             app:layout_constraintTop_toBottomOf="@+id/btn_publish" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

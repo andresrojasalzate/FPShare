@@ -2720,7 +2720,6 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
-drawable icono_foro
 drawable internet
 drawable lapiz
 drawable logo_fpshare
@@ -2857,7 +2856,6 @@ id accessibility_custom_action_9
 id actionDown
 id actionDownUp
 id actionUp
-id action_FPHilo_to_tusForos
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -2956,9 +2954,9 @@ id btnAdd
 id btnAddCicle
 id btnAddModul
 id btnAddUf
-id btnBack
 id btnCambiar
 id btnDelete
+id btnDeleteCicle
 id btnDeleteModule
 id btnDeleteUF
 id btnEditCicle
@@ -3831,8 +3829,6 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
-string aceptat
-string activar_recordatorio
 string add_cicle
 string add_module
 string add_tag
@@ -3845,7 +3841,6 @@ string app_logo
 string app_name
 string appbar_scrolling_view_behavior
 string asix_new_post
-string aviso_campos_vacios
 string back
 string borrar_foro_fp_hilo
 string boton_negativo_alerta_borrar_foro
@@ -3864,8 +3859,6 @@ string btn_guardar
 string btn_no
 string btn_send
 string btn_yes
-string buscar
-string campos_vacios
 string cancelar
 string character_counter_content_description
 string character_counter_overflowed_content_description
@@ -3902,7 +3895,6 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string contenido_alert_borrar_foro
-string contenido_notificación
 string content_description_foto_de_perfil_de_usuario_profile
 string content_description_spinner_modules_new_post
 string content_description_spinner_ufs_new_post
@@ -3911,25 +3903,19 @@ string correo_usuario
 string create_new_tag
 string dam_new_post
 string daw_new_post
-string decripcion_alerta_no_permisos
 string default_error_message
 string default_web_client_id
 string delete
 string delete_cicle
-string delete_forum
 string delete_module
 string delete_publi
 string delete_tag
 string delete_uf
 string delete_user
-string desactivar_recordatorio
-string descripcion_valorar_app
 string description_new_post
 string edit
 string edit_cicle
-string edit_description
 string edit_module
-string edit_title
 string edit_uf
 string emailEnviadoRecu
 string emailHint
@@ -3939,7 +3925,6 @@ string email_recoverypassword
 string enter_cicle
 string enter_id_module
 string enter_id_uf
-string enter_the_title_of_the_new_forum
 string errorCamposVacios
 string errorContraseña
 string errorDescripcionLarga
@@ -3957,9 +3942,7 @@ string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
 string forgot_your_password_login
-string forum_thread_title
 string forums
-string fpshare_noti
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -4130,7 +4113,6 @@ string project_id
 string publish_new_post
 string recovery_password
 string register_login
-string reminder
 string rename_tag
 string rename_user
 string respuestas
@@ -4196,9 +4178,6 @@ string ufs
 string uploadResult
 string user_admin
 string users_admin_menu
-string valorar_app
-string write_the_description_of_the_thread
-string write_the_title_of_the_thread
 string your_forums
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

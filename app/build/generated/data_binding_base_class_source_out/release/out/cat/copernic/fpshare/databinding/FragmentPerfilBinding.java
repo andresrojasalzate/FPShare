@@ -63,7 +63,20 @@ public final class FragmentPerfilBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout imputTelephoneNumberProfile;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final ProgressBar progressBar;
 
   @NonNull
@@ -88,7 +101,7 @@ public final class FragmentPerfilBinding implements ViewBinding {
       @NonNull FrameLayout fragmentPerfil, @NonNull ImageView imageProfile,
       @NonNull TextInputLayout imputEmailProfile, @NonNull TextInputLayout imputInstituteProfile,
       @NonNull TextInputLayout imputLastnamesProfile, @NonNull TextInputLayout imputNameProfile,
-      @NonNull TextInputLayout imputTelephoneNumberProfile, @NonNull ProgressBar progressBar,
+      @NonNull TextInputLayout imputTelephoneNumberProfile, @Nullable ProgressBar progressBar,
       @NonNull TextView textViewEmailProfile, @NonNull TextView textViewInstituteProfile,
       @NonNull TextView textViewLastnamesProfile, @NonNull TextView textViewNameProfile,
       @NonNull TextView textViewTelephoneNumberProfile) {
@@ -217,9 +230,6 @@ public final class FragmentPerfilBinding implements ViewBinding {
 
       id = R.id.progressBar;
       ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
-      if (progressBar == null) {
-        break missingId;
-      }
 
       id = R.id.textView_email_profile;
       TextView textViewEmailProfile = ViewBindings.findChildViewById(rootView, id);

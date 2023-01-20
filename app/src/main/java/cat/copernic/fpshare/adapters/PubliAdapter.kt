@@ -14,6 +14,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.RatingBar
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.getCodeCacheDir
 import androidx.core.content.ContextCompat.startActivity
@@ -23,8 +24,10 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.ItemPubliBinding
 import cat.copernic.fpshare.modelo.Publicacion
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 import java.io.File
 
@@ -50,6 +53,7 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
         val viewB = ItemPubliBinding.bind(view)
     }
 
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PubliViewHolder {
         contexto = viewGroup.context
         val view = LayoutInflater.from(contexto)
@@ -68,16 +72,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             viewB.txtPubliTitle.text = publicacion.titulo
             viewB.txtDescr.text = publicacion.descripcion
             viewB.textLink.text = publicacion.enlace
-
-            /*val db = FirebaseFirestore.getInstance()
-
-            db.collection("Ciclos").document(publicacion.checked)
-                .collection("Modulos").document(publicacion.idModulo)
-                .get().addOnSuccessListener { document ->
-                val nombreModulo = document["nombre"].toString()
-                viewB.textModulo.setText(nombreModulo)
-            }*/
-
             /**
              * Carga de la ruta del enlace a la imagen de la publicacion
              *
@@ -91,78 +85,17 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 viewB.imgIcon.setImageBitmap(bitmap)
             }
 
-            /*
-            val pdfRef = storageRef.child("pdfs/${path.lastPathSegment}")
-            pdfRef.putFile(path).addOnSuccessListener { taskSnapshot ->
-                val pdfName = taskSnapshot.metadata?.name
-                viewB.textLink.text = pdfName
-            }*/
-            /*
-            viewB.txtDescarga.setOnClickListener {
-                val pdfRef = storage.reference.child("pdfs/" + publicacion.pathFile)
-                val readfile = File.createTempFile("tempFile", "pdf")
-                pdfRef.getFile(readfile).addOnSuccessListener {
-                    val queryUrl: Uri = Uri.parse(readfile.path)
-                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            viewB.txtDescarga.setOnClickListener{
+                //val fileId = "your_file_id"
+                val storageRef = storage.getReference("pdfs/${publicacion.pathFile}")
+                val urlTask = storageRef.downloadUrl
+                urlTask.addOnSuccessListener { uri ->
+                    val url = uri.toString()
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
                     contexto.startActivity(intent)
                 }
-            */
-            viewB.txtDescarga.setOnClickListener {
-                val uri: Uri = Uri.parse(publicacion.pathFile)
-                val pdfFileRef = storage.reference.child("pdfs/" + uri.lastPathSegment)
-                val queryUrl: Uri = Uri.parse()
-                val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-                contexto.startActivity(intent)
             }
-                /*
-                val localFile = File.createTempFile("files", "pdf")
-
-                pdfFileRef.getFile(localFile).addOnSuccessListener {
-                    // Local temp file has been created
-                    Log.d("TAG", "File Downloaded")
-                }.addOnFailureListener {
-                    // Handle any errors
-                    Log.d("TAG", "Something went wrong")
-                }
-*/
-
-                /*
-                val localfile = File.createTempFile("tempFile", "pdf")
-                var storageRef = storage.reference.child("pdfs/" + publicacion.pathFile)
-                try {
-
-                    storageRef.getFile(publicacion.pathFile.toUri()).addOnSuccessListener {
-                        // Abrir el archivo pdf descargado
-                        val pdfUri = FileProvider.getUriForFile(
-                            contexto,
-                            "com.your_package_name.fileprovider",
-                            localfile
-                        )
-                        val pdfIntent = Intent(Intent.ACTION_VIEW)
-                        pdfIntent.setDataAndType(pdfUri, "application/pdf")
-                    }
-                }catch (e: StorageException){
-                    println("Error")
-                }
-
-
-                var pdfRef = storage.reference.child("pdfs/" + publicacion.pathFile)
-                val localFile = File.createTempFile("apuntes", "pdf", contexto.cacheDir)
-                pdfRef.getFile(localFile)
-                    .addOnSuccessListener {
-                        // Abrir el archivo pdf descargado
-                        val pdfUri = FileProvider.getUriForFile(contexto, "com.fpshare.fileprovider", localFile)
-                        val pdfIntent = Intent(Intent.ACTION_VIEW)
-                        pdfIntent.setDataAndType(pdfUri, "application/pdf")
-                        pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                        contexto.startActivity(pdfIntent)
-                    }
-                    .addOnFailureListener {
-                        Log.e(TAG, "Error downloading PDF")
-                    }
-
-                 */
-
                 /**
                  * Inicializacion del enlace
                  */
@@ -172,11 +105,9 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                     contexto.startActivity(intent)
 
                 }
-
-
             }
         }
-    }
+
     override fun getItemCount(): Int {
         return publiFilter.size
     }
@@ -211,7 +142,6 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                          */
                         .forEach { filteredList.add(it) }
                     publiFilter = filteredList
-
                 }
                 /**
                  * Retornamos todos los valores.
@@ -234,5 +164,11 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
             }
         }
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(id: String)
+    }
+
 }
+
 

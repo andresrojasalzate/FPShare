@@ -37,13 +37,52 @@ public final class FragmentFpHiloBinding implements ViewBinding {
   @NonNull
   public final TextView descripcion;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final ImageView editarDescripcion;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final ImageView editarTitulo;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final ConstraintLayout enviarMensaje;
 
   @NonNull
@@ -64,16 +103,29 @@ public final class FragmentFpHiloBinding implements ViewBinding {
   @NonNull
   public final TextView tituloForo;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final View view;
 
   private FragmentFpHiloBinding(@NonNull FrameLayout rootView, @NonNull TextView autorForo,
       @NonNull ImageView borrarForo, @NonNull ImageButton buttonSend, @NonNull TextView descripcion,
-      @NonNull ImageView editarDescripcion, @NonNull ImageView editarTitulo,
-      @NonNull ConstraintLayout enviarMensaje, @NonNull FrameLayout fpHilo,
+      @Nullable ImageView editarDescripcion, @Nullable ImageView editarTitulo,
+      @Nullable ConstraintLayout enviarMensaje, @NonNull FrameLayout fpHilo,
       @NonNull RecyclerView recyclerViewHilo, @NonNull TextView respuestas,
       @NonNull TextInputEditText timInput, @NonNull TextInputLayout timTextHere,
-      @NonNull TextView tituloForo, @NonNull View view) {
+      @NonNull TextView tituloForo, @Nullable View view) {
     this.rootView = rootView;
     this.autorForo = autorForo;
     this.borrarForo = borrarForo;
@@ -144,21 +196,12 @@ public final class FragmentFpHiloBinding implements ViewBinding {
 
       id = R.id.editar_descripcion;
       ImageView editarDescripcion = ViewBindings.findChildViewById(rootView, id);
-      if (editarDescripcion == null) {
-        break missingId;
-      }
 
       id = R.id.editar_titulo;
       ImageView editarTitulo = ViewBindings.findChildViewById(rootView, id);
-      if (editarTitulo == null) {
-        break missingId;
-      }
 
       id = R.id.enviar_mensaje;
       ConstraintLayout enviarMensaje = ViewBindings.findChildViewById(rootView, id);
-      if (enviarMensaje == null) {
-        break missingId;
-      }
 
       FrameLayout fpHilo = (FrameLayout) rootView;
 
@@ -194,9 +237,6 @@ public final class FragmentFpHiloBinding implements ViewBinding {
 
       id = R.id.view;
       View view = ViewBindings.findChildViewById(rootView, id);
-      if (view == null) {
-        break missingId;
-      }
 
       return new FragmentFpHiloBinding((FrameLayout) rootView, autorForo, borrarForo, buttonSend,
           descripcion, editarDescripcion, editarTitulo, enviarMensaje, fpHilo, recyclerViewHilo,

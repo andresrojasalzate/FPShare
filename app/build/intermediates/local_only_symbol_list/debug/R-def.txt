@@ -324,6 +324,7 @@ id txtThreadInput
 id txt_mensaje
 id txt_menu
 id view
+id vista_pdf
 layout activity_main
 layout activity_recovery_password
 layout activity_registro
@@ -354,6 +355,7 @@ layout fragment_pantalla_principal
 layout fragment_perfil
 layout fragment_publicaciones_propias
 layout fragment_renombrar__usuario
+layout fragment_ver_apuntes
 layout item_foro
 layout item_hilo
 layout item_menu
@@ -463,6 +465,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hintLoginPassword
 string hint_textHere
 string home
@@ -581,8 +584,6 @@ string uploadResult
 string user_admin
 string users_admin_menu
 string valorar_app
-string write_the_description_of_the_thread
-string write_the_title_of_the_thread
 string your_forums
 style SplashTheme
 style Theme.FpShare.AppBarOverlay
