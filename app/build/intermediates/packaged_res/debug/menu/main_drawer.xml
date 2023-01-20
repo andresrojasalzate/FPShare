@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/fragment_perfil"
+            android:icon="@drawable/ic_menu_profile"
+            android:title="@string/menu_perfil" />
+        <item
+            android:id="@+id/fragmentPublicacionesPropias"
+            android:icon="@drawable/brujula"
+            android:title="@string/myPosts" />
+        <item
+            android:id="@+id/menuAdministracion"
+            android:icon="@drawable/ic_menu_admin"
+            android:title="@string/administration" />
+        <item
+            android:id="@+id/tusForos"
+            android:icon="@drawable/icono_foro"
+            android:title="@string/your_forums" />
+        <item
+            android:id="@+id/recordatorio"
+            android:icon="@drawable/reloj"
+            android:title="@string/menu_recordatorio" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="@string/menu_logout" />
+
+    </group>
+
+</menu>

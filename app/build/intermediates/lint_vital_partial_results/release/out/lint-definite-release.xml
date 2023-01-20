@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.3.1" type="incidents">
+
+    <incident
+        id="MissingDefaultResource"
+        severity="fatal"
+        message="The dimen &quot;fab_margin&quot; in values-land has no declaration in the base `values` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier">
+        <fix-replace
+            description="Remove resource override"
+            replacement="">
+            <range
+                file="${:app*release*sourceProvider*0*resDir*0}/values-land/dimens.xml"
+                startOffset="16"
+                endOffset="53"/>
+        </fix-replace>
+        <location
+            file="${:app*release*sourceProvider*0*resDir*0}/values-land/dimens.xml"
+            line="2"
+            column="12"
+            startOffset="23"
+            endLine="2"
+            endColumn="29"
+            endOffset="40"/>
+    </incident>
+
+    <incident
+        id="MissingDefaultResource"
+        severity="fatal"
+        message="The dimen &quot;fab_margin&quot; in values-w1240dp has no declaration in the base `values` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier">
+        <fix-replace
+            description="Remove resource override"
+            replacement="">
+            <range
+                file="${:app*release*sourceProvider*0*resDir*0}/values-w1240dp/dimens.xml"
+                startOffset="16"
+                endOffset="54"/>
+        </fix-replace>
+        <location
+            file="${:app*release*sourceProvider*0*resDir*0}/values-w1240dp/dimens.xml"
+            line="2"
+            column="12"
+            startOffset="23"
+            endLine="2"
+            endColumn="29"
+            endOffset="40"/>
+    </incident>
+
+    <incident
+        id="MissingDefaultResource"
+        severity="fatal"
+        message="The dimen &quot;fab_margin&quot; in values-w600dp has no declaration in the base `values` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier">
+        <fix-replace
+            description="Remove resource override"
+            replacement="">
+            <range
+                file="${:app*release*sourceProvider*0*resDir*0}/values-w600dp/dimens.xml"
+                startOffset="16"
+                endOffset="53"/>
+        </fix-replace>
+        <location
+            file="${:app*release*sourceProvider*0*resDir*0}/values-w600dp/dimens.xml"
+            line="2"
+            column="12"
+            startOffset="23"
+            endLine="2"
+            endColumn="29"
+            endOffset="40"/>
+    </incident>
+
+</incidents>

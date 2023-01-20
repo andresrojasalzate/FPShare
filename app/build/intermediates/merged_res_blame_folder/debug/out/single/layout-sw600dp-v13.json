@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_mod_post.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_mod_post.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_edit_cicle.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_edit_cicle.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_crear_modulo.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_crear_modulo.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_menu_administracion.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_menu_administracion.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_u_fs.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_u_fs.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_publicaciones_propias.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_publicaciones_propias.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_menu_ciclos.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_menu_ciclos.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_edit_module.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_edit_module.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_lista_usuarios_administracion.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_lista_usuarios_administracion.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_lista_foros.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_lista_foros.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_crear_ciclo.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_crear_ciclo.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_pantalla_principal.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_pantalla_principal.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_lista_foros_de_un_usuario.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_lista_foros_de_un_usuario.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_menu_apuntes.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_menu_apuntes.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_ciclos.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_ciclos.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/activity_registro.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/activity_registro.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_nueva_publicacion.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_nueva_publicacion.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_mostar_info_usuario.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_mostar_info_usuario.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_fp_hilo.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_fp_hilo.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/activity_recovery_password.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/activity_recovery_password.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/login.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/login.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_edit_u.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_edit_u.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_modulos.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_modulos.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/activity_main.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/activity_main.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_creacion_foro.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_creacion_foro.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_renombrar__usuario.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_renombrar__usuario.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_perfil.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_perfil.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_menu_modulo.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_menu_modulo.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_menu_uf.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_menu_uf.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_admin_posts.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_admin_posts.xml"
+    },
+    {
+        "merged": "cat.copernic.fpshare.app-mergeDebugResources-69:/layout-sw600dp-v13/fragment_crear_u.xml",
+        "source": "cat.copernic.fpshare.app-main-72:/layout-sw600dp/fragment_crear_u.xml"
+    }
+]
