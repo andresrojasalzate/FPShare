@@ -38,9 +38,11 @@ class AlarmReceiver: BroadcastReceiver() {
             .setSmallIcon(R.drawable.logo_fpshare)
             .setContentTitle(textTitle)
             .setContentText(textContent)
+            .setStyle(NotificationCompat.BigTextStyle())
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(textContent))
 
         //creamos objeto NotificationManager
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

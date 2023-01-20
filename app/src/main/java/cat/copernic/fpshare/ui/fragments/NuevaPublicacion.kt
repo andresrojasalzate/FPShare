@@ -96,6 +96,7 @@ class NuevaPublicacion : Fragment() {
         btnAdd = binding.btnAdd!!
 
 
+
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
 

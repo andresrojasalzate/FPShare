@@ -11,13 +11,14 @@ plugins {
 }
 
 dokkaHtml {
+
     dokkaSourceSets {
         named("main") {
-            includeNonPublic.set(false)
+            includeNonPublic.set(true)
             skipEmptyPackages.set(true)
             skipDeprecated.set(true)
             reportUndocumented.set(true)
-            jdkVersion.set(8)
+            jdkVersion.set(11)
         }
     }
 }

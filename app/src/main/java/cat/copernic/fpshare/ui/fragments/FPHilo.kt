@@ -157,7 +157,7 @@ class FPHilo : Fragment() {
      * @param num un numero que utlizamos para establecer el limite de caracteres que se podrá poner en el EditText
      */
     private fun crearAlertaConEditText(titulo: String, num: Int) {
-        //asignamos el valor de idForos que ha llegado a la pantalla a la variable
+        /**asignamos el valor de idForos que ha llegado a la pantalla a la variable*/
         val idForo = args.idforo
 
         //Se crea un objeto AlertDialog.Builder y se establece el título con el valor del parámetro

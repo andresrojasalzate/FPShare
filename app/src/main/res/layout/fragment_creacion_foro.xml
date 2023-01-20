@@ -36,7 +36,7 @@
                 android:id="@+id/txtThreadInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="escribe el titulo del foro"
+                android:hint="@string/write_the_title_of_the_thread"
                 app:layout_constraintStart_toStartOf="@+id/txtThread"
                 app:layout_constraintTop_toBottomOf="@+id/txtThread" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -66,7 +66,7 @@
                 android:id="@+id/txtDescriptionInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="escribe la descripción del foro" />
+                android:hint="@string/write_the_description_of_the_thread" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

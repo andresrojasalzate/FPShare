@@ -189,11 +189,13 @@
     <string name="edit_title">editar títol</string>
     <string name="enter_the_title_of_the_new_forum">introduïu el títol del nou fòrum</string>
     <string name="edit_description">editar descripció</string>
-    <string name="campos_vacios">editar descripció</string>
+    <string name="campos_vacios">Camps buits</string>
     <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
     <string name="valorar_app">Valora l\'aplicació</string>
     <string name="descripcion_valorar_app">Voleu valorar l\'aplicació a Google Play Store?</string>
     <string name="fpshare_noti">Notificació FPShare</string>
     <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
     <string name="buscar">Cercar</string>
+    <string name="write_the_title_of_the_thread">Escriviu el títol del fil</string>
+    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
 </resources>

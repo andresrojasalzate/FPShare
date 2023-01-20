@@ -188,11 +188,14 @@
     <string name="edit_title">editar título</string>
     <string name="enter_the_title_of_the_new_forum">introduzca el título del nuevo foro</string>
     <string name="edit_description">editar descripción</string>
-    <string name="campos_vacios">editar descripción</string>
+    <string name="campos_vacios">Campos vacíos</string>
     <string name="aviso_campos_vacios">Algunos de los campos necesarios para crear un foro (título, descripción) están vacíos. Rellénalos para crear el foro</string>
     <string name="valorar_app">Valora la aplicación</string>
     <string name="descripcion_valorar_app">¿Quieres valorar la aplicación en Google Play Store?</string>
     <string name="fpshare_noti">Notificación FPShare</string>
-    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
+    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya
+        han transcurrido.</string>
     <string name="buscar">Buscar</string>
+    <string name="write_the_title_of_the_thread">Escriba el título del hilo</string>
+    <string name="write_the_description_of_the_thread">Escribe la descripción del hilo</string>
 </resources>
