@@ -236,5 +236,8 @@
     <string name="contenido_notificación">The 5 minutes of the reminder that you have activated have already elapsed.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="write_the_title_of_the_thread">Write the title of the thread</string>
+    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
+    <string name="user_not_registred">The user is not registered</string>
 
 </resources>

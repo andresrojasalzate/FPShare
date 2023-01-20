@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 /**
@@ -32,6 +33,7 @@ class Login : AppCompatActivity() {
     private lateinit var textViewForgotPassword: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: LoginBinding
+    private var bd = FirebaseFirestore.getInstance()
 
     private var splashScreenMS: Long = 1000
     companion object {
@@ -90,16 +92,25 @@ class Login : AppCompatActivity() {
     }
 
     private fun login(correo: String, password: String) {
-
-        auth.signInWithEmailAndPassword(correo, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                } else {
-                    error()
-                }
+        bd.collection("Usuarios").whereEqualTo("email", correo).get().addOnSuccessListener {
+            if (!it.isEmpty){
+                auth.signInWithEmailAndPassword(correo, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        }else{
+                            error()
+                        }
+                    }
+            }else {
+                Snackbar.make(
+                    findViewById(R.id.loginLayout),
+                    getString(R.string.user_not_registred), BaseTransientBottomBar.LENGTH_SHORT
+                ).show()
             }
+        }
+
     }
 
     private fun error() {
