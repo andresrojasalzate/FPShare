@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
+android:layout_height="wrap_content"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_marginTop="8dp"
 android:layout_marginStart="8dp"
@@ -11,7 +11,7 @@ app:cardCornerRadius="25dp"
 app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -38,18 +38,20 @@ app:cardElevation="8dp">
 
         <TextView
             android:id="@+id/txtDescr"
-            android:layout_width="360dp"
-            android:layout_height="158dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
             android:text="txtDescr"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txtPubliTitle"
             app:layout_constraintTop_toBottomOf="@+id/txtPubliTitle" />
 
         <TextView
             android:id="@+id/textLink"
-            android:layout_width="362dp"
+            android:layout_width="0dp"
             android:layout_height="38dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
             android:text="Link"
             android:textColor="@color/blue_900"
@@ -59,10 +61,11 @@ app:cardElevation="8dp">
 
         <TextView
             android:id="@+id/txtPubliTitle"
-            android:layout_width="357dp"
+            android:layout_width="0dp"
             android:layout_height="58dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:text="txtPubliTitle"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +74,7 @@ app:cardElevation="8dp">
 
         <View
             android:id="@+id/divider"
-            android:layout_width="401dp"
+            android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
             android:background="?android:attr/listDivider"
@@ -83,7 +86,7 @@ app:cardElevation="8dp">
             android:id="@+id/txtDescarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"
             android:text="Download"
             app:layout_constraintBottom_toBottomOf="parent"

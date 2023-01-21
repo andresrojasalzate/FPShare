@@ -69,7 +69,7 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
         binding.fab.setOnClickListener {
             //cambiamos la pantalla a la pantalla a la de creación de foro
             val action =
-                ListaForosDirections.actionListaForosToCreacionForo()
+                ListaForosDirections.actionListaForosToCreacionForo("1")
             view.findNavController().navigate(action)
         }
 
@@ -118,7 +118,7 @@ class ListaForos : Fragment(), ForoAdapter.OnItemClickListener {
     override fun onItemClick(id: String) {
         //al pulsar un item del recycleview cambiaremos de pantalla a la pantalla FPHilo
         val action =
-            ListaForosDirections.actionListaForosToFPHilo(id)
+            ListaForosDirections.actionListaForosToFPHilo(id, "1")
         view?.findNavController()?.navigate(action)
     }
 }

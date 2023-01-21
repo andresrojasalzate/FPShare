@@ -11,6 +11,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import cat.copernic.fpshare.R
 import cat.copernic.fpshare.databinding.FragmentCreacionForoBinding
 import cat.copernic.fpshare.modelo.Foro
@@ -40,6 +41,7 @@ class CreacionForo : Fragment() {
     private lateinit var utils: Utils
     private var bd = FirebaseFirestore.getInstance()
     private var user = Firebase.auth.currentUser
+    private val args: CreacionForoArgs by navArgs()
 
     /**
      * Con esta función mostraremos el diseño de la pantalla ,mediante un View
@@ -202,7 +204,7 @@ class CreacionForo : Fragment() {
     private fun cambiarPantalla(id: String){
         //cambiamos dde pantalla a la FPHilo
         val action =
-            CreacionForoDirections.actionCreacionForoToFPHilo(id)
+            CreacionForoDirections.actionCreacionForoToFPHilo(id, args.fragment)
         view?.findNavController()?.navigate(action)
     }
 

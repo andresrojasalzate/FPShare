@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.text.InputType
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -18,6 +19,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -91,6 +94,7 @@ class FPHilo : Fragment() {
      * elementos  de la vista
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         //lamamos a la función inicializadores
         inicializadores()
 
@@ -146,10 +150,15 @@ class FPHilo : Fragment() {
         }
         //si pulsamos el icono llamamos a la función
         borrarForo.setOnClickListener {
-            crearalerta()
+
+            crearalerta(it)
         }
 
+
+
+
     }
+
 
     /**
      * Esta función crea una alerta con un EditText en el
@@ -219,7 +228,7 @@ class FPHilo : Fragment() {
      * Esta función crea otra alerta pero sin un editText, se utliza para borrar el foro
      */
 
-    private fun crearalerta() {
+    private fun crearalerta(it: View) {
         val builder = AlertDialog.Builder(requireContext())
 
         // Establecer el título y el mensaje de la alerta
@@ -237,7 +246,13 @@ class FPHilo : Fragment() {
            }
             //Y una vez borrados los mensajes borramos el foro
             bd.collection("Foros").document(args.idforo).delete().addOnSuccessListener {
-                val action = FPHiloDirections.actionFPHiloToTusForos()
+
+            }
+            val navController = Navigation.findNavController(it)
+            if (args.fragment == "1") {
+                navController.popBackStack(R.id.listaForos, false)
+            } else if (args.fragment == "2"){
+                navController.popBackStack(R.id.tusForos, false)
             }
 
         }
@@ -260,6 +275,7 @@ class FPHilo : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
     /**
      * Esta función la utlizamos para establecer la información del foro, ademas de hacer invisibles a los iconos de borrar,
@@ -335,9 +351,9 @@ class FPHilo : Fragment() {
         borrarForo = binding.borrarForo
         ediitext = binding.timInput
         imputlayout = binding.timTextHere
-        editarDescripcion = binding.editarDescripcion!!
-        editarTitulo = binding.editarTitulo!!
-        enviarMensaje = binding.enviarMensaje!!
+        editarDescripcion = binding.editarDescripcion
+        editarTitulo = binding.editarTitulo
+        enviarMensaje = binding.enviarMensaje
         mensajesList = ArrayList()
         adapter = MsgAdapter(mensajesList)
         utils = Utils()
