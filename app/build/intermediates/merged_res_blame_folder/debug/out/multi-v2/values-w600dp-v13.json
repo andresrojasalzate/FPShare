@@ -4,7 +4,7 @@
             "outputFile": "cat.copernic.fpshare.app-mergeDebugResources-69:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Sergi\\AndroidStudioProjects\\FPShare\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
+                    "source": "C:\\Users\\Albert\\AndroidStudioProjects\\fpshare1\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

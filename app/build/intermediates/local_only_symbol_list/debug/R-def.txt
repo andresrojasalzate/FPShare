@@ -324,7 +324,6 @@ id txtThreadInput
 id txt_mensaje
 id txt_menu
 id view
-id vista_pdf
 layout activity_main
 layout activity_recovery_password
 layout activity_registro
@@ -355,7 +354,6 @@ layout fragment_pantalla_principal
 layout fragment_perfil
 layout fragment_publicaciones_propias
 layout fragment_renombrar__usuario
-layout fragment_ver_apuntes
 layout item_foro
 layout item_hilo
 layout item_menu

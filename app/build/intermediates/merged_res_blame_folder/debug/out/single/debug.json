@@ -48,10 +48,6 @@
         "source": "cat.copernic.fpshare.app-main-73:/anim/exit_izq.xml"
     },
     {
-        "merged": "cat.copernic.fpshare.app-merged_res-71:/layout_fragment_ver_apuntes.xml.flat",
-        "source": "cat.copernic.fpshare.app-main-73:/layout/fragment_ver_apuntes.xml"
-    },
-    {
         "merged": "cat.copernic.fpshare.app-merged_res-71:/layout-sw600dp_fragment_creacion_foro.xml.flat",
         "source": "cat.copernic.fpshare.app-main-73:/layout-sw600dp/fragment_creacion_foro.xml"
     },

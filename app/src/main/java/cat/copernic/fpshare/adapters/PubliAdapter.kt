@@ -85,10 +85,9 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 viewB.imgIcon.setImageBitmap(bitmap)
             }
 
+            val pdfRef = storage.getReference("pdfs/${publicacion.pathFile}.pdf")
             viewB.txtDescarga.setOnClickListener{
-                //val fileId = "your_file_id"
-                val storageRef = storage.getReference("pdfs/${publicacion.pathFile}")
-                val urlTask = storageRef.downloadUrl
+                val urlTask = pdfRef.downloadUrl
                 urlTask.addOnSuccessListener { uri ->
                     val url = uri.toString()
                     val intent = Intent(Intent.ACTION_VIEW)
@@ -99,14 +98,14 @@ class PubliAdapter(private val publicaciones: List<Publicacion>) : RecyclerView.
                 /**
                  * Inicializacion del enlace
                  */
-                viewB.textLink.setOnClickListener {
-                    val queryUrl: Uri = Uri.parse(publicacion.enlace)
-                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-                    contexto.startActivity(intent)
+            viewB.textLink.setOnClickListener {
+                val queryUrl: Uri = Uri.parse(publicacion.enlace)
+                val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+                contexto.startActivity(intent)
 
-                }
             }
         }
+    }
 
     override fun getItemCount(): Int {
         return publiFilter.size

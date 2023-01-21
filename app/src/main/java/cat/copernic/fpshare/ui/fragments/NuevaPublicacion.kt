@@ -42,9 +42,9 @@ class NuevaPublicacion : Fragment() {
     private lateinit var botonPublicar: Button
     private lateinit var idModuloSpinner: Spinner
     private lateinit var idUfSpinner: Spinner
-    private lateinit var ciclo: String
-    private lateinit var modulo: String
-    private lateinit var uf: String
+    private var ciclo: String = "0"
+    private var modulo: String = "0"
+    private var uf: String = "0"
     private lateinit var arrayIdModulo: ArrayList<String>
     private lateinit var arrayIdUf: ArrayList<String>
     private lateinit var btnAdd: Button
@@ -52,21 +52,21 @@ class NuevaPublicacion : Fragment() {
     private var storage = FirebaseStorage.getInstance()
     public lateinit var path: String
     private var pdfUri: Uri? = null
-    private var nombreArchivo: String? = null
+    private var nombreArchivo: String = ""
     private var pdfRef = storage.reference.child("pdfs/$nombreArchivo.pdf")
     private lateinit var publi: Publicacion
     val i: Int = 0
 
     private val resultat = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
-            pdfUri = it.data?.data //Assignem l'URI de la imatge
             nombreArchivo = System.currentTimeMillis().toString()
+            pdfUri = it.data?.data //Assignem l'URI de la imatge
             pdfUri?.let{uri->
-                Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
+                //Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
                 pdfRef.putFile(uri).addOnSuccessListener {
-                    //Toast.makeText(requireContext(),"Doc added", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Doc added", Toast.LENGTH_LONG).show()
                 }.addOnFailureListener(){
-                    //Toast.makeText(requireContext(),"Doc no added", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Doc no added", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -101,9 +101,7 @@ class NuevaPublicacion : Fragment() {
         idModuloSpinner = binding.spinnerModulesNewPost
         idUfSpinner = binding.spinnerUfsNewPost
         btnAdd = binding.btnAdd!!
-        ciclo = "0"
-        modulo = "0"
-        uf =  "0"
+
         binding.tagsCicles.setOnCheckedChangeListener { group, checkedId ->
             if (binding.optionDam.isChecked) {
                 cargarModulos("DAM")
@@ -156,10 +154,6 @@ class NuevaPublicacion : Fragment() {
             resultat.launch(intent)
         }
     }
-
-
-
-
 
     /**
      * Función para cargar las UFs a través de una consulta de la base de datos
@@ -220,7 +214,6 @@ class NuevaPublicacion : Fragment() {
             publi.perfil = usuario.nombre + " " + usuario.apellidos
             publi.titulo = titulo.text.toString()
             publi.descripcion = descripcion.text.toString()
-            publi.checked = ""
             publi.pathFile = nombreArchivo.toString()
             if (binding.optionDam.isChecked) {
                 publi.checked = "DAM"
@@ -233,23 +226,16 @@ class NuevaPublicacion : Fragment() {
 
             } else if (binding.optionAsix.isChecked) {
                 publi.checked = "ASIR"
-
             }
+            publi.idModulo = "a"
+            publi.idUf = "a"
             publi.enlace = enlace.text.toString()
             /**
              * Si la ID no esta vacia, añadiremos la publicacion en el Storage.
              */
-            if (publi.id.isNotEmpty() && publi.id.isNotBlank()) {
-                try {
-                    anadirPublicacion(ciclo, modulo, uf, publi)
-                } catch (e: UninitializedPropertyAccessException) {
-                    Snackbar.make(
-                        binding.root,
-                        getString(cat.copernic.fpshare.R.string.errorUFNoEspecificada),
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                }
-            }
+
+            anadirPublicacion(ciclo, modulo, uf, publi, nombreArchivo)
+
         }
     }
 
@@ -282,10 +268,15 @@ class NuevaPublicacion : Fragment() {
      * @param idModulo
      * @param idUf
      */
+
     private fun anadirPublicacion(
-        checked: String, idModulo: String, idUf: String, publi: Publicacion
+        checked: String, idModulo: String, idUf: String, publi: Publicacion, nombreArchivo: String
     ) {
         val appContext = context
+        publi.pathFile = nombreArchivo
+        publi.idCiclo = publi.checked
+        publi.idModulo = idModulo
+        publi.idUf = idUf
         /***
          * En añadir publicacion se define la ruta donde se guardara la publicacion.
          * La variable checked sera la id del Ciclo, el idModulo y idUf lo escribimos
@@ -317,10 +308,6 @@ class NuevaPublicacion : Fragment() {
                 Snackbar.LENGTH_LONG
             ).show()
         } else {
-            publi.idCiclo = checked
-            publi.idModulo = idModulo
-            publi.idUf = idUf
-            publi.pathFile = path
             bd.collection("Ciclos").document(checked).collection("Modulos").document(idModulo)
                 .collection("UFs").document(idUf).collection("Publicaciones").add(publi)
                 .addOnSuccessListener { //S'ha afegit el departament...
@@ -333,6 +320,7 @@ class NuevaPublicacion : Fragment() {
                 }
         }
     }
+
 
     private fun algoVacio(
         titulo: String, descripcion: String, enlace: String
