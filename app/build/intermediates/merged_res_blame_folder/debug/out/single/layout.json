@@ -24,10 +24,6 @@
         "source": "cat.copernic.fpshare.app-main-73:/layout/fragment_admin_edit_u.xml"
     },
     {
-        "merged": "cat.copernic.fpshare.app-mergeDebugResources-70:/layout/fragment_ver_apuntes.xml",
-        "source": "cat.copernic.fpshare.app-main-73:/layout/fragment_ver_apuntes.xml"
-    },
-    {
         "merged": "cat.copernic.fpshare.app-mergeDebugResources-70:/layout/item_hilo.xml",
         "source": "cat.copernic.fpshare.app-main-73:/layout/item_hilo.xml"
     },

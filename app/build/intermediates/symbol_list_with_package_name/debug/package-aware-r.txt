@@ -138,6 +138,7 @@ attr arcMode
 attr argType
 attr arrowHeadLength
 attr arrowShaftLength
+attr assetName
 attr attributeName
 attr autoCompleteMode
 attr autoCompleteTextViewStyle
@@ -912,6 +913,7 @@ attr paddingRightSystemWindowInsets
 attr paddingStart
 attr paddingTopNoTitle
 attr paddingTopSystemWindowInsets
+attr panEnabled
 attr panelBackground
 attr panelMenuListTheme
 attr panelMenuListWidth
@@ -958,6 +960,7 @@ attr quantizeMotionSteps
 attr queryBackground
 attr queryHint
 attr queryPatterns
+attr quickScaleEnabled
 attr radioButtonStyle
 attr rangeFillColor
 attr ratingBarStyle
@@ -1044,6 +1047,7 @@ attr springDamping
 attr springMass
 attr springStiffness
 attr springStopThreshold
+attr src
 attr srcCompat
 attr stackFromEnd
 attr staggered
@@ -1204,6 +1208,7 @@ attr tickMark
 attr tickMarkTint
 attr tickMarkTintMode
 attr tickVisible
+attr tileBackgroundColor
 attr tint
 attr tintMode
 attr title
@@ -1290,6 +1295,7 @@ attr windowNoTitle
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
+attr zoomEnabled
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
@@ -3965,6 +3971,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string hintLoginPassword
 string hint_textHere
@@ -5419,6 +5426,7 @@ styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
+styleable SubsamplingScaleImageView assetName panEnabled quickScaleEnabled src tileBackgroundColor zoomEnabled
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text
