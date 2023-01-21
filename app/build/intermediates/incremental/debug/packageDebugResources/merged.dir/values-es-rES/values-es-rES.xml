@@ -193,6 +193,7 @@
     <string name="ufExists">La UF ya existe</string>
     <string name="uploadResult">Imagen actualizada correctamente</string>
     <string name="user_admin">Administración de usuarios</string>
+    <string name="user_not_registred">El usuario no esta registrado</string>
     <string name="users_admin_menu">Usuarios</string>
     <string name="valorar_app">Valora la aplicación</string>
     <string name="write_the_description_of_the_thread">Escribe la descripción del hilo</string>

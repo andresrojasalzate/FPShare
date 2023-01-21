@@ -27,7 +27,7 @@
     <string name="btn_send">Botón para mandar el mensaje al hilo</string>
     <string name="btn_yes">SI</string>
     <string name="buscar">Buscar</string>
-    <string name="campos_vacios">editar descripción</string>
+    <string name="campos_vacios">Campos vacíos</string>
     <string name="cancelar">Cancelar</string>
     <string name="cicle">Ciclo</string>
     <string name="cicles">Ciclos</string>
@@ -40,7 +40,8 @@
     <string name="cicloExiste">El ciclo ya existe</string>
     <string name="comentarios">Comentarios:</string>
     <string name="contenido_alert_borrar_foro">¿Estas seguro que quieres borrar el foro?</string>
-    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya han transcurrido.</string>
+    <string name="contenido_notificación">Los 5 minutos del recordatorio que ha activado ya
+        han transcurrido.</string>
     <string name="content_description_foto_de_perfil_de_usuario_profile">Foto del perfil de usuario</string>
     <string name="content_description_spinner_modules_new_post">Lista de módulos del ciclo seleccionado</string>
     <string name="content_description_spinner_ufs_new_post">Lista de UFs del módulo seleccionado</string>
@@ -192,7 +193,10 @@
     <string name="ufExists">La UF ya existe</string>
     <string name="uploadResult">Imagen actualizada correctamente</string>
     <string name="user_admin">Administración de usuarios</string>
+    <string name="user_not_registred">El usuario no esta registrado</string>
     <string name="users_admin_menu">Usuarios</string>
     <string name="valorar_app">Valora la aplicación</string>
+    <string name="write_the_description_of_the_thread">Escribe la descripción del hilo</string>
+    <string name="write_the_title_of_the_thread">Escriba el título del hilo</string>
     <string name="your_forums">Mis foros</string>
 </resources>

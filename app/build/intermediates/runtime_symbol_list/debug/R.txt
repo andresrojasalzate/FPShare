@@ -4201,9 +4201,12 @@ int string ufExists 0x7f120186
 int string ufs 0x7f120187
 int string uploadResult 0x7f120188
 int string user_admin 0x7f120189
-int string users_admin_menu 0x7f12018a
-int string valorar_app 0x7f12018b
-int string your_forums 0x7f12018c
+int string user_not_registred 0x7f12018a
+int string users_admin_menu 0x7f12018b
+int string valorar_app 0x7f12018c
+int string write_the_description_of_the_thread 0x7f12018d
+int string write_the_title_of_the_thread 0x7f12018e
+int string your_forums 0x7f12018f
 int style AlertDialog_AppCompat 0x7f130000
 int style AlertDialog_AppCompat_Light 0x7f130001
 int style Animation_AppCompat_Dialog 0x7f130002

@@ -227,6 +227,7 @@ class NuevaPublicacion : Fragment() {
             } else if (binding.optionAsix.isChecked) {
                 publi.checked = "ASIR"
             }
+            publi.idCiclo = "a"
             publi.idModulo = "a"
             publi.idUf = "a"
             publi.enlace = enlace.text.toString()

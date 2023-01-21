@@ -4202,8 +4202,11 @@ string ufExists
 string ufs
 string uploadResult
 string user_admin
+string user_not_registred
 string users_admin_menu
 string valorar_app
+string write_the_description_of_the_thread
+string write_the_title_of_the_thread
 string your_forums
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

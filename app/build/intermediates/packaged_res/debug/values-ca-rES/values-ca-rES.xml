@@ -27,7 +27,7 @@
     <string name="btn_send">Botó per enviar un missatge al fil</string>
     <string name="btn_yes">Si</string>
     <string name="buscar">Cercar</string>
-    <string name="campos_vacios">editar descripció</string>
+    <string name="campos_vacios">Camps buits</string>
     <string name="cancelar">Cancel·la</string>
     <string name="cicle">Cicle</string>
     <string name="cicles">Cicles</string>
@@ -192,7 +192,10 @@
     <string name="ufExists">La UF ja existeix</string>
     <string name="uploadResult">Imatge actualitzada correctament</string>
     <string name="user_admin">Administració d\'Usuaris</string>
+    <string name="user_not_registred">L\'usuari no està registrat</string>
     <string name="users_admin_menu">Usuaris</string>
     <string name="valorar_app">Valora l\'aplicació</string>
+    <string name="write_the_description_of_the_thread">Write the description of the thread</string>
+    <string name="write_the_title_of_the_thread">Escriviu el títol del fil</string>
     <string name="your_forums">Els meus fòrums</string>
 </resources>
