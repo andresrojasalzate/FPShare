@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fp_hilo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.FPHilo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/enviar_mensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tim_textHere"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_5"
+                android:layout_marginEnd="@dimen/size_5"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonSend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tim_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/hint_textHere" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/buttonSend"
+                android:layout_width="@dimen/size_55"
+                android:layout_height="@dimen/size_55"
+                android:layout_marginStart="@dimen/size_5"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordes_redondos"
+                android:contentDescription="@string/btn_send"
+                android:src="@android:drawable/ic_menu_send"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tim_textHere"
+                tools:ignore="RedundantDescriptionCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHilo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/enviar_mensaje"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/respuestas" />
+
+        <TextView
+            android:id="@+id/autor_foro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/borrar_foro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="autor" />
+
+        <TextView
+            android:id="@+id/titulo_foro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:contentDescription="@string/forum_thread_title"
+            app:layout_constraintEnd_toStartOf="@+id/editar_titulo"
+            app:layout_constraintStart_toStartOf="@+id/autor_foro"
+            app:layout_constraintTop_toBottomOf="@+id/autor_foro"
+
+            tools:text="titulo" />
+
+        <TextView
+            android:id="@+id/descripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/editar_descripcion"
+            app:layout_constraintStart_toStartOf="@+id/titulo_foro"
+            app:layout_constraintTop_toBottomOf="@+id/titulo_foro"
+            tools:text="descripcion" />
+
+        <TextView
+            android:id="@+id/respuestas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="25dp"
+            android:text="@string/respuestas"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/descripcion"
+            app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/respuestas"
+            app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
+        <ImageView
+            android:id="@+id/borrar_foro"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/delete_forum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/basura" />
+
+        <ImageView
+            android:id="@+id/editar_titulo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/edit_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titulo_foro"
+            app:srcCompat="@drawable/lapiz" />
+
+        <ImageView
+            android:id="@+id/editar_descripcion"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/edit_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/descripcion"
+            app:srcCompat="@drawable/lapiz" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

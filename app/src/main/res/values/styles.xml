@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Style para botones -->
+    <style name="Widget.FpShare.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/blue_200</item>
+        <item name="cornerRadius">@dimen/size_20</item>
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_60</item>
+        <item name="android:onClick">makeSound</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- Style para texto normal -->
+    <style name="Widget.FpShare.TextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- Style para titulo -->
+    <style name="Widget.FpShare.TextViewTitulo" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+    <!-- Style para el InputText -->
+    <style name="Widget.FpShare.TextImputLayaout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/lavada</item>
+        <item name="boxStrokeColor">@color/blue_500</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Widget.FpShare.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="background">@color/lavada</item>
+        <item name="android:layout_width">@dimen/size_80</item>
+        <item name="android:layout_height">@dimen/size_48</item>
+    </style>
+    <style name="Widget.FpShare.TextView.TextoNegro" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- Style para los enlaces -->
+    <style name="Widget.FpShare.TextViewLink" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/blue_900</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- Style para TextInputLayouts -->
+    <style name="Widget.FpShare.TextInputLayout" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- Style para TextInputLayout Descripcion -->
+    <style name="Widget.FpShare.TextInputLayoutDescr" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_300</item>
+    </style>
+    <!-- Style para los Titulos -->
+    <style name="Widget.FpShare.TextViewTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">@dimen/size_300</item>
+        <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <!-- Style para RadioButtons -->
+    <style name="Widget.FpShare.RadioButton" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- Style para ImageView -->
+    <style name="Widget.FpShare.ImageView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">@dimen/size_150</item>
+        <item name="android:layout_height">@dimen/size_150</item>
+    </style>
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CreacionForo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtThread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_50"
+                android:text="@string/threadTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/threadLayout"
+            style="@style/Widget.FpShare.TextInputLayout"
+            android:layout_marginStart="@dimen/size_30"
+            android:layout_marginTop="@dimen/size_50"
+            android:layout_marginEnd="@dimen/size_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtThread">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtThreadInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/threadTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtThread"
+                app:layout_constraintTop_toBottomOf="@+id/txtThread" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_50"
+            android:text="@string/description_new_post"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/threadLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="@dimen/size_30"
+                android:layout_marginTop="@dimen/size_50"
+                android:layout_marginEnd="@dimen/size_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescription">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDescriptionInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/description_new_post" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/Widget.FpShare.Button"
+                android:layout_marginTop="40dp"
+                android:text="@string/btn_guardar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

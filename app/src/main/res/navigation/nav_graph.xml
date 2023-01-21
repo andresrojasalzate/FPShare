@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    android:label="@string/edit_module"
+    app:startDestination="@id/pantalla_principal">
+
+    <fragment
+        android:id="@+id/pantalla_principal"
+        android:name="cat.copernic.fpshare.ui.fragments.pantalla_principal"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_pantalla_principal">
+        <action
+            android:id="@+id/action_pantalla_principal_to_login"
+            app:destination="@id/login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listaForos"
+        android:name="cat.copernic.fpshare.ui.fragments.ListaForos"
+        android:label="@string/forums"
+        tools:layout="@layout/fragment_lista_foros">
+        <action
+            android:id="@+id/action_listaForos_to_FPHilo"
+            app:destination="@id/FPHilo"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+        <action
+            android:id="@+id/action_listaForos_to_creacionForo"
+            app:destination="@id/creacionForo"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevaPublicacion"
+        android:name="cat.copernic.fpshare.ui.fragments.NuevaPublicacion"
+        android:label="@string/new_post"
+        tools:layout="@layout/fragment_nueva_publicacion" >
+        <action
+            android:id="@+id/action_nuevaPublicacion_to_pantalla_principal"
+            app:destination="@id/pantalla_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuCiclos"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuCiclos"
+        android:label="@string/cicles"
+        tools:layout="@layout/fragment_menu_ciclos">
+        <action
+            android:id="@+id/action_menuCiclos_to_menuModulo"
+            app:destination="@id/menuModulo"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+    </fragment>
+    <fragment
+        android:id="@+id/FPHilo"
+        android:name="cat.copernic.fpshare.ui.fragments.FPHilo"
+        android:label="@string/thread"
+        tools:layout="@layout/fragment_fp_hilo">
+        <argument
+            android:name="idforo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_FPHilo_to_tusForos"
+            app:destination="@id/tusForos" />
+        <argument
+            android:name="fragment"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_perfil"
+        android:name="cat.copernic.fpshare.ui.fragments.perfil"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/menuModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuModulo"
+        android:label="@string/modules">
+        <action
+            android:id="@+id/action_menuModulo_to_listaUFs"
+            app:destination="@id/listaUFs"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+        <argument
+            android:name="cicloid"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUFs"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuUF"
+        android:label="@string/ufs"
+        tools:layout="@layout/fragment_menu_uf">
+        <argument
+            android:name="cicloId"
+            app:argType="string" />
+        <argument
+            android:name="moduloId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_listaUFs_to_menuApuntes"
+            app:destination="@id/menuApuntes"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuAdministracion"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuAdministracion"
+        android:label="@string/admin"
+        tools:layout="@layout/fragment_menu_administracion">
+        <action
+            android:id="@+id/action_menuAdministracion_to_listaUsuariosAdministracion"
+            app:destination="@id/listaUsuariosAdministracion" />
+        <action
+            android:id="@+id/action_menuAdministracion_to_listaTagsAdministracion"
+            app:destination="@+id/listaTagsAdministracion"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUsuariosAdministracion"
+        android:name="cat.copernic.fpshare.ui.fragments.ListaUsuariosAdministracion"
+        android:label="@string/user_admin"
+        tools:layout="@layout/fragment_lista_usuarios_administracion">
+        <action
+            android:id="@+id/action_listaUsuariosAdministracion_to_mostarInfoUsuario"
+            app:destination="@id/mostarInfoUsuario" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaTagsAdministracion"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminCiclos"
+        android:label="@string/cicles_admin"
+        tools:layout="@layout/fragment_admin_ciclos">
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_fragmentAdminModulos"
+            app:destination="@id/fragmentAdminModulos"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+        <action
+            android:id="@+id/action_listaTagsAdministracion_to_crearCiclo"
+            app:destination="@id/crearCiclo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_renombrar_usuario"
+        android:name="cat.copernic.fpshare.ui.fragments.Renombrar_Usuario"
+        android:label="@string/rename_user"
+        tools:layout="@layout/fragment_renombrar__usuario">
+        <argument
+            android:name="idUsuario"
+            app:argType="string" />
+    </fragment>
+    <activity
+        android:id="@+id/login"
+        android:name="cat.copernic.fpshare.ui.activities.Login"
+        android:label="Login" />
+    <fragment
+        android:id="@+id/creacionForo"
+        android:name="cat.copernic.fpshare.ui.fragments.CreacionForo"
+        android:label="@string/new_forum"
+        tools:layout="@layout/fragment_creacion_foro">
+        <action
+            android:id="@+id/action_creacionForo_to_FPHilo"
+            app:destination="@id/FPHilo" />
+        <argument
+            android:name="fragment"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearCiclo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearCiclo"
+        android:label="@string/new_cicle"
+        tools:layout="@layout/fragment_crear_ciclo">
+        <action
+            android:id="@+id/action_crearCiclo_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearModulo"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearModulo"
+        android:label="@string/new_module"
+        tools:layout="@layout/fragment_crear_modulo">
+        <action
+            android:id="@+id/action_crearModulo_to_fragmentAdminModulos"
+            app:destination="@id/fragmentAdminModulos" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearUF"
+        android:name="cat.copernic.fpshare.ui.fragments.CrearUF"
+        android:label="@string/new_uf"
+        tools:layout="@layout/fragment_crear_u">
+        <action
+            android:id="@+id/action_crearUF_to_fragmentAdminUFs"
+            app:destination="@id/fragmentAdminUFs" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuApuntes"
+        android:name="cat.copernic.fpshare.ui.fragments.MenuApuntes"
+        android:label="@string/posts"
+        tools:layout="@layout/fragment_menu_apuntes">
+        <argument
+            android:name="cicloId"
+            app:argType="string" />
+        <argument
+            android:name="moduloId"
+            app:argType="string" />
+        <argument
+            android:name="ufId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminModulos"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminModulos"
+        android:label="@string/modules"
+        tools:layout="@layout/fragment_admin_modulos">
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_fragmentAdminUFs"
+            app:destination="@id/fragmentAdminUFs"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_crearModulo"
+            app:destination="@id/crearModulo" />
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_fragmentAdminEditCicle"
+            app:destination="@id/fragmentAdminEditCicle" />
+        <action
+            android:id="@+id/action_fragmentAdminModulos_to_listaTagsAdministracion"
+            app:destination="@id/listaTagsAdministracion" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminUFs"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminUFs"
+        android:label="@string/ufs"
+        tools:layout="@layout/fragment_admin_u_fs">
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_crearUF"
+            app:destination="@id/crearUF" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminPosts"
+            app:destination="@id/fragmentAdminPosts"
+            app:enterAnim="@anim/der_to_izq"
+            app:exitAnim="@anim/exit_izq"
+            app:popEnterAnim="@anim/izq_to_der"
+            app:popExitAnim="@anim/exit_der" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminEditModule"
+            app:destination="@id/fragmentAdminEditModule" />
+        <action
+            android:id="@+id/action_fragmentAdminUFs_to_fragmentAdminModulos"
+            app:destination="@id/fragmentAdminModulos" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostarInfoUsuario"
+        android:name="cat.copernic.fpshare.ui.fragments.MostarInfoUsuario"
+        android:label="User info"
+        tools:layout="@layout/fragment_mostar_info_usuario">
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_mostarInfoUsuario_to_fragment_renombrar_usuario"
+            app:destination="@id/fragment_renombrar_usuario" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminModPost"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminModPost"
+        android:label="Edit Post"
+        tools:layout="@layout/fragment_admin_mod_post">
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="idUf"
+            app:argType="string" />
+        <argument
+            android:name="idPubli"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminPosts"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminPosts"
+        android:label="@string/posts"
+        tools:layout="@layout/fragment_admin_posts">
+        <action
+            android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminModPost"
+            app:destination="@id/fragmentAdminModPost" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="idUf"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminEditUF"
+            app:destination="@id/fragmentAdminEditUF" />
+        <action
+            android:id="@+id/action_fragmentAdminPosts_to_fragmentAdminUFs"
+            app:destination="@id/fragmentAdminUFs" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditCicle"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditCicle"
+        android:label="@string/edit_cicle"
+        tools:layout="@layout/fragment_admin_edit_cicle">
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminEditCicle_to_fragmentAdminModulos"
+            app:destination="@id/fragmentAdminModulos" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditModule"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditModule"
+        android:label="@string/edit_module"
+        tools:layout="@layout/fragment_admin_edit_module">
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAdminEditModule_to_fragmentAdminUFs"
+            app:destination="@id/fragmentAdminUFs" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdminEditUF"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentAdminEditUF"
+        android:label="@string/edit_uf"
+        tools:layout="@layout/fragment_admin_edit_u">
+        <action
+            android:id="@+id/action_fragmentAdminEditUF_to_fragmentAdminPosts"
+            app:destination="@id/fragmentAdminPosts" />
+        <argument
+            android:name="idCiclo"
+            app:argType="string" />
+        <argument
+            android:name="idModulo"
+            app:argType="string" />
+        <argument
+            android:name="idUF"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPublicacionesPropias"
+        android:name="cat.copernic.fpshare.ui.fragments.FragmentPublicacionesPropias"
+        android:label="@string/myPosts"
+        tools:layout="@layout/fragment_publicaciones_propias" >
+        <action
+            android:id="@+id/action_fragmentPublicacionesPropias_to_fragmentAdminModPost"
+            app:destination="@id/fragmentAdminModPost" />
+    </fragment>
+    <fragment
+        android:id="@+id/tusForos"
+        android:name="cat.copernic.fpshare.ui.fragments.listaForosDeUnUsuario"
+        android:label="@string/your_forums"
+        tools:layout="@layout/fragment_lista_foros_de_un_usuario" >
+        <action
+            android:id="@+id/action_tusForos_to_FPHilo"
+            app:destination="@id/FPHilo" />
+        <action
+            android:id="@+id/action_tusForos_to_creacionForo"
+            app:destination="@id/creacionForo" />
+    </fragment>
+</navigation>

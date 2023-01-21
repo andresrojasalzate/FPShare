@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.MostarInfoUsuario">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_profile"
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_8"
+                android:contentDescription="@string/content_description_foto_de_perfil_de_usuario_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/foto_peril_usuario"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textView_name_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_55"
+                android:layout_marginTop="8dp"
+                android:text="@string/name_profile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/name_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                app:layout_constraintStart_toStartOf="@+id/textView_name_user"
+                app:layout_constraintTop_toBottomOf="@+id/textView_name_user"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/name_profile" />
+
+            <TextView
+                android:id="@+id/textView_lasts_name_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/last_names_profile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/name_user"
+                app:layout_constraintTop_toBottomOf="@+id/name_user"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/lasts_name_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                app:layout_constraintStart_toStartOf="@+id/textView_lasts_name_user"
+                app:layout_constraintTop_toBottomOf="@+id/textView_lasts_name_user"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/last_names_profile" />
+
+            <TextView
+                android:id="@+id/textView_email_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/email_profile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/lasts_name_user"
+                app:layout_constraintTop_toBottomOf="@+id/lasts_name_user"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/email_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                app:layout_constraintStart_toStartOf="@+id/textView_email_user"
+                app:layout_constraintTop_toBottomOf="@+id/textView_email_user"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/email_profile" />
+
+            <TextView
+                android:id="@+id/textView_telephone_number_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/telephone_number_profile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/email_user"
+                app:layout_constraintTop_toBottomOf="@+id/email_user"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/telephone_number_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                app:layout_constraintStart_toStartOf="@+id/textView_telephone_number_user"
+                app:layout_constraintTop_toBottomOf="@+id/textView_telephone_number_user"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/telephone_number_profile" />
+
+            <TextView
+                android:id="@+id/textView_insitute_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/institute_profile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/telephone_number_user"
+                app:layout_constraintTop_toBottomOf="@+id/telephone_number_user"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/institue_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                app:layout_constraintStart_toStartOf="@+id/textView_insitute_user"
+                app:layout_constraintTop_toBottomOf="@+id/textView_insitute_user"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/institute_profile" />
+
+            <TextView
+                android:id="@+id/textView_admin_user"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/administrator_info_usuario"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/institue_user"
+                app:layout_constraintTop_toBottomOf="@+id/institue_user"
+                tools:ignore="TextContrastCheck" />
+
+            <CheckBox
+                android:id="@+id/checkBox_esAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_admin_user"
+                app:layout_constraintStart_toEndOf="@+id/textView_admin_user"
+                app:layout_constraintTop_toTopOf="@+id/textView_admin_user" />
+
+            <Button
+                android:id="@+id/button_rename_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/rename_user"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_delete_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_esAdmin"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/button_delete_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delete_user"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_rename_user"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_esAdmin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

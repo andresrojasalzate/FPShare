@@ -1,17 +1,37 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+
+    // Dokka
+    id 'org.jetbrains.dokka'
+
+    // Safeargs
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+dokkaHtml {
+
+    dokkaSourceSets {
+        named("main") {
+            includeNonPublic.set(true)
+            skipEmptyPackages.set(true)
+            skipDeprecated.set(true)
+            reportUndocumented.set(true)
+            jdkVersion.set(11)
+        }
+    }
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "cat.copernic.fpshare"
         minSdk 21
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        targetSdk 33
+        versionCode 7
+        versionName "1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,15 +49,79 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
+    namespace 'cat.copernic.fpshare'
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'androidx.fragment:fragment:1.5.5'
+    //implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation "com.dmitryborodin:pdfview-android:1.1.0"
+
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //Authentication
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+
+    // Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
+
+    // Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    //navegación de fragments
+    var nav_version = "2.5.3"
+
+    // Java language implementation
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Corrutinas y lectura de base de datos
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
+    //pdf
+    implementation 'com.itextpdf:itextg:5.5.10'
+
+}
+android {
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
 }

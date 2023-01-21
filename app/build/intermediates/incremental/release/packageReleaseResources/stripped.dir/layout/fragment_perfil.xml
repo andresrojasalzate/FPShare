@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_perfil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.perfil">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".perfil">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/image_profile"
+                app:layout_constraintStart_toEndOf="@+id/image_profile" />
+
+            <ImageView
+                android:id="@+id/image_profile"
+                android:layout_width="@dimen/size_100"
+                android:layout_height="@dimen/size_100"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_8"
+                android:contentDescription="@string/content_description_foto_de_perfil_de_usuario_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/foto_peril_usuario"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textView_name_profile"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8"
+                android:text="@string/name_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_name_profile"
+                app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imput_name_profile"
+                style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_height="65dp"
+                android:hint="@string/name_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_name_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittext_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_lastnames_profile"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/last_names_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_name_profile"
+                app:layout_constraintTop_toBottomOf="@+id/imput_name_profile"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imput_lastnames_profile"
+                style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_height="65dp"
+                android:hint="@string/last_names_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_lastnames_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittext_apellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_email_profile"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/email_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_lastnames_profile"
+                app:layout_constraintTop_toBottomOf="@+id/imput_lastnames_profile"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imput_email_profile"
+                style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_height="65dp"
+                android:hint="@string/email_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_email_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_telephone_number_profile"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/telephone_number_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_email_profile"
+                app:layout_constraintTop_toBottomOf="@+id/imput_email_profile"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imput_telephone_number_profile"
+                style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_height="65dp"
+                android:hint="@string/telephone_number_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_telephone_number_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittext_numero"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_institute_profile"
+                style="@style/Widget.FpShare.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/institute_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_telephone_number_profile"
+                app:layout_constraintTop_toBottomOf="@+id/imput_telephone_number_profile" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imput_institute_profile"
+                style="@style/Widget.FpShare.TextInputLayout"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_height="65dp"
+                android:hint="@string/institute_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_institute_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittext_institute"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_save_changes_profile"
+                style="@style/Widget.FpShare.Button"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginBottom="70dp"
+                android:text="@string/save_changes_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imput_institute_profile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

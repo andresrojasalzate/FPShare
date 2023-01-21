@@ -1,0 +1,177 @@
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+-keep class androidx.profileinstaller.ProfileInstallReceiver { <init>(); }
+-keep class androidx.startup.InitializationProvider { <init>(); }
+-keep class cat.copernic.fpshare.modelo.AlarmReceiver { <init>(); }
+-keep class cat.copernic.fpshare.ui.activities.Login { <init>(); }
+-keep class cat.copernic.fpshare.ui.activities.MainActivity { <init>(); }
+-keep class cat.copernic.fpshare.ui.activities.RecoveryPassword { <init>(); }
+-keep class cat.copernic.fpshare.ui.activities.Register { <init>(); }
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+-keep class com.google.android.play.core.assetpacks.AssetPackExtractionService { <init>(); }
+-keep class com.google.android.play.core.assetpacks.ExtractionForegroundService { <init>(); }
+-keep class com.google.android.play.core.common.PlayCoreDialogWrapperActivity { <init>(); }
+-keep class com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity { <init>(); }
+-keep class com.google.firebase.auth.internal.GenericIdpActivity { <init>(); }
+-keep class com.google.firebase.auth.internal.RecaptchaActivity { <init>(); }
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+-keep class com.squareup.picasso.PicassoProvider { <init>(); }
+-keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.DialogTitle { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.SearchView { <init>(android.content.Context); }
+
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.Toolbar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.browser.browseractions.BrowserActionsFallbackMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.constraintlayout.widget.Barrier { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.constraintlayout.widget.ConstraintLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.constraintlayout.widget.Guideline { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.coordinatorlayout.widget.CoordinatorLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.core.widget.NestedScrollView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.drawerlayout.widget.DrawerLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.fragment.app.FragmentContainerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.navigation.fragment.NavHostFragment { <init>(); }
+
+-keep class androidx.recyclerview.widget.RecyclerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class cat.copernic.fpshare.ui.activities.Login { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.CreacionForo { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.CrearCiclo { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.CrearModulo { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.CrearUF { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FPAjustes { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FPHilo { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminCiclos { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminEditCicle { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminEditModule { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminEditUF { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminModPost { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminModulos { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminPosts { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.FragmentAdminUFs { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.ListaForos { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.ListaUsuariosAdministracion { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MenuAdministracion { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MenuApuntes { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MenuCiclos { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MenuModulo { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MenuUF { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.MostarInfoUsuario { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.NuevaPublicacion { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.Renombrar_Usuario { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.pantalla_principal { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.perfil { <init>(...); }
+
+-keep class cat.copernic.fpshare.ui.fragments.vista_previa_publicacion { <init>(...); }
+
+-keep class com.google.android.material.bottomnavigation.BottomNavigationView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.button.MaterialButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.button.MaterialButtonToggleGroup { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.card.MaterialCardView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.chip.Chip { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.datepicker.MaterialCalendarGridView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.floatingactionbutton.FloatingActionButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.BaselineLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.CheckableImageButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.navigation.NavigationView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.Snackbar$SnackbarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.SnackbarContentLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputEditText { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ChipTextInputComboView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ClockFaceView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.ClockHandView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.timepicker.TimePickerView { <init>(android.content.Context, android.util.AttributeSet); }
+
