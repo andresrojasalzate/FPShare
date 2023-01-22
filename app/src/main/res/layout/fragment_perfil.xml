@@ -104,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/email_profile"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/imput_lastnames_profile"
                 app:layout_constraintTop_toBottomOf="@+id/imput_lastnames_profile"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -111,9 +112,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/imput_email_profile"
                 style="@style/Widget.FpShare.TextInputLayout"
-                android:layout_marginTop="@dimen/size_8"
                 android:layout_height="65dp"
+                android:layout_marginTop="@dimen/size_8"
                 android:hint="@string/email_profile"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_email_profile">
@@ -132,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_16"
                 android:text="@string/telephone_number_profile"
-                app:layout_constraintStart_toStartOf="@+id/imput_email_profile"
+                app:layout_constraintStart_toStartOf="@+id/imput_lastnames_profile"
                 app:layout_constraintTop_toBottomOf="@+id/imput_email_profile"
                 tools:ignore="TextContrastCheck" />
 
