@@ -199,4 +199,7 @@
     <string name="write_the_title_of_the_thread">Escriviu el títol del fil</string>
     <string name="write_the_description_of_the_thread">Write the description of the thread</string>
     <string name="user_not_registred">L\'usuari no està registrat</string>
+    <string name="docAdded">Document afegit</string>
+    <string name="docNoAdded">Document no afegit</string>
+    <string name="download">Descarregar</string>
 </resources>

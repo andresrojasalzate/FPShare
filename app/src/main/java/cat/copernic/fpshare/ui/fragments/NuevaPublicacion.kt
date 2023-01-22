@@ -64,9 +64,9 @@ class NuevaPublicacion : Fragment() {
             pdfUri?.let{uri->
                 //Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
                 pdfRef.putFile(uri).addOnSuccessListener {
-                    Toast.makeText(requireContext(),"Doc added", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),getString(cat.copernic.fpshare.R.string.docAdded), Toast.LENGTH_LONG).show()
                 }.addOnFailureListener(){
-                    Toast.makeText(requireContext(),"Doc no added", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),getString(cat.copernic.fpshare.R.string.docNoAdded), Toast.LENGTH_LONG).show()
                 }
             }
         }
