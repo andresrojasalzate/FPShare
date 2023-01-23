@@ -8,4 +8,4 @@ Esta aplicación ha sido desarrollada por Carles Trujillo, Andrés Rojas y Alber
 
 El proyecto consiste en una app hecha en Kotlin para Android.
 
-##[Virtualización](https://htmlpreview.github.io/?https://github.com/andresrojasalzate/portafolio/blob/main/Modulos/M01SistemaInformaticos/UF1/Practica-Virtualizaci%C3%B3n/RespostesPrcticaVirtualitzaci.html)
+## [Virtualización](https://htmlpreview.github.io/?https://github.com/andresrojasalzate/portafolio/blob/main/Modulos/M01SistemaInformaticos/UF1/Practica-Virtualizaci%C3%B3n/RespostesPrcticaVirtualitzaci.html)
