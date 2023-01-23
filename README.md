@@ -10,4 +10,6 @@ El proyecto consiste en una app hecha en Kotlin para Android.
 
 ## [Memoria del proyecto](https://drive.google.com/file/d/1X3bJu6tq1YR_5dDwwtwmH4dNb5tnwr65/view?usp=sharing)
 
-## [Prsentaión del proyecto](https://docs.google.com/presentation/d/1AHEIlhLnZf9i6ZKMnjC14aUuGBFDEh4e/edit?usp=sharing&ouid=109141646559594181428&rtpof=true&sd=true)
+## [Presentaión del proyecto](https://docs.google.com/presentation/d/1AHEIlhLnZf9i6ZKMnjC14aUuGBFDEh4e/edit?usp=sharing&ouid=109141646559594181428&rtpof=true&sd=true)
+
+## [Video demo de la app](https://drive.google.com/file/d/174-GitmruHhWjDBNgWJWyMM7KLkEYI_Q/view?usp=sharing)
