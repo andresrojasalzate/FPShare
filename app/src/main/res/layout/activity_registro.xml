@@ -113,22 +113,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_mail" />
 
+
     <TextView
         android:id="@+id/txtSign"
         style="@style/Widget.FpShare.TextViewLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_20"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="120dp"
         android:text="@string/txtSign"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/btnRegistrarse"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
-
     <TextView
         android:id="@+id/txtAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="@dimen/size_20"
         android:text="@string/txtAsk"
         android:textSize="20sp"

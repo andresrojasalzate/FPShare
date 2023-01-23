@@ -5,7 +5,7 @@
     <string name="btn_yes">Si</string>
     <string name="btn_no">No</string>
     <string name="hint_textHere">Text Aqui..</string>
-    <string name="btn_send">Botó per enviar un missatge al fil</string>
+    <string name="btn_send"> per enviar un missatge al fil</string>
     <string name="txt_threadTitle">Titol del Fil</string>
     <string name="password_login">Contrasenya</string>
     <string name="sign_in_login">Loguejar</string>

@@ -15,7 +15,7 @@
     <string name="txt_threadTitle">Thread Title</string>
 
     <!-- CIEGOS HELP -->
-    <string name="btn_send">Button to send the message to the thread</string>
+    <string name="btn_send"> to send the message to the thread</string>
 
     <!-- pantalla login-->
     <string name="email_login" translatable="false">Email</string>
