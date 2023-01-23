@@ -8,4 +8,4 @@ Esta aplicación ha sido desarrollada por Carles Trujillo, Andrés Rojas y Alber
 
 El proyecto consiste en una app hecha en Kotlin para Android.
 
-## [Virtualización](https://drive.google.com/file/d/1X3bJu6tq1YR_5dDwwtwmH4dNb5tnwr65/view?usp=sharing)
+## [Memoria del proyecto](https://drive.google.com/file/d/1X3bJu6tq1YR_5dDwwtwmH4dNb5tnwr65/view?usp=sharing)
